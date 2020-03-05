@@ -11,7 +11,7 @@ AMAT allows the user to peform low-fidelity broad sweep parametric studies; as w
 ### Neptune Aerocapture Feasibility Chart
 ![Neptune Aerocapture Feasibility](plots/girijaSaikia2019b.png)
 ### Monte Carlo Simulations
-![Monte Carlo Simulations](plots/girijaSaikia2019b.png)
+![Monte Carlo Simulations](plots/girijaSaikia2020b-fig-13-N5000.png)
 ![Monte Carlo Simulations](plots/girijaSaikia2020b-apo-histogram-N5000.png)
 
 
