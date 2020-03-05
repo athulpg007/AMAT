@@ -1,0 +1,1 @@
+../atmdata/Neptune/FMINMAX+00L.txt
