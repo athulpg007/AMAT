@@ -1,4 +1,4 @@
-AMAT.egg-info
-dist
-__pycache__
-build
+AMAT.egg-info/
+dist/
+__pycache__/
+build/
