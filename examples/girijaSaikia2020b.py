@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 from matplotlib import rcParams
 from matplotlib.patches import Polygon
 
-"""
+
 # Create a planet object
 planet=Planet("NEPTUNE")
 
@@ -31,14 +31,10 @@ vehicle.setEquilibriumGlideParams(75.0, 3.0, 18.9, 120.0, 101, -500.0)
 vehicle.setTargetOrbitParams(4000.0, 400.0E3, 10.0E3)
 
 atmfiles = ['../atmdata/Neptune/FMINMAX-10L.txt', 
-			'../atmdata/Neptune/FMINMAX-08L.txt', 
-			'../atmdata/Neptune/FMINMAX-06L.txt', 
+			'../atmdata/Neptune/FMINMAX-08L.txt',  
 			'../atmdata/Neptune/FMINMAX-04L.txt',
-			'../atmdata/Neptune/FMINMAX-02L.txt', 
-			'../atmdata/Neptune/FMINMAX+00L.txt', 
-			'../atmdata/Neptune/FMINMAX+02L.txt', 
+			'../atmdata/Neptune/FMINMAX+00L.txt',  
 			'../atmdata/Neptune/FMINMAX+04L.txt',
-			'../atmdata/Neptune/FMINMAX+06L.txt', 
 			'../atmdata/Neptune/FMINMAX+08L.txt', 
 			'../atmdata/Neptune/FMINMAX+10L.txt']
 
@@ -46,7 +42,7 @@ vehicle.setupMonteCarloSimulation(1086, 200, atmfiles, 0, 1, 2, 3, 4, True, \
 								 -11.43, 0.11, 0.40, 0.013, 0.5, 0.1, 2400.0) 
 
 vehicle.runMonteCarlo(100, '../data/girijaSaikia2020b/MCB1') 
-"""
+
 peri  = np.loadtxt('../data/girijaSaikia2020b/MCB1/terminal_periapsis_arr.txt')
 apoa  = np.loadtxt('../data/girijaSaikia2020b/MCB1/terminal_apoapsis_arr.txt')
 
