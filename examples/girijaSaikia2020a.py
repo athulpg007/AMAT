@@ -30,10 +30,14 @@ vehicle.setEquilibriumGlideParams(75.0, 3.0, 18.9, 120.0, 101, -500.0)
 vehicle.setTargetOrbitParams(4000.0, 400.0E3, 10.0E3)
 
 atmfiles = ['../atmdata/Neptune/FMINMAX-10L.txt', 
-			'../atmdata/Neptune/FMINMAX-08L.txt',  
+			'../atmdata/Neptune/FMINMAX-08L.txt',
+			'../atmdata/Neptune/FMINMAX-06L.txt',  
 			'../atmdata/Neptune/FMINMAX-04L.txt',
+			'../atmdata/Neptune/FMINMAX-02L.txt',
 			'../atmdata/Neptune/FMINMAX+00L.txt',  
+			'../atmdata/Neptune/FMINMAX+02L.txt',
 			'../atmdata/Neptune/FMINMAX+04L.txt',
+			'../atmdata/Neptune/FMINMAX+06L.txt',
 			'../atmdata/Neptune/FMINMAX+08L.txt', 
 			'../atmdata/Neptune/FMINMAX+10L.txt']
 
