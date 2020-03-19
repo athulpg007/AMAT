@@ -3,8 +3,8 @@ include LICENSE
 
 # Include the data files
 recursive-include examples *
-recursive-include interplanetary-data *
 recursive-include plots *
 
 # Exclude atm-data files
 recursive-exclude atmdata *
+recursive-exclude interplanetary-data *

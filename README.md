@@ -4,7 +4,7 @@ Aerocapture Mission Analysis Tool (AMAT) is designed to provide rapid mission an
 
 ## Capabilities
 
-AMAT allows the user to peform low-fidelity broad sweep parametric studies; as well as high fidelity Monte Carlo simulations to quantify aerocapture performance. AMAT supports analysis for all atmosphere-bearing destinations in the Solar System except Jupiter and Saturn where aerocapture is not feasible in the near-future. AMAT includes a database of interplanetary trajectories to Venus, Uranus, and Neptune for quick reference.
+AMAT allows the user to peform low-fidelity broad sweep parametric studies; as well as high fidelity Monte Carlo simulations to quantify aerocapture performance. AMAT supports analysis for all atmosphere-bearing destinations in the Solar System except Jupiter and Saturn where aerocapture is not feasible in the near-future. 
 
 ### Venus Aerocapture Trajectories
 ![Venus Aerocapture Trajectories](https://raw.githubusercontent.com/athulpg007/AMAT/master/plots/craig-lyne-altitude.png)
@@ -31,7 +31,7 @@ AMAT can be used to quickly assess the feasibility of an aerocapture mission con
 * Many examples and recreation of results from published literature
 * Extensive documented source code
 * Can be used for probe and lander Entry, Descent, Landing (EDL) calculations
-* Comes with a standard set of nominal atmospheric models and interplanetary trajectory catalog
+* Comes with a standard set of nominal atmospheric models
 
 ## Installation 
 
