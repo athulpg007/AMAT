@@ -18,7 +18,15 @@ This allows you to download the "entire" package (with the required data files t
   * ``$ pip install matplotlib``
   * ``$ pip install pandas``
 
-On Windows machines, the recommended option is to use Anaconda or Canopy package manager to install these packages.
+It is recommeded to have `Jupyter Notebook`_ installed to run the example notebooks.
+
+  * ``pip install jupyterlab``
+
+.. _Jupyter Notebook: https://jupyter.org/index.html
+
+On Windows machines, the recommended option is to use  `Anaconda`_ package manager to install these packages.
+
+.. _Anaconda: https://www.anaconda.com/ 
 
 2. Navigate to the directory where you want AMAT to be installed. Open a terminal (or command window) and use the folllowing command:
 
@@ -37,18 +45,24 @@ If you do not have git installed, you can download a .zip file from the github p
   * ``$ cd AMAT``
   * ``$ python setup.py install``
 
-5. Run an example script to check everything is working.
+5. Check that you have the required data files. For example, in the root folder where AMAT is installed, you should see a folder names atmdata with data for various planets.
+
+6. Run an example script to check everything is working.
 
   * ``$ cd examples``
   * ``$ ipython``
-  * ``$ run craigLyne2005.py``
+  * ``$ run example-01-hello-world.py``
 
-(This script will take several seconds to run.)
+To uninstall AMAT, use
 
-Option 2 : Install from pip
------------------------------
+  * ``python setup.py develop -u``
 
-This allows you to download the package, but without most of the data files. You can run the program, but will need to visit the git repository later to download some of the data files and place them in an appropriate location. You will also need to change the location of data files in the example scripts if you use them.
+This will remove the AMAT installation from Python. You may simply delete the root folder where AMAT was installed to completely remove the files.
+
+Option 2 : Install from pip (NOT recommended)
+-----------------------------------------------
+
+This allows you to download the package, but without most of the data files. You can run the program, but will need to visit the git repository later to download some of the data files and place them in an appropriate location. You will also need to change the location of data files in the example scripts if you use them. 
 
 Python Package Index limits the amount of additional data that can be packaged in the distribution, hence all data cannot be included in the built version.
 
@@ -72,10 +86,32 @@ If you plan to test or develop the package, the recommended option is to to inst
 
   * ``$ cd env1``
 
-4. Follow steps 1 through 5 in Option #1 : Install from source.
+4. Follow steps 1 through 6 in Option #1 : Install from source. pip will automatically fetch the required dependencies.
 
 
-## Usage
+5. If you make changes to the source code, use 
+
+ * ``python setup.py develop -u``
+
+to remove the previously installed version. Re-install using
+
+ * ``$ python setup.py install``
+
+6. To create a distribution
+
+ * ``python3 setup.py sdist bdist_wheel``
+
+7. To re-make docs if you made changes to the source code, you must have sphinx installed.
+
+ * ``cd ~root/docs``
+ * ``sphinx-apidoc -f -o source/ ../``
+ * ``make html``
+
+If you added a new AMAT module, appropriate changes must be made to docs/source/AMAT.rst.
+
+AMAT Usage
+------------
 
   * ``from AMAT.planet import Planet``
   * ``from AMAT.vehicle import Vehicle``
+  * ``from AMAT.launcher import Launcher``

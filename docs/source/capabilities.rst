@@ -17,21 +17,21 @@ Venus Aerocapture Trajectory
 
 
 Neptune Aerocapture Feasibility Chart
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. image:: _images/neptune-feasibility.png
 	:width: 600px
 	:alt: Neptune aerocapture feasibility chart
 	:align: center
 
 Monte Carlo simulations - Neptune aerocapture
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. image:: _images/prograde-higher-res.png
 	:width: 400px
 	:alt: Neptune aerocapture Monte Carlo simulation results
 	:align: center
 
 Monte Carlo simulations - SmallSat aerocapture at Venus
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. image:: _images/austin-drag-modulation-N1000.png
 	:width: 400px
 	:alt: Venus SmallSat aerocapture Monte Carlo simulation results

@@ -6,19 +6,23 @@
 Aerocapture Mission Analysis Tool (AMAT)
 ========================================
 
-.. image:: _images/AMAT-cover-image.png
+.. image:: _images/AMAT_logo_cropped.png
 
 AMAT_ is designed to provide rapid mission analysis capability for aerocapture mission concepts to the planetary science community. 
 
 .. _AMAT: https://github.com/athulpg007/AMAT
 
-See examples_ in github repository.
+See Jupyter_ notebooks to get started or refer to examples_ in the github repository.
 
+.. _Jupyter: https://amat.readthedocs.io/en/latest/jupyter_link.html
 .. _examples: https://github.com/athulpg007/AMAT/tree/master/examples
 
-AMAT allows the user to peform low-fidelity broad sweep parametric studies; as well as high fidelity Monte Carlo simulations to quantify aerocapture performance. AMAT supports analysis for mission analysis for Venus, Earth, Mars, Titan, Uranus, and Neptune.
+AMAT allows the user to peform low-fidelity broad sweep parametric studies; as well as high fidelity Monte Carlo simulations to quantify aerocapture performance. AMAT comes with a suite of interplanetary trajectories, planetary atmosphere models, aeroheating correlations, and guidance algorithms for rapid conceptual mission design. AMAT provides aerocapture and Entry, Descent, Landing (EDL) mission analysis capability for Venus, Earth, Mars, Titan, Uranus, and Neptune. 
 
-and, see module detail :ref:`modindex`
+.. image:: _images/planets.png
+
+
+For sub-routine documentation, see :ref:`modindex`
 
 
 .. toctree::
@@ -29,9 +33,11 @@ and, see module detail :ref:`modindex`
    installation
    capabilities
    jupyter_link
+   credits
+   references
    module_index
 
-Indices and tables
+Index
 ==================
 
 * :ref:`genindex`

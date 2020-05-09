@@ -7,23 +7,34 @@ Overview
 **AMAT** is an open source collection of Python subroutines for mission design and analysis
 of aerocapture mission concepts.
 
-AMAT comes with a suite of tools to allow end-to-end conceptual design of aerocapture missions: launch vehicle performance calculator, extensive database of interplanetary trajectories, sample atmosphere models, guidance schemes, and aeroheating models. AMAT supports analysis for Venus, Earth, Mars, Titan, Uranus, and Neptune for both lift and drag modulation techniques.
+AMAT comes with a suite of tools to allow end-to-end conceptual design of aerocapture missions: launch vehicle performance calculator, extensive database of interplanetary trajectories, atmosphere models, guidance schemes, and aeroheating models. AMAT supports analysis for Venus, Earth, Mars, Titan, Uranus, and Neptune for both lift and drag modulation control techniques.
 
-AMAT has been extensively used in various mission studies at the Advanced Astrodynamics Concepts (AAC) research group at Purdue University in collaboration with the NASA Jet Propulsion Laboratory (JPL). 
+AMAT has been extensively used in various aerocapture mission studies at the `Advanced Astrodynamics Concepts`_ (AAC) research group at Purdue University in active collaboration with the NASA Jet Propulsion Laboratory (JPL). 
+
+.. _Advanced Astrodynamics Concepts: https://engineering.purdue.edu/AAC/
 
 History
 -------
 
-The lack of a rapid mission design tool for aerocapture mission concepts was identified in 2016 by the NASA Ice Giants Pre-Decadal (IGPD) Study led by JPL. This meant there was no quick way of designing aerocapture mission concepts without resorting to resource-intensive, time-consuming exercises involving various NASA centers with expertise in specific disciplines.  
+The lack of a rapid mission design tool for aerocapture mission concepts was identified by the NASA `Ice Giants Pre Decadal`_ (IGPD) Study led by JPL in 2016. This meant there was no quick way of performing architectural level assessments without resorting to resource intensive, subsystem-level design exercises the NASA `Aerocapture Systems Analysis`_ Team in 2004. 
 
-Graduate researchers at Purdue University were closely involved in the aerocapture studies for the IGPD, and have since then been extending the methods and tools for other atmosphere-bearing Solar System destinations. The focus was on developing an integrated systems engineering framework to allow mission designers to quickly evaluate the feasibility and performance of aerocapture mission concepts. Doctoral students Ye Lu and Athul P. Girija collaborated from 2016--2019 to develop the **aerocapture feasibility charts**, now a commonly used graphical method for aerocapture mission design.
+.. image:: _images/igpd.png
 
-Athul P. Girija further developed the systems framework for rapid conceptual design of aerocapture missions for his doctoral thesis. He conceptualized the developement of a rapid mission design tool which implements the framework to address the gap identified by the IGPD in 2016. AMAT was first publicly released in November 2019, and has since then been maintained by the author. In the spirit of open-code for open-science, AMAT is free and open-source to foster universal access to the knowledge, and allow reproducibility of results by other researchers. Sugestions for improvement and potential contributions are greatly welcome.
+
+.. _Ice Giants Pre Decadal: https://www.lpi.usra.edu/icegiants/
+.. _Aerocapture Systems Analysis: https://ntrs.nasa.gov/search.jsp?R=20040111217
+
+Graduate researchers at Purdue University led the aerocapture assessment studies in support IGPD, and have since then been extending the methods and tools for other atmosphere-bearing Solar System destinations. The focus was on developing an integrated systems engineering framework to allow mission designers to quickly evaluate the feasibility and performance of aerocapture mission concepts. Ye Lu and Athul P. Girija from the AAC research group conceptualized the **aerocapture feasibility charts**, now a commonly used graphical method for aerocapture mission design.
+
+Athul P. Girija developed the concept further and formulated a systems framework for rapid conceptual design of aerocapture missions for his doctoral thesis. Much of the AMAT source code was originally written in support of Venus and Ice Giant mission studies performed as part of his Ph.D. dissertation. AMAT was first publicly released in November 2019, and has since then been maintained by the author at Purdue University. In the spirit of `open code for open science`_, AMAT is free and open-source to foster universal access to the knowledge, and allow reproducibility of results by other researchers. Sugestions for improvement and potential contributions are greatly welcome.
+
+
+.. _open code for open science: https://www.cos.io/about/mission
 
 Related software
 ----------------
 
-These are other software tools which offer mission analysis capabilities for aerocapture missions. These offer much higher fidelity, but are also significantly more complex to set up and run  and generally are used for mission concepts in a more advanced stage. Normally, these are usually available only to U.S. government affiliated institutions and contractors.
+There are industrial software tools which offer mission analysis capabilities for aerocapture missions. These offer much higher fidelity, but are also substantially more complex to set up and run. Such fidelity is most often not required at the level conceptual studies. These tools are not in the public domain, and is generally available only to U.S. government affiliated labs, and U.S. persons at academic or industrial institutions. 
 
 * `POST2`_: According to NASA Langley Research Center, "The Program to Optimize Simulated Trajectories II (POST2) is a generalized point mass, discrete parameter targeting and optimization program. POST2 provides the capability to target and optimize point mass trajectories for multiple powered or un-powered vehicles near an arbitrary rotating, oblate planet. POST2 has been used successfully to solve a wide variety of atmospheric ascent and entry problems, as well as exo-atmospheric orbital transfer problems."
 
@@ -39,14 +50,22 @@ Future ideas
 
 Some things I would like to implement in the future:
 
-* Pairing AMAT with Blender and NASA 3D models of planets and spacecraft to produce high resolution renders of aerocapture vehicle trajectories.
+* Pairing AMAT with `Blender`_ and `NASA 3D models`_ of planets and spacecraft to produce high resolution renders of aerocapture vehicle trajectories.
 
-* Improved guidance schemes for lift and drag modulation aerocapture.
+* Improved guidance schemes for lift and drag modulation aerocapture such as direct force control.
 
 * Improved support for EDL mission concepts in the areas of precision landing, parachute dynamics, terminal descent and landing phases.
 
+.. _Blender: https://www.blender.org/
+.. _NASA 3D models: https://solarsystem.nasa.gov/resources
+
 
 Note from the original author
----------------------------
+------------------------------
 
-I am Athul P. Girija, an aerospace engineer with a passion for robotic exploration of our Solar System. When I started working towards my Ph.D. in 2016, I had not heard of the concept of aerocapture. Throughout the course of my Ph.D, I gained a significant amount of knowledge and expertise in the design of aerocapture mission concepts by studying nearly 400+ journal articles, conference papers, and technical reports. This tool is dedicated to all the researchers who worked on aerocapture over nearly six decades, standing on whose shoulders I could see far.
+I am `Athul P Girija`_, an aerospace engineer with a passion for robotic exploration of our Solar System. At the time of writing, I am a Ph.D. candidate in the School of Aeronautics and Astronautics at Purdue University. My interests lie in the general areas of planetary science, mission design and concept formulation, open-source software, and scientific programming.
+
+`Google Scholar`_
+
+.. _Athul P Girija: https://www.linkedin.com/in/athulpg007/
+.. _Google Scholar: https://scholar.google.com/citations?hl=en&user=XxLVDPEAAAAJ
