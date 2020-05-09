@@ -2,6 +2,8 @@
 
 Aerocapture Mission Analysis Tool (AMAT) is designed to provide rapid mission analysis capability for aerocapture mission concepts to the planetary science community. 
 
+See [AMAT documentation](https://amat.readthedocs.io) for more details. 
+
 ## Capabilities
 
 AMAT allows the user to perform low-fidelity broad sweep parametric studies; as well as high fidelity Monte Carlo simulations to quantify aerocapture performance. AMAT supports analysis for all atmosphere-bearing destinations in the Solar System except Jupiter and Saturn where aerocapture is not feasible in the near-future. 
@@ -70,13 +72,23 @@ If you do not have git installed, you can download a .zip file from the github p
   * ```$ cd AMAT```
   * ```$ python setup.py install```
 
-5. Run an example script to check everything is working.
+5. Check that you have the required data files. For example, in the root folder where AMAT is installed, you should see a folder names atmdata with data for various planets.
 
-  * ```$ cd examples```
-  * ```$ ipython```
-  * ```$ run example-01-hello-world.py```
+6. Run an example script to check everything is working.
 
-(This script will take several seconds to run.)
+  * ``$ cd examples``
+  * ``$ ipython``
+  * ``$ run example-01-hello-world.py``
+
+7. Run example Jupyter notebooks
+
+  * ``jupyter-notebook``
+
+To uninstall AMAT, use
+
+  * ``python setup.py develop -u``
+
+This will remove the AMAT installation from Python. You may simply delete the root folder where AMAT was installed to completely remove the files.
 
 ### Option 2 : Install from pip
 

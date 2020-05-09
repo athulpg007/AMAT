@@ -53,6 +53,11 @@ If you do not have git installed, you can download a .zip file from the github p
   * ``$ ipython``
   * ``$ run example-01-hello-world.py``
 
+7. Run example Jupyter notebooks
+
+  * ``jupyter-notebook``
+
+
 To uninstall AMAT, use
 
   * ``python setup.py develop -u``
