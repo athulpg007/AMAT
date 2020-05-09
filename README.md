@@ -4,13 +4,13 @@ Aerocapture Mission Analysis Tool (AMAT) is designed to provide rapid mission an
 
 ## Capabilities
 
-AMAT allows the user to peform low-fidelity broad sweep parametric studies; as well as high fidelity Monte Carlo simulations to quantify aerocapture performance. AMAT supports analysis for all atmosphere-bearing destinations in the Solar System except Jupiter and Saturn where aerocapture is not feasible in the near-future. 
+AMAT allows the user to perform low-fidelity broad sweep parametric studies; as well as high fidelity Monte Carlo simulations to quantify aerocapture performance. AMAT supports analysis for all atmosphere-bearing destinations in the Solar System except Jupiter and Saturn where aerocapture is not feasible in the near-future. 
 
 ### Venus Aerocapture Trajectories
-![Venus Aerocapture Trajectory and Heating](https://raw.githubusercontent.com/athulpg007/AMAT/master/plots/craig-lyne-altitude-higher-res.png)
-![Venus Aerocapture Trajectory and Heating](https://raw.githubusercontent.com/athulpg007/AMAT/master/plots/craig-lyne-heating-higher-res.png)
+![Venus Aerocapture Trajectory and Heating|400 x 400](https://raw.githubusercontent.com/athulpg007/AMAT/master/plots/craig-lyne-altitude.png)
+![Venus Aerocapture Trajectory and Heating|400 x 400](https://raw.githubusercontent.com/athulpg007/AMAT/master/plots/craig-lyne-heating.png)
 ### Neptune Aerocapture Feasibility Chart
-![Neptune Aerocapture Feasibility](girijaSaikia2019b-high-res.png)
+![Neptune Aerocapture Feasibility](https://raw.githubusercontent.com/athulpg007/AMAT/master/plots/girijaSaikia2019b-high-res.png)
 ### Monte Carlo Simulations
 ![Monte Carlo Simulations](https://raw.githubusercontent.com/athulpg007/AMAT/master/plots/girijaSaikia2020b-fig-13-N5000.png)
 ![Monte Carlo Simulations](https://raw.githubusercontent.com/athulpg007/AMAT/master/plots/girijaSaikia2020b-apo-histogram-N5000.png)
