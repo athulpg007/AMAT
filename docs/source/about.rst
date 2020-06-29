@@ -29,9 +29,6 @@ A team of researchers at Purdue University (Saikia et al.) led the aerocapture a
 Athul P. Girija  formulated a systems framework for rapid conceptual design of aerocapture missions for his doctoral thesis. Much of the AMAT source code was originally written in support of his Ph.D. dissertation work. AMAT was first publicly released in November 2019, and has since then been maintained by the author at Purdue University. In the spirit of `open code for open science`_, AMAT is free and open-source to foster universal access to the knowledge, and allow reproducibility of results by other researchers. Sugestions for improvement and potential contributions are greatly welcome.
 
 
-The base AMAT source code development was not supported by any funding contract, and was performed solely by the author during his spare time, outside of his contractual obligations as a Ph.D. student. The author acknowledges Dr. Sarag Saikia and Prof. James Longuski (Ph.D. advisors) for their continued guidance and support of this work. No Purdue University resources (other than that available to the entire student community such as access to journal articles) were used in the creation of this work. As the creator of this work, the author hereby asserts all rights regarding the use, distribution and, licensing of AMAT. Neither Purdue University nor any other entity or person has no claim to assert any rights over the base AMAT source code whatsoever. AMAT is available for general public use under the CC-BY-SA-4.0 license.
-
-
 .. _open code for open science: https://www.cos.io/about/mission
 
 Related software
@@ -65,6 +62,9 @@ Some things I would like to implement in the future:
 
 Note from the original author
 ------------------------------
+
+The base AMAT source code development was not supported by any funding contract, and was performed solely by the author during his spare time, outside of his contractual obligations as a Ph.D. student. The author acknowledges Dr. Sarag Saikia and Prof. James Longuski (Ph.D. advisors) for their continued guidance and support of this work. No Purdue University resources (other than that available to the entire student community such as access to journal articles) were used in the creation of this work. As the creator of this work, the author hereby asserts all rights regarding the use, distribution and, licensing of AMAT. Neither Purdue University nor any other entity or person has no claim to assert any rights over the base AMAT source code whatsoever. AMAT is available for general public use under the CC-BY-SA-4.0 license.
+
 
 I am `Athul P Girija`_, an aerospace engineer with a passion for robotic exploration of our Solar System. At the time of writing, I am a Ph.D. candidate in the School of Aeronautics and Astronautics at Purdue University. My interests lie in the general areas of planetary science, mission design and concept formulation, open-source software, and scientific programming.
 
