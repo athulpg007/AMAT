@@ -124,7 +124,7 @@ class Planet:
 		planetID : str
 			Name of the planetary body, must be all uppercase; 
 			Valid entries are: 'VENUS', 'EARTH', 'MARS',
-			'TITAN', 'URANUS', 'NEPTUNE'
+			'JUPITER', 'SATURN', 'TITAN', 'URANUS', 'NEPTUNE'
 
 		"""
 
@@ -171,7 +171,34 @@ class Planet:
 			self.h_thres= 120.0E3      
 			self.h_skip = 120.0E3      
 			self.h_trap = 10.0E3 
-			self.h_low  = 50.0E3      
+			self.h_low  = 50.0E3
+
+		elif planetID == 'JUPITER':
+
+			self.ID     = 'JUPITER'      
+			self.RP     = 69911.0E3      
+			self.OMEGA  = 1.758518E-04   
+			self.GM     = 1.26686534E17   
+			self.rho0   = 0.16288        
+			self.CPCV   = 1.4348         
+			self.J2     = 14736E-6      
+			self.J3     = 0.0            
+			self.h_thres= 1000.0E3     
+			self.h_skip = 1000.0E3     
+			self.h_trap = 50.0E3 
+
+		elif planetID == 'SATURN':
+			self.ID     = 'SATURN'      
+			self.RP     = 58232.0E3     
+			self.OMEGA  = 1.6379E-04   
+			self.GM     = 3.7931187E16  
+			self.rho0   = 0.19847      
+			self.CPCV   = 1.4348       
+			self.J2     = 16298E-6     
+			self.J3     = 0.0          
+			self.h_thres= 1000.0E3     
+			self.h_skip = 1000.0E3     
+			self.h_trap = 50.0E3      
 
 		elif planetID == 'TITAN':
 
@@ -222,7 +249,7 @@ class Planet:
 		else:
 			print(" >>> ERR : Invalid planet identifier provided.")
 			print("Valid entries are: VENUS, EARTH, MARS, \
-			TITAN, URANUS, NEPTUNE")
+			JUPITER, SATURN, TITAN, URANUS, NEPTUNE")
 
 		# compute reference values
 		self.Vref      = np.sqrt(self.GM/self.RP)     
