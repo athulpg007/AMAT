@@ -1,0 +1,310 @@
+﻿ID,Author(s),Title,Year,Type,Journal / Conference / Report,Publisher,Country of Origin,Targets,Target Class,Author Affiliation,Funding Organization,Copy of previous
+1,H.S. London,Change of Satellite Orbit Plane by Aerodynamic Maneuvering,1962,Journal,Journal of Aerospace Sciences,AIAA,USA,Earth,Earth,United Aircraft Corp. Research Lab,NA,N
+2,T. W. Finch,Aerodynamic Braking Trajectories for Mars Orbit Attainment,1965,Journal,Journal of Spacecraft,AIAA,USA,Mars,Mars,Douglas Aircraft Company Inc.,NA,N
+3,J. H. Lichtenstein,Some Considerations on the Use Of Atmospheric Braking for a Transfer into a Mars Orbit,1965,Report,NASA TM,NASA,USA,Mars,Mars,NASA Langley Research Center,NASA,N
+4,E. M. Repic,Aerobraking as a Potential Planetary Capture Mode,1968,Journal,Journal of Spacecraft,AIAA,USA,Mars, Venus,Mars,North American Rockwell Corp.,NA,N
+5,M. I. Cruz,The Aerocapture Vehicle Mission Design Concept,1979,Conference,Conference on Advanced Technology for Future Space Systems Hampton,VA,AIAA,USA,Mars,Mars,Jet Propulsion Lab,NASA / JPL,N
+6,R. J. Hasset,Design Integration of Aerocapture and Aeromanuever Vehicles for Mars Sample Return Mission,1980,Conference,Structures, Structural Dynamics, and Materials Conference Seattle,WA,AIAA,USA,Mars,Mars,General Electric Co.,NASA / JPL,N
+7,General Electric Co.,Generic Aerocapture Atmospheric Entry Study vol. 1,1980,Report,Technical Report,NASA,USA,Mars, Titan, Uranus,Generic,General Electric Co.,NASA / JPL,N
+8,General Electric Co.,Generic Aerocapture Atmospheric Entry Study vol. 2,1980,Report,Technical Report,NASA,USA,Mars, Titan, Uranus,Generic,General Electric Co.,NASA / JPL,Y
+9,M. I. Cruz,Technology Requirements for a Generic Aerocapture System,1980,Conference,Thermophysics Conference,AIAA,USA,Mars, Titan, Uranus,Generic,Jet Propulsion Lab,NASA / JPL,N
+10,M. I. Cruz,Aerodynamic Mission Concepts for the Mars Sample Return Mission,1981,Conference,Atmospheric Flight Mechanics Conference,AIAA,USA,Mars,Mars,Jet Propulsion Lab,NASA / JPL,N
+11,D. E. Florence,Aerothermodynamic Design Feasibility of a Generic Aerocapture Vehicle,1981,Conference,Thermophysics Conference,AIAA,USA,Mars, Titan, Uranus,Generic,General Electric Co.,NASA / JPL,N
+12,D. E. Florence,Aerothermodynamic Design Feasibility of a Generic Aerocapture Vehicle,1981,Book Chapter,Thermophysics of Atmospheric Entry,AIAA,USA,Mars, Titan, Uranus,Generic,General Electric Co.,NASA / JPL,Y
+13,D. E. Florence,Aerothermodynamic Design Feasibility of a Mars Aerocapture Vehicle,1981,Conference,Aerospace Sciences Meeting,AIAA,USA,Mars,Mars,General Electric Co.,NASA / JPL,N
+14,S. N. Tiwari,Analysis of Aerothermodynamic Environment of a Titan Aerocapture Vehicle,1981,Book Chapter,Thermophysics of Atmospheric Entry,AIAA,USA,Titan,Titan,Old Dominion University,NA,N
+15,W. R. Letts,Entry Trajectory Shaping for Shuttle-Deployed Experiment,1981,Conference,Atmospheric Flight Mechanics Conference,AIAA,USA,Earth,Earth,General Electric Co.,NASA / JPL,N
+16,J. R. French,Trends in Unmanned Planetary Entry,1981,Conference,Thermophysics Conference,AIAA,USA,Venus, Mars, Titan,Generic,Jet Propulsion Lab,NASA / JPL,N
+17,K. D. Mease,Aerocapture - Guidance, navigation, and control,1982,Conference,Atmospheric Flight Mechanics Conference,AIAA,USA,Venus, Mars, Titan, Uranus,Generic,Jet Propulsion Lab,NASA / JPL,N
+18,C. C. Jamison,The utilization of Shuttle launched vehicles for technical validation of advanced earth and planetary entry systems,1982,Conference,Atmospheric Flight Mechanics Conference,AIAA,USA,Earth,Earth,General Electric Co.,NA,N
+19,G. Menees,Trajectory analysis of radiative heating for planetary missions withaerobraking of spacecraft,1983,Conference,Aerospace Sciences Meeting,AIAA,USA,Earth, Titan,Earth,NASA Ames Research Center,NA,N
+20,S. Hoffman,A comparison of aerobraking and aerocapture vehicles for interplanetary mission,1984,Conference,AIAA/AAS Astrodynamics Conference,AIAA,USA,Venus, Earth, Mars, Titan, Uranus,Generic,Science Applications Inc.,NASA HQ,N
+21,M. Green,Aerothermodynamic environment and thermal protection for a Titan aerocapture vehicle,1984,Conference,Thermophysics Conference,AIAA,USA,Titan,Titan,NASA Ames Research Center,NA,N
+22,C. J. Cerimele,Meteorological accuracy requirements for aerobraking orbital transfer vehicles,1984,Conference,Aerospace Sciences Meeting,AIAA,USA,Earth,Earth,NASA Johnson Space Center,NASA,N
+23,D. E. Florence,Aerothermodynamic Design Feasibility of a Mars Aerocapture Vehicle,1985,Journal,Journal of Spacecraft,AIAA,USA,Mars,Mars,General Electric Co.,NASA / JPL,Y
+24,C. J. Cerimele,A Simplified Guidance Algorithm for Lifting Aero-Assist Orbital Transfer Vehicles,1985,Conference,Aerospace Sciences Meeting,AIAA,USA,Earth,Earth,NASA Johnson Space Center,NASA / JPL,N
+25,G. D. Walberg,A Survey of Aero-Assisted Orbital Transfer,1985,Journal,Journal of Spacecraft,AIAA,USA,Venus, Earth, Mars,Generic,NASA Langley Research Center,NA,N
+26,G. Menees,Trajectory analysis of radiative heating for planetary missions withaerobraking of spacecraft,1985,Journal,Journal of Spacecraft,AIAA,USA,Earth, Titan,Earth,NASA Ames Research Center,NA,Y
+27,D. G. Hull,Aeroassisted Orbital Plane Change Using an Elliptic Drag Polar,1988,Journal,Journal of Astronautical Sciences,AAS,USA,Earth,Earth,University of Texas at Austin,NASA / JPL,N
+28,C. J. Cerimele,Atmospheric Guidance Concepts for Aeroassist Flight Experiment,1988,Journal,Journal of Astronautical Sciences,AAS,USA,Earth,Earth,NASA Langley Research Center,NASA,N
+29,D. G. Hull,Improved Plane Change Using Successive Approximation,1988,Journal,Journal of Astronautical Sciences,AAS,USA,Earth,Earth,University of Texas at Austin,NASA / JPL,N
+30,A. Cohen,Mars Sample Return Mission Delivery and Return Challenges,1988,Conference,International Symposium on Space Automation and Robotics,AIAA,USA,Mars,Mars,NASA Johnson Space Center,NA,N
+31,K. D. Mease,Optimization of Aeroassisted Orbital Transfer - Current Status,1988,Journal,Journal of Astronautical Sciences,AAS,USA,Earth,Earth,Jet Propulsion Lab,NASA / JPL,N
+32,K. D. Mease,Orbital Changes during Hypersonic Aerocruise,1988,Journal,Journal of Astronautical Sciences,AAS,USA,Earth,Earth,Jet Propulsion Lab,NASA / JPL,N
+33,A. J. Calise,Singular Perturbation Analysis of the Atmospheric Orbital Plane Change Problem,1988,Journal,Journal of Astronautical Sciences,AAS,USA,Earth,Earth,Georgia Institute of Technology,NASA,N
+34,R. Gamber,Aerocapture, Entry and Landing systems for the Mars Rover Sample Return mission,1989,Conference,Aerospace Sciences Meeting,AIAA,USA,Mars,Mars,Martin Marietta,NA,N
+35,J. Serrano-Martinez,Aerocapture guidance and navigation for the Rosetta Comet Nucleus Sample Return Mission,1989,Conference,Atmospheric Flight Mechanics Conference,AIAA,USA,Earth,Earth,GMV, Spain,NA,N
+36,R. H. Ess,Aerodynamic requirements for a Mars rover/sample return aerocapture vehicle,1989,Conference,Aerospace Sciences Meeting,AIAA,USA,Mars,Mars,NASA Johnson Space Center,NA,N
+37,T. Brand,An onboard navigation system which fulfills Mars aerocapture guidance requirements,1989,Conference,Aerospace Sciences Meeting,AIAA,USA,Mars,Mars,MIT,NASA / JPL,N
+38,J. Rose,Conceptual Design of the Mars Rover Sample Return System,1989,Conference,Aerospace Sciences Meeting,AIAA,USA,Mars,Mars,Jet Propulsion Lab,NASA / JPL,N
+39,H. Matsuo,Guidance Method for Venus Aerocapture Mission with Atmospheric and Navigation Error,1989,Journal,Journal of Science and Technology of Space,Japanese Rocket Society,Japan,Venus,Venus,Institute of Space and Astronautical Science (ISAS),NA,N
+40,S. Lawson,MRSR Aerocapture Configuration Design and Packaging Constraints,1989,Conference,Aerospace Sciences Meeting,AIAA,USA,Mars,Mars,NASA Johnson Space Center,NA,N
+41,M. I. Cruz,21st Century Early Mission Concepts For Mars Delivery and Earth Return,1990,Conference,AIAA/AAS Astrodynamics Conference,AIAA,USA,Mars,Mars,Jet Propulsion Lab,NASA / JPL,N
+42,W. L. Wells,Aerodynamic Coefficients for AFE,1990,Report,NASA TM,NASA,USA,Earth,Earth,NASA Langley Research Center,NA,N
+43,W. C. Rochelle,Aerothermodynamic Environments for Mars Sample Return Missions,1990,Conference,AIAA/ASME Joint Thermophysics and Heat Transfer Conference,AIAA,USA,Earth, Mars,Earth,Lockheed Engineering and Science Co.,NA,N
+44,S. D. Williams,A Preliminary TPS Design For MSR - Aerobraking at Mars and at Earth,1990,Conference,Aerospace Sciences Meeting,AIAA,USA,Earth, Mars,Earth,Lockheed Engineering and Science Co.,NA,N
+45,R. H. Ess,Atmospheric Effects of Martian Aerocapture,1990,Conference,Atmospheric Flight Mechanics Conference,AIAA,USA,Mars,Mars,NASA Johnson Space Center,NA,N
+46,A. Miele,Optimal Trajectories for the Aeroassist Flight Experiment,1990,Journal,Acta Astronautica,Elsevier,USA,Earth,Earth,Rice University,NASA / JPL,N
+47,C. H. Eldred,Aerobraking for Space Exploration,1991,Book Chapter,Mars: Past, Present, and Future,AIAA,USA,Mars,Mars,NASA Langley Research Center,NA,N
+48,G. D. Walberg,Aerocapture for Manned Mars Missions - Status and Challenges,1991,Conference,Atmospheric Flight Mechanics Conference,AIAA,USA,Mars,Mars,NASA Langley Research Center,NA,N
+49,S. T. DeLoux,Aerothermodynamic Environments of Aerobraking Vehicles for Manned Mars Missions,1991,Conference,Atmospheric Flight Mechanics Conference,AIAA,USA,Mars,Mars,Boeing Defense and Space,NASA,N
+50,R. D. Braun,Earth Aerobraking Strategies for Manned Return from Mars,1991,Conference,Atmospheric Flight Mechanics Conference,AIAA,USA,Earth,Earth,NASA Langley Research Center,NA,N
+51,R. W. Powell,A Six-Degree-of -Freedom Guidance and Control Analysis of Mars Aerocapture,1992,Conference,Aerospace Sciences Meeting,AIAA,USA,Mars,Mars,NASA Langley Research Center,NA,N
+52,R. Carpenter,Aeroassist Flight Experiment,1992,Report,Technical Report,UT Austin,USA,Earth,Earth,University of Texas at Austin,NA,N
+53,A. Vijayaraghavan,Aerocapture and Aeromanuevering at Mars,1992,Conference,AIAA/AAS Astrodynamics Conference,AIAA,USA,Mars,Mars,Jet Propulsion Lab,NA,N
+54,J. Puig-Suari,Aerocapture with a Flexible Tether,1992,Conference,AIAA/AAS Astrodynamics Conference,AIAA,USA,Generic,Generic,Purdue University,NA,N
+55,G. A. Dukemann,A Generalized Reusable Guidance Algorithm for Optimal Aerobraking,1992,Report,Technical Report,NASA,USA,Earth,Earth,NASA Marshall Space Flight Center,NASA,N
+56,R. W. Powell,A Six-Degree-of -Freedom Guidance and Control Analysis of Mars Aerocapture,1992,Conference,Aerospace Sciences Meeting,AIAA,USA,Mars,Mars,NASA Langley Research Center,NASA,N
+57,R. D. Braun,Earth Aerobraking Strategies for Manned Return from Mars,1992,Journal,Journal of Spacecraft and Rockets,AIAA,USA,Mars,Mars,NASA Langley Research Center,NA,Y
+58,J. E. Lyne,Parametric Study of Manned Aerocapture,1992,Journal,Journal of Spacecraft and Rockets,AIAA,USA,Mars,Mars,Eloret Institute,NASA,N
+59,J. E. Lyne,Parametric Study of Manned Aerocapture - Part II Mars Entry,1992,Journal,Journal of Spacecraft and Rockets,AIAA,USA,Mars,Mars,Eloret Institute,NASA,N
+60,J. E. Lyne,Physiologically Constrained Aerocapture for Manned Mars Missions,1992,Report,Technical Report,NASA,USA,Mars,Mars,NASA Ames Research Center,NASA,N
+61,J. Puig-Suari,Aerocapture with a Flexible Tether,1993,Journal,Journal of Guidance, Control and Dynamics,AIAA,USA,Generic,Generic,Purdue University,NA,Y
+62,J. E. Lyne,Effect of Parking Orbit Period on Aerocapture for Manned Mars Missions,1993,Journal,Journal of Spacecraft and Rockets,AIAA,USA,Mars,Mars,University of Tennessee, Knoxville,NASA,N
+63,J. G. Gurley,Guidance for an Aerocapture Maneuver,1993,Journal,Journal of Guidance, Control and Dynamics,AIAA,USA,Mars,Mars,Hughes Aircraft Company,NA,N
+64,R. W. Powell,A Six-Degree-of -Freedom Guidance and Control Analysis of Mars Aerocapture,1993,Journal,Journal of Guidance, Control and Dynamics,AIAA,USA,Mars,Mars,NASA Langley Research Center,NA,Y
+65,S. D. Williams,Thermal Protection System Design Studies for Lunar Crew Module,1993,Conference,Thermophysics Conference,AIAA,USA,Earth,Earth,Lockheed Engineering and Science Co.,NA,N
+66,K. Suzuki,Viscous Shock-Layer Analysis on Thermally and Chemically Non-equilibrium Forebody Flow of Mars Aerocapture,1993,Conference,Thermophysics Conference,AIAA,Japan,Mars,Mars,Institute of Space and Astronautical Science (ISAS),NA,N
+67,P. F. Wercinski,Mars Aerocapture: Extension and Refinement,1994,Journal,Journal of Spacecraft,AIAA,USA,Mars,Mars,NASA Ames Research Center,NA,N
+68,J. E. Lyne,Physiological Constraints on Deceleration During the Aerocapture of Manned Vehicles,1994,Journal,Journal of Spacecraft and Rockets,AIAA,USA,Earth, Mars,Earth,University of Tennessee, Knoxville,NASA,N
+69,M. E. Tauber,Technical Comment - Guidance for Aerocapture,1994,Journal,Journal of Guidance, Control and Dynamics,AIAA,USA,Earth,Earth,NASA Ames Research Center,NA,N
+70,K. Suzuki,Thermochemical Nonequilibrium Viscous Shock-Layer Analysis for a Mars Aerocapture Vehicle,1994,Journal,Journal of Thermophysics and Heat Transfer,AIAA,USA,Mars,Mars,Institute of Space and Astronautical Science (ISAS),NA,N
+71,J. L. Meyer,Fuel-Optimal Bank-Angle Control for Lunar-Return Aerocapture,1995,Journal,Journal of Spacecraft and Rockets,AIAA,USA,Earth,Earth,North Carolina State University,NASA,N
+72,S. D. Williams,Thermal Protection System Design Studies for Lunar Crew Module,1995,Journal,Journal of Spacecraft and Rockets,AIAA,USA,Earth,Earth,Lockheed Engineering and Science Co.,NA,Y
+73,P. Papadopoulos,Aerothermal heating simulations with surface catalysis for the Mars 2001 aerocapture mission,1997,Conference,Aerospace Sciences Meeting,AIAA,USA,Mars,Mars,NASA Ames Research Center,NA,N
+74,R. Y. Jits,High LD Mars Aerocapture for 2001, 2003 and 2005 Mission Opportunities,1997,Conference,Aerospace Sciences Meeting,AIAA,USA,Mars,Mars,North Carolina State University,NA,N
+75,P. F. Wercinski,Trajectory, aerothermal conditions, and thermal protection system mass for the MARS 2001 aerocapture mission,1997,Conference,Aerospace Sciences Meeting,AIAA,USA,Mars,Mars,NASA Ames Research Center,NA,N
+76,S. G. Tragesser,Analysis and Design of Aerocapture Tether with Accounting for Stochastic Error,1998,Journal,Journal of Spacecraft and Rockets,AIAA,USA,Mars,Mars,Purdue University,NA,N
+77,L. E. Bryant,Analytic Drag Control for Precision Landing and Aerocapture,1998,Conference,Atmospheric Flight Mechanics Conference,AIAA,USA,Mars,Mars,NASA Johnson Space Center,NA,N
+78,D. S. Gulick,Heat Shield Aeroheating Predictions for a Mars Orbiter Angle of Attack Aerocapture,1998,Conference,AIAA/ASME Joint Thermophysics and Heat Transfer Conference,AIAA,USA,Mars,Mars,Lockheed Martin Astronautics,NA,N
+79,Z. V. Leszczynski,Modeling, Simulation and Visualization of Aerocapture,1998,Thesis,MS Thesis,Naval Postgraduate School,USA,Mars,Mars,Naval Postgraduate School,NASA / JPL,N
+80,R. W. Powell,Numerical Roll Reversal Predictor Corrector Aerocapture and Precision Landing Guidance for the Mars Aerocapture,1998,Conference,Atmospheric Flight Mechanics Conference,AIAA,USA,Mars,Mars,NASA Langley Research Center,NA,N
+81,T. U. Ro,Study of Martian Aerocapture,1998,Conference,Atmospheric Flight Mechanics Conference,AIAA,USA,Mars,Mars,NASA Johnson Space Center,NA,N
+82,G.O. Einarsson,Evolution of Thermochemical Models for Aerocapture,1999,Conference,Aerospace Sciences Meeting,AIAA,USA,Earth,Earth,University of Minnesota,Army Research Office,N
+83,J. P. Masciarelli,An Analytic Aerocapture Guidance Algorithm for MSR Orbiter,2000,Conference,Atmospheric Flight Mechanics Conference,AIAA,USA,Mars,Mars,NASA Johnson Space Center,NASA,N
+84,N. X. Vinh,Mars Aerocapture using Bank Modulation,2000,Conference,AIAA/AAS Astrodynamics Conference,AIAA,USA,Mars,Mars,University of Michigan,NA,N
+85,V. Finchenko,Aerocapture Aerodynammics and  Aerothermal Study Applicability of Inflatable Structures,2000,Conference,AIAA Aerodynamic Decelerator Systems Technology Conference,AIAA,Russia,Mars,Mars,Lavochkin Association,NA,N
+86,A. Rasheed,Experimental Investigation of the Flow Over a Toroidal Aerocapture Ballute,2001,Conference,AIAA Applied Aerodynamics Conference,AIAA,USA,Mars, Titan, Neptune,Generic,California Institute of Technology,NASA/JPL,N
+87,S. Rousseau,Aerocapture Guidance Algorithm Comparsion Campaign,2002,Conference,AIAA/AAS Astrodynamics Conference,AIAA,USA,Mars,Mars,Centre National d'Etudes Spatiales,NA,N
+88,M. Munk,Aerocapture System Technology for Planetary Missions, NMP ST9,2002,Report,NASA TM,NASA,USA,Earth,Earth,NASA Langley Research Center,NASA,N
+89,P. F. Wercinski,Aerocapture Technology Development Needs for Outer Planet Exploration,2002,Report,NASA TM,NASA,USA,Venus. Earth, Mars,Generic,NASA Ames Research Center,NA,N
+90,C. A. Graves,An Analytical Assessment Of Aerocapture Guidance and Navigation Flight Demonstration,2002,Conference,Atmospheric Flight Mechanics Conference,AIAA,USA,Venus, Earth, Mars, Titan,Generic,NASA Johnson Space Center,NA,N
+91,J. L. Hall,An Overview of the Aerocapture Flight Test Experiment (AFTE),2002,Conference,Atmospheric Flight Mechanics Conference,AIAA,USA,Earth,Earth,Jet Propulsion Lab,NASA,N
+92,S. Craig,A Parametric Study of Aerocapture for Misisons to Venus,2002,Conference,Atmospheric Flight Mechanics Conference,AIAA,USA,Venus,Venus,University of Tennessee, Knoxville,NA,N
+93,C. H. Westhelle,Assessment of Aerocapture at Titan using a drag-only device,2002,Conference,Atmospheric Flight Mechanics Conference,AIAA,USA,Titan,Titan,NASA Johnson Space Center,NA,N
+94,P. Augros,Corridor Control Guidance and Other Derived Guidance Schemes for Aerocapture,2002,Conference,Atmospheric Flight Mechanics Conference,AIAA,France,Mars,Mars,European Aeronautic and Defense Company,NA,N
+95,E. Perot,Importance of an On-Board Estimation of the Density Scale Height for Various Aerocapture Guidance Algorithms,2002,Conference,Atmospheric Flight Mechanics Conference,AIAA,France,Mars,Mars,Centre National d'Etudes Spatiales,NA,N
+96,R. Y. Jits,Trajectory Analysis for Thermal Protection System Design of Mars Aerocapture Vehicles,2002,Conference,Aerospace Sciences Meeting,AIAA,USA,Mars,Mars,NASA Ames Research Center,NA,N
+97,J. DiCarlo,Aerocapture Guidance Methods for High Energy Trajectories - Ph.D. Thesis,2002,Thesis,PhD Thesis,MIT,USA,Earth,Earth,MIT,MIT,N
+98,D. W. Way,Aerocapture Simulation and Performance for the Titan Explorer Mission,2003,Conference,AIAA/ASME/SAE/ASEE Joint Propulsion Conference,AIAA,USA,Titan,Titan,NASA Langley Research Center,NA,N
+99,B. James,Aerocapture Technology Project Overview,2003,Conference,AIAA/ASME/SAE/ASEE Joint Propulsion Conference,AIAA,USA,Venus, Earth, Titan, Neptune,Generic,NASA Marshall Space Flight Center,NA,N
+100,A. D. McRonald,Analysis of Aerocapture at Mars using HYPERPASS, a New AeroAssist Tool,2003,Conference,AIAA Aerodynamic Decelerator Systems Technology Conference,AIAA,USA,Mars,Mars,Global Aerospace Corporation,NASA,N
+101,J. Olejniczak,An Analysis of the Radiative Heating Environment for Aerocapture at Titan,2003,Conference,AIAA/ASME/SAE/ASEE Joint Propulsion Conference,AIAA,USA,Titan,Titan,NASA Ames Research Center,NASA,N
+102,R. J. Haw,Approach Navigation for a Titan Aerocapture Orbiter,2003,Conference,AIAA/ASME/SAE/ASEE Joint Propulsion Conference,AIAA,USA,Titan,Titan,Jet Propulsion Lab,NASA,N
+103,J. L. Hall,Cost Benefit Analysis of the Aerocapture Mission Set,2003,Conference,AIAA/ASME/SAE/ASEE Joint Propulsion Conference,AIAA,USA,Venus, Earth, Mars, Titan, Uranus, Neptune,Generic,Jet Propulsion Lab,NASA,N
+104,U. Trabandt,Deployable CMC Hot Structure Decelerator for Aerobrake,2003,Conference,AIAA Aerodynamic Decelerator Systems Technology Conference,AIAA,Germany,Mars,Mars,European Aeronautic and Defense Company,NA,N
+105,C. G. Justus,Engineering Model Atmospheres for Titan and Neptune,2003,Conference,AIAA/ASME/SAE/ASEE Joint Propulsion Conference,AIAA,USA,Titan, Neptune,Titan,Computer Sciences Corp.,NASA,N
+106,J. P. Masciarelli,Guidance Algorithms for Aerocapture at Titan,2003,Conference,AIAA/ASME/SAE/ASEE Joint Propulsion Conference,AIAA,USA,Titan,Titan,NASA Johnson Space Center,NASA,N
+107,P. Williams,Heating and Modeling Effects in Tethered Aerocapture Missions,2003,Journal,Journal of Guidance, Control and Dynamics,AIAA,Australia,Mars,Mars,Royal Melbourne Institute of Technology,NA,N
+108,G. J. Brown,Hypercone Inflatable Supersonic Decelerator,2003,Conference,AIAA Aerodynamic Decelerator Systems Technology Conference,AIAA,USA,Mars,Mars,Vertigo Inc.,NA,N
+109,B. James,NASA Development of Aerocapture Technologies,2003,Conference,AIAA Aerodynamic Decelerator Systems Technology Conference,AIAA,USA,Venus, Earth, Titan, Neptune,Generic,NASA Marshall Space Flight Center,NASA,N
+110,R.E. Dyke,Planetary Probe Mass Estimation Tool Development and its Application to Titan Aerocapture,2003,Conference,AIAA/ASME/SAE/ASEE Joint Propulsion Conference,AIAA,USA,Titan,Titan,Swales Aerospace,NA,N
+111,N. Takashima,Preliminary Aerothermodynamics of Titan Aerocapture Aeroshell,2003,Conference,AIAA/ASME/SAE/ASEE Joint Propulsion Conference,AIAA,USA,Titan,Titan,Analytical Mechanics Inc.,NASA,N
+112,R. da Costa,Rapid Protootyping Tool for Development and Validation of GNC Onboard Software,2003,Conference,International Astronautical Congress,AIAA,Germany,Generic,Generic,European Aeronautic and Defense Company,NA,N
+113,C. Hanak,Revised Algorithm for Analytic Predictor Corrector Guidance,2003,Conference,AIAA Guidance, Navigation, and Control Conference,AIAA,USA,Mars,Mars,University of Texas at Austin,NA,N
+114,G. A. Hrinda,Structural Design of the Titan Aerocapture Mission,2003,Conference,AIAA/ASME/SAE/ASEE Joint Propulsion Conference,AIAA,USA,Titan,Titan,NASA Langley Research Center,NASA,N
+115,F. Bonnefond,Terrestrial Aerocapture Demonstration - How to Design a Low Cost Mission,2003,Conference,International Astronautical Congress,AIAA,Germany,Earth,Earth,European Aeronautic and Defense Company,NA,N
+116,B. Laub,Thermal Protection Concepts and Issues for Aerocapture at Titan,2003,Conference,AIAA/ASME/SAE/ASEE Joint Propulsion Conference,AIAA,USA,Titan,Titan,NASA Ames Research Center,NA,N
+117,R. W. Bailey,Titan Aerocapture Mission and Spacecraft Design Overview,2003,Conference,AIAA/ASME/SAE/ASEE Joint Propulsion Conference,AIAA,USA,Titan,Titan,Jet Propulsion Lab,NASA,N
+118,M. K. Lockwood,Titan Aerocapture Systems Analysis,2003,Conference,AIAA/ASME/SAE/ASEE Joint Propulsion Conference,AIAA,USA,Titan,Titan,NASA Langley Research Center,NASA,N
+119,M. Noca,Titan Explorer Mission from the Perspective of Aerocapture,2003,Conference,AIAA/ASME/SAE/ASEE Joint Propulsion Conference,AIAA,USA,Titan,Titan,Jet Propulsion Lab,NASA,N
+120,K. L. Miller,Trailing Ballute Aerocapture Concept and Feasibility Assessment,2003,Conference,AIAA/ASME/SAE/ASEE Joint Propulsion Conference,AIAA,USA,Mars, Titan,Mars,Ball Aerospace Corp.,NASA,N
+121,C. Hanak,Aerocapture at Titan and Neptune Navigation Sensitivity Study,2004,Conference,Atmospheric Flight Mechanics Conference,AIAA,USA,Titan, Neptune,Titan,University of Texas at Austin,NA,N
+122,J. P. Masciarelli,Aerocapture Guidance Performance for the Neptune Orbiter,2004,Conference,Atmospheric Flight Mechanics Conference,AIAA,USA,Neptune,Neptune,NASA Johnson Space Center,NA,N
+123,B. R Starr,Aerocapture Performance Analysis for a Neptune-Triton Mission,2004,Conference,Atmospheric Flight Mechanics Conference,AIAA,USA,Neptune,Neptune,NASA Langley Research Center,NASA,N
+124,E. M. Queen,Angle of Attack Modulation for Neptune Aerocapture,2004,Conference,AIAA/AAS Astrodynamics Conference,AIAA,USA,Neptune,Neptune,NASA Langley Research Center,NA,N
+125,C. G. Justus,Atmospheric Models for Aerocapture,2004,Conference,AIAA/ASME/SAE/ASEE Joint Propulsion Conference,AIAA,USA,Venus, Earth, Mars, Titan, Neptune,Generic,NASA Marshall Space Flight Center,NA,N
+126,C. G. Justus,Atmospheric Models for Aerocapture Systems Studies,2004,Conference,Atmospheric Flight Mechanics Conference,AIAA,USA,Venus, Earth, Mars, Titan, Neptune,Generic,NASA Marshall Space Flight Center,NA,N
+127,D. T. Lyons,Ballute Aerocapture Trajectories at Neptune,2004,Conference,Atmospheric Flight Mechanics Conference,AIAA,USA,Neptune,Neptune,Jet Propulsion Lab,NASA,N
+128,R. Y. Jits,Blended control predictor corrector guidance algorithm an enabling technology for Mars aerocapture,2004,Journal,Acta Astronautica,Elsevier,USA,Mars,Mars,NASA Ames Research Center,NA,N
+129,T. B. Silvester,Computational Hypervelocity Aerodynamics of a Waverider,2004,Conference,AIAA/ASME/SAE/ASEE Joint Propulsion Conference,AIAA,Australia,Generic,Generic,University of Queensland,NA,N
+130,K. T. Edquist,Configuration, Aerodynamics, and Stability Analysis for a Neptune Aerocapture Orbiter,2004,Conference,Atmospheric Flight Mechanics Conference,AIAA,USA,Neptune,Neptune,NASA Langley Research Center,NASA,N
+131,M. Noca,Mission Trades for Aerocapture at Neptune,2004,Conference,AIAA/ASME/SAE/ASEE Joint Propulsion Conference,AIAA,USA,Neptune,Neptune,Jet Propulsion Lab,NASA,N
+132,R. W. Bailey,Neptune Aerocapture Mission and Spacecraft Design Overview,2004,Conference,AIAA/ASME/SAE/ASEE Joint Propulsion Conference,AIAA,USA,Neptune,Neptune,Jet Propulsion Lab,NASA,N
+133,M. K. Lockwood,Neptune Aerocapture Systems Analysis,2004,Conference,Atmospheric Flight Mechanics Conference,AIAA,USA,Neptune,Neptune,NASA Langley Research Center,NASA,N
+134,D. I. Fiehler,Neptune Orbiters Utilizing Solar and Radioisotope Electric Propulsion,2004,Conference,AIAA/ASME/SAE/ASEE Joint Propulsion Conference,AIAA,USA,Neptune,Neptune,NASA Glenn Research Center,NASA,N
+135,S. B. Josselyn,Optimization of Low Thrust Trajectories with Terminal Aerocapture Maneuvers,2004,Conference,International Astronautical Congress,AIAA,USA,Mars,Mars,Naval Postgraduate School,NA,N
+136,B. R. Hollis,Preliminary Convective-Radiative Heating Environments for a Neptune Aerocapture Mission,2004,Conference,Atmospheric Flight Mechanics Conference,AIAA,USA,Neptune,Neptune,NASA Langley Research Center,NASA,N
+137,G. L. Matloff,Saturn Titan Rendezvous a Solar-Sail Aerocapture Mission,2004,Conference,International Astronautical Congress,AIAA,USA,Titan,Titan,NYC College of Technology,NASA,N
+138,R. E. Dyke,Structural Design for a Neptune Aerocapture Mission,2004,Conference,Atmospheric Flight Mechanics Conference,AIAA,USA,Neptune,Neptune,NASA Langley Research Center,NASA,N
+139,M. J. Wright,The Impact of Flowfield-Radiation Coupling on Aeroheating for Titan Aerocapture,2004,Conference,Aerospace Sciences Meeting,AIAA,USA,Titan,Titan,NASA Ames Research Center,NASA,N
+140,C. Cazaux,The NASA-CNES Mars sample returnтАФa status report,2004,Journal,Acta Astronautica,Elsevier,USA,Mars,Mars,Centre National d'Etudes Spatiales,NASA,N
+141,W. R. Johnson,Titan Ballute Aerocapture Using a Perturbed TitanGRAM Model,2004,Conference,Atmospheric Flight Mechanics Conference,AIAA,USA,Titan,Titan,Jet Propulsion Lab,NASA,N
+142,B. Laub,TPS Challenges for Neptune Aerocapture,2004,Conference,Atmospheric Flight Mechanics Conference,AIAA,USA,Neptune,Neptune,NASA Ames Research Center,NASA,N
+143,D. Vaughan,A Comparative Study of Aerocapture Missions with a Mars Destination,2005,Conference,AIAA/ASME/SAE/ASEE Joint Propulsion Conference,AIAA,USA,Mars,Mars,Gray Research Inc.,NASA,N
+144,B. R Starr,Aerocapture Performance Analysis of a Venus Exploration,2005,Conference,Atmospheric Flight Mechanics Conference,AIAA,USA,Venus,Venus,NASA Langley Research Center,NASA,N
+145,A. S. Keys,Aerocapture Technologies - ISPT Program,2005,Report,NASA TM,NASA,USA,Venus, Earth, Mars, Titan, Neptune,Generic,NASA Marshall Space Flight Center,NASA,N
+146,J. E. Johnson,Aerodynamic Stability of Re-Entry Heat Shield Shapes for a Crew Exploration Vehicle,2005,Conference,AIAA/ASME/SAE/ASEE Joint Propulsion Conference,AIAA,USA,Earth,Earth,University of Maryland, College Park,NASA,N
+147,D. J. Rasky,A New Perepsective On NASAтАЩs Space Transportation Needs,2005,Conference,Space Exploration Conference,AIAA,USA,Generic,Generic,NASA Ames Research Center,NASA,N
+148,T. K. Percy,Assessing the Relative Risk of Aerocapture Using Probabilistic Risk Assessment,2005,Conference,AIAA/ASME/SAE/ASEE Joint Propulsion Conference,AIAA,USA,Mars,Mars,Science Applications Inc.,NASA,N
+149,C. G. Justus,Atmospheric Models for Mars Aerocapture -,2005,Conference,AIAA/ASME/SAE/ASEE Joint Propulsion Conference,AIAA,USA,Mars,Mars,NASA Marshall Space Flight Center,NASA,N
+150,R. Y. Jits,Closed-Loop Trajectory Simulation for Thermal Protection System Design for Neptune Aerocapture,2005,Journal,Journal of Spacecraft and Rockets,AIAA,USA,Neptune,Neptune,NASA Ames Research Center,NA,N
+151,C. G. Justus,Connecting atmospheric science and atmospheric models for aerocapture at Titan and the outer planets,2005,Journal,Planetary and Space Science,Elsevier,USA,Titan, Uranus, Neptune,Generic,NASA Marshall Space Flight Center,NASA,N
+152,J. L. Hall,CostтАУBenefit Analysis of the Aerocapture Mission Set,2005,Journal,Journal of Spacecraft and Rockets,AIAA,USA,Venus, Earth, Mars, Titan, Neptune,Generic,Jet Propulsion Lab,NASA,Y
+153,Z. R. Putnam,Entry System Options for Human Return from the Moon,2005,Conference,Atmospheric Flight Mechanics Conference,AIAA,USA,Earth,Earth,Georgia Institute of Technology,NASA,N
+154,K. Skokova,Experimental Evaluation of Thermal Protection Materials for Titan Aerocapture,2005,Conference,AIAA/ASME/SAE/ASEE Joint Propulsion Conference,AIAA,USA,Titan,Titan,ELORET Corporation,NASA,N
+155,A. L. Duvall,Global Reference Atmospheric Model (GRAM) Series for Aeroassist Applications,2005,Conference,Aerospace Sciences Meeting,AIAA,USA,Venus, Earth, Mars, Titan, Neptune,Generic,NASA Marshall Space Flight Center,NA,N
+156,M. J. Wright,Impact of FlowfieldтАУRadiation Coupling on Aeroheating for Titan Aerocapture,2005,Journal,Journal of Thermophysics and Heat Transfer,AIAA,USA,Titan,Titan,NASA Ames Research Center,NA,Y
+157,G. J. Brown,Minimum-Mass Design for Titan Aerocapture,2005,Conference,AIAA Aerodynamic Decelerator Systems Technology Conference,AIAA,USA,Titan,Titan,Vertigo Inc.,NASA,N
+158,L. S. Colby,Nuclear Gas Turbine Propulsion System for a Long Endurance Titan Aerial Vehicle,2005,Conference,AIAA/ASME/SAE/ASEE Joint Propulsion Conference,AIAA,USA,Titan,Titan,Georgia Institute of Technology,NA,N
+159,S. Craig,Parametric Study of Aerocapture for Missions to Venus,2005,Journal,Journal of Spacecraft and Rockets,AIAA,USA,Venus,Venus,University of Tennessee, Knoxville,NA,Y
+160,E. H. Richardson,Review of NASA In-Space Propulsion Technology Program Inflatable Decelerator Investments,2005,Conference,AIAA Aerodynamic Decelerator Systems Technology Conference,AIAA,USA,Venus, Earth, Mars, Titan, Neptune,Generic,NASA Marshall Space Flight Center,NASA,N
+161,T. Spilker,Significant science at Titan and Neptune from aerocaptured missions,2005,Journal,Planetary and Space Science,Elsevier,USA,Titan, Neptune,Generic,Jet Propulsion Lab,NASA,N
+162,M. Kumar,Trajectory and Attitude Simulation for Aerocapture and Aerobraking,2005,Journal,Journal of Spacecraft and Rockets,AIAA,India,Earth,Earth,Indian Institute of Technology, Kanpur,NA,N
+163,M. K. Lockwood,Aerocapture Systems Analysis for a Neptune Mission,2006,Report,NASA TM,NASA,USA,Neptune,Neptune,NASA Langley Research Center,NASA,Y
+164,M. K. Lockwood,Aerocapture Systems Analysis for a Titan Mission,2006,Report,NASA TM,NASA,USA,Titan,Titan,NASA Langley Research Center,NASA,Y
+165,K. L. Gates,Analytic Solutions for Aerocapture, Descent, and Landing Trajectories for Dual-Use Ballute Systems,2006,Conference,AIAA/AAS Astrodynamics Conference,AIAA,USA,Earth, Mars, Titan, Neptune,Generic,Purdue University,NASA,N
+166,B. B. Donahue,Chemical and Solar-Electric-Propulsion Systems Analysis for Mars Sample Return Missions,2006,Journal,Journal of Spacecraft and Rockets,AIAA,USA,Mars,Mars,Boeing Defense and Space,NASA,N
+167,S. A. Whitmore,Direct-Entry, Aerobraking, and Lifting Aerocapture for Human-Rated Lunar Return Vehicles,2006,Conference,Aerospace Sciences Meeting,AIAA,USA,Earth,Earth,Utah State Univeristy,NA,N
+168,A. M. Brandis,Expansion Tube Operating Conditions for Studying Nonequilibrium Radiation Relevant to Titan Aerocapture,2006,Conference,AIAA/ASME/SAE/ASEE Joint Propulsion Conference,AIAA,Australia,Titan,Titan,University of Queensland,NA,N
+169,J. Hamel,Improvement to the Analytical Predictor-Corrector Guidance Applied to Mars Aerocapture,2006,Journal,Journal of Guidance, Control and Dynamics,AIAA,Canada,Mars,Mars,University of Sherbooke,CSA,N
+170,L. Johnson,In-Space Propulsion Technologies for Robotic Exploration of the Solar System,2006,Conference,AIAA/ASME/SAE/ASEE Joint Propulsion Conference,AIAA,USA,Venus, Earth, Mars, Titan, Neptune,Generic,NASA Marshall Space Flight Center,NASA,N
+171,C. Tanner,On-Orbit Propellant Resupply Options for Mars Exploration Architectures,2006,Conference,International Astronautical Congress,AIAA,USA,Mars,Mars,Georgia Institute of Technology,NA,N
+172,A. S. Keys,Overview of a Proposed Flight Validation of Aerocapture System Technology for Planetary Missions,2006,Conference,AIAA/ASME/SAE/ASEE Joint Propulsion Conference,AIAA,USA,Earth,Earth,NASA Marshall Space Flight Center,NASA,N
+173,S. Aso,Preliminary studies on the planetary entry to Jupiter by aerocapture,2006,Journal,Acta Astronautica,Elsevier,USA,Jupiter,Jupiter,Kyushu University,NA,N
+174,J. A. Christian,Sizing of an Entry, Descent, and Landing System for Human Mars Exploration,2006,Conference,AIAA Space,AIAA,USA,Mars,Mars,Georgia Institute of Technology,NA,N
+175,M. K. Lockwood,Systems Analysis for a Venus Aerocapture Mission,2006,Report,NASA TM,NASA,USA,Venus,Venus,NASA Langley Research Center,NASA,Y
+176,G. M. Buck,Testing of Flexible Ballutes in Hypersonic Wind Tunnels for Planetary Aerocapture,2006,Conference,Aerospace Sciences Meeting,AIAA,USA,Generic,Generic,NASA Langley Research Center,NASA,N
+177,J. Esper,The Neptune-Triton Explorer mission - A concept feasibility study,2006,Journal,Acta Astronautica,Elsevier,USA,Neptune,Neptune,NASA Goddard Space Flight Center,NA,N
+178,J. S. Robinson,Trajectory and Aeroheating Environment Development and Sensitivity Analysis for Capsule-Shaped Vehicles,2006,Conference,Space Planes and Hypersonic Systems and Technologies Conference,AIAA,USA,Earth,Earth,NASA Langley Research Center,NA,N
+179,M. Kumar,Trajectory and Attitude Simulation for Mars Aerocapture and Aerobraking,2006,Journal,Journal of Spacecraft and Rockets,AIAA,USA,Mars,Mars,Texas A&M University,NA,N
+180,G. Artis,Aerocapture Benefits to Future Science Missions to Venus, Titan,2007,Report,NASA TM,NASA,USA,Generic,Generic,NASA Marshall Space Flight Center,NASA,N
+181,NASA,Aerocapture Fact Sheet,2007,Report,NASA TM,NASA,USA,Generic,Generic,NASA Glenn Research Center,NASA,N
+182,S. Rezza,Aerocapture Inflatable Decelerator (AID) for Planetary Entry,2007,Conference,AIAA Aerodynamic Decelerator Systems Technology Conference,AIAA,USA,Titan,Titan,Lockeed Martin,NASA,N
+183,B. A. Andersen,Aerodynamic Control on a Lunar Return Capsule using Trim-Flaps,2007,Conference,Aerospace Sciences Meeting,AIAA,USA,Generic,Generic,Utah State Univeristy,NA,N
+184,R. R. Rohrschneider,Aeroelastic Design Considerations of a Clamped Ballute for Titan Aerocapture,2007,Conference,AIAA/ASME/ASCE/AHS/ASC Structures, Structural Dynamics, and Materials Conference,AIAA,USA,Titan,Titan,Georgia Institute of Technology,NA,N
+185,R. E. Dyke,Aeroshell design techniques for aerocapture entry vehicles,2007,Journal,Acta Astronautica,Elsevier,USA,Generic,Generic,NASA Langley Research Center,NA,N
+186,T. Kremic,An Overview of NASA's In-Space Propulsion Technology,2007,Conference,AIAA/ASME/SAE/ASEE Joint Propulsion Conference,AIAA,USA,Generic,Generic,NASA Glenn Research Center,NASA,N
+187,Z. R. Putnam,Entry System Options for Human Return,2007,Journal,Journal of Spacecraft and Rockets,AIAA,USA,Earth,Earth,Georgia Institute of Technology,NA,Y
+188,J. Lee,Fluid-Structure Analysis of a Clamped Ballute in Titan's  atmosphere,2007,Conference,AIAA Computational Fluid Dynamics Conference,AIAA,USA,Titan,Titan,Georgia Institute of Technology,NASA,N
+189,G. J. Brown,Inflatable Aerocapture Decelerators for Mars Orbiters,2007,Conference,AIAA Aerodynamic Decelerator Systems Technology Conference,AIAA,USA,Mars,Mars,Vertigo Inc.,NASA,N
+190,R. R. Rohrschneider,Survey of Ballute Technology for Aerocapture,2007,Journal,Journal of Spacecraft and Rockets,AIAA,USA,Generic,Generic,Georgia Institute of Technology,NA,N
+191,M. Munk,Aerocapture Mission Concepts for Venus, Titan and Neptune,2008,Conference,International Planetary Probe Workshop,IPPW,USA,Generic,Generic,NASA Langley Research Center,NASA,N
+192,M. Munk,Aerocapture Technology Development Overview,2008,Conference,IEEE Aerospace Conference,IEEE,USA,Generic,Generic,NASA Langley Research Center,NASA,N
+193,M. Munk,Aerocapture Technology Developments by the In Space Propulsion Program,2008,Report,NASA TM,NASA,USA,Generic,Generic,NASA Langley Research Center,NASA,N
+194,A. P. Ingersoll,A Neptune Orbiter with Probes Mission with Aerocapture Orbit Insertion,2008,Book Chapter,NASA Space Science Vision Missions,AIAA,USA,Neptune,Neptune,California Institute of Technology,NA,N
+195,J. A. Christian,Extension of Traditional Entry, Descent, and Landing Technologies for Human Mars Exploration,2008,Journal,Journal of Spacecraft and Rockets,AIAA,USA,Mars,Mars,Georgia Institute of Technology,NA,N
+196,K. L. Gates,Hypersonic Planetary Aeroassist Simulation System Validation,2008,Conference,Aerospace Sciences Meeting,AIAA,USA,Generic,Generic,Global Aerospace Corporation,NA,N
+197,R. Armellin,Multidisciplainry Optimization of Aerocapture Maneuvers,2008,Journal,Journal of Artificial Evolution and Applications,Hindawi,Italy,Generic,Generic,Politecnico di Milano,NA,N
+198,T. Kremic,NASA’s In-Space Propulsion Technology Project An Overview of Product Status,2008,Conference,AIAA/ASME/SAE/ASEE Joint Propulsion Conference,AIAA,USA,Generic,Generic,NASA Glenn Research Center,NASA,N
+199,K. Fujita,Preliminary Study of Venus Exploration with Aerocapture System,2008,Conference,Atmospheric Flight Mechanics Conference,AIAA,Japan,Venus,Venus,Institute of Space and Astronautical Science (ISAS),NA,N
+200,J. H. Grinstead,Shock Radiation Measurements for Mars Aerocapture Radiative Heating Analysis,2008,Conference,Aerospace Sciences Meeting,AIAA,USA,Mars,Mars,NASA Ames Research Center,NASA,N
+201,L. A. Lemmerman,Small Neptune orbiter using aerocapture,2008,Conference,American Institute of Physics,AIP,USA,Neptune,Neptune,Jet Propulsion Lab,NASA / JPL,N
+202,M. K. Lockwood,Titan Explorer,2008,Conference,AIAA/AAS Astrodynamics Conference,AIAA,USA,Titan,Titan,Johns Hopkins University Applied Physics Lab,NA,N
+203,J. S. Levine,Titan Explorer The Next Step in the Exploration of a Mysterious World,2008,Book Chapter,NASA Space Science Vision Missions,AIAA,USA,Titan,Titan,NASA Langley Research Center,NA,N
+204,J. Melman,Trajectory Optimization for a Mission to Neptune and Triton,2008,Conference,AIAA/AAS Astrodynamics Conference,AIAA,Netherlands,Neptune,Neptune,Delft University of Technology,NA,N
+205,M. Munk,Venus - Aerocapture Technology - Presentation to VEXAG,2008,Report,NASA TM,NASA,USA,Venus,Venus,NASA Langley Research Center,NASA,N
+206,B. B. Donahue,Ares-V Enabled Titan Sample Return and the Large Space Telescope Missions,2009,Conference,AIAA Space,AIAA,USA,Titan,Titan,Boeing Defense and Space,NA,N
+207,D. F. Landau,Comparative Assessment of Human–Mars-mission Technologies and Architectures,2009,Journal,Acta Astronautica,Elsevier,USA,Mars,Mars,Purdue University,NA,N
+208,J. S. Robinson,Entry Trajectory and Aeroheating Environment Definition for Capsule-Shaped Vehicles,2009,Journal,Journal of Spacecraft and Rockets,AIAA,USA,Earth,Earth,NASA Langley Research Center,NA,N
+209,G. Gelly,Neural Networks as a Guidance Solution for Soft-Landing and Aerocapture,2009,Conference,AIAA Guidance, Navigation, and Control Conference,AIAA,France,Generic,Generic,European Aeronautic and Defense Company,NA,N
+210,K. Fujita,Nonstop Mars Sample Return System,2009,Conference,Atmospheric Flight Mechanics Conference,AIAA,Japan,Mars,Mars,Japanese Aerospace and Exploration Agency (JAXA),NA,N
+211,J. H. Grinstead,Shock Radiation Measurements for Mars Aerocapture,2009,Journal,Journal of Thermophysics and Heat Transfer,AIAA,USA,Mars,Mars,NASA Ames Research Center,NA,Y
+212,D. J. Anderson,Status and Mission Applicability of NASA’s In-Space Propulsion Technology Project,2009,Conference,AIAA/ASME/SAE/ASEE Joint Propulsion Conference,AIAA,USA,Generic,Generic,NASA Glenn Research Center,NASA,N
+213,E. Venkatapathy,Thermal protection system development, testing, and qualification for atmospheric probes and SR missions,2009,Journal,Advances in Space Research,Elsevier,USA,Saturn,Saturn,NASA Ames Research Center,NASA,N
+214,K. L. Gates,A Dual-Use Lifting Ballute for Orbit Capture and Entry,2010,Conference,AIAA/AAS Astrodynamics Conference,AIAA,USA,Mars,Mars,Global Aerospace Corporation,NA,N
+215,K. L. Gates,Aerocapture Ballutes Versus Aerocapture Tethers,2010,Journal,Journal of Spacecraft and Rockets,AIAA,USA,Generic,Generic,Purdue University,NASA,N
+216,C. H. Zumwalt,Aerocapture Guidance and Performance at Mars for High-Mass Systems,2010,Conference,AIAA/AAS Astrodynamics Conference,AIAA,USA,Mars,Mars,NASA Johnson Space Center,NA,N
+217,J. P. Masciarelli,Demonstration of an Aerocapture GNC System Through Hardware-in-the-Loop Simulations,2010,Conference,AIAA/AAS Astrodynamics Conference,AIAA,USA,Earth,Earth,Ball Aerospace Corp.,NASA,N
+218,A. Cassell,Development of Thermal Protection Materials for Future Mars Entry, Descent and Landing Systems,2010,Conference,AIAA/ASME Joint Thermophysics and Heat Transfer Conference,AIAA,USA,Mars,Mars,NASA Ames Research Center,NA,N
+219,A. Ciancolo,EDL Systems Analysis Study,2010,Report,NASA TM,NASA,USA,Generic,Generic,NASA Langley Research Center,NASA,N
+220,A. Ciancolo,Entry, Descent and Landing Systems Analysis Exploration Class Simulation Overview and Results,2010,Report,AIAA/AAS Astrodynamics Conference,AIAA,USA,Mars,Mars,NASA Langley Research Center,NASA,N
+221,T. A. Zang,Overview of the NASA Entry, Descent and Landing Systems Analysis Study,2010,Conference,AIAA Space,AIAA,USA,Mars,Mars,NASA Langley Research Center,NASA,N
+222,D. J. Anderson,The NASA In-Space Propulsion Technology Project’s Current Products and Future Directions,2010,Conference,AIAA/ASME/SAE/ASEE Joint Propulsion Conference,AIAA,USA,Generic,Generic,NASA Glenn Research Center,NASA,N
+223,E. Venkatapathy,Adaptive Deployable Entry and Placement Technology (ADEPT) - Human Missions to Mars,2011,Conference,AIAA Aerodynamic Decelerator Systems Technology Conference,AIAA,USA,Mars,Mars,NASA Ames Research Center,NASA,N
+224,J. Wang,Aerobraking Using Planetary Ionosphere - Electrostatic Augmentation of Aerodynamic Forces,2011,Conference,AIAA/ASME/SAE/ASEE Joint Propulsion Conference,AIAA,USA,Generic,Generic,Virginia Polytechnic Institute,NA,N
+225,J. J. Wagner,An adaptive real time atmospheric prediction algorithm for entry vehicles,2011,Conference,Atmospheric Space Environments Conference,AIAA,USA,Mars,Mars,Georgia Institute of Technology,NA,
+226,M. K. McGuire,Dual Heat Pulse, Dual Layer Thermal Protection System,2011,Conference,Aerospace Sciences Meeting,AIAA,USA,Mars,Mars,NASA Ames Research Center,NASA,N
+227,M. K. McGuire,Flexible Ablative Thermal Protection Sizing on Inflatable,2011,Conference,Aerospace Sciences Meeting,AIAA,USA,Mars,Mars,NASA Ames Research Center,NA,N
+228,D. J. Anderson,Propulsion Technology Development for Sample Return Missions under NASA’s ISPT Program,2011,Conference,AIAA/ASME/SAE/ASEE Joint Propulsion Conference,AIAA,USA,Generic,Generic,NASA Glenn Research Center,NASA,N
+229,C. Park,Viscous Shock Layer Calculation of Stagnation-Region Heating Environment,2011,Conference,Aerospace Sciences Meeting,AIAA,S. Korea,Neptune,Neptune,Korea Institute of Advanced Science and Technology,NA,N
+230,H. Takayanagi,Absolute Radiation Measurements behind Strong Shock Wave for Mars Aerocapture,2012,Conference,Thermophysics Conference,AIAA,Japan,Mars,Mars,Japanese Aerospace and Exploration Agency (JAXA),NA,N
+231,T. Ozawa,Analysis of Rarefied Aerodynamic Effects for Mars Entry Missions,2012,Conference,Thermophysics Conference,AIAA,Japan,Mars,Mars,Japanese Aerospace and Exploration Agency (JAXA),NA,N
+232,O. B. Bayo,"Study of Feasibility of a Mission to Mars using
+Aerocapture Technique",2012,Thesis,BS Thesis,UNIVERSITAT POLITÈCNICA DE CATALUNYA,Spain,Mars,Mars,UNIVERSITAT POLITÈCNICA DE CATALUNYA,NA,N
+233,N. Honma,Design Optimization of Aerocapture with Aerodynamic Environment Adaptive Variable Geometry Flexible Aeroshell,2012,Conference,NA,NA,Japan,Mars,Mars,University of Tokyo,Japan Society for Promotion of Sciences,N
+234,A. Mafficini,Mars Pre-aerocapture GNC functional and real time performance,2012,Conference,AIAA Guidance, Navigation, and Control Conference,AIAA,Spain,Mars,Mars,DEIMOS Space,NA,N
+235,J. Knittel,Multidisciplinary Optimization of Starbody Waverider Shapes for Lifting Aerocapture with Orbital Plane Change,2012,Conference,AIAA/3AF International Space Planes and Hypersonic Systems and Technologies Conference,AIAA,USA,Generic,Generic,University of Maryland, College Park,NASA,N
+236,D. J. Anderson,NASA In-Space Propulsion Technologies and Their Infusion,2012,Conference,AIAA/ASME/SAE/ASEE Joint Propulsion Conference,AIAA,USA,Generic,Generic,NASA Glenn Research Center,NASA,N
+237,M. Pontani,Post-aerocapture orbit selection and maintenance for the Aerofast mission to Mars,2012,Journal,Acta Astronautica,Elsevier,Italy,Mars,Mars,University of Rome,NA,N
+238,K. Fujita,Prediction of Forebody and Aftbody Heat TransferRate for Mars Aerocapture Demonstrator,2012,Conference,Thermophysics Conference,AIAA,Japan,Mars,Mars,Japanese Aerospace and Exploration Agency (JAXA),NA,N
+239,D. Prabhu,Atmospheric Entry Studies for Venus Missions,2012,Report,NASA TM,NASA,USA,Venus,Venus,NASA Ames Research Center,NA,N
+240,K. Fujita,Conceptual Study of a Small-Sized Mars Aerocapture Demonstrator,2012,Conference,Aerospace Sciences Meeting,AIAA,Japan,Mars,Mars,Japanese Aerospace and Exploration Agency (JAXA),NA,N
+241,Kozynchenko,Development of optimal and robust predictive guidance technique for Mars aerocapture,2012,Journal,Aerospace Sciece and Technology,Elsevier,Sweden,Mars,Mars,NA,NA,N
+242,Z. R. Putnam,Drag Modulation Flight Control System Options for Planetary Aerocapture,2013,Conference,Aerospace Sciences Meeting,AIAA,USA,Generic,Generic,Georgia Institute of Technology,NASA,N
+243,A. Mazzaracchio,Heat Shield Mass Minimization for an Aerocapture Mission to Neptune,2013,Journal,International Journal of Aerospace Innovations,NA,Italy,Neptune,Neptune,University of Rome,NA,N
+244,H. Takayanagi,Infrared Radiation Measurement behind Shock Wave in Mars Simulant Gas for Aerocapture Missions,2013,Conference,AIAA Fluid Dynamics,AIAA,Japan,Mars,Mars,Mars,NA,N
+245,G. Malucchi,The European Re-entry Program, from IXV to ISV – GNC  Avionics Development Status and Challenges,2013,Conference,AIAA Guidance, Navigation, and Control Conference,AIAA,Italy,Earth,Earth,Thales Alenia Space,NA,N
+246,D. Kirley,Plasma Aerocapture and Entry System for Manned Missions and Planetary Deep Space Orbiters,2014,Report,NASA TM,NASA,USA,Generic,Generic,MSNW LLC,NASA,N
+247,J. M. Knittel,Concurrent Aerocapture with Orbital Plane Change using Starbody Waveriders,2014,Journal,Journal of Astronautical Sciences,Elsevier,USA,Generic,Generic,University of Maryland, College Park,NA,N
+248,Z. R. Putnam,Drag-Modulation Flight-Control System Options,2014,Journal,Journal of Spacecraft and Rockets,AIAA,USA,Generic,Generic,Georgia Institute of Technology,NASA,Y
+249,D. J. Anderson,Products from NASA’s in-space propulsion technology program applicable to low-cost planetary missions,2014,Journal,Acta Astronautica,Elsevier,USA,Generic,Generic,NASA Glenn Research Center,NASA,N
+250,S. N. D'Souza,Survey of planetary entry guidance algorithms,2014,Journal,Progress in Aerospace Sciences,Elsevier,USA,Generic,Generic,Univeristy of California, Davis,NASA,N
+251,C. Park,Viscous Shock-Layer Calculation of Stagnation-Region Heating Environment in Neptune Aerocapture,2014,Journal,Journal of Spacecraft and Rockets,AIAA,S. Korea,Neptune,Neptune,Korea Institute of Advanced Science and Technology,NA,Y
+252,P. F. Wercinski,ADEPT - JPL Outer Planets Aerocapture Meeting,2015,Report,NASA TM,NASA,USA,Generic,Generic,NASA Ames Research Center,NASA,N
+253,K. M. Hughes,Fast Free Returns to Mars and Venus with Applications to Inspiration Mars,2015,Journal,Journal of Spacecraft and Rockets,AIAA,USA,Mars,Mars,Purdue University,NA,N
+254,R. A. Lugo,High Altitude Venus Operations Concept Trajectory Design, Modeling and Simulation,2015,Conference,AIAA/AAS Astrodynamics Conference,AIAA,USA,Venus,Venus,Analytical Mechanics Inc.,NA,N
+255,A. Ciancolo,Impact of Utilizing Phobos and Deimos as Waypoints for Mars Human Surface Missions,2015,Conference,AIAA Space,AIAA,USA,Mars,Mars,NASA Langley Research Center,NA,N
+256,P. Lu,Optimal Aerocapture Guidance,2015,Conference,AIAA SciTech,AIAA,USA,Generic,Generic,Iowa State University,NASA,N
+257,P. Lu,Optimal Aerocapture Guidance,2015,Conference,Journal of Guidance, Control and Dynamics,AIAA,USA,Generic,Generic,Iowa State University,NASA,Y
+258,S. Saikia,Aerocapture Assessment at Ice Giants Uranus and Neptune,2016,Report,NASA TM,NASA,USA,Uranus,Uranus,Purdue University,NASA,N
+259,S. Saikia,Aerocapture Assessment at Ice Giants Uranus and Neptune,2016,Report,NASA TM,NASA,USA,Neptune,Neptune,Purdue University,NASA,N
+260,C. A. Nixon,Aerocapture Design Study for a Titan Polar Orbiter,2016,Report,NASA TM,NASA,USA,Titan,Titan,NASA Goddard Space Flight Center,NA,N
+261,S. Feng,A Hybrid Aerocapture Guidance Algorithm,2016,Conference,International Conference on Computer, Mechatronics and Electronic Engineering,NA,China,Earth,Earth,National University of Defense Technology, Changsha,Natural Science Foundation of China,N
+262,T. R. Spilker,An Assessment of Aerocapture and Applications to Future Missions,2016,Report,NASA TM,NASA,USA,Venus, Earth, Mars, Titan, Neptune,Generic,Jet Propulsion Lab,NASA,N
+263,K. Mall,High Mass Mars Exploration using Slender Entry,2016,Conference,AIAA SciTech,AIAA,USA,Mars,Mars,Purdue University,NA,N
+264,Y. Ai,Identifying method of entry and exit conditions for aerocapture with near minimum fuel consumption,2016,Journal,Aerospace Science and Technology,Elsevier,China,Mars,Mars,Harbin Institute of Technology,Natural Science Foundation of China,N
+265,C. Jones,High Altitude Venus Operational Concept (HAVOC),2016,Report,NASA TM,NASA,USA,Venus,Venus,NASA Langley Research Center,NA,N
+266,B. Wollard,Mechanical Design of a Cubesat Aeroshell for an Earth Demonstration of Drag Modulated Aerocapture,2016,Report,NA,NA,USA,Earth,Earth,Georgia Institute of Technology,NA,N
+267,A. Chakrabarthy,Tree Based Trajectory Planning for Mars Aerocapture,2016,Conference,NA,AIAA,USA,Mars,Mars,NASA Ames Research Center,NASA,N
+268,K. Webb,Aerocapture Guidance for Human Mars Missions,2017,Conference,AIAA SciTech,AIAA,USA,Mars,Mars,Iowa State University,NASA,N
+269,A. Matz,Application of a Fully Numerical Guidance to Mars,2017,Conference,AIAA SciTech,AIAA,USA,Mars,Mars,NASA Johnson Space Center,NA,N
+270,J. Williams,Candidate Earth Entry Trajectories to Mimic Venus Aerocapture,2017,Report,NASA TM,NASA,USA,Venus,Venus,University of Illinois,NA,N
+271,J. Elliot,Ice Giants Pre Decadal Mission Study Full-Report – Uranus,2017,Report,NASA TM,NASA,USA,Uranus,Uranus,Jet Propulsion Lab,NASA,N
+272,J. Elliot,Ice Giants Pre Decadal Mission Study Full-Report – Neptune,2017,Report,NASA TM,NASA,USA,Neptune,Neptune,Jet Propulsion Lab,NASA,N
+273,H. Justh,Neptune and Titan Global Reference Atmospheric Models,2017,Report,NASA TM,NASA,USA,Neptune,Neptune,NASA Marshall Space Flight Center,NASA,N
+274,J. Mansell,Oceanus - A multi-spacecraft flagship mission concept to explore Saturn and Uranus,2017,Journal,Advances in Space Research,Elsevier,USA,Uranus,Uranus,Purdue University,NA,N
+275,M. Werner,SmallSat for Aerocapture Demonstration,2017,Conference,AIAA SciTech,AIAA,USA,Mars,Mars,Georgia Institute of Technology,NASA,N
+276,Y. Lu,Venus Aerocapture Assesment,2017,Conference,VEXAG,VEXAG,USA,Venus,Venus,Purdue University,NA,N
+277,H. Justh,Venus Global Reference Atmospheric Model,2017,Conference,NASA,NASA,USA,Venus,Venus,NASA Marshall Space Flight Center,NASA,N
+278,Z. R. Putnam,Analytical Assessment of Drag-Modulation Trajectory Control for Planetary Entry,2018,Journal,Journal of Astronautical Sciences,AAS,USA,Generic,Generic,University of Illinois,NASA,N
+279,Y. Peng,Analytical Predictor-Corrector Guidance Algorithm Based on Drag Modulation,2018,Journal,International Journal of Aerospace Engineering,Hindawi,China,Mars,Mars,Nanjing University,Basic Scientific Research Fund of National Defense,N
+280,Y. Lu,Assessment of Aerocapture for Future Titan Orbiter Missions,2018,Journal,Journal of Spacecraft and Rockets,AIAA,USA,Titan,Titan,Purdue University,NA,N
+281,M. Werner,Dynamic Propagation of Discrete Event Drag Modulation for Venus Aerocapture,2018,Conference,International Planetary Probe Workshop,IPPW,USA,Venus,Venus,University of Colorado, Boulder,NASA,N
+282,H. Han,Rapid Planning for aerocapture trajectory via convex optimization,2019,Journal,Aerospace Sciece and Technology,Elsevier,China,Mars,Mars,Beijing Institute of Technology,Natural Science Foundation of China,N
+283,E. J. Kazmierczak,Improvements to modeling and trajectory simulation of Mars aerocapture and aerobraking,2018,Conference,AIAA SciTech,AIAA,USA,Mars,Mars,Lockeed Martin,NA,N
+284,S. M. Hancock,Magnetoshell Aerocapture Performance Opportunities at Mars,2018,Conference,AIAA Space,AIAA,USA,Mars,Mars,Science Applications Inc.,NASA,N
+285,E. Zucchelli,Minimum Radiative Heat-load Aerocapture Guidance with Attitude-Kinematics Constraints,2018,Conference,AIAA SciTech,AIAA,Netherlands,Generic,Generic,Delft University of Technology,NA,N
+286,H. Justh,Overview of Global Reference Atmospheric Model (GRAM) Upgrades ,2018,Conference,International Planetary Probe Workshop,IPPW,USA,Generic,Generic,NASA Marshall Space Flight Center,NASA,N
+287,T. R. Spilker,Qualitative Assessment of Aerocapture and Applications to Future Missions,2018,Journal,Journal of Spacecraft and Rockets,AIAA,USA,Venus, Earth, Mars, Titan, Neptune,Generic,Jet Propulsion Lab,NASA,Y
+288,A. Nelessen,SmallSat Aerocapture for Increased Mass Delivered to Venus and Beyond,2018,Conference,International Planetary Probe Workshop,IPPW,USA,Venus,Venus,Jet Propulsion Lab,NASA,N
+289,R. Beck,Studies in Support of Venus Aerocapture Utilizing Drag Modulation,2018,Conference,International Planetary Probe Workshop,IPPW,USA,Venus,Venus,NASA Ames Research Center,NASA,N
+290,A. Korzun,Supersonic Aerodynamic Characteristics of Blunt Body Trim Tab Configurations,2018,Conference,Technical Report,NASA,USA,Mars,Mars,NASA Langley Research Center,NASA,N
+291,A. Pradeepkumar Girija,hybrid aerocapture using low l/d aeroshells for ice giant missions,2018,Conference,International Planetary Probe Workshop,IPPW,USA,Neptune,Neptune,Purdue University,NASA,N
+292,A. Pradeepkumar Girija,Feasibility and Mass-Benefit of Aerocapture for SmallSat Missions to Venus,2018,Conference,VEXAG,VEXAG,USA,Venus,Venus,Purdue University,NA,N
+293,A. Pradeepkumar Girija,Aerocapture Performance Analysis for a Neptune Mission Using a Heritage Blunt-Body Aeroshell,2019,Conference,Astrodynamics Specialist Conference,AAS,USA,Neptune,Neptune,Purdue University,NASA / JPL,N
+294,C. Zilong,Analysis and Optimization of Lunar Exploration Architecture ,2019,Journal,Journal of Spacecraft and Rockets,AIAA,China,Earth,Earth,China Astronaut Research and Training Center,NA,N
+295,G. Falcone,Assessment of Aerocapture for Orbit Insertionof Small Satellites at Mars,2019,Journal,Journal of Spacecraft and Rockets,AIAA,USA,Mars,Mars,University of Illinois,NA,N
+296,A. Pradeepkumar Girija,A Unified Framework for Aerocapture Systems Analysis - Athul,2019,Conference,Astrodynamics Specialist Conference,AAS,USA,Generic,Generic,Purdue University,NA,N
+297,K. L. Barad,Computationally Efficient Suboptimal Guidance for Aerocapture,2019,Conference,AIAA SciTech,AIAA,India,Mars,Mars,Indian Institute of Technology, Kanpur,NA,N
+298,M. Werner,Mission Design and Performance Analysis of a Smallsat Aerocapture Flight Test,2019,Journal,Journal of Spacecraft and Rockets,AIAA,USA,Earth,Earth,Georgia Institute of Technology,NASA,N
+299,E. Roelke,Single-stage Drag Modulated GNC Performance for Venus Aerocapture Demonstration,2019,Conference,AIAA SciTech,AIAA,USA,Venus,Venus,University of Colorado, Boulder,NASA / JPL,N
+300,A. Austin,SmallSat Aerocapture to Enable a New Paradigm of Planetary Missions,2019,Conference,IEEE Aerospace Conference,IEEE,USA,Venus,Venus,Jet Propulsion Lab,NASA / JPL,N
+301,J. Engelsma,Aerocapture Mission Analysis,2020,Conference,AIAA SciTech,AIAA,Netherlands,Mars,Mars,Delft University of Technology,NA,N
+302,C. Heidrich,Aerocapture Trajectory Design in Uncertain Entry Environments,2020,Conference,AIAA SciTech,AIAA,USA,Neptune,Neptune,University of Colorado, Boulder,NA,N
+303,A. Rollock,Analysis of Hypersonic Tip-Off Rates for Venus Aerocapture,2020,Conference,AIAA SciTech,AIAA,USA,Venus,Venus,University of Colorado, Boulder,NASA / JPL,N
+304,R. G. Deshmukh,Computationally Efficient Suboptimal Guidance for Aerocapture,2020,Conference,AIAA SciTech,AIAA,USA,Mars,Mars,Purdue University,NA,N
+305,S. W. Albert,Conceptual Development of AeroDrop Aerocapture and Direct Entry,2020,Conference,AIAA SciTech,AIAA,USA,Mars,Mars,University of Colorado, Boulder,NA,N
+306,D. A. Matz,Development of a Numeric Predictor-Corrector Aerocapture Guidance for Direct Force Control ,2020,Conference,AIAA SciTech,AIAA,USA,Mars,Mars,NASA Johnson Space Center,NA,N
+307,A. Pradeepkumar Girija,Feasibility and Mass-Benefit Analysis of Aerocapture for Missions to Venus,2020,Journal,Journal of Spacecraft and Rockets,AIAA,USA,Venus,Venus,Purdue University,NA,N
+308,A. Pradeepkumar Girija,Feasibility and Performance Analysis of Neptune Aerocapture Using Heritage Blunt-Body Aeroshells,2020,Journal,Journal of Spacecraft and Rockets,AIAA,USA,Neptune,Neptune,Purdue University,NA,N
