@@ -504,6 +504,18 @@ class Vehicle():
 			ans[:]  = 1.8980E-8 * (rho_vec[:]/self.RN)**0.5 * v[:]**3.0
 			return ans
 
+		elif self.planetObj.ID == 'JUPITER':
+			ans     = np.zeros(len(r))
+			rho_vec = self.planetObj.rhovectorized(r)
+			ans[:]  = 0.6556E-8 * (rho_vec[:]/self.RN)**0.5 * v[:]**3.0
+			return ans
+
+		elif self.planetObj.ID == 'SATURN':
+			ans     = np.zeros(len(r))
+			rho_vec = self.planetObj.rhovectorized(r)
+			ans[:]  = 0.6356E-8 * (rho_vec[:]/self.RN)**0.5 * v[:]**3.0
+			return ans
+
 		elif self.planetObj.ID == 'TITAN':
 			ans     = np.zeros(len(r))
 			rho_vec = self.planetObj.rhovectorized(r)
@@ -609,6 +621,30 @@ class Vehicle():
 
 			#REF : Not available; set qrad = 0
 			return ans
+
+		elif self.planetObj.ID == 'JUPITER':
+			
+			ans     = np.zeros(len(r))
+			rho_vec = self.planetObj.rhovectorized(r)
+
+			ans[:]  = (9.7632379E-40*(2*self.RN)**(-0.17905)*\
+				      (rho_vec[:])**1.763827469*v[:]**10.993852)*1E3/1E4
+			# Source: UPITER ENTRY PROBE FEASIBILITY STUDY FROM THE 
+			# ESTEC CDF TEAM HEAT FLUX EVALUATION & TPS DEFINITION
+			return ans
+
+
+		elif self.planetObj.ID == 'SATURN':
+			
+			ans     = np.zeros(len(r))
+			rho_vec = self.planetObj.rhovectorized(r)
+
+			ans[:]  = (9.7632379E-40*(2*self.RN)**(-0.17905)*\
+				      (rho_vec[:])**1.763827469*v[:]**10.993852)*1E3/1E4
+			# Source: UPITER ENTRY PROBE FEASIBILITY STUDY FROM THE 
+			# ESTEC CDF TEAM HEAT FLUX EVALUATION & TPS DEFINITION
+			return ans
+
 
 
 		elif self.planetObj.ID == 'TITAN':
