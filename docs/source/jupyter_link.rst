@@ -20,3 +20,14 @@ Example Jupyter Notebooks
    /examples/example-13-venus-aerocapture-5a.ipynb
    /examples/example-14-fire-II-earth.ipynb
    /examples/example-15-apollo-as-201-earth.ipynb
+   /examples/example-16-apollo-as-202-earth.ipynb
+   /examples/example-17-apollo-4-earth.ipynb
+   /examples/example-18-apollo-6-earth.ipynb
+   /examples/example-19-paet-earth.ipynb
+   /examples/example-20-viking-1-mars.ipynb
+   /examples/example-21-viking-2-mars.ipynb
+   /examples/example-22-pv-small-north-venus.ipynb
+   /examples/example-23-pv-small-night-venus.ipynb
+   /examples/example-24-pv-small-day-venus.ipynb
+   /examples/example-25-pv-large-venus.ipynb
+   /examples/example-26-galileo-jupiter.ipynb
