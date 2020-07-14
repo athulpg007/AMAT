@@ -18,5 +18,3 @@ Example Jupyter Notebooks
    /examples/example-11-neptune-aerocapture-part-2a.ipynb
    /examples/example-12-neptune-aerocapture-part-2b.ipynb
    /examples/example-13-venus-aerocapture-5a.ipynb
-   /examples/example-14-fire-II-earth.ipynb
-   /examples/example-15-apollo-as-201-earth.ipynb
