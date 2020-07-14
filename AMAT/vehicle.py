@@ -595,21 +595,24 @@ class Vehicle():
 			#REF : Brandis and Johnston, Characterization of Stagnation-Point 
 			# Heat Flux for Earth Entry, 2014
 
-			C = 3.416E4
+			# Tauber-Sutton radiative heating correlation
 
-			if self.RN <= 0.5:
-				amax = 0.61
-			elif self.RN > 0.5 and self.RN < 2.0:
-				amax = 1.23
-			else:
-				amax = 0.49
+			
+			C = 4.736E4
+
+			xx = np.array([9000.0, 10000.0, 11000.0, 12000.0, 13000.0,\
+			              14000.0, 15000.0, 16000.0])
+			yy = np.array([1.5, 35, 151, 359, 660, 1065, 1550, 2040])
+
+			fV = interp1d(xx, yy, kind='linear', fill_value=(0.0,2040),\
+					      bounds_error=False)
 
 			for i in range(0,len(r)):
-				a  = np.min(3.175E6*V**(-1.80)*rho_vec[i]**(-0.1575), amax)
-				b = 1.261
-				fV = -53.26 + 6555.0/(1 + (16000.0/V)**8.25)
-
-				ans[i] = C*self.RN**a*rho_vec[i]**b*fV
+				a  = 0.6
+				b = 1.22
+				
+				ans[i] = C*self.RN**a*rho_vec[i]**b*float(fV(v[i]))
+			
 
 			return ans
 
