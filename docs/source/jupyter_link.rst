@@ -4,8 +4,6 @@ Example Jupyter Notebooks
 .. toctree::
    :maxdepth: 1
 
-Aerocapture
------------
 
    /examples/example-01-hello-world.ipynb
    /examples/example-02-atmosphere.ipynb
@@ -20,9 +18,6 @@ Aerocapture
    /examples/example-11-neptune-aerocapture-part-2a.ipynb
    /examples/example-12-neptune-aerocapture-part-2b.ipynb
    /examples/example-13-venus-aerocapture-5a.ipynb
-
-Past entry missions
---------------------
 
    /examples/example-14-fire-II-earth.ipynb
    /examples/example-15-apollo-as-201-earth.ipynb
