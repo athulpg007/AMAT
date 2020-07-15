@@ -90,7 +90,7 @@ To uninstall AMAT, use
 
 This will remove the AMAT installation from Python. You may simply delete the root folder where AMAT was installed to completely remove the files.
 
-### Option 2 : Install from pip
+### Option 2 : Install from pip (NOT recommended)
 
 This allows you to download the package, but without most of the data files. You can run the program, but will need to visit the git repository later to download some of the data files and place them in an appropriate location. You will also need to change the location of data files in the example scripts if you use them.
 
@@ -127,9 +127,7 @@ If you plan to test or develop the package, the recommended option is to to inst
 AMAT is an open source project licensed under the CC-BY-SA-4.0 License
 
 ## Credits
-AMAT was developed at the School of Aeronautics and Astronautics at Purdue University with partial support from the NASA Jet Propulsion Laboratory under Contract Number 108436. Samples of atmospheric data from Global Reference Atmospheric Model (GRAM) software is used for illustration purpose only, and was developed by NASA Marshall Space Flight Center. Interplanetary trajctory data was generated at Purdue University using the STOUR software package by Alec Mudek. The aerocapture feasibility charts were first conceived by Ye Lu at Purdue University, and then expanded upon by the author. 
-
-The current version is a test release and is under active development and testing. Some portions of the code may not conform to PEP-8 standards, this will be rectified in a future release.
+AMAT was developed at the School of Aeronautics and Astronautics at Purdue University. Samples of atmospheric data from Global Reference Atmospheric Model (GRAM) software is used for illustration purpose only, and was developed by NASA Marshall Space Flight Center. Interplanetary trajctory data was generated at Purdue University using the STOUR software package by Alec Mudek. 
 
 ## Reference Articles
 

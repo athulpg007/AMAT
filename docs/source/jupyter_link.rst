@@ -31,3 +31,15 @@ Example Jupyter Notebooks
    /examples/example-24-pv-small-day-venus.ipynb
    /examples/example-25-pv-large-venus.ipynb
    /examples/example-26-galileo-jupiter.ipynb
+   /examples/example-27-orex-earth.ipynb
+   /examples/example-28-pathfinder-mars.ipynb
+   /examples/example-29-mirka-earth.ipynb
+   /examples/example-30-huygens-titan.ipynb
+   /examples/example-31-atm-reentry-demonstrator-titan-earth.ipynb
+   /examples/example-32-deep-space-2-mars.ipynb
+   /examples/example-33-stardust-earth.ipynb
+   /examples/example-34-genesis-earth.ipynb
+   /examples/example-35-hayabusa-earth.ipynb
+   /examples/example-36-beagle-2-mars.ipynb
+   /examples/example-37-opportunity-mars.ipynb
+   /examples/example-38-curiosity-mars.ipynb
