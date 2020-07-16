@@ -35,7 +35,7 @@ Example Jupyter Notebooks
    /examples/example-28-pathfinder-mars.ipynb
    /examples/example-29-mirka-earth.ipynb
    /examples/example-30-huygens-titan.ipynb
-   /examples/example-31-atm-reentry-demonstrator-titan-earth.ipynb
+   /examples/example-31-atm-reentry-demonstrator-earth.ipynb
    /examples/example-32-deep-space-2-mars.ipynb
    /examples/example-33-stardust-earth.ipynb
    /examples/example-34-genesis-earth.ipynb
@@ -43,3 +43,9 @@ Example Jupyter Notebooks
    /examples/example-36-beagle-2-mars.ipynb
    /examples/example-37-opportunity-mars.ipynb
    /examples/example-38-curiosity-mars.ipynb
+   /examples/example-39-oceanus-probe-saturn.ipynb
+   /examples/example-40-oceanus-probe-uranus.ipynb
+   /examples/example-41-hera-probe-saturn.ipynb
+   /examples/example-42-dragonfly-titan.ipynb
+   /examples/example-43-ice-giant-pre-decadal-uranus-probe.ipynb
+   /examples/example-44-ice-giant-pre-decadal-neptune-probe.ipynb
