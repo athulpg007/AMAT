@@ -52,3 +52,4 @@ Example Jupyter Notebooks
    /examples/example-45-adept-vital-venus.ipynb
    /examples/example-46-uranus-entry-probe-decadal-2010.ipynb
    /examples/example-47-venus-flagship-entry-vehicle-decadal-2010.ipynb
+   /examples/example-48-crew-module-atmospheric-re-entry-experiment-earth.ipynb
