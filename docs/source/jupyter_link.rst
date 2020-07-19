@@ -50,3 +50,5 @@ Example Jupyter Notebooks
    /examples/example-43-ice-giant-pre-decadal-uranus-probe.ipynb
    /examples/example-44-ice-giant-pre-decadal-neptune-probe.ipynb
    /examples/example-45-adept-vital-venus.ipynb
+   /examples/example-46-uranus-entry-probe-decadal-2010.ipynb
+   /examples/example-47-venus-flagship-entry-vehicle-decadal-2010.ipynb
