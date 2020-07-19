@@ -1,12 +1,12 @@
 # AMAT
 
-Aerocapture Mission Analysis Tool (AMAT) is designed to provide rapid mission analysis capability for aerocapture mission concepts to the planetary science community. 
+Aerocapture Mission Analysis Tool (AMAT) is designed to provide rapid mission analysis capability for aerocapture and Entry, Descent, and Landing (EDL) mission concepts to the planetary science community. 
 
 See [AMAT documentation](https://amat.readthedocs.io) for more details. 
 
 ## Capabilities
 
-AMAT allows the user to perform low-fidelity broad sweep parametric studies; as well as high fidelity Monte Carlo simulations to quantify aerocapture performance. AMAT supports analysis for all atmosphere-bearing destinations in the Solar System except Jupiter and Saturn where aerocapture is not feasible in the near-future. 
+AMAT allows the user to perform low-fidelity broad sweep parametric studies; as well as high fidelity Monte Carlo simulations to quantify aerocapture performance. AMAT supports analysis for all atmosphere-bearing destinations in the Solar System: Venus, Earth, Mars, Jupiter, Saturn, Titan, Uranus, and Neptune.
 
 ### Venus Aerocapture Trajectories
 ![Venus Aerocapture Trajectory and Heating](https://raw.githubusercontent.com/athulpg007/AMAT/master/plots/a1.png)
