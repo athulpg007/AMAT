@@ -49,3 +49,4 @@ Example Jupyter Notebooks
    /examples/example-42-dragonfly-titan.ipynb
    /examples/example-43-ice-giant-pre-decadal-uranus-probe.ipynb
    /examples/example-44-ice-giant-pre-decadal-neptune-probe.ipynb
+   /examples/example-45-adept-vital-venus.ipynb
