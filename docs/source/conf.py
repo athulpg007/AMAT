@@ -22,11 +22,11 @@ sys.path.insert(0, os.path.abspath('../'))
 # -- Project information -----------------------------------------------------
 
 project = 'AMAT'
-copyright = '2020, Athul P. Girija'
+copyright = '2020, AP Girija, SJ Saikia, and JM Longuski'
 author = 'Athul P. Girija'
 
 # The full version, including alpha/beta/rc tags
-release = 'v2.1.1'
+release = 'v2.1.2'
 
 
 # -- General configuration ---------------------------------------------------

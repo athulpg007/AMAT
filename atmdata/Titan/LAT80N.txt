@@ -1,4 +1,4 @@
-    Var_X        DENSLO     DENSAV     DENSHI    DENSTOT   Radius     Rref   Grav LOGSCALE profwgt
+#    Var_X        DENSLO     DENSAV     DENSHI    DENSTOT   Radius     Rref   Grav LOGSCALE profwgt
    .00000      5.236E+00  5.393E+00  5.555E+00  5.530E+00  2575.50  2575.50 1.353     0     .000
    10.000      3.377E+00  3.546E+00  3.723E+00  3.702E+00  2585.50  2575.50 1.343     0     .000
    20.000      2.003E+00  2.143E+00  2.293E+00  2.216E+00  2595.50  2575.50 1.333     0     .000

@@ -53,3 +53,5 @@ Example Jupyter Notebooks
    /examples/example-46-uranus-entry-probe-decadal-2010.ipynb
    /examples/example-47-venus-flagship-entry-vehicle-decadal-2010.ipynb
    /examples/example-48-crew-module-atmospheric-re-entry-experiment-earth.ipynb
+   /examples/example-49-earth-smallsat-aerocapture-demonstration-part-1.ipynb
+   /examples/example-50-earth-smallsat-aerocapture-demonstration-part-2.ipynb

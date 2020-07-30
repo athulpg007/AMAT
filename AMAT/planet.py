@@ -938,6 +938,69 @@ class Planet:
 		return ATM_height, ATM_density_low, ATM_density_avg,\
 			   ATM_density_high, ATM_density_pert
 
+
+	def loadMonteCarloDensityFile3(self, atmfile, heightCol,\
+								   densAvgCol, densSD_percCol, densTotalCol, \
+								   heightInKmFlag=False):
+		"""
+		Loads a Monte Carlo density look up table from GRAM-Model output,
+		Utility function for EARTH-GRAM atmospheric data
+
+		Parameters
+		----------
+		atmfile : str
+			filename, contains mean density profile data
+		heightCol : int
+			column number of height values, assumes unit = meters 
+			(first column = 0, second column = 1, etc.)
+		densAvgCol : int
+			column number of the average mean density
+		densSD_percCol : int
+			column number of mean density one sigma SD
+		densTotalCol : int
+			column number of the total (=mean + perturb.) density
+		heightinKmFlag : bool, optional
+			optional, set this to True if heightCol has units of km, 
+			False by default
+
+		Returns
+		----------
+		ATM_height : numpy.ndarray
+			height array, m
+		ATM_density_low : numpy.ndarray
+			low density array, kg/m3
+		ATM_density_avg : numpy.ndarray
+			avg. density array, kg/m3
+		ATM_density_high : numpy.ndarray
+			high density array, kg/m3
+		ATM_density_pert : numpy.ndarray
+			1 sigma mean deviation from avg
+
+		""" 
+		
+		# load data from textfile using np.loadtxt()
+		ATM          = np.loadtxt(atmfile) 
+		
+		if heightInKmFlag == True:
+			# convert heightCol from km to meters
+			ATM_height   = ATM[:,heightCol]*1E3    
+		else:
+			ATM_height   = ATM[:,heightCol]
+
+		# extract data for low, avg, and mean density from file
+		ATM_density_low  = ATM[:,densAvgCol] - \
+						   ATM[:,densAvgCol] * ATM[:,densSD_percCol]*0.01
+		ATM_density_avg  = ATM[:,densAvgCol]  
+		ATM_density_high = ATM[:,densAvgCol] + \
+						   ATM[:,densAvgCol] * ATM[:,densSD_percCol]*0.01
+		ATM_density_pert = ATM[:,densTotalCol] - \
+						   ATM[:,densAvgCol]
+		# perturb = (avg + perturb) - avg
+
+		return ATM_height, ATM_density_low, ATM_density_avg,\
+			   ATM_density_high, ATM_density_pert
+
+
 	def pSigmaFunc(self,x):
 		"""
 		Utility function. Returns 1 if x>=0, 0.0 otherwise

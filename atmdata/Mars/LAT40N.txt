@@ -1,4 +1,4 @@
-    Var_X        DENSLO     DENSAV     DENSHI    DENSTOT  DustOD  Radius   Grav RadAU LOGSCALE hgtoffset ibougher MapYear profwgt
+#    Var_X        DENSLO     DENSAV     DENSHI    DENSTOT  DustOD  Radius   Grav RadAU LOGSCALE hgtoffset ibougher MapYear profwgt
   -5.0000      2.017E-02  2.057E-02  2.098E-02  2.091E-02 0.1000 3383.199 3.729 1.649    0        0.000     1       0    0.000
   -4.0000      1.836E-02  1.873E-02  1.910E-02  1.911E-02 0.1000 3384.199 3.727 1.649    0        0.000     1       0    0.000
   -3.0000      1.741E-02  1.776E-02  1.812E-02  1.782E-02 0.1000 3385.199 3.725 1.649    0        0.000     1       0    0.000

@@ -5433,7 +5433,7 @@ class Vehicle():
 			if hi > self.planetObj.h_skip - 1.0E3:
 				break
 
-			if hi < 70.0E3:
+			if hi < 20.0E3:
 				break
 
 			h_current_km  = h_km[-1]
@@ -5574,6 +5574,81 @@ class Vehicle():
 		self.maxTimeSecs = maxTimeSecs
 
 
+	def setupMonteCarloSimulationD_Earth(self, NPOS, NMONTE, atmfiles,
+								  heightCol, densAvgCol,
+								  densSD_percCol, densTotalCol, heightInKmFlag,
+								  nominalEFPA,  EFPA_1sigma_value,
+								  nominalbeta1, beta1_1sigma_value,
+								  timeStepEntry, timeStepExit, dt, maxTimeSecs):
+		"""
+		Set the Monte Carlo simulation parameters for drag modulation
+		aerocapture. (Earth aerocapture)
+
+		Parameters
+		--------
+		NPOS : int
+			NPOS value from GRAM model output 
+			is the number of data points (altitude) in each atm. profile
+		NMONTE : int
+			NMONTE is the number of Monte Carlo atm profiles
+			from GRAM model output
+		atmfiles : str
+			location of atmospheric files used in Monte Carlo simulation
+		heightCol : int
+			column index of height values in atmfiles
+		densAvgCol : int
+			column index of average density values in atmfiles
+		densSD_percCol : int
+			column number of mean density one sigma SD
+		densTotalCol : int
+			index of perturbed (=avg + pert.) density values
+		heightInKmFlag : bool
+			set to True if height values in atmfiles are in km
+		nominalEFPA : float
+			Nominal (target EFPA) value, deg
+		EFPA_1sigma_value : float
+			1-sigma error for EFPA (from naviation analysis)
+		nominalbeta1 : float
+			Nominal value of vehicle ballistic coeff.
+		beta1_1sigma_value : float
+			1-sigma error for beta1 (from vehicle aero. design data)
+		timeStepEntry : float
+			Guidance cycle time step for entry phase, sec
+		timeStepExit : float
+			Guidance time step for exit phase, sec
+		dt : float
+			max. solver time step
+		maxTimeSecs : float
+			max. time used for propogation used by guidance scheme
+
+
+		"""
+
+		self.NPOS       = NPOS
+		self.NMONTE     = NMONTE
+		self.atmfiles   = atmfiles
+
+		self.heightCol   = heightCol
+		self.densAvgCol  = densAvgCol
+		self.densSD_percCol = densSD_percCol
+		self.densTotalCol= densTotalCol
+
+		self.heightInKmFlag = heightInKmFlag
+
+		self.nominalEFPA = nominalEFPA
+		self.EFPA_1sigma_value = EFPA_1sigma_value
+
+		self.nominalbeta1 = nominalbeta1
+		self.beta1_1sigma_value = beta1_1sigma_value
+		self.vehicleCopy = copy.deepcopy(self)
+
+		self.timeStepEntry = timeStepEntry
+		self.timeStepExit  = timeStepExit
+		
+		self.dt = dt
+		self.maxTimeSecs = maxTimeSecs
+
+
 	def runMonteCarloD(self, N, mainFolder):
 		"""
 		Run a Monte Carlo simulation for drag modulation
@@ -5681,3 +5756,114 @@ class Vehicle():
 			np.savetxt(mainFolder+'/'+'acc_net_g_max_arr.txt',acc_net_g_max_arr)
 			np.savetxt(mainFolder+'/'+'q_stag_max_arr.txt',q_stag_max_arr)
 			np.savetxt(mainFolder+'/'+'heatload_max_arr.txt',heatload_max_arr)
+
+
+	def runMonteCarloD_Earth(self, N, mainFolder):
+		"""
+		Run a Monte Carlo simulation for drag modulation
+		aerocapture. (Earth application)
+
+		Parameters
+		--------
+		N : int
+			Number of trajectories
+		mainFolder : str
+			path where data is to be stored
+		"""
+
+
+		terminal_apoapsis_arr = np.zeros(N)
+		terminal_periapsis_arr= np.zeros(N)
+		periapsis_raise_DV_arr= np.zeros(N)
+		apoapsis_raise_DV_arr = np.zeros(N)
+		acc_net_g_max_arr     = np.zeros(N)
+		q_stag_max_arr        = np.zeros(N)
+		heatload_max_arr      = np.zeros(N)
+
+		h0_km      = self.vehicleCopy.h0_km_ref
+		theta0_deg = self.vehicleCopy.theta0_deg_ref
+		phi0_deg   = self.vehicleCopy.phi0_deg_ref
+		v0_kms     = self.vehicleCopy.v0_kms_ref
+		psi0_deg   = self.vehicleCopy.psi0_deg_ref
+		drange0_km = self.vehicleCopy.drange0_km_ref
+		heatLoad0  = self.vehicleCopy.heatLoad0_ref
+
+		os.makedirs(mainFolder)
+	
+		
+		for i in range(N):
+			selected_atmfile  = rd.choice(self.atmfiles)
+			
+			#selected_profile   = 65
+			selected_profile  = rd.randint(1,self.NMONTE)
+			#selected_efpa     = -11.53
+			selected_efpa     = np.random.normal(self.nominalEFPA, self.EFPA_1sigma_value)
+			#selected_atmSigma = +0.0
+			selected_atmSigma = np.random.normal(0,1)
+
+			selected_LD       = 0.0
+
+			ATM_height, ATM_density_low, ATM_density_avg, ATM_density_high, \
+			ATM_density_pert = self.planetObj.loadMonteCarloDensityFile3(\
+				               selected_atmfile, self.heightCol, \
+				               self.densAvgCol,  self.densSD_percCol,\
+				               self.densTotalCol, self.heightInKmFlag)
+			
+			self.planetObj.density_int = self.planetObj.loadAtmosphereModel5(ATM_height, \
+										 ATM_density_low, ATM_density_avg, ATM_density_high, \
+										 ATM_density_pert, selected_atmSigma, self.NPOS, \
+										 selected_profile)
+
+			
+			self.setInitialState(h0_km,theta0_deg,phi0_deg,v0_kms,\
+						         psi0_deg,selected_efpa,drange0_km,heatLoad0)
+			self.propogateGuidedEntryD(self.timeStepEntry, self.timeStepExit,  self.dt, self.maxTimeSecs)
+
+			terminal_apoapsis = self.terminal_apoapsis
+			apoapsis_error    = self.apoapsis_perc_error
+			terminal_periapsis= self.terminal_periapsis
+
+			periapsis_raise_DV = self.periapsis_raise_DV
+			apoapsis_raise_DV =  self.apoapsis_raise_DV
+
+
+			terminal_apoapsis_arr[i] = self.terminal_apoapsis
+			terminal_periapsis_arr[i]= self.terminal_periapsis
+
+			periapsis_raise_DV_arr[i]= self.periapsis_raise_DV
+			apoapsis_raise_DV_arr[i] = self.apoapsis_raise_DV
+
+			acc_net_g_max_arr[i]     = max(self.acc_net_g_full)
+			q_stag_max_arr[i]        = max(self.q_stag_total_full)
+			heatload_max_arr[i]      = max(self.heatload_full)
+
+			print("BATCH :"+str(mainFolder)+", RUN #: "+str(i+1)+", PROF: "+str(selected_atmfile)+", SAMPLE #: "+str(selected_profile)+", EFPA: "+str('{:.2f}'.format(selected_efpa,2))+", SIGMA: "+str('{:.2f}'.format(selected_atmSigma,2))+", APO : "+str('{:.2f}'.format(terminal_apoapsis,2)))
+
+
+			os.makedirs(mainFolder+'/'+'#'+str(i+1))
+
+
+			np.savetxt(mainFolder+'/'+'#'+str(i+1)+'/'+'atmfile.txt',np.array([selected_atmfile]), fmt='%s')
+			np.savetxt(mainFolder+'/'+'#'+str(i+1)+'/'+'profile.txt',np.array([selected_profile]))
+			np.savetxt(mainFolder+'/'+'#'+str(i+1)+'/'+'efpa.txt',np.array([selected_efpa]))
+			np.savetxt(mainFolder+'/'+'#'+str(i+1)+'/'+'atmSigma.txt',np.array([selected_atmSigma]))
+			np.savetxt(mainFolder+'/'+'#'+str(i+1)+'/'+'LD.txt',np.array([selected_LD]))
+
+			np.savetxt(mainFolder+'/'+'#'+str(i+1)+'/'+'terminal_apoapsis.txt',np.array([terminal_apoapsis]))
+			np.savetxt(mainFolder+'/'+'#'+str(i+1)+'/'+'apoapsis_error.txt',np.array([apoapsis_error]))
+			np.savetxt(mainFolder+'/'+'#'+str(i+1)+'/'+'terminal_periapsis.txt',np.array([terminal_periapsis]))
+
+			np.savetxt(mainFolder+'/'+'#'+str(i+1)+'/'+'periapsis_raise_DV.txt',np.array([periapsis_raise_DV]))
+			np.savetxt(mainFolder+'/'+'#'+str(i+1)+'/'+'apoapsis_raise_DV.txt',np.array([apoapsis_raise_DV]))
+
+
+			np.savetxt(mainFolder+'/'+'terminal_apoapsis_arr.txt',terminal_apoapsis_arr)
+			np.savetxt(mainFolder+'/'+'terminal_periapsis_arr.txt',terminal_periapsis_arr)
+
+			np.savetxt(mainFolder+'/'+'periapsis_raise_DV_arr.txt',periapsis_raise_DV_arr)
+			np.savetxt(mainFolder+'/'+'apoapsis_raise_DV_arr.txt', apoapsis_raise_DV_arr)
+
+			np.savetxt(mainFolder+'/'+'acc_net_g_max_arr.txt',acc_net_g_max_arr)
+			np.savetxt(mainFolder+'/'+'q_stag_max_arr.txt',q_stag_max_arr)
+			np.savetxt(mainFolder+'/'+'heatload_max_arr.txt',heatload_max_arr)
+
