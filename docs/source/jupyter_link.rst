@@ -57,3 +57,4 @@ Example Jupyter Notebooks
    /examples/example-50-earth-smallsat-aerocapture-demonstration-part-2.ipynb
    /examples/example-51-mars-smallsat-aerocapture-demonstration-part-1.ipynb
    /examples/example-52-mars-smallsat-aerocapture-demonstration-part-2.ipynb
+   /examples/example-53-mars-smallsat-aerocapture-demonstration-part-3.ipynb
