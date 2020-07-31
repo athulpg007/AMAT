@@ -1094,3 +1094,52 @@ class Planet:
 						fill_value=0.0, bounds_error=False)
 
 		return density_int
+
+
+	def loadAtmosphereModel6(self, ATM_height, ATM_density_low, \
+							 ATM_density_avg, ATM_density_high,  \
+							 sigmaValue, NPOS, i):
+		"""
+		Read and create mean density profile for a single entry from a list 
+		of perturbed monte carlo density profiles.
+		
+		Parameters
+		----------
+		ATM_height : numpy.ndarray
+			height array, m
+		ATM_density_low : numpy.ndarray
+			low density array, kg/m3
+		ATM_density_avg : numpy.ndarray
+			avg. density array, kg/m3
+		ATM_density_high : numpy.ndarray
+			high density array, kg/m3
+		sigmaValue : float
+			mean desnity profile sigma deviation value
+			(intended as input from a normal distribution
+			with mean=0, sigma=1)
+		NPOS : int
+			NPOS value from GRAM model
+			equals the number of positions (altitude) for which
+			density value is available in look up table.
+
+		Returns
+		----------
+		density_int : scipy.interpolate.interpolate.interp1d
+			density interpolation function
+
+		"""
+		nSigma = ATM_density_avg[int((i-1)*NPOS):int(i*NPOS)]  - \
+				 ATM_density_low[int((i-1)*NPOS):int(i*NPOS)]
+		pSigma = ATM_density_high[int((i-1)*NPOS):int(i*NPOS)] - \
+				 ATM_density_avg[int((i-1)*NPOS):int(i*NPOS)]
+
+		h_array = ATM_height[int((i-1)*NPOS):int(i*NPOS)]
+
+		d_array = ATM_density_avg[int((i-1)*NPOS):int(i*NPOS)] + \
+				  pSigma*self.pSigmaFunc(sigmaValue)*sigmaValue + \
+				  nSigma*self.nSigmaFunc(sigmaValue)*sigmaValue
+
+		density_int   = interp1d(h_array, d_array  , kind='linear',\
+						fill_value=0.0, bounds_error=False)
+
+		return density_int
