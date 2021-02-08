@@ -1,0 +1,1047 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Example - 53 - Mars SmallSat Aerocapture Demonstration - Part 3 &mdash; AMAT v2.1.3 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Credits" href="../credits.html" />
+    <link rel="prev" title="Example - 52 - Mars SmallSat Aerocapture Demonstration - Part 2" href="example-52-mars-smallsat-aerocapture-demonstration-part-2.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> AMAT
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About AMAT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../capabilities.html">Capabilities</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../jupyter_link.html">Example Jupyter Notebooks</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="example-01-hello-world.html">Example - 01 - Hello World!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-02-atmosphere.html">Example - 02 - Atmosphere</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-03-venus-aerocapture-1.html">Example - 03 - Venus Aerocapture: Part 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-04-venus-aerocapture-2.html">Example - 04 - Venus Aerocapture: Part 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-05-titan-aerocapture-1.html">Example - 05 - Titan Aerocapture: Part 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-06-titan-aerocapture-2.html">Example - 06 - Titan Aerocapture: Part 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-07-venus-aerocapture-3.html">Example - 07 - Venus Aerocapture: Part 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-08-venus-aerocapture-4.html">Example - 08 - Venus Aerocapture: Part 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-09-uranus-aerocapture.html">Example - 09 - Uranus Aerocapture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-10-neptune-aerocapture-part-1.html">Example - 10 - Neptune Aerocapture - Part 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-11-neptune-aerocapture-part-2a.html">Example - 11 - Neptune Aerocapture - Part 2a: Monte Carlo Simulations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-12-neptune-aerocapture-part-2b.html">Example - 12 - Neptune Aerocapture - Part 2b: Monte Carlo Simulations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-13-venus-aerocapture-5a.html">Example - 13 - Venus Aerocapture - Part 5a: Monte Carlo Simulations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-14-fire-II-earth.html">Example - 14 - Fire-II - Earth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-15-apollo-as-201-earth.html">Example - 15 - Apollo-AS-201 - Earth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-16-apollo-as-202-earth.html">Example - 16 - Apollo-AS-202 - Earth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-17-apollo-4-earth.html">Example - 17 - Apollo-4 - Earth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-18-apollo-6-earth.html">Example - 18 - Apollo-6 - Earth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-19-paet-earth.html">Example - 19 - PAET - Earth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-20-viking-1-mars.html">Example - 20 - Viking-1 - Mars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-21-viking-2-mars.html">Example - 21 - Viking-2 - Mars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-22-pv-small-north-venus.html">Example - 22 - PV Small North - Venus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-23-pv-small-night-venus.html">Example - 23 - PV Small Night - Venus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-24-pv-small-day-venus.html">Example - 24 - PV Small Day - Venus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-25-pv-large-venus.html">Example - 25 - PV Large - Venus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-26-galileo-jupiter.html">Example - 26 - Galileo - Jupiter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-27-orex-earth.html">Example - 27 - OREX - Earth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-28-pathfinder-mars.html">Example - 28 - Pathfinder - Mars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-29-mirka-earth.html">Example - 29 - Mirka - Earth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-30-huygens-titan.html">Example - 30 - Huygens - Titan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-31-atm-reentry-demonstrator-earth.html">Example - 31 - Atm. Reentry Demonstrator - Earth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-32-deep-space-2-mars.html">Example - 32 - Deep Space 2 - Mars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-33-stardust-earth.html">Example - 33 - Stardust - Earth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-34-genesis-earth.html">Example - 34 - Genesis - Earth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-35-hayabusa-earth.html">Example - 35 - Hayabusa - Earth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-36-beagle-2-mars.html">Example - 36 - Beagle-2 - Mars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-37-opportunity-mars.html">Example - 37 - Opportunity - Mars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-38-curiosity-mars.html">Example - 38 - Curiosity - Mars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-39-oceanus-probe-saturn.html">Example - 39 - Oceanus - Saturn (Concept)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-40-oceanus-probe-uranus.html">Example - 40 - Oceanus - Uranus (Concept)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-41-hera-probe-saturn.html">Example - 41 - Hera - Saturn (Concept)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-42-dragonfly-titan.html">Example - 42 - Dragonfly - Titan (Planned)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-43-ice-giant-pre-decadal-uranus-probe.html">Example - 43 - Ice Giant Pre-Decadal - Uranus Probe (Concept)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-44-ice-giant-pre-decadal-neptune-probe.html">Example - 44 - Ice Giant Pre-Decadal - Neptune Probe (Concept)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-45-adept-vital-venus.html">Example - 45 - ADEPT ViTaL - Venus (Concept)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-46-uranus-entry-probe-decadal-2010.html">Example - 46 - Uranus Probe - Decadal Study - 2010 (Concept)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-47-venus-flagship-entry-vehicle-decadal-2010.html">Example - 47 - Venus Flagship - Decadal Study - 2010 (Concept)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-48-crew-module-atmospheric-re-entry-experiment-earth.html">Example - 48 - Crew Module Atmospheric Re-entry Experiment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-49-earth-smallsat-aerocapture-demonstration-part-1.html">Example - 49 - Earth SmallSat Aerocapture Demonstration - Part 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-50-earth-smallsat-aerocapture-demonstration-part-2.html">Example - 50 - Earth SmallSat Aerocapture Demonstration - Part 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-51-mars-smallsat-aerocapture-demonstration-part-1.html">Example - 51 - Mars SmallSat Aerocapture Demonstration - Part 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-52-mars-smallsat-aerocapture-demonstration-part-2.html">Example - 52 - Mars SmallSat Aerocapture Demonstration - Part 2</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Example - 53 - Mars SmallSat Aerocapture Demonstration - Part 3</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../credits.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module_index.html">Module Index</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AMAT</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../jupyter_link.html">Example Jupyter Notebooks</a> &raquo;</li>
+        
+      <li>Example - 53 - Mars SmallSat Aerocapture Demonstration - Part 3</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/examples/example-53-mars-smallsat-aerocapture-demonstration-part-3.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    min-width: 5ex;
+    padding-top: 0.3rem;
+    padding-right: 0.3rem;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 0.3rem;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Example---53---Mars-SmallSat-Aerocapture-Demonstration---Part-3">
+<h1>Example - 53 - Mars SmallSat Aerocapture Demonstration - Part 3<a class="headerlink" href="#Example---53---Mars-SmallSat-Aerocapture-Demonstration---Part-3" title="Permalink to this headline">¶</a></h1>
+<p>In this example, we will use Monte Carlo simulations to assess flight performance. Reference: M.S.Werner and R.D.Braun, Mission Design and Performance Analysis of a Smallsat Aerocapture Flight Test, Journal of Spacecraft and Rockets, DOI: 10.2514/1.A33997</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">AMAT.planet</span> <span class="k">import</span> <span class="n">Planet</span>
+<span class="kn">from</span> <span class="nn">AMAT.vehicle</span> <span class="k">import</span> <span class="n">Vehicle</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">interpolate</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">rcParams</span>
+<span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="k">import</span> <span class="n">Polygon</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Set up the planet and atmosphere model.</span>
+<span class="n">planet</span><span class="o">=</span><span class="n">Planet</span><span class="p">(</span><span class="s2">&quot;MARS&quot;</span><span class="p">)</span>
+<span class="n">planet</span><span class="o">.</span><span class="n">loadAtmosphereModel</span><span class="p">(</span><span class="s1">&#39;../atmdata/Mars/mars-gram-avg.dat&#39;</span><span class="p">,</span> <span class="mi">0</span> <span class="p">,</span> <span class="mi">1</span> <span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">planet</span><span class="o">.</span><span class="n">h_skip</span> <span class="o">=</span> <span class="mf">150000.0</span>
+<span class="n">planet</span><span class="o">.</span><span class="n">h_low</span><span class="o">=</span><span class="mf">10.0E3</span>
+
+<span class="c1"># Set up the drag modulation vehicle.</span>
+<span class="n">vehicle</span><span class="o">=</span><span class="n">Vehicle</span><span class="p">(</span><span class="s1">&#39;MarsSmallSat1&#39;</span><span class="p">,</span> <span class="mf">25.97</span><span class="p">,</span> <span class="mf">66.4</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="mf">0.25</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0563</span><span class="p">,</span> <span class="n">planet</span><span class="p">)</span>
+
+<span class="n">vehicle</span><span class="o">.</span><span class="n">setInitialState</span><span class="p">(</span><span class="mf">150.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">5.74</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="o">-</span><span class="mf">12.12</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="n">vehicle</span><span class="o">.</span><span class="n">setSolverParams</span><span class="p">(</span><span class="mf">1E-6</span><span class="p">)</span>
+<span class="n">vehicle</span><span class="o">.</span><span class="n">setDragModulationVehicleParams</span><span class="p">(</span><span class="mf">66.4</span><span class="p">,</span><span class="mf">4.72</span><span class="p">)</span>
+
+<span class="c1"># Set up the drag modulation entry phase guidance parameters.</span>
+<span class="n">vehicle</span><span class="o">.</span><span class="n">setDragEntryPhaseParams</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="o">-</span><span class="mf">200.0</span><span class="p">)</span>
+
+<span class="c1"># Set the target orbit parameters.</span>
+<span class="n">vehicle</span><span class="o">.</span><span class="n">setTargetOrbitParams</span><span class="p">(</span><span class="mf">450.0</span><span class="p">,</span> <span class="mf">33000.0</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">)</span>
+
+<span class="c1"># Define the path to atmospheric files to be used for the Monte Carlo simulations.</span>
+<span class="n">atmfiles</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;../atmdata/Mars/LAT00N-N1000.txt&#39;</span><span class="p">]</span>
+
+<span class="c1"># Set up the Monte Carlo simulation for drag modulation.</span>
+<span class="c1"># NPOS = 156, NMONTE = 1000</span>
+<span class="c1"># Target EFPA = -12.05 deg</span>
+<span class="c1"># EFPA 1-sigma error = +/- 0.067 deg</span>
+<span class="c1"># Nominal beta_1 = 66.4 kg/m2</span>
+<span class="c1"># beta_1 1-sigma = 0.0</span>
+<span class="c1"># guidance time step for entry = 1.0s (Freq. = 1 Hz)</span>
+<span class="c1"># guidance time step after jettison = 1.0 s</span>
+<span class="c1"># max. solver time step = 0.1 s</span>
+<span class="c1"># max. time used by solver = 2400 s</span>
+
+<span class="n">vehicle</span><span class="o">.</span><span class="n">setupMonteCarloSimulationD</span><span class="p">(</span><span class="mi">156</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">atmfiles</span><span class="p">,</span> <span class="mi">0</span> <span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span>
+                                   <span class="o">-</span><span class="mf">11.80</span><span class="p">,</span>  <span class="mf">0.0667</span><span class="p">,</span> <span class="mf">66.4</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">2400.0</span><span class="p">)</span>
+<span class="c1"># Run 200 trajectories</span>
+<span class="n">vehicle</span><span class="o">.</span><span class="n">runMonteCarloD</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="s1">&#39;../data/werner2019/MCB2-Mars&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 1, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 323, EFPA: -11.79, SIGMA: -0.29, APO : 32577.73
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 2, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 641, EFPA: -11.81, SIGMA: 0.18, APO : 31263.06
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 3, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 120, EFPA: -11.93, SIGMA: -2.68, APO : 32488.87
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 4, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 971, EFPA: -11.92, SIGMA: 1.56, APO : 34683.39
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/athul/anaconda3/lib/python3.7/site-packages/AMAT-2.1.3-py3.7.egg/AMAT/vehicle.py:504: RuntimeWarning: invalid value encountered in sqrt
+  ans[:]  = 1.8980E-8 * (rho_vec[:]/self.RN)**0.5 * v[:]**3.0
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 5, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 165, EFPA: -11.83, SIGMA: -2.05, APO : 33118.19
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 6, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 529, EFPA: -11.75, SIGMA: 0.25, APO : 32952.30
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 7, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 57, EFPA: -11.88, SIGMA: 0.37, APO : 33138.68
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 8, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 158, EFPA: -11.77, SIGMA: 0.27, APO : 31926.75
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 9, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 623, EFPA: -11.76, SIGMA: 0.86, APO : 32279.26
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 10, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 335, EFPA: -11.91, SIGMA: -1.30, APO : 34055.62
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 11, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 360, EFPA: -11.79, SIGMA: -1.09, APO : 32848.65
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 12, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 679, EFPA: -11.77, SIGMA: 1.58, APO : 31324.80
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 13, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 820, EFPA: -11.86, SIGMA: -0.50, APO : 34666.91
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 14, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 522, EFPA: -11.76, SIGMA: -1.80, APO : 32589.29
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 15, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 356, EFPA: -11.81, SIGMA: -0.98, APO : 32025.72
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 16, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 400, EFPA: -11.82, SIGMA: -0.93, APO : 32681.15
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 17, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 153, EFPA: -11.77, SIGMA: 2.31, APO : 30904.72
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 18, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 321, EFPA: -11.83, SIGMA: -1.58, APO : 32500.60
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 19, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 243, EFPA: -11.92, SIGMA: -0.53, APO : 32899.73
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 20, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 220, EFPA: -11.82, SIGMA: 0.79, APO : 29928.16
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 21, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 761, EFPA: -11.74, SIGMA: 0.01, APO : 32632.82
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 22, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 518, EFPA: -11.83, SIGMA: 1.50, APO : 30531.60
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 23, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 624, EFPA: -11.68, SIGMA: 0.79, APO : 32593.76
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 24, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 553, EFPA: -11.74, SIGMA: 0.73, APO : 33146.31
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 25, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 824, EFPA: -11.76, SIGMA: -0.21, APO : 32564.92
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 26, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 815, EFPA: -11.76, SIGMA: -0.58, APO : 31947.94
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 27, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 543, EFPA: -11.84, SIGMA: -1.83, APO : 32945.79
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 28, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 855, EFPA: -11.77, SIGMA: -2.10, APO : 33343.44
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 29, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 863, EFPA: -11.90, SIGMA: 0.89, APO : 30733.56
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 30, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 809, EFPA: -11.72, SIGMA: -0.91, APO : 33349.24
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 31, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 805, EFPA: -11.69, SIGMA: -0.54, APO : 32828.30
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 32, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 938, EFPA: -11.85, SIGMA: 2.03, APO : 34293.72
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 33, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 271, EFPA: -11.90, SIGMA: -0.44, APO : 33137.81
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 34, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 579, EFPA: -11.79, SIGMA: 0.83, APO : 32171.64
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 35, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 947, EFPA: -11.91, SIGMA: -1.39, APO : 31584.52
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 36, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 851, EFPA: -11.67, SIGMA: 0.35, APO : 32554.18
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 37, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 917, EFPA: -11.78, SIGMA: -0.55, APO : 33133.24
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 38, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 34, EFPA: -11.84, SIGMA: 0.52, APO : 33299.46
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 39, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 417, EFPA: -11.82, SIGMA: 1.67, APO : 33257.16
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 40, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 905, EFPA: -11.79, SIGMA: -0.99, APO : 32695.03
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 41, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 562, EFPA: -11.83, SIGMA: -0.14, APO : 32995.77
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 42, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 951, EFPA: -11.82, SIGMA: -0.46, APO : 31976.55
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 43, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 572, EFPA: -11.88, SIGMA: -0.50, APO : 33227.59
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 44, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 445, EFPA: -11.84, SIGMA: -0.92, APO : 32261.02
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 45, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 127, EFPA: -11.75, SIGMA: -0.11, APO : 32204.43
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 46, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 834, EFPA: -11.80, SIGMA: -1.26, APO : 32546.44
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 47, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 430, EFPA: -11.83, SIGMA: 0.05, APO : 32395.95
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 48, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 764, EFPA: -11.78, SIGMA: -2.64, APO : 32847.73
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 49, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 428, EFPA: -11.81, SIGMA: 0.65, APO : 33907.42
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 50, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 748, EFPA: -11.82, SIGMA: -0.93, APO : 30363.41
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 51, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 576, EFPA: -11.78, SIGMA: 0.36, APO : 32627.78
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 52, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 621, EFPA: -11.73, SIGMA: 0.33, APO : 32560.41
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 53, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 746, EFPA: -11.88, SIGMA: 3.59, APO : 27525.65
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 54, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 299, EFPA: -11.83, SIGMA: -0.79, APO : 33239.30
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 55, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 757, EFPA: -11.72, SIGMA: 0.41, APO : 33163.05
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 56, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 568, EFPA: -11.76, SIGMA: -1.06, APO : 33302.55
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 57, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 945, EFPA: -11.66, SIGMA: -0.64, APO : 32926.05
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 58, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 729, EFPA: -11.76, SIGMA: 2.08, APO : 32448.62
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 59, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 589, EFPA: -11.69, SIGMA: -1.75, APO : 33098.32
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 60, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 488, EFPA: -11.80, SIGMA: -0.44, APO : 33247.83
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 61, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 193, EFPA: -11.69, SIGMA: -0.68, APO : 32782.73
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 62, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 306, EFPA: -11.79, SIGMA: 0.12, APO : 32744.57
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 63, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 459, EFPA: -11.97, SIGMA: 1.23, APO : 29849.99
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 64, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 478, EFPA: -11.85, SIGMA: -2.99, APO : 32495.06
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 65, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 30, EFPA: -11.88, SIGMA: 1.08, APO : 30837.00
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 66, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 752, EFPA: -11.69, SIGMA: -1.15, APO : 32767.21
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 67, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 584, EFPA: -11.80, SIGMA: 0.31, APO : 32557.71
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 68, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 632, EFPA: -11.86, SIGMA: -0.36, APO : 32676.39
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 69, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 709, EFPA: -11.82, SIGMA: -0.93, APO : 32634.53
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 70, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 154, EFPA: -11.87, SIGMA: 0.63, APO : 29549.68
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 71, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 468, EFPA: -11.77, SIGMA: 0.31, APO : 33146.20
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 72, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 428, EFPA: -11.77, SIGMA: -1.48, APO : 33119.29
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 73, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 768, EFPA: -11.83, SIGMA: -1.23, APO : 32376.70
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 74, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 447, EFPA: -11.74, SIGMA: -0.32, APO : 32195.44
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 75, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 556, EFPA: -11.75, SIGMA: -0.06, APO : 32280.00
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 76, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 758, EFPA: -11.79, SIGMA: 0.25, APO : 30210.66
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 77, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 168, EFPA: -11.93, SIGMA: 2.43, APO : 27460.65
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 78, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 143, EFPA: -11.79, SIGMA: 0.25, APO : 33456.57
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 79, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 754, EFPA: -11.80, SIGMA: -0.14, APO : 33714.98
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 80, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 180, EFPA: -11.71, SIGMA: -0.71, APO : 33022.70
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 81, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 898, EFPA: -11.77, SIGMA: -2.06, APO : 32980.24
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 82, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 268, EFPA: -11.87, SIGMA: 0.47, APO : 32306.71
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 83, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 774, EFPA: -11.77, SIGMA: -2.42, APO : 32904.05
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 84, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 530, EFPA: -11.84, SIGMA: 0.14, APO : 32434.25
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 85, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 67, EFPA: -11.67, SIGMA: 1.93, APO : 33094.71
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 86, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 461, EFPA: -11.85, SIGMA: -0.61, APO : 30606.20
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 87, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 243, EFPA: -11.85, SIGMA: -1.20, APO : 33668.52
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 88, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 997, EFPA: -11.86, SIGMA: -0.07, APO : 31123.70
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 89, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 722, EFPA: -11.91, SIGMA: 1.14, APO : 30216.72
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 90, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 348, EFPA: -11.89, SIGMA: -1.22, APO : 33758.54
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 91, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 145, EFPA: -11.83, SIGMA: 1.17, APO : 30788.83
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 92, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 62, EFPA: -11.69, SIGMA: -0.52, APO : 33140.54
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 93, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 994, EFPA: -11.78, SIGMA: 0.41, APO : 31145.02
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 94, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 512, EFPA: -11.75, SIGMA: 0.06, APO : 32627.69
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 95, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 222, EFPA: -11.77, SIGMA: 0.23, APO : 32152.49
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 96, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 611, EFPA: -11.58, SIGMA: -2.00, APO : -59599.06
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 97, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 30, EFPA: -11.79, SIGMA: -1.34, APO : 33205.77
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 98, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 732, EFPA: -11.75, SIGMA: -0.29, APO : 33147.11
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 99, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 64, EFPA: -11.68, SIGMA: 0.07, APO : 37376.72
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 100, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 343, EFPA: -11.70, SIGMA: 0.99, APO : 32539.10
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 101, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 906, EFPA: -11.84, SIGMA: 0.31, APO : 32517.83
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 102, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 533, EFPA: -11.76, SIGMA: -1.08, APO : 33033.41
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 103, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 329, EFPA: -11.71, SIGMA: 0.74, APO : 32401.12
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 104, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 510, EFPA: -11.83, SIGMA: -1.40, APO : 33176.79
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 105, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 778, EFPA: -11.77, SIGMA: 0.74, APO : 32348.53
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 106, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 555, EFPA: -11.80, SIGMA: -0.74, APO : 32509.25
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 107, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 803, EFPA: -11.74, SIGMA: -0.58, APO : 33237.60
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 108, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 108, EFPA: -11.83, SIGMA: 1.76, APO : 33437.03
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 109, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 906, EFPA: -11.75, SIGMA: -0.77, APO : 32963.40
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 110, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 655, EFPA: -11.81, SIGMA: 0.13, APO : 32307.01
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 111, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 972, EFPA: -11.75, SIGMA: -0.53, APO : 32921.98
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 112, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 651, EFPA: -11.72, SIGMA: 1.04, APO : 33145.04
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 113, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 202, EFPA: -11.80, SIGMA: 0.89, APO : 32833.74
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 114, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 596, EFPA: -11.78, SIGMA: 0.21, APO : 32579.24
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 115, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 911, EFPA: -11.88, SIGMA: -0.81, APO : 35026.98
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 116, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 978, EFPA: -11.76, SIGMA: 0.09, APO : 33354.20
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 117, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 194, EFPA: -11.80, SIGMA: -1.53, APO : 33170.99
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 118, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 63, EFPA: -11.81, SIGMA: -1.53, APO : 31784.22
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 119, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 815, EFPA: -11.93, SIGMA: 0.41, APO : 32031.26
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 120, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 953, EFPA: -11.76, SIGMA: -0.48, APO : 32281.00
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 121, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 288, EFPA: -11.74, SIGMA: -1.51, APO : 32770.89
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 122, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 818, EFPA: -11.87, SIGMA: -1.11, APO : 31876.10
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 123, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 404, EFPA: -11.80, SIGMA: -0.95, APO : 34060.29
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 124, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 231, EFPA: -11.88, SIGMA: 2.04, APO : 28912.72
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 125, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 807, EFPA: -11.86, SIGMA: -0.17, APO : 32252.30
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 126, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 873, EFPA: -11.78, SIGMA: 1.00, APO : 30770.96
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 127, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 833, EFPA: -11.83, SIGMA: 0.53, APO : 33261.34
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 128, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 252, EFPA: -11.87, SIGMA: -0.85, APO : 30178.20
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 129, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 565, EFPA: -11.68, SIGMA: -0.44, APO : 33026.39
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 130, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 382, EFPA: -11.83, SIGMA: 0.03, APO : 32210.04
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 131, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 612, EFPA: -11.73, SIGMA: -1.17, APO : 48514.86
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 132, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 937, EFPA: -11.80, SIGMA: 1.55, APO : 31901.56
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 133, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 894, EFPA: -11.83, SIGMA: -0.26, APO : 31639.84
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 134, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 436, EFPA: -11.78, SIGMA: 1.19, APO : 32842.71
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 135, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 856, EFPA: -11.76, SIGMA: 1.05, APO : 31218.55
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 136, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 731, EFPA: -11.73, SIGMA: 0.53, APO : 33138.80
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 137, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 365, EFPA: -11.91, SIGMA: -0.43, APO : 29544.45
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 138, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 131, EFPA: -11.86, SIGMA: -1.29, APO : 32882.69
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 139, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 928, EFPA: -11.76, SIGMA: 0.51, APO : 32908.79
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 140, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 675, EFPA: -11.84, SIGMA: -0.44, APO : 33420.71
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 141, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 771, EFPA: -11.78, SIGMA: -0.55, APO : 32648.17
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 142, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 218, EFPA: -11.94, SIGMA: -0.58, APO : 32131.56
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 143, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 674, EFPA: -11.75, SIGMA: -1.88, APO : 32942.75
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 144, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 526, EFPA: -11.84, SIGMA: 1.02, APO : 32150.60
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 145, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 414, EFPA: -11.88, SIGMA: 0.04, APO : 30167.78
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 146, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 971, EFPA: -11.83, SIGMA: -0.76, APO : 35221.26
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 147, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 644, EFPA: -11.90, SIGMA: 1.13, APO : 31257.53
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 148, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 863, EFPA: -11.85, SIGMA: -0.23, APO : 32058.29
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 149, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 304, EFPA: -11.77, SIGMA: -0.91, APO : 33121.24
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 150, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 202, EFPA: -11.91, SIGMA: -1.65, APO : 32489.36
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 151, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 219, EFPA: -11.82, SIGMA: -0.08, APO : 31031.43
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 152, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 225, EFPA: -11.82, SIGMA: -1.00, APO : 33058.62
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 153, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 298, EFPA: -11.74, SIGMA: -1.00, APO : 32822.08
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 154, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 120, EFPA: -11.72, SIGMA: -0.17, APO : 33055.29
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 155, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 73, EFPA: -11.77, SIGMA: -1.34, APO : 33135.85
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 156, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 890, EFPA: -11.74, SIGMA: -1.78, APO : 32952.39
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 157, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 414, EFPA: -11.82, SIGMA: 0.45, APO : 29928.26
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 158, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 522, EFPA: -11.86, SIGMA: 1.85, APO : 34118.29
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 159, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 489, EFPA: -11.81, SIGMA: 0.70, APO : 32025.62
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 160, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 644, EFPA: -11.76, SIGMA: -0.35, APO : 32760.02
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 161, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 764, EFPA: -11.91, SIGMA: -0.32, APO : 29380.60
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 162, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 596, EFPA: -11.72, SIGMA: 0.18, APO : 32955.43
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 163, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 498, EFPA: -11.88, SIGMA: -1.44, APO : 34005.35
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 164, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 615, EFPA: -11.78, SIGMA: 1.76, APO : 32286.27
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 165, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 944, EFPA: -11.87, SIGMA: 0.30, APO : 31066.50
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 166, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 406, EFPA: -11.83, SIGMA: -0.12, APO : 31599.04
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 167, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 829, EFPA: -11.78, SIGMA: -0.43, APO : 34139.57
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 168, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 180, EFPA: -11.82, SIGMA: -0.42, APO : 32186.09
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 169, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 765, EFPA: -11.70, SIGMA: -1.12, APO : 32991.40
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 170, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 267, EFPA: -11.82, SIGMA: 0.33, APO : 32976.77
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 171, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 304, EFPA: -11.74, SIGMA: 0.27, APO : 32222.07
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 172, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 176, EFPA: -11.86, SIGMA: -1.23, APO : 32461.76
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 173, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 303, EFPA: -11.79, SIGMA: 1.18, APO : 30793.02
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 174, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 563, EFPA: -11.83, SIGMA: -1.24, APO : 33081.93
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 175, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 635, EFPA: -11.77, SIGMA: 0.56, APO : 31688.48
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 176, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 59, EFPA: -11.79, SIGMA: -1.15, APO : 32489.12
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 177, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 42, EFPA: -11.67, SIGMA: -0.55, APO : 33136.43
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 178, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 853, EFPA: -11.77, SIGMA: -1.97, APO : 32841.73
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 179, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 367, EFPA: -11.79, SIGMA: -0.33, APO : 32174.99
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 180, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 390, EFPA: -11.98, SIGMA: -0.04, APO : 37951.84
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 181, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 210, EFPA: -11.85, SIGMA: 0.31, APO : 32692.22
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 182, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 185, EFPA: -11.84, SIGMA: 2.36, APO : 30077.14
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 183, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 710, EFPA: -11.84, SIGMA: -0.56, APO : 31625.02
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 184, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 891, EFPA: -11.80, SIGMA: 0.02, APO : 32301.29
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 185, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 643, EFPA: -11.82, SIGMA: 0.07, APO : 31366.44
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 186, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 414, EFPA: -11.80, SIGMA: -0.10, APO : 30194.61
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 187, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 282, EFPA: -11.76, SIGMA: -0.25, APO : 31947.25
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 188, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 188, EFPA: -11.83, SIGMA: 1.38, APO : 32456.24
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 189, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 365, EFPA: -11.89, SIGMA: 0.36, APO : 30324.04
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 190, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 276, EFPA: -11.82, SIGMA: -0.62, APO : 32557.33
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 191, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 277, EFPA: -11.78, SIGMA: -1.29, APO : 32861.95
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 192, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 397, EFPA: -11.67, SIGMA: 0.77, APO : 32877.94
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 193, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 428, EFPA: -11.82, SIGMA: 0.55, APO : 32704.97
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 194, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 307, EFPA: -11.87, SIGMA: -0.03, APO : 32033.48
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 195, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 191, EFPA: -11.84, SIGMA: -0.11, APO : 32431.21
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 196, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 837, EFPA: -11.77, SIGMA: -0.40, APO : 31984.49
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 197, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 419, EFPA: -11.74, SIGMA: 1.65, APO : 32412.90
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 198, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 922, EFPA: -11.89, SIGMA: -1.35, APO : 33031.33
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 199, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 505, EFPA: -11.85, SIGMA: 0.12, APO : 33073.55
+BATCH :../data/werner2019/MCB2-Mars, RUN #: 200, PROF: ../atmdata/Mars/LAT00N-N1000.txt, SAMPLE #: 410, EFPA: -11.83, SIGMA: -0.19, APO : 31926.59
+</pre></div></div>
+</div>
+<p>Load the terminal apoapsis, deceleration and heat rate data.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">apoap</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;../data/werner2019/MCB2-Mars/terminal_apoapsis_arr.txt&#39;</span><span class="p">)</span>
+<span class="n">peria</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;../data/werner2019/MCB2-Mars/terminal_periapsis_arr.txt&#39;</span><span class="p">)</span>
+<span class="n">decel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;../data/werner2019/MCB2-Mars/acc_net_g_max_arr.txt&#39;</span><span class="p">)</span>
+<span class="n">heatr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;../data/werner2019/MCB2-Mars/q_stag_max_arr.txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Remove cases which resulted in apoapsis &lt; 30000 km or &gt; 36000 km.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">del_index_low</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">apoap</span> <span class="o">&lt;</span> <span class="mi">28000</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">del_index_low</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(array([52, 76, 95]),)
+</pre></div></div>
+</div>
+<p>Seven cases resulted in apoapis less than 25000 km, and are considered to crash.</p>
+<p>Remove these entries from the data before plotting.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">apoap_clean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">apoap</span><span class="p">,</span> <span class="n">del_index_low</span><span class="p">)</span>
+<span class="n">peria_clean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">peria</span><span class="p">,</span> <span class="n">del_index_low</span><span class="p">)</span>
+<span class="n">decel_clean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">decel</span><span class="p">,</span> <span class="n">del_index_low</span><span class="p">)</span>
+<span class="n">heatr_clean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">heatr</span><span class="p">,</span> <span class="n">del_index_low</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Also remove cases with apoapsis &gt; 36000 km.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">del_index_high</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">apoap_clean</span> <span class="o">&gt;</span> <span class="mi">36000</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">del_index_high</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(array([ 95, 127, 176]),)
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">apoap_clean2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">apoap_clean</span><span class="p">,</span> <span class="n">del_index_high</span><span class="p">)</span>
+<span class="n">peria_clean2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">peria_clean</span><span class="p">,</span> <span class="n">del_index_high</span><span class="p">)</span>
+<span class="n">decel_clean2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">decel_clean</span><span class="p">,</span> <span class="n">del_index_high</span><span class="p">)</span>
+<span class="n">heatr_clean2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">heatr_clean</span><span class="p">,</span> <span class="n">del_index_high</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span><span class="n">family</span><span class="o">=</span><span class="s1">&#39;Times New Roman&#39;</span><span class="p">)</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;mathtext.default&#39;</span><span class="p">:</span> <span class="s1">&#39;regular&#39;</span> <span class="p">}</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">apoap_clean2</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;xkcd:red&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Apoapsis altitude, km&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Number of cases&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../plots/werner-smallsat-apoa-hist-mars-2.png&#39;</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../plots/werner-smallsat-apoa-hist-mars-2.pdf&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../plots/werner-smallsat-apoa-hist-mars-2.eps&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/examples_example-53-mars-smallsat-aerocapture-demonstration-part-3_15_0.png" src="../_images/examples_example-53-mars-smallsat-aerocapture-demonstration-part-3_15_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span><span class="n">family</span><span class="o">=</span><span class="s1">&#39;Times New Roman&#39;</span><span class="p">)</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;mathtext.default&#39;</span><span class="p">:</span> <span class="s1">&#39;regular&#39;</span> <span class="p">}</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">decel_clean2</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;xkcd:green&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Deceleration, g&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Number of cases&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../plots/werner-smallsat-decel-hist-mars-2.png&#39;</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../plots/werner-smallsat-decel-hist-mars-2.pdf&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../plots/werner-smallsat-decel-hist-mars-2.eps&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/examples_example-53-mars-smallsat-aerocapture-demonstration-part-3_16_0.png" src="../_images/examples_example-53-mars-smallsat-aerocapture-demonstration-part-3_16_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span><span class="n">family</span><span class="o">=</span><span class="s1">&#39;Times New Roman&#39;</span><span class="p">)</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;mathtext.default&#39;</span><span class="p">:</span> <span class="s1">&#39;regular&#39;</span> <span class="p">}</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">heatr_clean2</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;xkcd:blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Heat rate, &#39;</span><span class="o">+</span><span class="sa">r</span><span class="s1">&#39;$W/cm^2$&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Number of cases&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../plots/werner-smallsat-heat-hist-mars-2.png&#39;</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../plots/werner-smallsat-heat-hist-mars-2.pdf&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../plots/werner-smallsat-heat-hist-mars-2.eps&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/athul/anaconda3/lib/python3.7/site-packages/numpy/lib/histograms.py:824: RuntimeWarning: invalid value encountered in greater_equal
+  keep = (tmp_a &gt;= first_edge)
+/home/athul/anaconda3/lib/python3.7/site-packages/numpy/lib/histograms.py:825: RuntimeWarning: invalid value encountered in less_equal
+  keep &amp;= (tmp_a &lt;= last_edge)
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/examples_example-53-mars-smallsat-aerocapture-demonstration-part-3_17_1.png" src="../_images/examples_example-53-mars-smallsat-aerocapture-demonstration-part-3_17_1.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span><span class="n">family</span><span class="o">=</span><span class="s1">&#39;Times New Roman&#39;</span><span class="p">)</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;mathtext.default&#39;</span><span class="p">:</span> <span class="s1">&#39;regular&#39;</span> <span class="p">}</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">peria_clean2</span><span class="p">,</span> <span class="n">apoap_clean2</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">facecolors</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">33000</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Periapsis altitude, km&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Apoapsis altitude, km&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../plots/werner-smallsat-apoa-peri-mars-2.png&#39;</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../plots/werner-smallsat-apoa-peri-mars-2.pdf&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../plots/werner-smallsat-apoa-peri-mars-2.eps&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/examples_example-53-mars-smallsat-aerocapture-demonstration-part-3_18_0.png" src="../_images/examples_example-53-mars-smallsat-aerocapture-demonstration-part-3_18_0.png" />
+</div>
+</div>
+<p>Find the percentage of cases which achieved apoapsis between 100 and 800 km.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">apoap</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">del_index_low</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">del_index_high</span><span class="p">))</span><span class="o">*</span><span class="mi">100</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">apoap</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+97.0
+</pre></div></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../credits.html" class="btn btn-neutral float-right" title="Credits" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="example-52-mars-smallsat-aerocapture-demonstration-part-2.html" class="btn btn-neutral float-left" title="Example - 52 - Mars SmallSat Aerocapture Demonstration - Part 2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, AP Girija
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

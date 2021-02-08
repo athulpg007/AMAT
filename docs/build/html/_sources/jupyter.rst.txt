@@ -1,0 +1,4 @@
+.. toctree::
+   :maxdepth: 1
+
+   /examples/example-01-hello-world.ipynb
