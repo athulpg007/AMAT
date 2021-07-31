@@ -1,116 +1,118 @@
 Installation
 =============
 
-
 Note: AMAT is designed to work with Python 3.0 or greater. You must have a Python 3 installation in your system.
 
 There are three ways to install AMAT. 
 
-Option 1 : Install from source (recommended)
+Option 1 : Install from pip (recommended)
 ----------------------------------------------
 
-This allows you to download the "entire" package (with the required data files to run examples).
+Note: Python Package Index limits the amount of additional data that can be packaged in the distribution, hence all data cannot be included in the built version. You will need to clone the GitHub repository to get the required data files, examples, and start using AMAT.
 
-1. Make sure you have numpy, scipy, matplotlib and pandas installed. Most likely you already have these installed. If not, use the following commands to install these dependenies first. Open a terminal window (on Linux/Mac machines) and type the following commands. You must have pip installed.
+**For Linux machines:**
 
-  * ``$ pip install numpy`` 
-  * ``$ pip install scipy``
-  * ``$ pip install matplotlib``
-  * ``$ pip install pandas``
-
-It is recommeded to have `Jupyter Notebook`_ installed to run the example notebooks.
-
-  * ``pip install jupyterlab``
-
-.. _Jupyter Notebook: https://jupyter.org/index.html
-
-On Windows machines, the recommended option is to use  `Anaconda`_ package manager to install these packages.
-
-.. _Anaconda: https://www.anaconda.com/ 
-
-2. Navigate to the directory where you want AMAT to be installed. Open a terminal (or command window) and use the folllowing command:
-
-  * ``$ cd home/path``
-
-where home/path is to be replaced with the path to the folder where AMAT will be installed. 
-
-3. Clone the github repository using the following command. You must have git installed.
-
+  * ``$ pip install AMAT``
   * ``$ git clone https://github.com/athulpg007/AMAT.git``
 
-If you do not have git installed, you can download a .zip file from the github page and extract it. Copy the entire uncompressed folder into the directory where you want AMAT to be installed.
+If you are unable to clone the repository, you can download the repository as a .zip file from GitHub and extract it. Once AMAT is installed, run an example Jupyter notebook to check everything works correctly.
 
-4. Change directory to AMAT and install package.
+  * ``$ cd AMAT/examples``
+  * ``$ jupyter-notebook``
 
-  * ``$ cd AMAT``
-  * ``$ python setup.py install``
+This will display the full list of example Jupyter notebooks included with AMAT.  Open and run the ``example-01-hello-world`` notebook to get started with AMAT.
 
-5. Check that you have the required data files. For example, in the root folder where AMAT is installed, you should see a folder names atmdata with data for various planets.
-
-6. Run an example script to check everything is working.
-
-  * ``$ cd examples``
-  * ``$ ipython``
-  * ``$ run example-01-hello-world.py``
-
-7. Run example Jupyter notebooks
-
-  * ``jupyter-notebook``
-
-
-To uninstall AMAT, use
-
-  * ``python setup.py develop -u``
-
-This will remove the AMAT installation from Python. You may simply delete the root folder where AMAT was installed to completely remove the files.
-
-Option 2 : Install from pip (NOT recommended)
------------------------------------------------
-
-This allows you to download the package, but without most of the data files. You can run the program, but will need to visit the git repository later to download some of the data files and place them in an appropriate location. You will also need to change the location of data files in the example scripts if you use them. 
-
-Python Package Index limits the amount of additional data that can be packaged in the distribution, hence all data cannot be included in the built version.
+**For Windows machines:**
 
   * ``$ pip install AMAT``
 
-Option 3 : Install in a virutalenv (for developers)
+(You must have Anaconda installed. Use the pip command from the Anaconda Prompt terminal). Open a Windows Powershell terminal and clone the GitHub reporistory. You must have Git installed.
+
+  * ``$ git clone https://github.com/athulpg007/AMAT.git``
+
+Run an example Jupyter notebook. From the Anaconda Prompt terminal:
+
+  * ``$ cd AMAT/examples``
+  * ``$ jupyter-notebook``
+
+This will display the full list of example Jupyter notebooks included with AMAT. Open and run the ``example-01-hello-world`` notebook to get started with AMAT.
+
+
+Option 2 : Install from source
+-----------------------------------------------
+
+This will clone the repository from GitHub and install AMAT from the source code.
+
+**For Linux machines:**
+
+  * ``$ pip install numpy scipy matplotlib pandas jupyterlab``
+
+Clone the GitHub repository and install AMAT.
+
+  * ``$ git clone https://github.com/athulpg007/AMAT.git``
+  * ``$ cd AMAT``
+  * ``$ python setup.py install``
+  * ``$ cd examples``
+  * ``$ jupyter-notebook``
+
+**For Windows machines (from the Anaconda Prompt terminal):**
+
+  * ``$ pip install numpy scipy matplotlib pandas jupyterlab``
+
+Open a Windows Powershell terminal, clone the GitHub repository and install AMAT.
+
+  * ``$ git clone https://github.com/athulpg007/AMAT.git``
+  * ``$ cd AMAT``
+  * ``$ python setup.py install``
+  * ``$ cd examples``
+  * ``$ jupyter-notebook``
+
+**To uninstall AMAT:**
+
+1. If you installed AMAT using pip:
+  * ``$ pip uninstall AMAT``
+
+2. If you installed AMAT from source, from the main AMAT directory:
+  * ``$ python setup.py develop -u``
+
+This will remove the AMAT installation from Python. You may simply delete the root folder where AMAT was installed to completely remove the files.
+
+
+Option 3 : Install in a virutalenv 
 ---------------------------------------------------------
 
-If you plan to test or develop the package, the recommended option is to to install it in a virtual environment. This allows you to discard changes and start afresh without having to do a system-wide installation.
+If you plan to modifty the source code or add features, the recommended option is to install it in a virtual environment. 
 
 1. Change directory to where you want the virtual environment to be created.
-
   * ``$ cd home/path``
 
 2. Create a virutal environment and activate it.
 
+**On Linux machines:**
+
   * ``$ python3 -m venv env1``
   * ``$ source env1/bin/activate``
 
-3. Change directory to env1
+**On Windows machines (from Anaconda Prompt):**
 
-  * ``$ cd env1``
+  * ``$ conda create --name env1``
+  * ``$ conda activate env1``
+  * ``$ conda install pip``
 
-4. Follow steps 1 through 6 in Option #1 : Install from source. pip will automatically fetch the required dependencies.
+4. Follow the steps outlined in Option #2 (build from source) to clone the repository and install AMAT. If you make changes to the source code, remove the existing installation, update the setup file with a new version number, and re-install:
 
+  * ``$ python setup.py develop -u``
+  * ``$ python setup.py install``
 
-5. If you make changes to the source code, use 
+If you want to create a new distrubution package:
 
- * ``python setup.py develop -u``
+  * ``$ python3 setup.py sdist bdist_wheel``
 
-to remove the previously installed version. Re-install using
+To re-make docs if you made changes to the source code (you must have Sphinx installed):
 
- * ``$ python setup.py install``
-
-6. To create a distribution
-
- * ``python3 setup.py sdist bdist_wheel``
-
-7. To re-make docs if you made changes to the source code, you must have sphinx installed.
-
- * ``cd ~root/docs``
- * ``sphinx-apidoc -f -o source/ ../``
- * ``make html``
+  * ``$ cd ~root/docs``
+  * ``$ sphinx-apidoc -f -o source/ ../``
+  * ``$ make html``
 
 If you added a new AMAT module, appropriate changes must be made to docs/source/AMAT.rst.
 

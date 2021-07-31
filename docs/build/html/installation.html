@@ -88,9 +88,9 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="about.html">About AMAT</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#option-1-install-from-source-recommended">Option 1 : Install from source (recommended)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#option-2-install-from-pip-not-recommended">Option 2 : Install from pip (NOT recommended)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#option-3-install-in-a-virutalenv-for-developers">Option 3 : Install in a virutalenv (for developers)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#option-1-install-from-pip-recommended">Option 1 : Install from pip (recommended)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#option-2-install-from-source">Option 2 : Install from source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#option-3-install-in-a-virutalenv">Option 3 : Install in a virutalenv</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#amat-usage">AMAT Usage</a></li>
 </ul>
 </li>
@@ -191,94 +191,102 @@
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
 <p>Note: AMAT is designed to work with Python 3.0 or greater. You must have a Python 3 installation in your system.</p>
 <p>There are three ways to install AMAT.</p>
-<div class="section" id="option-1-install-from-source-recommended">
-<h2>Option 1 : Install from source (recommended)<a class="headerlink" href="#option-1-install-from-source-recommended" title="Permalink to this headline">¶</a></h2>
-<p>This allows you to download the “entire” package (with the required data files to run examples).</p>
-<ol class="arabic simple">
-<li><p>Make sure you have numpy, scipy, matplotlib and pandas installed. Most likely you already have these installed. If not, use the following commands to install these dependenies first. Open a terminal window (on Linux/Mac machines) and type the following commands. You must have pip installed.</p></li>
-</ol>
+<div class="section" id="option-1-install-from-pip-recommended">
+<h2>Option 1 : Install from pip (recommended)<a class="headerlink" href="#option-1-install-from-pip-recommended" title="Permalink to this headline">¶</a></h2>
+<p>Note: Python Package Index limits the amount of additional data that can be packaged in the distribution, hence all data cannot be included in the built version. You will need to clone the GitHub repository to get the required data files, examples, and start using AMAT.</p>
+<p><strong>For Linux machines:</strong></p>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">numpy</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">scipy</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">matplotlib</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pandas</span></code></p></li>
-</ul>
-</div></blockquote>
-<p>It is recommeded to have <a class="reference external" href="https://jupyter.org/index.html">Jupyter Notebook</a> installed to run the example notebooks.</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">jupyterlab</span></code></p></li>
-</ul>
-</div></blockquote>
-<p>On Windows machines, the recommended option is to use  <a class="reference external" href="https://www.anaconda.com/">Anaconda</a> package manager to install these packages.</p>
-<ol class="arabic simple" start="2">
-<li><p>Navigate to the directory where you want AMAT to be installed. Open a terminal (or command window) and use the folllowing command:</p></li>
-</ol>
-<blockquote>
-<div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">home/path</span></code></p></li>
-</ul>
-</div></blockquote>
-<p>where home/path is to be replaced with the path to the folder where AMAT will be installed.</p>
-<ol class="arabic simple" start="3">
-<li><p>Clone the github repository using the following command. You must have git installed.</p></li>
-</ol>
-<blockquote>
-<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">AMAT</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/athulpg007/AMAT.git</span></code></p></li>
 </ul>
 </div></blockquote>
-<p>If you do not have git installed, you can download a .zip file from the github page and extract it. Copy the entire uncompressed folder into the directory where you want AMAT to be installed.</p>
-<ol class="arabic simple" start="4">
-<li><p>Change directory to AMAT and install package.</p></li>
-</ol>
+<p>If you are unable to clone the repository, you can download the repository as a .zip file from GitHub and extract it. Once AMAT is installed, run an example Jupyter notebook to check everything works correctly.</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">AMAT</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">AMAT/examples</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">jupyter-notebook</span></code></p></li>
 </ul>
 </div></blockquote>
-<ol class="arabic simple" start="5">
-<li><p>Check that you have the required data files. For example, in the root folder where AMAT is installed, you should see a folder names atmdata with data for various planets.</p></li>
-<li><p>Run an example script to check everything is working.</p></li>
-</ol>
-<blockquote>
-<div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">examples</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">ipython</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">run</span> <span class="pre">example-01-hello-world.py</span></code></p></li>
-</ul>
-</div></blockquote>
-<ol class="arabic simple" start="7">
-<li><p>Run example Jupyter notebooks</p></li>
-</ol>
-<blockquote>
-<div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">jupyter-notebook</span></code></p></li>
-</ul>
-</div></blockquote>
-<p>To uninstall AMAT, use</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">develop</span> <span class="pre">-u</span></code></p></li>
-</ul>
-</div></blockquote>
-<p>This will remove the AMAT installation from Python. You may simply delete the root folder where AMAT was installed to completely remove the files.</p>
-</div>
-<div class="section" id="option-2-install-from-pip-not-recommended">
-<h2>Option 2 : Install from pip (NOT recommended)<a class="headerlink" href="#option-2-install-from-pip-not-recommended" title="Permalink to this headline">¶</a></h2>
-<p>This allows you to download the package, but without most of the data files. You can run the program, but will need to visit the git repository later to download some of the data files and place them in an appropriate location. You will also need to change the location of data files in the example scripts if you use them.</p>
-<p>Python Package Index limits the amount of additional data that can be packaged in the distribution, hence all data cannot be included in the built version.</p>
+<p>This will display the full list of example Jupyter notebooks included with AMAT.  Open and run the <code class="docutils literal notranslate"><span class="pre">example-01-hello-world</span></code> notebook to get started with AMAT.</p>
+<p><strong>For Windows machines:</strong></p>
 <blockquote>
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">AMAT</span></code></p></li>
 </ul>
 </div></blockquote>
+<p>(You must have Anaconda installed. Use the pip command from the Anaconda Prompt terminal). Open a Windows Powershell terminal and clone the GitHub reporistory. You must have Git installed.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/athulpg007/AMAT.git</span></code></p></li>
+</ul>
+</div></blockquote>
+<p>Run an example Jupyter notebook. From the Anaconda Prompt terminal:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">AMAT/examples</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">jupyter-notebook</span></code></p></li>
+</ul>
+</div></blockquote>
+<p>This will display the full list of example Jupyter notebooks included with AMAT. Open and run the <code class="docutils literal notranslate"><span class="pre">example-01-hello-world</span></code> notebook to get started with AMAT.</p>
 </div>
-<div class="section" id="option-3-install-in-a-virutalenv-for-developers">
-<h2>Option 3 : Install in a virutalenv (for developers)<a class="headerlink" href="#option-3-install-in-a-virutalenv-for-developers" title="Permalink to this headline">¶</a></h2>
-<p>If you plan to test or develop the package, the recommended option is to to install it in a virtual environment. This allows you to discard changes and start afresh without having to do a system-wide installation.</p>
+<div class="section" id="option-2-install-from-source">
+<h2>Option 2 : Install from source<a class="headerlink" href="#option-2-install-from-source" title="Permalink to this headline">¶</a></h2>
+<p>This will clone the repository from GitHub and install AMAT from the source code.</p>
+<p><strong>For Linux machines:</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">numpy</span> <span class="pre">scipy</span> <span class="pre">matplotlib</span> <span class="pre">pandas</span> <span class="pre">jupyterlab</span></code></p></li>
+</ul>
+</div></blockquote>
+<p>Clone the GitHub repository and install AMAT.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/athulpg007/AMAT.git</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">AMAT</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">examples</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">jupyter-notebook</span></code></p></li>
+</ul>
+</div></blockquote>
+<p><strong>For Windows machines (from the Anaconda Prompt terminal):</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">numpy</span> <span class="pre">scipy</span> <span class="pre">matplotlib</span> <span class="pre">pandas</span> <span class="pre">jupyterlab</span></code></p></li>
+</ul>
+</div></blockquote>
+<p>Open a Windows Powershell terminal, clone the GitHub repository and install AMAT.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/athulpg007/AMAT.git</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">AMAT</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">examples</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">jupyter-notebook</span></code></p></li>
+</ul>
+</div></blockquote>
+<p><strong>To uninstall AMAT:</strong></p>
+<ol class="arabic simple">
+<li><p>If you installed AMAT using pip:</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip</span> <span class="pre">uninstall</span> <span class="pre">AMAT</span></code></p></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>If you installed AMAT from source, from the main AMAT directory:</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">develop</span> <span class="pre">-u</span></code></p></li>
+</ul>
+</div></blockquote>
+<p>This will remove the AMAT installation from Python. You may simply delete the root folder where AMAT was installed to completely remove the files.</p>
+</div>
+<div class="section" id="option-3-install-in-a-virutalenv">
+<h2>Option 3 : Install in a virutalenv<a class="headerlink" href="#option-3-install-in-a-virutalenv" title="Permalink to this headline">¶</a></h2>
+<p>If you plan to modifty the source code or add features, the recommended option is to install it in a virtual environment.</p>
 <ol class="arabic simple">
 <li><p>Change directory to where you want the virtual environment to be created.</p></li>
 </ol>
@@ -290,51 +298,42 @@
 <ol class="arabic simple" start="2">
 <li><p>Create a virutal environment and activate it.</p></li>
 </ol>
+<p><strong>On Linux machines:</strong></p>
 <blockquote>
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">venv</span> <span class="pre">env1</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">source</span> <span class="pre">env1/bin/activate</span></code></p></li>
 </ul>
 </div></blockquote>
-<ol class="arabic simple" start="3">
-<li><p>Change directory to env1</p></li>
-</ol>
+<p><strong>On Windows machines (from Anaconda Prompt):</strong></p>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">env1</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">create</span> <span class="pre">--name</span> <span class="pre">env1</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">env1</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">conda</span> <span class="pre">install</span> <span class="pre">pip</span></code></p></li>
 </ul>
 </div></blockquote>
 <ol class="arabic simple" start="4">
-<li><p>Follow steps 1 through 6 in Option #1 : Install from source. pip will automatically fetch the required dependencies.</p></li>
-<li><p>If you make changes to the source code, use</p></li>
+<li><p>Follow the steps outlined in Option #2 (build from source) to clone the repository and install AMAT. If you make changes to the source code, remove the existing installation, update the setup file with a new version number, and re-install:</p></li>
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">develop</span> <span class="pre">-u</span></code></p></li>
-</ul>
-</div></blockquote>
-<p>to remove the previously installed version. Re-install using</p>
-<blockquote>
-<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">develop</span> <span class="pre">-u</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></code></p></li>
 </ul>
 </div></blockquote>
-<ol class="arabic simple" start="6">
-<li><p>To create a distribution</p></li>
-</ol>
+<p>If you want to create a new distrubution package:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">setup.py</span> <span class="pre">sdist</span> <span class="pre">bdist_wheel</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">python3</span> <span class="pre">setup.py</span> <span class="pre">sdist</span> <span class="pre">bdist_wheel</span></code></p></li>
 </ul>
 </div></blockquote>
-<ol class="arabic simple" start="7">
-<li><p>To re-make docs if you made changes to the source code, you must have sphinx installed.</p></li>
-</ol>
+<p>To re-make docs if you made changes to the source code (you must have Sphinx installed):</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">~root/docs</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">sphinx-apidoc</span> <span class="pre">-f</span> <span class="pre">-o</span> <span class="pre">source/</span> <span class="pre">../</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cd</span> <span class="pre">~root/docs</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">sphinx-apidoc</span> <span class="pre">-f</span> <span class="pre">-o</span> <span class="pre">source/</span> <span class="pre">../</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">make</span> <span class="pre">html</span></code></p></li>
 </ul>
 </div></blockquote>
 <p>If you added a new AMAT module, appropriate changes must be made to docs/source/AMAT.rst.</p>
