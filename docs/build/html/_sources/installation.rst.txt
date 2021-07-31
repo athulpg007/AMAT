@@ -26,7 +26,7 @@ This will display the full list of example Jupyter notebooks included with AMAT.
 
   * ``$ pip install AMAT``
 
-(You must have Anaconda installed. Use the pip command from the Anaconda Prompt terminal). Open a Windows Powershell terminal and clone the GitHub reporistory. You must have Git installed.
+(You must have Anaconda installed. Use the pip command from the Anaconda Prompt terminal). Open a Windows Powershell terminal and clone the GitHub repository. You must have Git installed.
 
   * ``$ git clone https://github.com/athulpg007/AMAT.git``
 
