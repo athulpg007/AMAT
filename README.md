@@ -48,7 +48,7 @@ There are three ways to install AMAT.
 
 Note: Python Package Index limits the amount of additional data that can be packaged in the distribution, hence all data cannot be included in the built version. You will need to clone the GitHub repository to get the required data files, examples, and start using AMAT.
 
-1. For Linux machines:
+#### For Linux machines:
   * ```$ pip install AMAT```
   * ```$ git clone https://github.com/athulpg007/AMAT.git```
 
@@ -58,7 +58,7 @@ Once AMAT is installed, run an example Jupyter notebook to check everything work
 
 This will display the full list of example Jupyter notebooks included with AMAT.  Open and run the ```example-01-hello-world``` notebook to get started with AMAT.
 
-2. For Windows machines:
+#### For Windows machines:
 
 You must have Anaconda installed. Open the Anaconda Prompt terminal:
   * ```$ pip install AMAT```
@@ -77,7 +77,7 @@ This will display the full list of example Jupyter notebooks included with AMAT.
 
 This will clone the repository from GitHub and install AMAT from the source code.
 
-1. For Linux machines:
+#### For Linux machines:
 
 Make sure you have numpy, scipy, matplotlib and pandas installed. Most likely you already have these installed. If not, use the following commands to install these dependenies first. Open a terminal window (on Linux machines) and type the following commands. You must have pip installed.
   * ```$ pip install numpy scipy matplotlib pandas jupyterlab```
@@ -89,7 +89,7 @@ Clone the GitHub repository and install AMAT.
   * ```$ cd examples```
   * ```$ jupyter-notebook```
 
-2. For Windows machines:
+#### For Windows machines:
 
 Open the Anaconda Prompt terminal to install the prerequisite packages.
   * ```$ pip install numpy scipy matplotlib pandas jupyterlab```
@@ -127,7 +127,7 @@ On Linux machines:
 
 On Windows machines (from Anaconda Prompt):
   * ```$ conda create --name env1```
-  * ```$ conda activate env1
+  * ```$ conda activate env1```
   * ```$ conda install pip```
 
 4. Follow the steps outlined in Option #2 (build from source) to clone the repository and install AMAT. If you make changes to the source code, remove the existing installation, update the setup file with a new version number, and re-install:
