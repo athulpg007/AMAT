@@ -17,7 +17,7 @@ See Jupyter_ notebooks to get started or refer to examples_ in the github reposi
 .. _Jupyter: https://amat.readthedocs.io/en/latest/jupyter_link.html
 .. _examples: https://github.com/athulpg007/AMAT/tree/master/examples
 
-AMAT allows the user to peform low-fidelity broad sweep parametric studies; as well as high fidelity Monte Carlo simulations to quantify aerocapture performance. AMAT comes with a suite of interplanetary trajectories, planetary atmosphere models, aeroheating correlations, and guidance algorithms for rapid conceptual mission design. AMAT provides aerocapture and Entry, Descent, Landing (EDL) mission analysis capability for Venus, Earth, Mars, Titan, Uranus, and Neptune. 
+AMAT allows the user to peform low-fidelity broad sweep parametric studies; as well as high fidelity Monte Carlo simulations to quantify aerocapture performance. AMAT comes with a suite of interplanetary trajectories, planetary atmosphere models, aeroheating correlations, and guidance algorithms for rapid conceptual mission design. AMAT provides aerocapture and Entry, Descent, Landing (EDL) mission analysis capability for Venus, Earth, Mars, Jupiter, Saturn, Titan, Uranus, and Neptune. 
 
 .. image:: _images/planets.png
 
