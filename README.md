@@ -60,7 +60,7 @@ This will display the full list of example Jupyter notebooks included with AMAT.
 
 2. For Windows machines:
 
-You must have Anaconda installed. Open the Anaconda Propmt terminal:
+You must have Anaconda installed. Open the Anaconda Prompt terminal:
   * ```$ pip install AMAT```
 
 Open a Windows Powershell terminal and clone the GitHub reporistory. You must have Git installed.
@@ -86,7 +86,7 @@ Clone the GitHub repository and install AMAT.
   * ```$ git clone https://github.com/athulpg007/AMAT.git```
   * ```$ cd AMAT```
   * ```$ python setup.py install```
-  * ```$ cd AMAT/examples```
+  * ```$ cd examples```
   * ```$ jupyter-notebook```
 
 2. For Windows machines:
@@ -98,7 +98,7 @@ Open a Windows Powershell terminal, clone the GitHub repository and install AMAT
   * ```$ git clone https://github.com/athulpg007/AMAT.git```
   * ```$ cd AMAT```
   * ```$ python setup.py install```
-  * ```$ cd AMAT/examples```
+  * ```$ cd examples```
   * ```$ jupyter-notebook```
 
 To uninstall AMAT:
@@ -106,8 +106,7 @@ To uninstall AMAT:
 1. If you installed AMAT using pip:
   * ```$ pip uninstall AMAT```
 
-2. If you installed AMAT from source:
-  * ```$ cd AMAT/examples```
+2. If you installed AMAT from source, from the main AMAT directory:
   * ```$ python setup.py develop -u```
 
 This will remove the AMAT installation from Python. You may simply delete the root folder where AMAT was installed to completely remove the files.
