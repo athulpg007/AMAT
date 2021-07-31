@@ -12,7 +12,7 @@ AMAT_ is designed to provide rapid mission analysis capability for aerocapture m
 
 .. _AMAT: https://github.com/athulpg007/AMAT
 
-See Jupyter_ notebooks to get started or refer to examples_ in the github repository.
+See Jupyter_ notebooks to get started or refer to examples_ in the GitHub repository.
 
 .. _Jupyter: https://amat.readthedocs.io/en/latest/jupyter_link.html
 .. _examples: https://github.com/athulpg007/AMAT/tree/master/examples
