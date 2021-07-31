@@ -4,7 +4,7 @@ Aerocapture Mission Analysis Tool (AMAT) is designed to provide rapid mission an
 
 See [AMAT documentation](https://amat.readthedocs.io) for more details. 
 
-Please note the public release version has some limitations in certain functionalities such as interplanetary trajectory selection, due to data sharing policies involved.
+Please note the public release version has a minimal working interplanetary dataset to run some of the example Jupyter notebooks because of data sharing policies of external collaborators.
 
 ## Capabilities
 
@@ -44,104 +44,128 @@ Note: AMAT is designed to work with Python 3.0 or greater. You must have a Pytho
 
 There are three ways to install AMAT. 
 
-### Option 1 : Install from source (recommended)
+### Option 1 : Install from pip (recommended)
 
-This allows you to download the "entire" package (with the required data files to run examples).
+Note: Python Package Index limits the amount of additional data that can be packaged in the distribution, hence all data cannot be included in the built version. You will need to clone the GitHub repository to get the required data files, examples, and start using AMAT.
 
-1. Make sure you have numpy, scipy, matplotlib and pandas installed. Most likely you already have these installed. If not, use the following commands to install these dependenies first. Open a terminal window (on Linux/Mac machines) and type the following commands. You must have pip installed.
-
-  * ``` $ pip install numpy ``` 
-  * ``` $ pip install scipy ```
-  * ``` $ pip install matplotlib ```
-  * ``` $ pip install pandas ```
-
-On Windows machines, the recommended option is to use Anaconda or Canopy package manager to install these packages.
-
-2. Navigate to the directory where you want AMAT to be installed. Open a terminal (or command window) and use the folllowing command:
-
-  * ``` $ cd home/path ```
-
-where home/path is to be replaced with the path to the folder where AMAT will be installed. 
-
-3. Clone the github repository using the following command. You must have git installed.
-
+1. For Linux machines:
+  * ```$ pip install AMAT```
   * ```$ git clone https://github.com/athulpg007/AMAT.git```
 
-If you do not have git installed, you can download a .zip file from the github page and extract it. Copy the entire uncompressed folder into the directory where you want AMAT to be installed.
+Once AMAT is installed, run an example Jupyter notebook to check everything works correctly.
+  * ```$ cd AMAT/examples```
+  * ```$ jupyter-notebook```
 
-4. Change directory to AMAT and install package.
+This will display the full list of example Jupyter notebooks included with AMAT.  Open and run the ```example-01-hello-world``` notebook to get started with AMAT.
 
+2. For Windows machines:
+
+You must have Anaconda installed. Open the Anaconda Propmt terminal:
+  * ```$ pip install AMAT```
+
+Open a Windows Powershell terminal and clone the GitHub reporistory. You must have Git installed.
+  * ```$ git clone https://github.com/athulpg007/AMAT.git```
+
+Run an example Jupyter notebook. From the Anaconda Prompt terminal:
+  * ```$ cd AMAT/examples```
+  * ```$ jupyter-notebook```
+
+This will display the full list of example Jupyter notebooks included with AMAT. Open and run the ```example-01-hello-world``` notebook to get started with AMAT.
+
+
+### Option 2 : Install from source
+
+This will clone the repository from GitHub and install AMAT from the source code.
+
+1. For Linux machines:
+
+Make sure you have numpy, scipy, matplotlib and pandas installed. Most likely you already have these installed. If not, use the following commands to install these dependenies first. Open a terminal window (on Linux machines) and type the following commands. You must have pip installed.
+  * ```$ pip install numpy scipy matplotlib pandas jupyterlab```
+
+Clone the GitHub repository and install AMAT.
+  * ```$ git clone https://github.com/athulpg007/AMAT.git```
   * ```$ cd AMAT```
   * ```$ python setup.py install```
+  * ```$ cd AMAT/examples```
+  * ```$ jupyter-notebook```
 
-5. Check that you have the required data files. For example, in the root folder where AMAT is installed, you should see a folder names atmdata with data for various planets.
+2. For Windows machines:
 
-6. Run an example script to check everything is working.
+Open the Anaconda Prompt terminal to install the prerequisite packages.
+  * ```$ pip install numpy scipy matplotlib pandas jupyterlab```
 
-  * ``$ cd examples``
-  * ``$ ipython``
-  * ``$ run example-01-hello-world.py``
+Open a Windows Powershell terminal, clone the GitHub repository and install AMAT.
+  * ```$ git clone https://github.com/athulpg007/AMAT.git```
+  * ```$ cd AMAT```
+  * ```$ python setup.py install```
+  * ```$ cd AMAT/examples```
+  * ```$ jupyter-notebook```
 
-7. Run example Jupyter notebooks
+To uninstall AMAT:
 
-  * ``jupyter-notebook``
+1. If you installed AMAT using pip:
+  * ```$ pip uninstall AMAT```
 
-To uninstall AMAT, use
-
-  * ``python setup.py develop -u``
+2. If you installed AMAT from source:
+  * ```$ cd AMAT/examples```
+  * ```$ python setup.py develop -u```
 
 This will remove the AMAT installation from Python. You may simply delete the root folder where AMAT was installed to completely remove the files.
 
-### Option 2 : Install from pip (NOT recommended)
 
-This allows you to download the package, but without most of the data files. You can run the program, but will need to visit the git repository later to download some of the data files and place them in an appropriate location. You will also need to change the location of data files in the example scripts if you use them.
+### Option 3 : Install in a virutalenv
 
-Python Package Index limits the amount of additional data that can be packaged in the distribution, hence all data cannot be included in the built version.
-
-  * ```$ pip install AMAT```
-
-### Option 3 : Install in a virutalenv (for developers)
-
-If you plan to test or develop the package, the recommended option is to to install it in a virtual environment. This allows you to discard changes and start afresh without having to do a system-wide installation.
+If you plan to modifty the source code or add features, the recommended option is to to install it in a virtual environment. 
 
 1. Change directory to where you want the virtual environment to be created.
-
   * ```$ cd home/path```
 
 2. Create a virutal environment and activate it.
 
+On Linux machines:
   * ```$ python3 -m venv env1```
   * ```$ source env1/bin/activate```
 
-3. Change directory to env1
+On Windows machines (from Anaconda Prompt):
+  * ```$ conda create --name env1```
+  * ```$ conda activate env1
+  * ```$ conda install pip```
 
-  * ```$ cd env1```
+4. Follow the steps outlined in Option #2 (build from source) to clone the repository and install AMAT. If you make changes to the source code, remove the existing installation, update the setup file with a new version number, and re-install:
+  * ```$ python setup.py develop -u```
+  * ```$ python setup.py install```
 
-4. Follow steps 1 through 5 in Option #1 : Install from source.
+If you want to create a new distrubution package:
+  * ```$ python3 setup.py sdist bdist_wheel```
 
+To re-make docs if you made changes to the source code (you must have Sphinx installed):
+  * ```$ cd ~root/docs```
+  * ```$ sphinx-apidoc -f -o source/ ../```
+  * ```$ make html```
+
+If you added a new AMAT module, appropriate changes must be made to docs/source/AMAT.rst.
 
 ## Usage
 
   * ```from AMAT.planet import Planet```
   * ```from AMAT.vehicle import Vehicle```
+  * ```from AMAT.launcher import Launcher```
 
 ## License
 AMAT is an open source project licensed under the CC-BY-SA-4.0 License
 
 ## Credits
-AMAT was developed at the School of Aeronautics and Astronautics at Purdue University. Samples of atmospheric data from Global Reference Atmospheric Model (GRAM) software is used for illustration purpose only, and was developed by NASA Marshall Space Flight Center. Interplanetary trajctory data was generated at Purdue University using the STOUR software package by Alec Mudek. 
+AMAT was developed at the School of Aeronautics and Astronautics at Purdue University. Samples of atmospheric data from Global Reference Atmospheric Model (GRAM) software is used for illustration purpose only, and was developed by NASA Marshall Space Flight Center. The use of these GRAM models does not imply endorsement by NASA in any way whatsoever. A minimal working set of atmospheric profiles is included with AMAT to run the example notebooks. A minimal working interplanetary trajctory dataset is included with AMAT. The dataset was generated at Purdue University using the STOUR software package by Alec Mudek, and is also derived from trajectories published in the NASA Ice Giants Pre-Decadal Mission Study. The author plans to augment the interplanetary dataset with more publicly available information as it becomes available.
 
 ## Reference Articles
 
 Results from these articles are used as benchmark examples.
 
-1. Craig, Scott, and James Evans Lyne. "Parametric Study of Aerocapture for Missions to Venus." Journal of Spacecraft and Rockets Vol. 42, No. 6, pp. 1035-1038.
+1. Craig, Scott, and James Evans Lyne. "Parametric Study of Aerocapture for Missions to Venus." Journal of Spacecraft and Rockets Vol. 42, No. 6, pp. 1035-1038. [DOI: 10.2514/1.2589](https://arc.aiaa.org/doi/10.2514/1.2589)
 
-2. Lu, Ye, and Sarag J. Saikia. "Feasibility Assessment of Aerocapture for Future Titan Orbiter Missions." Journal of Spacecraft and Rockets Vol. 55, No. 5, pp. 1125-1135.
+2. Lu, Ye, and Sarag J. Saikia. "Feasibility Assessment of Aerocapture for Future Titan Orbiter Missions." Journal of Spacecraft and Rockets Vol. 55, No. 5, pp. 1125-1135. [DOI: 10.2514/1.A34121](https://arc.aiaa.org/doi/10.2514/1.A34121)
 
-3. Girija, A. P., Lu, Y., & Saikia, S. J. Feasibility and Mass-Benefit Analysis of Aerocapture for Missions to Venus. Journal of Spacecraft and Rockets, Vol. 57, No. 1, pp. 58-73.
+3. Girija, A. P., Lu, Y., & Saikia, S. J. "Feasibility and Mass-Benefit Analysis of Aerocapture for Missions to Venus". Journal of Spacecraft and Rockets, Vol. 57, No. 1, pp. 58-73. [DOI: 10.2514/1.A34529](https://arc.aiaa.org/doi/10.2514/1.A34529)
 
-4. Girija, A. P., "A Unified Framework for Aerocapture Systems Analysis, AAS 19-811, 2019 AAS/AIAA Astrodynamics Specialist Conference, Portland, ME.
-
-5. Girija, A. P. et al. "Feasibility and Performance Analysis of Neptune
-Aerocapture Using Heritage Blunt-Body Aeroshells", Journal of Spacecraft and Rockets, under review.
+4. Girija, A. P. et al. "Feasibility and Performance Analysis of Neptune
+Aerocapture Using Heritage Blunt-Body Aeroshells", Journal of Spacecraft and Rockets, Vol. 57, No. 6, pp. 1186-1203. [DOI: 10.2514/1.A34719](https://arc.aiaa.org/doi/full/10.2514/1.A34719)
