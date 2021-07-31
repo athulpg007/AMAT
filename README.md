@@ -26,9 +26,13 @@ AMAT can be used to quickly assess the feasibility of an aerocapture mission con
 
 ### Examples
 
-1. Venus Aerocapture Assesssment
-2. Titan Aerocapture Assessment
-3. Neptune Aerocapture Using Blunt-Body Aeroshells
+AMAT comes with a number of example [Jupyter notebooks](https://amat.readthedocs.io/en/master/jupyter_link.html) to help users get started. The examples inculde:
+
+1. Venus aerocapture assesssment study
+2. Titan aerocapture assessment study
+3. Neptune aerocapture using blunt-body aeroshells
+4. Drag modulation aerocapture asssessment
+5. Planetary probe entry at various Solar System destinations
 
 ## Features
 
