@@ -4,19 +4,18 @@ About AMAT
 Overview
 --------
 
-**AMAT** is an open source collection of Python subroutines for mission design and analysis
-of aerocapture mission concepts.
+**AMAT** is an open source collection of Python subroutines for rapid conceptual design of aerocapture and atmospheric Entry, Descent, and Landing (EDL) missions in a Jupyter environment.
 
-AMAT comes with a suite of tools to allow end-to-end conceptual design of aerocapture missions: launch vehicle performance calculator, extensive database of interplanetary trajectories, atmosphere models, guidance schemes, and aeroheating models. AMAT supports analysis for Venus, Earth, Mars, Titan, Uranus, and Neptune for both lift and drag modulation control techniques.
+AMAT comes with a suite of tools to allow end-to-end conceptual design of aerocapture missions: launch vehicle performance calculator, database of interplanetary trajectories, atmosphere models, vehicle control techniques, and aeroheating models. AMAT supports analysis for all atmosphere-bearing Solar System destinations for both lift and drag modulation control techniques.
 
-AMAT has been extensively used in various aerocapture mission studies at the `Advanced Astrodynamics Concepts`_ (AAC) research group at Purdue University in active collaboration with the NASA Jet Propulsion Laboratory (JPL). 
+AMAT has been extensively used in various aerocapture mission studies at the `Advanced Astrodynamics Concepts`_ (AAC) research group at Purdue University in collaboration with the NASA Jet Propulsion Laboratory (JPL). 
 
 .. _Advanced Astrodynamics Concepts: https://engineering.purdue.edu/AAC/
 
 History
 -------
 
-The lack of a rapid mission design tool for aerocapture mission concepts was identified by the NASA `Ice Giants Pre Decadal`_ (IGPD) Study led by JPL in 2016. This meant there was no quick way of performing architectural level assessments without resorting to resource intensive, subsystem-level design exercises the NASA `Aerocapture Systems Analysis`_ Team in 2004. 
+The lack of a rapid mission design tool for aerocapture mission concepts was identified by the NASA `Ice Giants Pre Decadal`_ (IGPD) Study led by JPL in 2016. This meant there was no quick way of performing architectural level assessments without resorting to resource intensive, subsystem-level design exercises such as the NASA `Aerocapture Systems Analysis`_ Team studies in 2004. 
 
 .. image:: _images/igpd.png
 
