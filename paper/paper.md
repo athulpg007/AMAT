@@ -1,11 +1,11 @@
 ---
-title: "AMAT: A Python package for rapid conceptual design of aerocapture and planetary probe missions in a Jupyter environment"
+title: "AMAT: A Python package for rapid conceptual design of aerocapture and atmospheric entry missions in a Jupyter environment"
 tags:
     - Python
     - aerocapture
-    - planetary probe
-    - mission design
     - atmospheric entry
+    - mission design
+    - planetary probe
 authors:
     - name: Athul P. Girija
       orcid: 0000-0002-9326-3293
@@ -20,7 +20,7 @@ affiliations:
     - name: School of Aeronautics and Astronautics, Purdue University, West Lafayette, IN 47906, United States
       index: 1
     - name: Jet Propulsion Laboratory, California Institute of Technology, Pasadena, CA 91109, United States
-      index: 1
+      index: 2
 date: 01 August 2021
 bibliography: paper.bib
 ---
