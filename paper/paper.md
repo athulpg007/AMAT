@@ -1,5 +1,5 @@
 ---
-title: "AMAT: A Python package for rapid conceptual design of aerocapture and atmospheric entry missions in a Jupyter environment"
+title: "AMAT: A Python package for rapid conceptual design of aerocapture and atmospheric Entry, Descent, and Landing (EDL) missions in a Jupyter environment"
 tags:
     - Python
     - aerocapture
