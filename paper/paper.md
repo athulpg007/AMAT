@@ -40,12 +40,12 @@ AMAT can be used to compute aerocapture trajectories as well as key design param
 ![](https://i.imgur.com/3XPh6JY.png)
 **Figure 1.** Venus aerocapture vehicle trajectory and stagnation-point heat rate computed using AMAT. Figure based on the parameters listed in [@Craig2005].
 
-AMAT can be used to create **aerocapture feasibility charts**, which is a graphical method to visualize the mission design trade space considering both interplanetary and vehicle design aspects [@Lu2018Titan; @Girija2020Venus; @Girija2020Neptune]. Aerocapture feasibility charts help the mission designer assess the feasible range of vehicle lift-to-drag ratio ($L/D$) or ballistic-coefficient ratio ($\beta_2/\beta_1$) for lift and drag modulation respectively, as well as the feasible range of interplanetary arrival $V_{\infty}$ considering corridor width, decleration, peak-heat rate, and total heat load. Figure 2 shows example feasibility charts for lift modulation aerocapture at Titan and Neptune created using AMAT.
+AMAT can be used to create **aerocapture feasibility charts**, which is a graphical method to visualize the mission design trade space considering both interplanetary and vehicle design aspects [@Lu2018Titan; @Girija2020Venus; @Girija2020Neptune]. Aerocapture feasibility charts help the mission designer assess the feasible range of vehicle lift-to-drag ratio ($L/D$) or ballistic-coefficient ratio ($\beta_2/\beta_1$) for lift and drag modulation respectively, as well as the feasible range of interplanetary arrival $V_{\infty}$ considering corridor width, decleration, peak-heat rate, and total heat load. Figure 2 shows an example feasibility charts lift modulation aerocapture at Neptune created using AMAT.
 
-![](https://i.imgur.com/qkfv4HY.png)
-**Figure 2.** Lift modulation aerocapture feasibility charts for Titan (left) and Neptune (right). Figure based on the parameters listed in [@Lu2018Titan] and [@Girija2020Neptune].  
+![](https://i.imgur.com/BNINxh4.png)
+**Figure 2.** Lift modulation aerocapture feasibility charts for Neptune. Figure based on the mission design presented in [@Girija2020Neptune].  
 
-AMAT can also be used to quickly compute single-event jettison drag modulation aerocapture corridor bounds, and propogate guided trajectories (i.e. the guidance algorithm determines the time at which the drag skirt is jettisoned). Figure 3 shows example trajectories for drag modulation system at Mars computed using AMAT.
+AMAT can also be used to quickly set up and compute single-event jettison drag modulation aerocapture corridor bounds, and propogate guided trajectories. Figure 3 shows example trajectories for a drag modulation system at Mars computed using AMAT.
 
 ![](https://i.imgur.com/YlMk6Th.png)
 **Figure 3.** Altitude-velocity profiles and deceleration profiles for a drag modulation aerocapture system at Mars. Solid and dashed lines correspond to a 450 km circular and 1-sol target orbit respectively. Figure based on the flight system presented in [@Werner2019].  
