@@ -35,10 +35,10 @@ Software tools for identification of trajectories and techniqes that enhance or 
 
 # Rapid Design Capability
 
-AMAT can be used to compute aerocapture trajectories as well as key design parameters such as deceleration and stagnation-point heat rate using just a few lines of code. Figure 1 shows the undershoot and overshoot trajectories for a lift modulation aerocapture vehicle at Venus, and the stagnation-point heat rates computed using AMAT.
+AMAT can be used to compute aerocapture trajectories as well as key design parameters such as theoretical corridor width (TCW) and stagnation-point heat rate using just a few lines of code. Figure 1 shows the undershoot and overshoot trajectories for lift modulation aerocapture at Venus, and the stagnation-point heat rates computed using AMAT.
 
 ![](https://i.imgur.com/3XPh6JY.png)
-**Figure 1.** Venus aerocapture trajectory (undershoot and overshoot limits) and stagnation-point heat rates computed using AMAT. (Based on the parameters listed in [@Craig2005]).
+**Figure 1.** Venus aerocapture vehicle trajectory and stagnation-point heat rate computed using AMAT. (Based on the parameters listed in [@Craig2005]).
 
 
 # AMAT Modules
