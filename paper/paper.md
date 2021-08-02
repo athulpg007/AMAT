@@ -17,7 +17,7 @@ authors:
     - name: James A. Cutts
       affiliation: "2"
 affiliations:
-    - name: School of Aeronautics and Astronautics, Purdue University, West Lafayette, IN 47906, United States
+    - name: School of Aeronautics and Astronautics, Purdue University, West Lafayette, IN 47907, United States
       index: 1
     - name: Jet Propulsion Laboratory, California Institute of Technology, Pasadena, CA 91109, United States
       index: 2
@@ -26,7 +26,7 @@ bibliography: paper.bib
 ---
 
 # Summary
-**AMAT** is a Python package for rapid conceptual design of aerocapture and planetary probe missions in a Jupyter environment [@Wu2020]. 
+The Aerocapture Mission Analysis Tool (**AMAT**) is a free and open-source Python package for rapid conceptual design of aerocapture and atmospheric Entry, Descent, and Landing (EDL) missions in a Jupyter environment. Aerocapture is an orbital transfer maneuver in which a spacecraft uses aerodynamic drag force from a single pass through a planetary atmosphere to decelerate and achieve orbit insertion. To our knowledge, there are no publicly available tools for rapid conceptual design of aerocapture missions. AMAT aims to fill this gap by providing scientists and mission planners an interactive design tool to quickly evaluate aerocapture mission concepts and perform parametric trade space stdies. Atmospheric Entry, Descent, and Landing (EDL) includes the hypersonic flight regime where the entry vehicle undergoes intense heating and rapid deceleration, followed by supersonic and subsonic flight, terminal descent phase, and final touchdown. While several software tools for conceptual design of entry missions such as PESST [@otero2010planetary], TRAJ [@allen2005trajectory], and SAPE [@samareh2009multidisciplinary] have been developed in the past, these programs are not publicly available and are not open source. Detailed mission analysis tools such as DSENDS [@balaram2002dsends] and POST [@brauer1977capabilities] are restricted-use codes and available only to approved persons for U.S. government use. Moreover, detailed high-fidelity analysis such as that performed using POST is a labor-intensive exercise, and not required for conceptual design studies. AMAT also aims to fill this gap for scientists and engineers who want to quickly evaluate concepts for atmospheric entry into planetary atmospheres, as well as academic researchers who do not have access to propreitary and restricted-use codes for conceptual design purposes.
 
 # Statement of Need
 
