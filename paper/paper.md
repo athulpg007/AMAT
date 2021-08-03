@@ -50,7 +50,7 @@ AMAT can also be used to quickly set up and compute single-event jettison drag m
 ![](https://i.imgur.com/YlMk6Th.png)
 **Figure 3.** Altitude-velocity profiles and deceleration profiles for a drag modulation aerocapture system at Mars. Solid and dashed lines correspond to a 450 km circular and 1-sol target orbit respectively. Figure based on the flight system presented in [@Werner2019].  
 
-AMAT can be used to perform Monte Carlo simulations to assess guidance scheme and flight system performance with a baseline vehicle design and interplanetary trajectory considering navigation, atmospheric, and aerodynamic uncertainties. Monte Carlo simulation results give statistical performance metrics such as orbit targeting accuracy. The mission designer can use these metrics to assess if aerocapture system performance is satisfactory, or if the baseline design needs to be revised.
+AMAT can be used to perform Monte Carlo simulations to assess guidance scheme and flight system performance with a baseline vehicle design and interplanetary trajectory considering navigation, atmospheric, and aerodynamic uncertainties.
 
 ![](https://i.imgur.com/Jefki5T.png)
 **Figure 4.** Monte Carlo simulation results showing post-aerocapture orbit dispersion (before the periapsis-raise maneuever) for a drag modulation system at Venus (left) and a lift modulation system at Neptune (right). Based on  [@Girija2020Neptune].
