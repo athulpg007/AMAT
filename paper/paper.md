@@ -64,24 +64,11 @@ AMAT can be used to generate EDL **carpet plots** which are commonly used to ass
 
 The key functionality of the AMAT package is organized into three modules.
 
-| Module    | Description                                                                   |
-| --------- | ----------------------------------------------------------------------------- |
-| basemaps  | A collection of XYZ and WMS tile layers to be used as basemaps                |
-| colormaps | Commonly used colormaps and palettes for visualizing geospatial data          |
-| common    | Functions being used by multiple plotting backends to process geospatial data |
-| foliumap  | A plotting backend built upon the folium Python package                       |
-| heremap   | A plotting backend built upon the here-map-widget-for-jupyter                 |
-| leafmap   | The default plotting backend built upon the ipyleaflet Python package         |
-| legends   | Built-in legends for commonly used geospatial datasets                        |
-| osm       | Functions for extracting and downloading OpenStreetMap data                   |
-| toolbar   | A custom toolset with interactive tools built upon ipywidgets and ipyleaflet  |
-
-
 | Module        | Description                                                         |
 | ------------- | --------------------------------------------------------------------|
 | AMAT.planet   | Stores planetary constants, atmosphere models, entry interface etc. |
 | AMAT.vehicle  | Stores vehicle parameters, guidance scheme, propogate trajectory    |
-| AMAT.launcher | Utility to perform launch vehicle performance query                 |
+| AMAT.launcher | Utility to query launch vehicle performance                         |
 
 # Example Jupyter Notebooks
 
