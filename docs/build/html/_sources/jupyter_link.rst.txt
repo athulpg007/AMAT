@@ -60,3 +60,5 @@ Example Jupyter Notebooks
    /examples/example-53-mars-smallsat-aerocapture-demonstration-part-3.ipynb
    /examples/example-54-exomars-2016-mars.ipynb
    /examples/example-55-titan-aerocapture-systems-study-part-1.ipynb
+   /examples/example-56-venus-entry-tradespace.ipynb
+   /examples/example-57-titan-entry-tradespace.ipynb
