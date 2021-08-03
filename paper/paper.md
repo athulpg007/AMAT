@@ -65,8 +65,8 @@ AMAT can be used to generate EDL **carpet plots** which are commonly used to ass
 The key functionality of the AMAT package is organized into three modules.
 | Module       | Description                                                                 |
 | -------------| ----------------------------------------------------------------------------|
-| AMAT.planet  | Stores planetary constants, atmosphere models, entry interface heights etc  |         
-| AMAT.vehicle | Stores vehicle parameters, guidance scheme, propogate vehicle trajectory    |         
+| AMAT.planet  | Stores planetary constants, atmosphere models, entry interface heights etc. |
+| AMAT.vehicle | Stores vehicle parameters, guidance scheme, propogate vehicle trajectory    |
 | AMAT.launcher| Utility to perform launch vehicle performance query                         |
 
 # Example Jupyter Notebooks
