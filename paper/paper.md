@@ -58,7 +58,7 @@ AMAT can be used to perform Monte Carlo simulations to assess guidance scheme an
 AMAT can be used to generate EDL **carpet plots** which are commonly used to assess the trade space for entry system design considering the limits from deceleration load, peak heat rate, peak stagnation pressure, and total heat load as shown in Figure 5.
 
 ![](https://i.imgur.com/uDxfzsS.png)
-**Figure 5.** EDL carpet plots for Venus entry (left), and Titan entry with the Dragonfly flight system (right). Based on [@scott2018preliminary].
+**Figure 5.** EDL carpet plots for Venus (left), and Titan entry. Based on [@scott2018preliminary].
 
 
 # AMAT Modules
