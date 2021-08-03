@@ -72,7 +72,7 @@ The key functionality of the AMAT package is organized into three modules.
 
 # Documentation and Example Jupyter Notebooks
 
-AMAT documentation along with a number of example Jupyter notebooks are available at https://amat.readthedocs.io.
+AMAT documentation along with a number of example Jupyter notebooks are available at https://amat.readthedocs.io. AMAT is available from the [Python Package Index](https://pypi.org/project/AMAT/).
 
 # Limitations
 
