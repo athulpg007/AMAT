@@ -76,7 +76,7 @@ AMAT documentation along with a number of example Jupyter notebooks are availabl
 
 # Limitations
 
-Compared to high-fidelity industry standard EDL trajectory analysis tools such as DSENDS developed at the Jet Propulsion Laboratory [@balaram2002dsends] and POST[@brauer1977capabilities] developed at the NASA Langley Research Center, AMAT is a low-to-mid fidelity tool which is sufficient for conceptual design studies. AMAT is intended to be used as a preliminary analysis tool to perform trade studies and select a baseline aerocapture or EDL mission concept, which can be analyzed in further detail using DSENDS or POST.
+AMAT is intended to be used as a low-to-mid fidelity preliminary analysis tool to perform trade studies and select a baseline aerocapture or EDL mission concept, which can be analyzed in further detail using high-fidelity tools such as DSENDS [@balaram2002dsends] or POST [@brauer1977capabilities].
 
 AMAT uses publicly available empirical relations to compute the stagnation-point aerothermal environment. While this is sufficient for preliminary mission analysis, detailed studies require propreitary higher-fidelity CFD tools such as LAURA [@mazaheri2013laura], DPLR and NEQAIR [@hash2007fire]. While AMAT computes the stagnation-point total load which can be used to roughly estimate the TPS mass fraction [@Laub2004], there is no functionality to provide an accurate TPS mass estimate which is important to compare an aerocapture system with propulsive insertion, especially for outer planet missions.
 
