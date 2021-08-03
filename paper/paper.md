@@ -55,7 +55,7 @@ AMAT can be used to perform Monte Carlo simulations to assess guidance scheme an
 ![](https://i.imgur.com/Jefki5T.png)
 **Figure 4.** Monte Carlo simulation results showing post-aerocapture orbit dispersion (before the periapsis-raise maneuever) for a drag modulation system at Venus (left) and a lift modulation system at Neptune (right). Based on  [@Girija2020Neptune].
 
-AMAT can be used to generate EDL **carpet plots** which are commonly used to assess the trade space for entry system design considering the limits from deceleration load, peak heat rate, peak stagnation pressure, and total heat load. Figure 5 shows two sample carpet plots created using AMAT: 1) ballistic-coefficient entry-flight-path-angle (EFPA) trade space for Venus entry and 2) entry speed EFPA trade space for the Dragonfly flight system at Titan.
+AMAT can be used to generate EDL **carpet plots** which are commonly used to assess the trade space for entry system design considering the limits from deceleration load, peak heat rate, peak stagnation pressure, and total heat load as shown in Figure 5.
 
 ![](https://i.imgur.com/uDxfzsS.png)
 **Figure 5.** EDL carpet plots for Venus entry (left), and Titan entry with the Dragonfly flight system (right). Based on [@scott2018preliminary].
