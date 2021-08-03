@@ -70,7 +70,9 @@ The key functionality of the AMAT package is organized into three modules.
 | AMAT.vehicle  | Stores vehicle parameters, guidance scheme, propogate trajectory    |
 | AMAT.launcher | Utility to query launch vehicle performance                         |
 
-# Example Jupyter Notebooks
+# Documentation and Example Jupyter Notebooks
+
+AMAT documentation along with a number of example Jupyter notebooks are available at https://amat.readthedocs.io.
 
 # Acknowledgements
 
