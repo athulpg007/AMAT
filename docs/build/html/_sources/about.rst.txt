@@ -62,10 +62,9 @@ Some things I would like to implement in the future:
 Note from the original author
 ------------------------------
 
-I am `Athul P Girija`_, an aerospace engineer with a passion for robotic exploration of our Solar System. At the time of writing, I am a Ph.D. candidate in the School of Aeronautics and Astronautics at Purdue University. My interests lie in the general areas of planetary science, mission design and concept formulation, open-source software, and scientific programming.
+I am `Athul P Girija`_, an aerospace engineer with a passion for robotic exploration of our Solar System. At the time of writing, I am a Ph.D. candidate in the Advanced Astrodynamics Concepts (AAC) research group led by Prof. Sarag Saikia and Prof. James Longuski at Purdue University. My interests lie in the general areas of planetary science, mission design and concept formulation, open-source software, and scientific programming.
 
-The author acknowledges Dr. Sarag Saikia and Prof. James Longuski (Ph.D. advisors) for their continued guidance and support of this work. As the creator of this work, the author hereby asserts all rights regarding the use, distribution and, licensing of AMAT. Neither Purdue University nor any other entity may assert any rights over the base AMAT source code. AMAT is available for general public use under the CC-BY-SA-4.0 license.
-
+AMAT is available for general public use under the CC-BY-SA-4.0 license.
 
 `Google Scholar`_
 
