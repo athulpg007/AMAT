@@ -4,6 +4,8 @@ Aerocapture Mission Analysis Tool (AMAT) is designed to provide rapid mission an
 
 See [AMAT documentation](https://amat.readthedocs.io) for more details. 
 
+[![Documentation Status](https://readthedocs.org/projects/amat/badge/?version=master)](https://amat.readthedocs.io/en/master/?badge=master) 
+
 Please note the public release version has a minimal working interplanetary dataset to run some of the example Jupyter notebooks because of data sharing policies of external collaborators.
 
 ## Capabilities
