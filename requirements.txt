@@ -1,4 +1,4 @@
-sphinx==4.0.2,
+sphinx==4.0.2
 ipykernel
 nbsphinx
 jinja2==2.11.3
