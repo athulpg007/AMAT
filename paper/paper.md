@@ -82,7 +82,7 @@ AMAT uses publicly available empirical relations to compute the stagnation-point
 
 # Acknowledgements
 
-AMAT was developed at the Advanced Astodynamics Concepts (AAC) group at Purdue University. Parts of the source code were originally developed in support of contracts between AAC and the Jet Propulsion Laboratory for various aerocapture mission studies. 
+AMAT was developed at the Advanced Astrodynamics Concepts (AAC) group at Purdue University. Parts of the source code were originally developed in support of contracts between AAC and the Jet Propulsion Laboratory for various aerocapture mission studies. 
 
 # References
 
