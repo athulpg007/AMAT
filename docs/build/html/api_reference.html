@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>AMAT package &mdash; AMAT v2.1.8 documentation</title>
+  <title>API Reference &mdash; AMAT v2.1.8 documentation</title>
   
 
   
@@ -38,7 +38,9 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Credits" href="credits.html" />
+    <link rel="prev" title="Example - 57 - Dragnofly (Titan) Entry Tradespace - Carpet Plot" href="examples/example-57-titan-entry-tradespace.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -83,12 +85,14 @@
             
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="about.html">About AMAT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="capabilities.html">Capabilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="jupyter_link.html">Example Jupyter Notebooks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api_reference.html">API Reference</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul class="simple">
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="credits.html">Credits</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module_index.html">Module Index</a></li>
@@ -137,13 +141,13 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>AMAT package</li>
+      <li>API Reference</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/AMAT.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/api_reference.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -180,68 +184,14 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="amat-package">
-<h1>AMAT package<a class="headerlink" href="#amat-package" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="api-reference">
+<h1>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
 </div>
-<div class="section" id="module-AMAT.launcher">
-<span id="amat-launcher-module"></span><h2>AMAT.launcher module<a class="headerlink" href="#module-AMAT.launcher" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="AMAT.launcher.Launcher">
-<em class="property">class </em><code class="sig-prename descclassname">AMAT.launcher.</code><code class="sig-name descname">Launcher</code><span class="sig-paren">(</span><em class="sig-param">launcherID</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.launcher.Launcher" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>The Launcher class is used to estimate launch vehicle performance.</p>
-<dl class="attribute">
-<dt id="AMAT.launcher.Launcher.ID">
-<code class="sig-name descname">ID</code><a class="headerlink" href="#AMAT.launcher.Launcher.ID" title="Permalink to this definition">¶</a></dt>
-<dd><p>String identifier of planet object</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="AMAT.launcher.Launcher.XY">
-<code class="sig-name descname">XY</code><a class="headerlink" href="#AMAT.launcher.Launcher.XY" title="Permalink to this definition">¶</a></dt>
-<dd><p>contains C3 in column 1, launch mass in column 2</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>numpy.ndarray</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="AMAT.launcher.Launcher.performanceQuery">
-<code class="sig-name descname">performanceQuery</code><span class="sig-paren">(</span><em class="sig-param">C3</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.launcher.Launcher.performanceQuery" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the launch capability of the vehicle for a
-specified C3.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>C3</strong> (<em>float</em>) – launch C3, km2/s2</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>mass</strong> – launch mass capability, kg</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>float</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-</div>
-<div class="section" id="module-AMAT.planet">
-<span id="amat-planet-module"></span><h2>AMAT.planet module<a class="headerlink" href="#module-AMAT.planet" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<span class="target" id="module-AMAT.planet"></span><dl class="class">
 <dt id="AMAT.planet.Planet">
 <em class="property">class </em><code class="sig-prename descclassname">AMAT.planet.</code><code class="sig-name descname">Planet</code><span class="sig-paren">(</span><em class="sig-param">planetID</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.planet.Planet" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>The Planet class is used to store planetary constants,
+<dd><p>The Planet class is used to store planetary constants,
 load atmospheric data from look-up tables, and define
 non-dimensional parameters used in the simulations.</p>
 <dl class="attribute">
@@ -1114,14 +1064,10 @@ at altitudes array h[:] in meters</p>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-AMAT.vehicle">
-<span id="amat-vehicle-module"></span><h2>AMAT.vehicle module<a class="headerlink" href="#module-AMAT.vehicle" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<span class="target" id="module-AMAT.vehicle"></span><dl class="class">
 <dt id="AMAT.vehicle.Vehicle">
 <em class="property">class </em><code class="sig-prename descclassname">AMAT.vehicle.</code><code class="sig-name descname">Vehicle</code><span class="sig-paren">(</span><em class="sig-param">vehicleID</em>, <em class="sig-param">mass</em>, <em class="sig-param">beta</em>, <em class="sig-param">LD</em>, <em class="sig-param">A</em>, <em class="sig-param">alpha</em>, <em class="sig-param">RN</em>, <em class="sig-param">planetObj</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>The Vehicle class is used to define vehicle parameters,
+<dd><p>The Vehicle class is used to define vehicle parameters,
 such as mass, aerodynamics, and aeroheating relations.</p>
 <dl class="attribute">
 <dt id="AMAT.vehicle.Vehicle.vehicleID">
@@ -1208,7 +1154,7 @@ the planetary atmosphere in which the vehicle will
 operate in</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="api_reference.html#AMAT.planet.Planet" title="AMAT.planet.Planet">planet.Planet</a></p>
+<dd class="field-odd"><p><a class="reference internal" href="#AMAT.planet.Planet" title="AMAT.planet.Planet">planet.Planet</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -4906,10 +4852,52 @@ max index if no event detected</p></li>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-AMAT">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-AMAT" title="Permalink to this headline">¶</a></h2>
-</div>
+<span class="target" id="module-AMAT.launcher"></span><dl class="class">
+<dt id="AMAT.launcher.Launcher">
+<em class="property">class </em><code class="sig-prename descclassname">AMAT.launcher.</code><code class="sig-name descname">Launcher</code><span class="sig-paren">(</span><em class="sig-param">launcherID</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.launcher.Launcher" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Launcher class is used to estimate launch vehicle performance.</p>
+<dl class="attribute">
+<dt id="AMAT.launcher.Launcher.ID">
+<code class="sig-name descname">ID</code><a class="headerlink" href="#AMAT.launcher.Launcher.ID" title="Permalink to this definition">¶</a></dt>
+<dd><p>String identifier of planet object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.launcher.Launcher.XY">
+<code class="sig-name descname">XY</code><a class="headerlink" href="#AMAT.launcher.Launcher.XY" title="Permalink to this definition">¶</a></dt>
+<dd><p>contains C3 in column 1, launch mass in column 2</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.launcher.Launcher.performanceQuery">
+<code class="sig-name descname">performanceQuery</code><span class="sig-paren">(</span><em class="sig-param">C3</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.launcher.Launcher.performanceQuery" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the launch capability of the vehicle for a
+specified C3.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>C3</strong> (<em>float</em>) – launch C3, km2/s2</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>mass</strong> – launch mass capability, kg</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 
@@ -4917,6 +4905,15 @@ max index if no event detected</p></li>
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="credits.html" class="btn btn-neutral float-right" title="Credits" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="examples/example-57-titan-entry-tradespace.html" class="btn btn-neutral float-left" title="Example - 57 - Dragnofly (Titan) Entry Tradespace - Carpet Plot" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

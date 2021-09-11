@@ -33,6 +33,7 @@ For sub-routine documentation, see :ref:`modindex`
    installation
    capabilities
    jupyter_link
+   api_reference
    credits
    references
    module_index
