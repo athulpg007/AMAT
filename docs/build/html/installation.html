@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Installation &mdash; AMAT v2.1.8 documentation</title>
+  <title>Installation &mdash; AMAT v2.1.9 documentation</title>
   
 
   
@@ -21,13 +21,11 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -36,6 +34,8 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -84,7 +84,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="about.html">About AMAT</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
@@ -209,6 +209,10 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">jupyter-notebook</span></code></p></li>
 </ul>
 </div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that you will need jupyterlab and pandas (for some examples) to run the example notebooks. Use <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">jupyterlab</span> <span class="pre">pandas</span></code> to install Jupyter and pandas if it is not already installed on your system.</p>
+</div>
 <p>This will display the full list of example Jupyter notebooks included with AMAT.  Open and run the <code class="docutils literal notranslate"><span class="pre">example-01-hello-world</span></code> notebook to get started with AMAT.</p>
 <p><strong>For Windows machines:</strong></p>
 <blockquote>
@@ -229,6 +233,10 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">jupyter-notebook</span></code></p></li>
 </ul>
 </div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that you will need jupyterlab and pandas (for some examples) to run the example notebooks. Use <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">jupyterlab</span> <span class="pre">pandas</span></code> to install Jupyter and pandas if it is not already installed on your system.</p>
+</div>
 <p>This will display the full list of example Jupyter notebooks included with AMAT. Open and run the <code class="docutils literal notranslate"><span class="pre">example-01-hello-world</span></code> notebook to get started with AMAT.</p>
 </div>
 <div class="section" id="option-2-install-from-source">
@@ -237,7 +245,7 @@
 <p><strong>For Linux machines:</strong></p>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">numpy</span> <span class="pre">scipy</span> <span class="pre">matplotlib</span> <span class="pre">pandas</span> <span class="pre">jupyterlab</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">numpy</span> <span class="pre">scipy</span> <span class="pre">matplotlib</span></code></p></li>
 </ul>
 </div></blockquote>
 <p>Clone the GitHub repository and install AMAT.</p>
@@ -250,10 +258,14 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">jupyter-notebook</span></code></p></li>
 </ul>
 </div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that you will need jupyterlab and pandas (for some examples) to run the example notebooks. Use <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">jupyterlab</span> <span class="pre">pandas</span></code> to install Jupyter and pandas if it is not already installed on your system.</p>
+</div>
 <p><strong>For Windows machines (from the Anaconda Prompt terminal):</strong></p>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">numpy</span> <span class="pre">scipy</span> <span class="pre">matplotlib</span> <span class="pre">pandas</span> <span class="pre">jupyterlab</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">numpy</span> <span class="pre">scipy</span> <span class="pre">matplotlib</span></code></p></li>
 </ul>
 </div></blockquote>
 <p>Open a Windows Powershell terminal, clone the GitHub repository and install AMAT.</p>
@@ -266,6 +278,10 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">jupyter-notebook</span></code></p></li>
 </ul>
 </div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that you will need jupyterlab and pandas (for some examples) to run the example notebooks. Use <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">jupyterlab</span> <span class="pre">pandas</span></code> to install Jupyter and pandas if it is not already installed on your system.</p>
+</div>
 <p><strong>To uninstall AMAT:</strong></p>
 <ol class="arabic simple">
 <li><p>If you installed AMAT using pip:</p></li>

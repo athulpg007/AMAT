@@ -20,6 +20,9 @@ If you are unable to clone the repository, you can download the repository as a 
   * ``$ cd AMAT/examples``
   * ``$ jupyter-notebook``
 
+.. note::
+   Note that you will need jupyterlab and pandas (for some examples) to run the example notebooks. Use ``pip install jupyterlab pandas`` to install Jupyter and pandas if it is not already installed on your system. 
+
 This will display the full list of example Jupyter notebooks included with AMAT.  Open and run the ``example-01-hello-world`` notebook to get started with AMAT.
 
 **For Windows machines:**
@@ -35,6 +38,10 @@ Run an example Jupyter notebook. From the Anaconda Prompt terminal:
   * ``$ cd AMAT/examples``
   * ``$ jupyter-notebook``
 
+.. note::
+   Note that you will need jupyterlab and pandas (for some examples) to run the example notebooks. Use ``pip install jupyterlab pandas`` to install Jupyter and pandas if it is not already installed on your system. 
+
+
 This will display the full list of example Jupyter notebooks included with AMAT. Open and run the ``example-01-hello-world`` notebook to get started with AMAT.
 
 
@@ -45,7 +52,7 @@ This will clone the repository from GitHub and install AMAT from the source code
 
 **For Linux machines:**
 
-  * ``$ pip install numpy scipy matplotlib pandas jupyterlab``
+  * ``$ pip install numpy scipy matplotlib``
 
 Clone the GitHub repository and install AMAT.
 
@@ -55,9 +62,13 @@ Clone the GitHub repository and install AMAT.
   * ``$ cd examples``
   * ``$ jupyter-notebook``
 
+.. note::
+   Note that you will need jupyterlab and pandas (for some examples) to run the example notebooks. Use ``pip install jupyterlab pandas`` to install Jupyter and pandas if it is not already installed on your system. 
+
+
 **For Windows machines (from the Anaconda Prompt terminal):**
 
-  * ``$ pip install numpy scipy matplotlib pandas jupyterlab``
+  * ``$ pip install numpy scipy matplotlib``
 
 Open a Windows Powershell terminal, clone the GitHub repository and install AMAT.
 
@@ -66,6 +77,10 @@ Open a Windows Powershell terminal, clone the GitHub repository and install AMAT
   * ``$ python setup.py install``
   * ``$ cd examples``
   * ``$ jupyter-notebook``
+
+.. note::
+   Note that you will need jupyterlab and pandas (for some examples) to run the example notebooks. Use ``pip install jupyterlab pandas`` to install Jupyter and pandas if it is not already installed on your system. 
+
 
 **To uninstall AMAT:**
 
