@@ -1,12 +1,12 @@
 # AMAT
 
-Aerocapture Mission Analysis Tool (AMAT) is designed to provide rapid mission analysis capability for aerocapture and Entry, Descent, and Landing (EDL) mission concepts to the planetary science community. 
+Aerocapture Mission Analysis Tool (AMAT) is designed to provide rapid mission analysis capability for aerocapture and Entry, Descent, and Landing (EDL) mission concepts to the planetary science community. AMAT was developed at the [Advanced Astrodynamics Concepts (AAC)](https://engineering.purdue.edu/AAC/) research group at Purdue University.
+
 
 See [AMAT documentation](https://amat.readthedocs.io) for more details. 
 
 [![Documentation Status](https://readthedocs.org/projects/amat/badge/?version=master)](https://amat.readthedocs.io/en/master/?badge=master) 
 
-AMAT was developed at the [Advanced Astrodynamics Concepts (AAC)](https://engineering.purdue.edu/AAC/) research group at Purdue University.
 
 Please note the public release version has a minimal working interplanetary dataset to run some of the example Jupyter notebooks because of data sharing policies of external collaborators.
 
