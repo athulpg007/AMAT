@@ -64,6 +64,9 @@ Once AMAT is installed, run an example Jupyter notebook to check everything work
   * ```$ cd AMAT/examples```
   * ```$ jupyter-notebook```
 
+Note that you will need jupyterlab and pandas (for some examples) to run the example notebooks. Use ```pip install jupyterlab pandas``` to install Jupyter and pandas if it is not already installed on your system. 
+
+
 This will display the full list of example Jupyter notebooks included with AMAT.  Open and run the ```example-01-hello-world``` notebook to get started with AMAT.
 
 #### For Windows machines:
@@ -77,6 +80,9 @@ Open a Windows Powershell terminal and clone the GitHub reporistory. You must ha
 Run an example Jupyter notebook. From the Anaconda Prompt terminal:
   * ```$ cd AMAT/examples```
   * ```$ jupyter-notebook```
+
+Note that you will need jupyterlab and pandas (for some examples) to run the example notebooks. Use ```pip install jupyterlab pandas``` to install Jupyter and pandas if it is not already installed on your system. 
+
 
 This will display the full list of example Jupyter notebooks included with AMAT. Open and run the ```example-01-hello-world``` notebook to get started with AMAT.
 
@@ -100,7 +106,7 @@ Clone the GitHub repository and install AMAT.
 #### For Windows machines:
 
 Open the Anaconda Prompt terminal to install the prerequisite packages.
-  * ```$ pip install numpy scipy matplotlib pandas jupyterlab```
+  * ```$ pip install numpy scipy matplotlib```
 
 Open a Windows Powershell terminal, clone the GitHub repository and install AMAT.
   * ```$ git clone https://github.com/athulpg007/AMAT.git```
@@ -108,6 +114,9 @@ Open a Windows Powershell terminal, clone the GitHub repository and install AMAT
   * ```$ python setup.py install```
   * ```$ cd examples```
   * ```$ jupyter-notebook```
+
+Note that you will need jupyterlab and pandas (for some examples) to run the example notebooks. Use ```pip install jupyterlab pandas``` to install Jupyter and pandas if it is not already installed on your system. 
+
 
 To uninstall AMAT:
 
@@ -164,7 +173,7 @@ AMAT is an open source project licensed under the CC-BY-SA-4.0 License
 
 ## Credits
 
-AMAT was developed at the Advanced Astodynamics Concepts (AAC) research group at Purdue University. Parts of the AMAT source code were originally developed in support of contracts between AAC and the Jet Propulsion Laboratory for various aerocapture mission studies between 2016 and 2020. Samples of atmospheric data from Global Reference Atmospheric Model (GRAM) software is used for illustration purpose only, and was developed by NASA Marshall Space Flight Center. The use of these GRAM models does not imply endorsement by NASA in any way whatsoever. A minimal working set of atmospheric profiles is included with AMAT to run the example notebooks. A minimal working interplanetary trajctory dataset is included with AMAT. The dataset was generated at Purdue University using the STOUR software package by Alec Mudek, and is also derived from trajectories published in the NASA Ice Giants Pre-Decadal Mission Study. The author plans to augment the interplanetary dataset with more publicly available information as it becomes available.
+AMAT was developed at the [Advanced Astodynamics Concepts](https://engineering.purdue.edu/AAC/) research group at Purdue University. Parts of the AMAT source code were originally developed in support of contracts between AAC and the Jet Propulsion Laboratory for various aerocapture mission studies between 2016 and 2020. Samples of atmospheric data from Global Reference Atmospheric Model (GRAM) software is used for illustration purpose only, and was developed by NASA Marshall Space Flight Center. The use of these GRAM models does not imply endorsement by NASA in any way whatsoever. A minimal working set of atmospheric profiles is included with AMAT to run the example notebooks. A minimal working interplanetary trajctory dataset is included with AMAT. The dataset was generated at Purdue University using the STOUR software package by Alec Mudek, and is also derived from trajectories published in the NASA Ice Giants Pre-Decadal Mission Study. The author plans to augment the interplanetary dataset with more publicly available information as it becomes available.
 
 ## Extras
 
