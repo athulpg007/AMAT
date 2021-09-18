@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(name='AMAT',
-      version='2.1.10',
+      version='2.1.11',
       description='Aerocapture Mission Analysis Tool',
       url='https://github.com/athulpg007/AMAT',
       long_description=long_description,
@@ -42,6 +42,7 @@ setup(name='AMAT',
       'AMAT' : ['data/*'],
       'AMAT' : ['docs/*'],
       'AMAT' : ['examples/*'],
-      'AMAT' : ['plots/*']
+      'AMAT' : ['plots/*'],
+      'AMAT' : ['tests/*']
   },
       zip_safe=False)
