@@ -34,6 +34,7 @@ For sub-routine documentation, see :ref:`modindex`
    capabilities
    jupyter_link
    api_reference
+   contributions
    credits
    references
    module_index

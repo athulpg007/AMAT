@@ -6,3 +6,4 @@ AMAT-master-3
 
    AMAT
    setup
+   tests
