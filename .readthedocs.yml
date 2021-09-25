@@ -5,11 +5,8 @@ sphinx:
    configuration: docs/conf.py
 
 # Optionally build your docs in additional formats such as PDF
-formats:
-   - pdf
-
+formats: all
 
 python:
   install:
-    - method: pip
-    path: .
+    - requirements: docs/requirements.txt
