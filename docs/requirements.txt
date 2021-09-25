@@ -1,3 +1,9 @@
+# Package dependencies
+
+numpy
+scipy
+matplotlib
+
 # Documentation Dependencies
 
 sphinx==2.1.2
