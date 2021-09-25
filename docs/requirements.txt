@@ -6,7 +6,7 @@ matplotlib
 
 # Documentation Dependencies
 
-sphinx==4.1.2
-ipykernel==6.4.1
-nbsphinx==0.8.6
-jinja2==3.0.1
+sphinx==2.1.2
+ipykernel==5.1.1
+nbsphinx==0.6.1
+jinja2==2.11.3
