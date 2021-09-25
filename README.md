@@ -171,7 +171,7 @@ If you added a new AMAT module, appropriate changes must be made to docs/source/
 
 ## License
 
-AMAT is an open source project licensed under the CC-BY-SA-4.0 License
+AMAT is an open source project licensed under the GNU General Public License Version 3.
 
 ## Credits
 
