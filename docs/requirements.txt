@@ -9,6 +9,4 @@ matplotlib
 sphinx==2.1.2
 ipykernel==5.1.1
 nbsphinx==0.6.1
-jinja2==2.11.3
-sphinx-rtd-theme==0.4.3
-sphinx-autoapi==1.8.4
+jinja2==2.3
