@@ -56,7 +56,7 @@ There are three ways to install AMAT.
 
 Note: Python Package Index limits the amount of additional data that can be packaged in the distribution, hence all data cannot be included in the built version. You will need to clone the GitHub repository to get the required data files, examples, and start using AMAT.
 
-#### For Linux machines:
+#### For Linux/MacOS machines:
   * ```$ pip install AMAT```
   * ```$ git clone https://github.com/athulpg007/AMAT.git```
 
@@ -93,7 +93,7 @@ This will display the full list of example Jupyter notebooks included with AMAT.
 
 This will clone the repository from GitHub and install AMAT from the source code.
 
-#### For Linux machines:
+#### For Linux/MacOS machines:
 
 Make sure you have numpy, scipy, matplotlib and pandas installed. Most likely you already have these installed. If not, use the following commands to install these dependenies first. Open a terminal window (on Linux machines) and type the following commands. You must have pip installed.
   * ```$ pip install numpy scipy matplotlib pandas jupyterlab```
@@ -140,7 +140,7 @@ If you plan to modifty the source code or add features, the recommended option i
 
 2. Create a virutal environment and activate it.
 
-On Linux machines:
+On Linux/MacOS machines:
   * ```$ python3 -m venv env1```
   * ```$ source env1/bin/activate```
 

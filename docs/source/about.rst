@@ -64,7 +64,7 @@ Note from the original author
 
 I am `Athul P Girija`_, an aerospace engineer with a passion for robotic exploration of our Solar System. At the time of writing, I am a Ph.D. candidate in the Advanced Astrodynamics Concepts (AAC) research group led by Prof. Sarag Saikia and Prof. James Longuski at Purdue University. My interests lie in the general areas of planetary science, mission design and concept formulation, open-source software, and scientific programming.
 
-AMAT is available for general public use under the CC-BY-SA-4.0 license.
+AMAT is available for general public use under the GNU GPLv3 license.
 
 `Google Scholar`_
 

@@ -1,7 +1,7 @@
 Installation
 =============
 
-Note: AMAT is designed to work with Python 3.0 or greater. You must have a Python 3 installation in your system.
+Note: AMAT is designed to work with Python 3.0 or greater. You must have a Python 3 installation in your system. AMAT has been tested on Linux/MacOS and Windows machines.
 
 There are three ways to install AMAT. 
 
@@ -10,7 +10,7 @@ Option 1 : Install from pip (recommended)
 
 Note: Python Package Index limits the amount of additional data that can be packaged in the distribution, hence all data cannot be included in the built version. You will need to clone the GitHub repository to get the required data files, examples, and start using AMAT.
 
-**For Linux machines:**
+**For Linux/MacOS machines:**
 
   * ``$ pip install AMAT``
   * ``$ git clone https://github.com/athulpg007/AMAT.git``
@@ -50,7 +50,7 @@ Option 2 : Install from source
 
 This will clone the repository from GitHub and install AMAT from the source code.
 
-**For Linux machines:**
+**For Linux/MacOS machines:**
 
   * ``$ pip install numpy scipy matplotlib``
 
@@ -103,7 +103,7 @@ If you plan to modifty the source code or add features, the recommended option i
 
 2. Create a virutal environment and activate it.
 
-**On Linux machines:**
+**On Linux/MacOS machines:**
 
   * ``$ python3 -m venv env1``
   * ``$ source env1/bin/activate``
