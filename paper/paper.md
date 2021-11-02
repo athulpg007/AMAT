@@ -65,6 +65,7 @@ AMAT can be used to generate EDL **carpet plots** which are commonly used to ass
 The key functionality of the AMAT package is organized into three modules. These modules and their descriptions are shown in Table \ref{modules_table}. 
 
 Table: Modules of AMAT \label{modules_table}
+
 | Module        | Description                                                         |
 | ------------- | --------------------------------------------------------------------|
 | AMAT.planet   | Stores planetary constants, atmosphere models, entry interface etc. |
