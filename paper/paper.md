@@ -74,13 +74,13 @@ Table: Modules of AMAT \label{modules_table}
 
 # Documentation and Example Jupyter Notebooks
 
-AMAT documentation along with a number of example Jupyter notebooks are available at page https://amat.readthedocs.io and the package is ready to install using the [Python Package Index](https://pypi.org/project/AMAT/).
+AMAT documentation along with a number of example Jupyter notebooks are available at https://amat.readthedocs.io and the package is ready to install using the [Python Package Index](https://pypi.org/project/AMAT/) (`pip install AMAT`).
 
 # Limitations
 
 AMAT is intended to be used as a low-to-mid fidelity preliminary analysis tool to perform trade studies and select a baseline concept, which can be analyzed in further detail using high-fidelity tools such as DSENDS [@balaram2002dsends] or POST [@brauer1977capabilities].
 
-AMAT uses publicly available empirical relations to compute the stagnation-point aerothermal environment. While this is sufficient for preliminary mission analysis, detailed studies require propietary higher-fidelity CFD tools such as LAURA [@mazaheri2013laura], DPLR and NEQAIR [@hash2007fire]. While AMAT computes the stagnation-point total load which can be used to roughly estimate the thermal protection system (TPS) mass fraction [@Laub2004], there is no functionality to provide an accurate TPS mass estimate which is prerequisite when comparing an aerocapture system with propulsive insertion, especially for outer planet missions. Incorporation of improved TPS sizing models and addition of interactive visualization capabilities using Blender is planned for future work. 
+AMAT uses publicly available empirical relations to compute the stagnation-point aerothermal environment. While this is sufficient for preliminary mission analysis, detailed studies require propietary higher-fidelity CFD tools such as LAURA [@mazaheri2013laura], DPLR and NEQAIR. While AMAT computes the stagnation-point total load which can be used to roughly estimate the thermal protection system (TPS) mass fraction [@Laub2004], there is no functionality to provide an accurate TPS mass estimate which is prerequisite when comparing an aerocapture system with propulsive insertion, especially for outer planet missions. Incorporation of improved TPS sizing models and addition of interactive visualization capabilities using Blender is planned for future work. 
 
 # Acknowledgements
 
