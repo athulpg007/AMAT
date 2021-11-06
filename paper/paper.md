@@ -55,10 +55,10 @@ AMAT can be used to perform Monte Carlo simulations to assess user-defined guida
 ![](https://i.imgur.com/Jefki5T.png)
 **Figure 4.** Examples of Monte Carlo simulation results showing post-aerocapture orbit parameters for a drag modulation system at Venus (left) and a lift modulation system at Neptune (right) computed by using AMAT. Based on [@Girija2020b].
 
-AMAT can be used to generate EDL **carpet plots** which are commonly used to assess the trade space for prelimimary entry system design as shown in Figure 5.
+AMAT can be used to generate EDL **carpet plots** which are commonly used to assess the trade space for preliminary entry system and mission design as shown in Figure 5.
 
 ![](https://i.imgur.com/uDxfzsS.png)
-**Figure 5.** Examples of carpet plots for Venus (left), and Titan (right) entry created by using AMAT. Based on [@scott2018preliminary].
+**Figure 5.** Examples of carpet plots for Venus entry (left), and Titan entry (right) created by using AMAT. Based on [@scott2018preliminary].
 
 # AMAT Modules
 
@@ -70,7 +70,7 @@ Table: Modules of AMAT \label{modules_table}
 | ------------- | --------------------------------------------------------------------|
 | AMAT.planet   | Stores planetary constants, atmosphere models, entry interface etc. |
 | AMAT.vehicle  | Stores vehicle parameters, guidance scheme, propogate trajectory    |
-| AMAT.launcher | Stores Earth escape performance for a list of launchers             |
+| AMAT.launcher | Stores Earth escape performance for a list of launch vehicles       |
 
 # Documentation and Example Jupyter Notebooks
 
@@ -87,3 +87,5 @@ AMAT uses publicly available empirical relations to compute the stagnation-point
 AMAT was developed at the Advanced Astrodynamics Concepts (AAC) group at Purdue University. Parts of the source code were originally developed in support of contracts between AAC and the Jet Propulsion Laboratory for various aerocapture mission studies. 
 
 # References
+
+
