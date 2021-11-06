@@ -1,1 +1,0 @@
-../atmdata/Earth/LAT00N.txt

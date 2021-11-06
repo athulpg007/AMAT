@@ -1,1 +1,0 @@
-../atmdata/Earth/LAT20N.txt
