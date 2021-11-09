@@ -5,7 +5,7 @@ Aerocapture Mission Analysis Tool (AMAT) is designed to provide rapid mission an
 
 See [AMAT documentation](https://amat.readthedocs.io) for more details. 
 
-[![Documentation Status](https://readthedocs.org/projects/amat/badge/?version=master)](https://amat.readthedocs.io/en/master/?badge=master) [![DOI](https://joss.theoj.org/papers/10.21105/joss.03710/status.svg)](https://doi.org/10.21105/joss.03710)
+[![Documentation Status](https://readthedocs.org/projects/amat/badge/?version=master)](https://amat.readthedocs.io/en/master/?badge=master) [![DOI](https://joss.theoj.org/papers/10.21105/joss.03710/status.svg)](https://doi.org/10.21105/joss.03710) [![PyPI version](https://badge.fury.io/py/AMAT.svg)](https://badge.fury.io/py/AMAT)
 
 If you find AMAT useful in your work, please consider citing us: Girija et al., (2021). AMAT: A Python package for rapid conceptual design of aerocapture and atmospheric Entry, Descent, and Landing (EDL) missions in a Jupyter environment. *Journal of Open Source Software*, 6(67), 3710, [DOI: 10.21105/joss.03710](https://doi.org/10.21105/joss.03710)
 
