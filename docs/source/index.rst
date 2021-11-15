@@ -33,6 +33,7 @@ For sub-routine documentation, see :ref:`modindex`
    installation
    capabilities
    jupyter_link
+   jsr-notebooks
    api_reference
    contributions
    credits
