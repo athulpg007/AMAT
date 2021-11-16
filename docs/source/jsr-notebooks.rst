@@ -8,7 +8,6 @@ Jupyter Notebooks associated with Girija et al. (2022), Quantitative Assessment 
 
    /jsr-notebooks/01-literature-survey.ipynb
    /jsr-notebooks/02-interplanetary.ipynb
-   /jsr-notebooks/02-interplanetary.ipynb
    /jsr-notebooks/03-a-venus-feasibility-lift.ipynb 
    /jsr-notebooks/03-b-venus-feasibility-drag.ipynb
    /jsr-notebooks/04-a-earth-feasibility-lift.ipynb 
