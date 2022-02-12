@@ -326,7 +326,10 @@ class Vehicle():
 		heat rate solution of entry phase, W/cm2
 	heatload_en : float
 		heatload solution of entry phase, J/cm2
-
+	userDefinedCDMach : bool
+		if set to True, will use a user defined function for 
+		CD(Mach) set by setCDMachFunction(), default=False
+	
 
 
 	
@@ -335,7 +338,7 @@ class Vehicle():
 	"""
 
 	def __init__(self, vehicleID, mass, beta, LD, A, alpha, \
-				RN, planetObj):
+				RN, planetObj, userDefinedCDMach=False):
 		"""
 		Initializes vehicle object with properties such as mass, 
 		aerodynamics etc.
@@ -358,6 +361,9 @@ class Vehicle():
 			vehicle nose-radius
 		planetObj : planet.Planet
 			planet object associated with the vehicle
+		userDefinedCDMach : bool
+			if set to True, will use a user defined function for 
+			CD(Mach) set by setCDMachFunction(), default=False
 		"""
 
 		self.vehicleID = vehicleID 
@@ -368,6 +374,8 @@ class Vehicle():
 		self.alpha     = alpha    
 		self.RN        = RN       
 		self.planetObj = planetObj
+		self.userDefinedCDMach = userDefinedCDMach
+
 
 		# Compute other required non dimensional quantities
 		self.Abar      = self.A  / (self.mass/ \
@@ -375,6 +383,20 @@ class Vehicle():
 		self.mbar      = self.mass/self.mass                
 		self.CD      = self.mass / (self.beta*self.A)
 		self.CL      = self.LD*self.CD
+
+	def setCDMachFunction(self, func):
+		"""
+		Set function for CD (Mach)
+
+		Parameters
+		------------
+		func : function object
+			vectorized numpy function which returns CD (Mach)
+			Note: func must return scalar for scalar input, 
+			      and array for array input!
+		"""
+
+		self.CDMach = func
 
 
 	def setInitialState(self,h0_km,theta0_deg,phi0_deg,v0_kms,\
@@ -769,7 +791,13 @@ class Vehicle():
 
 		"""
 
-		ans = 0.5*self.planetObj.rho(r,theta,phi)*v**2.0*self.A*self.CD
+		if self.userDefinedCDMach==True:
+			self.CD1 = self.CDMach(self.computeMachScalar(r,v))
+
+		else:
+			self.CD1 = self.CD
+
+		ans = 0.5*self.planetObj.rho(r,theta,phi)*v**2.0*self.A*self.CD1
 		return ans
 
 	def Dvectorized(self,r,theta,phi,v):
@@ -800,7 +828,14 @@ class Vehicle():
 
 		ans    = np.zeros(len(r))
 		rho_vec= self.planetObj.rhovectorized(r)
-		ans[:] = 0.5*rho_vec[:]*v[:]**2.0*self.A*self.CD
+		
+		if self.userDefinedCDMach==True:
+			self.CD_vec = self.CDMach(self.computeMach(r,v))
+		else:
+			self.CD_vec = self.CD*np.ones(len(v))
+
+		ans[:] = 0.5*rho_vec[:]*v[:]**2.0*self.A*self.CD_vec[:]
+
 		return ans
 
 
@@ -855,9 +890,13 @@ class Vehicle():
 			non-dimensional aerodynamic drag force
 
 		"""
+		if self.userDefinedCDMach==True:
+			self.CD1 = self.CDMach(self.computeMachScalar(rbar*self.planetObj.RP,vbar*self.planetObj.Vref))
+		else:
+			self.CD1 = self.CD
 
 		ans = 0.5*self.planetObj.rhobar(rbar,theta,phi)*vbar**2.0*\
-		      self.Abar*self.CD
+		      self.Abar*self.CD1
 		return ans
 
 	def a_s(self,r,theta,phi,v,delta):
@@ -1995,6 +2034,31 @@ class Vehicle():
 		mach[:]       = vc[:]/sonic_spd[:]
 
 		return mach
+
+	def computeMachScalar(self,r,v):
+		"""
+		This function computes the Mach. no at a single instance.
+
+		Parameters
+		----------
+		r : float
+			radial distance, m
+		v : floar
+			speed, m/s
+		
+		Returns
+		----------
+		ans : float
+			Mach no.
+		
+		"""
+		stat_pres     = np.float(self.planetObj.pressure_int(r - self.planetObj.RP))
+		stat_temp     = np.float(self.planetObj.temp_int(r - self.planetObj.RP))
+		sonic_spd     = np.float(self.planetObj.sonic_int(r - self.planetObj.RP))
+		mach          = v/sonic_spd
+
+		return mach
+
 
 	def computeStagTemp(self,rc,vc):
 		"""

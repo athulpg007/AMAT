@@ -17,6 +17,11 @@ See Jupyter_ notebooks to get started or refer to examples_ in the GitHub reposi
 .. _Jupyter: https://amat.readthedocs.io/en/latest/jupyter_link.html
 .. _examples: https://github.com/athulpg007/AMAT/tree/master/examples
 
+If you find AMAT useful in your work, please consider citing us: Girija et al., (2021). AMAT: A Python package for rapid conceptual design of aerocapture and atmospheric Entry, Descent, and Landing (EDL) missions in a Jupyter environment. *Journal of Open Source Software*, 6(67), 3710, `DOI 10.21105/joss.03710`_ 
+
+.. _DOI 10.21105/joss.03710: https://doi.org/10.21105/joss.03710
+
+
 AMAT allows the user to peform low-fidelity broad sweep parametric studies; as well as high fidelity Monte Carlo simulations to quantify aerocapture performance. AMAT comes with a suite of interplanetary trajectories, planetary atmosphere models, aeroheating correlations, and guidance algorithms for rapid conceptual mission design. AMAT provides aerocapture and Entry, Descent, Landing (EDL) mission analysis capability for Venus, Earth, Mars, Jupiter, Saturn, Titan, Uranus, and Neptune. 
 
 .. image:: _images/planets.png

@@ -62,3 +62,4 @@ Example Jupyter Notebooks
    /examples/example-55-titan-aerocapture-systems-study-part-1.ipynb
    /examples/example-56-venus-entry-tradespace.ipynb
    /examples/example-57-titan-entry-tradespace.ipynb
+   /examples/example-58-user-defined-CD-mach-function.ipynb
