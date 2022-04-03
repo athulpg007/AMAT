@@ -225,15 +225,16 @@ class Planet:
 			self.h_low  = 100.0E3        
 
 		else:
-			print(" >>> ERR : Invalid planet identifier provided.")
+			raise ValueError(" >>> ERR : Invalid planet identifier provided.")
 			print("Valid entries are: VENUS, EARTH, MARS, \
 			JUPITER, SATURN, TITAN, URANUS, NEPTUNE")
 
-		# compute reference values
-		self.Vref      = np.sqrt(self.GM/self.RP)     
-		self.tau       = self.RP / self.Vref          
-		self.OMEGAbar  = self.OMEGA*self.tau          
-		self.EARTHG    = 9.80665                      
+		# compute reference values for planet
+		if self.ID:
+			self.Vref      = np.sqrt(self.GM/self.RP)
+			self.tau       = self.RP / self.Vref
+			self.OMEGAbar  = self.OMEGA*self.tau
+			self.EARTHG    = 9.80665
 
 	def loadAtmosphereModel(self, datfile, heightCol, tempCol, presCol, \
 		densCol, intType='cubic', heightInKmFlag=False):
@@ -324,7 +325,7 @@ class Planet:
 		if h>=0 and h<=self.h_thres:
 		# if altitude is within available data range, return 
 		# density data from interpolating function density_int()
-			return np.float(self.density_int(h))
+			return float(self.density_int(h))
 
 		elif h>self.h_thres:
 			# if altitude is above atmospheric 
