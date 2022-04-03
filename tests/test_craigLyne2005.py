@@ -20,7 +20,7 @@ except ModuleNotFoundError:
 
 class CraigLyne2005(unittest.TestCase):
 
-	def test_aerocapture_vehicle(self):
+	def test_craig_lyne_2005(self):
 
 		planet1 = Planet("VENUS")
 
@@ -49,7 +49,7 @@ class CraigLyne2005(unittest.TestCase):
 		self.assertAlmostEqual(overShootLimit,  -7.0519, places=4)
 		self.assertAlmostEqual(underShootLimit, -9.4396, places=4)
 
-		# Reset initial conditions and propogate overshoot trajectory
+		# Reset initial conditions and propagate overshoot trajectory
 		vehicle1.setInitialState(180.0,0.0,0.0,12.0,0.0,overShootLimit,0.0,0.0)
 		vehicle1.propogateEntry (2400.0,0.1,180.0)
 
@@ -60,7 +60,7 @@ class CraigLyne2005(unittest.TestCase):
 		q_stag_con_os    = vehicle1.q_stag_con
 		q_stag_rad_os    = vehicle1.q_stag_rad
 
-		# Reset initial conditions and propogate undershoot trajectory
+		# Reset initial conditions and propagate undershoot trajectory
 		vehicle1.setInitialState(180.0,0.0,0.0,12.0,0.0,underShootLimit,0.0,0.0)
 		vehicle1.propogateEntry (2400.0,0.1,0.0)
 

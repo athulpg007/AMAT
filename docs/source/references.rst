@@ -15,7 +15,6 @@ Results from these articles are also used as benchmark examples.
 
 6. Girija A. P. et al. Quantitative Assessment of Aerocapture and Applications to Future Missions, *Journal of Spacecraft and Rockets*, 2022. girija2022_
 
-[DOI: 10.2514/1.A35214](https://arc.aiaa.org/doi/full/10.2514/1.A35214)
 .. _craiglyne2005: https://arc.aiaa.org/doi/10.2514/1.2589
 .. _putnamBraun2014: https://arc.aiaa.org/doi/10.2514/1.A32589
 .. _luSaikia2018: https://arc.aiaa.org/doi/10.2514/1.A34121
