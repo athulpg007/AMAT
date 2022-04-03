@@ -11,3 +11,4 @@ ipykernel==5.1.1
 nbsphinx==0.6.1
 jinja2==2.11.3
 docutils==0.14
+markupsafe==2.0.1

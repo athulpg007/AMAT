@@ -13,7 +13,7 @@ Results from these articles are also used as benchmark examples.
 
 5. Girija, A. P. et al. Feasibility and Performance Analysis of Neptune Aerocapture Using Heritage Blunt-Body Aeroshells, *Journal of Spacecraft and Rockets*, Vol. 57, No. 6, pp. 1186-1203. girijaSaikia2020b_
 
-6. Girija A. P. et al. "Quantitative Assessment of Aerocapture and Applications to Future Missions", *Journal of Spacecraft and Rockets*, 2022. girija2022_
+6. Girija A. P. et al. Quantitative Assessment of Aerocapture and Applications to Future Missions, *Journal of Spacecraft and Rockets*, 2022. girija2022_
 
 [DOI: 10.2514/1.A35214](https://arc.aiaa.org/doi/full/10.2514/1.A35214)
 .. _craiglyne2005: https://arc.aiaa.org/doi/10.2514/1.2589
