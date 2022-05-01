@@ -1,22 +1,3 @@
-"""
-GNU GENERAL PUBLIC LICENSE
-Version 3, 29 June 2007
-
-AMAT provides mission analysis capability for aerocapture and Entry, 
-Descent, and Landing (EDL) concepts for planetary science missions.
-
-Copyright (C) 2021  Athul Pradeepkumar Girija.
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License Version 3 as 
-published by the Free Software Foundation.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-"""
-
 import numpy as np
 from scipy.interpolate import interp1d
 from matplotlib import rcParams
