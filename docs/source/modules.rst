@@ -4,5 +4,5 @@ AMAT
 .. toctree::
    :maxdepth: 4
 
-   AMAT
+   api_reference
    tests
