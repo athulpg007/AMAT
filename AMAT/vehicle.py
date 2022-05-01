@@ -374,7 +374,7 @@ class Vehicle():
 		func : function object
 			vectorized numpy function which returns CD (Mach)
 			Note: func must return scalar for scalar input, 
-			      and array for array input!
+			and array for array input!
 		"""
 
 		self.CDMach = func

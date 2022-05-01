@@ -164,28 +164,34 @@ class Arrival:
 
 	def compute_v_inf_vector(self):
 		"""
+
 		Returns
+		-------
 		self.v_inf_vec : numpy.ndarray
 			returns the manually set / computed v_inf_vec in ICRF, km/s
-		-------
 		"""
+
 		return self.v_inf_vec
 
 	def compute_v_inf_mag(self):
 		"""
+
 		Returns
+		-------
 		self.v_inf_mag : float
 			returns the computed v_inf magnitude in ICRF, km/s
-		-------
 		"""
+
 		return self.v_inf_mag
 
 	def compute_declination(self):
 		"""
+
 		Returns
+		-------
 		self.declination : float
 			returns the computed arrival declination, rad
-		-------
 		"""
+
 		return self.declination
 

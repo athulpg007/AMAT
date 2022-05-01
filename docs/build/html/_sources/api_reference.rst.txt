@@ -10,5 +10,7 @@ API Reference
    :members:
 .. automodule:: AMAT.arrival
    :members:
+.. automodule:: AMAT.approach
+   :members:
 .. automodule:: AMAT.launcher
    :members:

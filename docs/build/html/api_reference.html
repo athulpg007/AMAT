@@ -4535,12 +4535,9 @@ aerocapture. (Earth application)</p>
 <dd><p>Set function for CD (Mach)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>func</strong> (<em>function object</em>) – <p>vectorized numpy function which returns CD (Mach)
-Note: func must return scalar for scalar input,</p>
-<blockquote>
-<div><p>and array for array input!</p>
-</div></blockquote>
-</p>
+<dd class="field-odd"><p><strong>func</strong> (<em>function object</em>) – vectorized numpy function which returns CD (Mach)
+Note: func must return scalar for scalar input,
+and array for array input!</p>
 </dd>
 </dl>
 </dd></dl>
@@ -4917,31 +4914,40 @@ planetary equator</p>
 <dl class="method">
 <dt id="AMAT.arrival.Arrival.compute_declination">
 <code class="sig-name descname">compute_declination</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.arrival.Arrival.compute_declination" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns
-self.declination : float</p>
-<blockquote>
-<div><p>returns the computed arrival declination, rad</p>
-</div></blockquote>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>self.declination</strong> – returns the computed arrival declination, rad</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="AMAT.arrival.Arrival.compute_v_inf_mag">
 <code class="sig-name descname">compute_v_inf_mag</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.arrival.Arrival.compute_v_inf_mag" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns
-self.v_inf_mag : float</p>
-<blockquote>
-<div><p>returns the computed v_inf magnitude in ICRF, km/s</p>
-</div></blockquote>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>self.v_inf_mag</strong> – returns the computed v_inf magnitude in ICRF, km/s</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="AMAT.arrival.Arrival.compute_v_inf_vector">
 <code class="sig-name descname">compute_v_inf_vector</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.arrival.Arrival.compute_v_inf_vector" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns
-self.v_inf_vec : numpy.ndarray</p>
-<blockquote>
-<div><p>returns the manually set / computed v_inf_vec in ICRF, km/s</p>
-</div></blockquote>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>self.v_inf_vec</strong> – returns the manually set / computed v_inf_vec in ICRF, km/s</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>numpy.ndarray</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -4990,6 +4996,749 @@ Valid entries are: ‘VENUS’, ‘EARTH’, ‘MARS’,
 ‘JUPITER’, ‘SATURN’, ‘TITAN’, ‘URANUS’, ‘NEPTUNE’</p></li>
 <li><p><strong>v_inf_vec_ICRF_kms</strong> (<em>numpy.ndarray</em>) – v_inf vector in ICRF, km/s</p></li>
 </ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-AMAT.approach"></span><dl class="class">
+<dt id="AMAT.approach.Approach">
+<em class="property">class </em><code class="sig-prename descclassname">AMAT.approach.</code><code class="sig-name descname">Approach</code><span class="sig-paren">(</span><em class="sig-param">arrivalPlanet</em>, <em class="sig-param">v_inf_vec_icrf_kms</em>, <em class="sig-param">rp</em>, <em class="sig-param">psi</em>, <em class="sig-param">is_entrySystem=False</em>, <em class="sig-param">h_EI=None</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.approach.Approach" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the probe/spacecraft approach trajectory for a given
+v_inf_vec, periapsis radius, psi.</p>
+<p>REF: Hughes (2016), Ph.D. Dissertation, Purdue University</p>
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.planetObj">
+<code class="sig-name descname">planetObj</code><a class="headerlink" href="#AMAT.approach.Approach.planetObj" title="Permalink to this definition">¶</a></dt>
+<dd><p>arrival planet object for approach trajectory</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>AMAT.planet.Planet object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.a">
+<code class="sig-name descname">a</code><a class="headerlink" href="#AMAT.approach.Approach.a" title="Permalink to this definition">¶</a></dt>
+<dd><p>semi-major axis, meters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.e">
+<code class="sig-name descname">e</code><a class="headerlink" href="#AMAT.approach.Approach.e" title="Permalink to this definition">¶</a></dt>
+<dd><p>eccentricity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.beta">
+<code class="sig-name descname">beta</code><a class="headerlink" href="#AMAT.approach.Approach.beta" title="Permalink to this definition">¶</a></dt>
+<dd><p>true anomaly of the outgoing asymptote, rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.v_inf_vec_bi_kms">
+<code class="sig-name descname">v_inf_vec_bi_kms</code><a class="headerlink" href="#AMAT.approach.Approach.v_inf_vec_bi_kms" title="Permalink to this definition">¶</a></dt>
+<dd><p>v_inf vector in body-inertial frame, km/s</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.v_inf_vec_bi">
+<code class="sig-name descname">v_inf_vec_bi</code><a class="headerlink" href="#AMAT.approach.Approach.v_inf_vec_bi" title="Permalink to this definition">¶</a></dt>
+<dd><p>v_inf vector in body-inertial frame, m/s</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.v_inf_vec_bi_mag_kms">
+<code class="sig-name descname">v_inf_vec_bi_mag_kms</code><a class="headerlink" href="#AMAT.approach.Approach.v_inf_vec_bi_mag_kms" title="Permalink to this definition">¶</a></dt>
+<dd><p>v_inf magnitude in body-inertial frame, km/s</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.phi_1">
+<code class="sig-name descname">phi_1</code><a class="headerlink" href="#AMAT.approach.Approach.phi_1" title="Permalink to this definition">¶</a></dt>
+<dd><p>rad, as defined in Eq. (2.16) from REF.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.phi_2">
+<code class="sig-name descname">phi_2</code><a class="headerlink" href="#AMAT.approach.Approach.phi_2" title="Permalink to this definition">¶</a></dt>
+<dd><p>rad, as defined in Eq. (2.17) from REF.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.rp_vec_bi_unit">
+<code class="sig-name descname">rp_vec_bi_unit</code><a class="headerlink" href="#AMAT.approach.Approach.rp_vec_bi_unit" title="Permalink to this definition">¶</a></dt>
+<dd><p>periapsis radius unit vector in body-inertial frame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.rp_vec_bi">
+<code class="sig-name descname">rp_vec_bi</code><a class="headerlink" href="#AMAT.approach.Approach.rp_vec_bi" title="Permalink to this definition">¶</a></dt>
+<dd><p>periapsis radius vector in body-inertial frame, meters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.e_vec_bi_unit">
+<code class="sig-name descname">e_vec_bi_unit</code><a class="headerlink" href="#AMAT.approach.Approach.e_vec_bi_unit" title="Permalink to this definition">¶</a></dt>
+<dd><p>eccentricity unit vector in body-inertial frame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.e_vec_bi">
+<code class="sig-name descname">e_vec_bi</code><a class="headerlink" href="#AMAT.approach.Approach.e_vec_bi" title="Permalink to this definition">¶</a></dt>
+<dd><p>eccentricity vector in body-inertial frame, meters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.h">
+<code class="sig-name descname">h</code><a class="headerlink" href="#AMAT.approach.Approach.h" title="Permalink to this definition">¶</a></dt>
+<dd><p>angular momentum, SI units</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.h_vec_bi">
+<code class="sig-name descname">h_vec_bi</code><a class="headerlink" href="#AMAT.approach.Approach.h_vec_bi" title="Permalink to this definition">¶</a></dt>
+<dd><p>angular momentum vector in body-inertial frame, SI units</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.h_vec_bi_unit">
+<code class="sig-name descname">h_vec_bi_unit</code><a class="headerlink" href="#AMAT.approach.Approach.h_vec_bi_unit" title="Permalink to this definition">¶</a></dt>
+<dd><p>angular momentum unit vector in body-inertial frame, SI units</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.i">
+<code class="sig-name descname">i</code><a class="headerlink" href="#AMAT.approach.Approach.i" title="Permalink to this definition">¶</a></dt>
+<dd><p>inclination [0, np.pi], rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.N_vec_bi">
+<code class="sig-name descname">N_vec_bi</code><a class="headerlink" href="#AMAT.approach.Approach.N_vec_bi" title="Permalink to this definition">¶</a></dt>
+<dd><p>node vector in body-inertial frame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.N_vec_bi_unit">
+<code class="sig-name descname">N_vec_bi_unit</code><a class="headerlink" href="#AMAT.approach.Approach.N_vec_bi_unit" title="Permalink to this definition">¶</a></dt>
+<dd><p>node unit vector in body-inertial frame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.OMEGA">
+<code class="sig-name descname">OMEGA</code><a class="headerlink" href="#AMAT.approach.Approach.OMEGA" title="Permalink to this definition">¶</a></dt>
+<dd><p>right asecension of ascending node, rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.omega">
+<code class="sig-name descname">omega</code><a class="headerlink" href="#AMAT.approach.Approach.omega" title="Permalink to this definition">¶</a></dt>
+<dd><p>argument of periapsis, rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.N_ref_bi">
+<code class="sig-name descname">N_ref_bi</code><a class="headerlink" href="#AMAT.approach.Approach.N_ref_bi" title="Permalink to this definition">¶</a></dt>
+<dd><p>reference normal vector in body-inertial frame (planet’s spin axis)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.S_vec_bi">
+<code class="sig-name descname">S_vec_bi</code><a class="headerlink" href="#AMAT.approach.Approach.S_vec_bi" title="Permalink to this definition">¶</a></dt>
+<dd><p>S vector in body-inertial frame, meters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.S_vec_bi_unit">
+<code class="sig-name descname">S_vec_bi_unit</code><a class="headerlink" href="#AMAT.approach.Approach.S_vec_bi_unit" title="Permalink to this definition">¶</a></dt>
+<dd><p>S unit vector in body-inertial frame, meters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.T_vec_bi">
+<code class="sig-name descname">T_vec_bi</code><a class="headerlink" href="#AMAT.approach.Approach.T_vec_bi" title="Permalink to this definition">¶</a></dt>
+<dd><p>T vector in body-inertial frame, meters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.T_vec_bi_unit">
+<code class="sig-name descname">T_vec_bi_unit</code><a class="headerlink" href="#AMAT.approach.Approach.T_vec_bi_unit" title="Permalink to this definition">¶</a></dt>
+<dd><p>T unit vector in body-inertial frame, meters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.R_vec_bi">
+<code class="sig-name descname">R_vec_bi</code><a class="headerlink" href="#AMAT.approach.Approach.R_vec_bi" title="Permalink to this definition">¶</a></dt>
+<dd><p>R vector in body-inertial frame, meters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.R_vec_bi_unit">
+<code class="sig-name descname">R_vec_bi_unit</code><a class="headerlink" href="#AMAT.approach.Approach.R_vec_bi_unit" title="Permalink to this definition">¶</a></dt>
+<dd><p>R unit vector in body-inertial frame, meters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.B_vec_bi">
+<code class="sig-name descname">B_vec_bi</code><a class="headerlink" href="#AMAT.approach.Approach.B_vec_bi" title="Permalink to this definition">¶</a></dt>
+<dd><p>B vector in body-inertial frame, meters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.B_vec_bi_unit">
+<code class="sig-name descname">B_vec_bi_unit</code><a class="headerlink" href="#AMAT.approach.Approach.B_vec_bi_unit" title="Permalink to this definition">¶</a></dt>
+<dd><p>B unit vector in body-inertial frame, meters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.b_mag">
+<code class="sig-name descname">b_mag</code><a class="headerlink" href="#AMAT.approach.Approach.b_mag" title="Permalink to this definition">¶</a></dt>
+<dd><p>aim point vector B magnitude, meters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.b_plane_angle_theta">
+<code class="sig-name descname">b_plane_angle_theta</code><a class="headerlink" href="#AMAT.approach.Approach.b_plane_angle_theta" title="Permalink to this definition">¶</a></dt>
+<dd><p>angle between aim point vector B and T</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.r_EI">
+<code class="sig-name descname">r_EI</code><a class="headerlink" href="#AMAT.approach.Approach.r_EI" title="Permalink to this definition">¶</a></dt>
+<dd><p>atmospheric entry interface radius, m</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.theta_star_entry">
+<code class="sig-name descname">theta_star_entry</code><a class="headerlink" href="#AMAT.approach.Approach.theta_star_entry" title="Permalink to this definition">¶</a></dt>
+<dd><p>true anomaly at entry interface, rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.r_vec_entry_bi">
+<code class="sig-name descname">r_vec_entry_bi</code><a class="headerlink" href="#AMAT.approach.Approach.r_vec_entry_bi" title="Permalink to this definition">¶</a></dt>
+<dd><p>position vector at entry interface in body-inertial frame, meters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.r_vec_entry_bi_unit">
+<code class="sig-name descname">r_vec_entry_bi_unit</code><a class="headerlink" href="#AMAT.approach.Approach.r_vec_entry_bi_unit" title="Permalink to this definition">¶</a></dt>
+<dd><p>position unit vector at entry interface in body-inertial frame, meters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.r_vec_entry_bi_mag">
+<code class="sig-name descname">r_vec_entry_bi_mag</code><a class="headerlink" href="#AMAT.approach.Approach.r_vec_entry_bi_mag" title="Permalink to this definition">¶</a></dt>
+<dd><p>position vector magnitude at entry interface in body-inertial frame, meters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.v_entry_inertial_mag">
+<code class="sig-name descname">v_entry_inertial_mag</code><a class="headerlink" href="#AMAT.approach.Approach.v_entry_inertial_mag" title="Permalink to this definition">¶</a></dt>
+<dd><p>inertial velocity magnitude at entry interface in body-inertial frame, m/s</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.gamma_entry_inertial">
+<code class="sig-name descname">gamma_entry_inertial</code><a class="headerlink" href="#AMAT.approach.Approach.gamma_entry_inertial" title="Permalink to this definition">¶</a></dt>
+<dd><p>inertial flight path angle at entry interface, rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.v_vec_entry_bi">
+<code class="sig-name descname">v_vec_entry_bi</code><a class="headerlink" href="#AMAT.approach.Approach.v_vec_entry_bi" title="Permalink to this definition">¶</a></dt>
+<dd><p>inertial velocity vector at entry interface in body-inertial frame, m/s</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.v_vec_entry_bi_unit">
+<code class="sig-name descname">v_vec_entry_bi_unit</code><a class="headerlink" href="#AMAT.approach.Approach.v_vec_entry_bi_unit" title="Permalink to this definition">¶</a></dt>
+<dd><p>inertial velocity unit vector at entry interface in body-inertial frame, m/s</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.gamma_entry_inertial_check">
+<code class="sig-name descname">gamma_entry_inertial_check</code><a class="headerlink" href="#AMAT.approach.Approach.gamma_entry_inertial_check" title="Permalink to this definition">¶</a></dt>
+<dd><p>analytic solution for inertial flight path angle at entry interface, rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.latitude_entry_bi">
+<code class="sig-name descname">latitude_entry_bi</code><a class="headerlink" href="#AMAT.approach.Approach.latitude_entry_bi" title="Permalink to this definition">¶</a></dt>
+<dd><p>entry latitude in body-inertial frame, rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.longitude_entry_bi">
+<code class="sig-name descname">longitude_entry_bi</code><a class="headerlink" href="#AMAT.approach.Approach.longitude_entry_bi" title="Permalink to this definition">¶</a></dt>
+<dd><p>entry longitude in body-inertial frame, rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.v_vec_entry_atm">
+<code class="sig-name descname">v_vec_entry_atm</code><a class="headerlink" href="#AMAT.approach.Approach.v_vec_entry_atm" title="Permalink to this definition">¶</a></dt>
+<dd><p>atmosphere-relative velocity vector at entry interface in body-inertial frame, m/s</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.v_entry_atm_mag">
+<code class="sig-name descname">v_entry_atm_mag</code><a class="headerlink" href="#AMAT.approach.Approach.v_entry_atm_mag" title="Permalink to this definition">¶</a></dt>
+<dd><p>atmosphere-relative velocity magnitude at entry interface in body-inertial frame, m/s</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.v_vec_entry_atm_unit">
+<code class="sig-name descname">v_vec_entry_atm_unit</code><a class="headerlink" href="#AMAT.approach.Approach.v_vec_entry_atm_unit" title="Permalink to this definition">¶</a></dt>
+<dd><p>atmosphere-relative velocity unit vector at entry interface in body-inertial frame, m/s</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.gamma_entry_atm">
+<code class="sig-name descname">gamma_entry_atm</code><a class="headerlink" href="#AMAT.approach.Approach.gamma_entry_atm" title="Permalink to this definition">¶</a></dt>
+<dd><p>atmosphere-relative flight path angle at entry interface, rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.v_vec_entry_atm_unit_proj">
+<code class="sig-name descname">v_vec_entry_atm_unit_proj</code><a class="headerlink" href="#AMAT.approach.Approach.v_vec_entry_atm_unit_proj" title="Permalink to this definition">¶</a></dt>
+<dd><p>projection of atmosphere-relative vector onto local horizontal plane at entry interface
+in body-inertial frame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.local_latitude_parallel_vec_unit">
+<code class="sig-name descname">local_latitude_parallel_vec_unit</code><a class="headerlink" href="#AMAT.approach.Approach.local_latitude_parallel_vec_unit" title="Permalink to this definition">¶</a></dt>
+<dd><p>unit vector direction of local parallel of latitude at entry interface in
+body-inertia frame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.approach.Approach.heading_entry_atm">
+<code class="sig-name descname">heading_entry_atm</code><a class="headerlink" href="#AMAT.approach.Approach.heading_entry_atm" title="Permalink to this definition">¶</a></dt>
+<dd><p>atmosphere-relative heading angle at entry interface, rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.approach.Approach.BI_to_BI_dprime">
+<code class="sig-name descname">BI_to_BI_dprime</code><span class="sig-paren">(</span><em class="sig-param">X_ICRF</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.approach.Approach.BI_to_BI_dprime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts an input vector from body-inertial to body-inertial-double-prime
+frame following Eq. (2.10) of REF.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X_ICRF</strong> (<em>numpy.ndarray</em>) – row vector in body-inertial frame</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>ans</strong> – input vector in body-inertial double-prime frame</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.approach.Approach.ICRF_to_BI">
+<code class="sig-name descname">ICRF_to_BI</code><span class="sig-paren">(</span><em class="sig-param">X_ICRF</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.approach.Approach.ICRF_to_BI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts an input vector from ICRF to body-inertial frame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X_ICRF</strong> (<em>numpy.ndarray</em>) – row vector in ICRF frame</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>ans</strong> – input vector in body-inertial frame</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.approach.Approach.R1">
+<code class="sig-name descname">R1</code><span class="sig-paren">(</span><em class="sig-param">theta</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.approach.Approach.R1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Direction cosine matrix for rotation about x-axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>theta</strong> (<em>float</em>) – rotation angle about x-axis</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>ans</strong> – Direction cosine matrix for rotation about x-axis.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.approach.Approach.R2">
+<code class="sig-name descname">R2</code><span class="sig-paren">(</span><em class="sig-param">theta</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.approach.Approach.R2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Direction cosine matrix for rotation about y-axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>theta</strong> (<em>float</em>) – rotation angle about y-axis</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>ans</strong> – Direction cosine matrix for rotation about y-axis.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.approach.Approach.R3">
+<code class="sig-name descname">R3</code><span class="sig-paren">(</span><em class="sig-param">theta</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.approach.Approach.R3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Direction cosine matrix for rotation about z-axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>theta</strong> (<em>float</em>) – rotation angle about zaxis</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>ans</strong> – Direction cosine matrix for rotation about z-axis.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.approach.Approach.pos_vec_bi">
+<code class="sig-name descname">pos_vec_bi</code><span class="sig-paren">(</span><em class="sig-param">theta_star</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.approach.Approach.pos_vec_bi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the position vector in body-inertial frame
+for a specified true-anomaly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>theta_star</strong> (<em>float</em>) – true anomaly, rad</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>pos_vec_bi</strong> – position vector in body-inertial frame, meters</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.approach.Approach.pos_vec_bi_dprime">
+<code class="sig-name descname">pos_vec_bi_dprime</code><span class="sig-paren">(</span><em class="sig-param">theta_star</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.approach.Approach.pos_vec_bi_dprime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the position vector in body-inertial double-prime
+frame for a specified true-anomaly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>theta_star</strong> (<em>float</em>) – true anomaly, rad</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>pos_vec_bi_dprime</strong> – position vector in body-inertial double-prime frame, meters</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.approach.Approach.r_mag_bi">
+<code class="sig-name descname">r_mag_bi</code><span class="sig-paren">(</span><em class="sig-param">theta_star</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.approach.Approach.r_mag_bi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the position vector magnitude in body-inertial frame at a given true anomaly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>theta_star</strong> (<em>float</em>) – true anomaly, rad</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>r_mag_bi</strong> – position vector magnitude, meters</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.approach.Approach.vel_vec_bi">
+<code class="sig-name descname">vel_vec_bi</code><span class="sig-paren">(</span><em class="sig-param">theta_star</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.approach.Approach.vel_vec_bi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the velocity vector magnitude in body-inertial frame at a given true anomaly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>theta_star</strong> (<em>float</em>) – true anomaly, rad</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>vel_vec_bi</strong> – velocity vector in body-inertial frame, m/s</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.approach.Approach.vel_vec_entry_atm">
+<code class="sig-name descname">vel_vec_entry_atm</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.approach.Approach.vel_vec_entry_atm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the atmosphere-relative velocity vector magnitude in body-inertial frame
+at atmospheric entry interface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>vel_vec_entry_atm</strong> – atmosphere-relative velocity vector in body-inertial frame, at
+atmospheric entry interface, m/s</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>numpy.ndarray</p>
 </dd>
 </dl>
 </dd></dl>
