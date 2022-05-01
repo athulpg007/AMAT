@@ -8,5 +8,7 @@ API Reference
    :members:
 .. automodule:: AMAT.vehicle
    :members:
+.. automodule:: AMAT.arrival
+   :members:
 .. automodule:: AMAT.launcher
    :members:
