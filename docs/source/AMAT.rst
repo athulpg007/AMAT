@@ -4,6 +4,14 @@ AMAT package
 Submodules
 ----------
 
+AMAT.arrival module
+-------------------
+
+.. automodule:: AMAT.arrival
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 AMAT.launcher module
 --------------------
 
@@ -27,6 +35,7 @@ AMAT.vehicle module
    :members:
    :undoc-members:
    :show-inheritance:
+
 
 Module contents
 ---------------

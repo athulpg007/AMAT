@@ -1,5 +1,5 @@
-AMAT-master-3
-=============
+AMAT
+====
 
 .. toctree::
    :maxdepth: 4
