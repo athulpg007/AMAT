@@ -35,12 +35,3 @@ AMAT.vehicle module
    :members:
    :undoc-members:
    :show-inheritance:
-
-
-Module contents
----------------
-
-.. automodule:: AMAT
-   :members:
-   :undoc-members:
-   :show-inheritance:
