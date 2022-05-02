@@ -132,8 +132,8 @@ class ProbeOrbiterDeflection:
 
 		self.v_vec_dv_space = (self.space.rp_vec_bi - self.f_space * self.r_vec_dv) / self.g_space
 
-		self.v_vec_dv_maneuver = self.v_vec_dv_space - self.v_vec_dv_probe
-		self.v_vec_dv_maneuver_mag = LA.norm(self.v_vec_dv_maneuver)
+		self.dv_maneuver_vec = self.v_vec_dv_space - self.v_vec_dv_probe
+		self.dv_maneuver_mag = LA.norm(self.dv_maneuver_vec)
 
 		self.H1 = np.sqrt((self.probe.e-1)/(self.probe.e+1))*np.tan(0.5*self.delta_theta_star_probe)
 		self.H_dv_probe = 2*np.arctanh(self.H1)
@@ -262,8 +262,8 @@ class ProbeProbeDeflection:
 		self.g_probe2 = ((self.r_dv * self.probe2.rp) / (np.sqrt(self.planetObj.GM * self.P_probe2))) * np.sin(self.delta_theta_star_probe2)
 		self.v_vec_dv_probe2 = (self.probe2.rp_vec_bi - self.f_probe2 * self.r_vec_dv) / self.g_probe2
 
-		self.v_vec_dv_maneuver = self.v_vec_dv_probe2 - self.v_vec_dv_probe1
-		self.v_vec_dv_maneuver_mag = LA.norm(self.v_vec_dv_maneuver)
+		self.dv_maneuver_vec = self.v_vec_dv_probe2 - self.v_vec_dv_probe1
+		self.dv_maneuver_mag = LA.norm(self.dv_maneuver_vec)
 
 		self.H1 = np.sqrt((self.probe1.e-1)/(self.probe1.e+1))*np.tan(0.5*self.delta_theta_star_probe1)
 		self.H_dv_probe1 = 2*np.arctanh(self.H1)
@@ -397,8 +397,8 @@ class OrbiterOrbiterDeflection:
 		self.g_space2 = ((self.r_dv * self.space2.rp) / (np.sqrt(self.planetObj.GM * self.P_space2))) * np.sin(self.delta_theta_star_space2)
 		self.v_vec_dv_space2 = (self.space2.rp_vec_bi - self.f_space2 * self.r_vec_dv) / self.g_space2
 
-		self.v_vec_dv_maneuver = self.v_vec_dv_space2 - self.v_vec_dv_space1
-		self.v_vec_dv_maneuver_mag = LA.norm(self.v_vec_dv_maneuver)
+		self.dv_maneuver_vec = self.v_vec_dv_space2 - self.v_vec_dv_space1
+		self.dv_maneuver_mag = LA.norm(self.dv_maneuver_vec)
 
 		self.U1 = np.sqrt(abs(self.space1.a)**3/self.planetObj.GM)
 		self.U2 = (np.sinh(self.alpha_prime1) - self.alpha_prime1) - (np.sinh(self.beta_prime1) - self.beta_prime1)

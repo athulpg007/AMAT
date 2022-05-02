@@ -40,7 +40,7 @@ class Test_ProbeOrbiterDeflection_Neptune:
 
 
     def test_v_vec_dv_maneuver(self):
-        assert abs(self.deflection.v_vec_dv_maneuver_mag - 65.7302) < 1e-2
+        assert abs(self.deflection.dv_maneuver_mag - 65.7302) < 1e-2
         assert abs(self.deflection.TOF_probe - 14.17563) < 1e-2
         assert abs(self.deflection.TOF_space - 14.17647) < 1e-2
 
@@ -55,7 +55,7 @@ class Test_ProbeProbeDeflection_Neptune:
 
 
     def test_v_vec_dv_maneuver(self):
-        assert abs(self.deflection.v_vec_dv_maneuver_mag - 15.6355338) < 1e-6
+        assert abs(self.deflection.dv_maneuver_mag - 15.6355338) < 1e-6
         assert abs(self.deflection.TOF_probe1 - 56.8684222) < 1e-6
         assert abs(self.deflection.TOF_probe2 - 56.8684222) < 1e-6
         assert abs(self.deflection.probe1.gamma_entry_inertial*180/np.pi - -10.5025297) < 1e-6
@@ -74,6 +74,6 @@ class Test_OrbiterOrbiterDeflection_Neptune:
 
 
     def test_v_vec_dv_maneuver(self):
-        assert abs(self.deflection.v_vec_dv_maneuver_mag - 68.9076850) < 1e-6
+        assert abs(self.deflection.dv_maneuver_mag - 68.9076850) < 1e-6
         assert abs(self.deflection.TOF_space1 - 14.17643992231) < 1e-6
         assert abs(self.deflection.TOF_space2 - 14.17647834316) < 1e-6

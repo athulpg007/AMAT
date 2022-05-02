@@ -69,3 +69,6 @@ Example Jupyter Notebooks
    /examples/example-62-two-probes-equatorial-polar.ipynb
    /examples/example-63-locus-of-approach-trajectories-const-gamma-inertial.ipynb
    /examples/example-64-probe-and-orbiter-trajectory.ipynb
+   /examples/example-65-probe-orbiter-deflection.ipynb
+   /examples/example-66-multi-probe-deflection.ipynb
+   /examples/example-67-multi-orbiter-deflection.ipynb
