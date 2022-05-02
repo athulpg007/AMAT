@@ -5791,6 +5791,562 @@ specified C3.</p>
 
 </dd></dl>
 
+<span class="target" id="module-AMAT.maneuver"></span><dl class="class">
+<dt id="AMAT.maneuver.OrbiterOrbiterDeflection">
+<em class="property">class </em><code class="sig-prename descclassname">AMAT.maneuver.</code><code class="sig-name descname">OrbiterOrbiterDeflection</code><span class="sig-paren">(</span><em class="sig-param">arrivalPlanet</em>, <em class="sig-param">v_inf_vec_icrf_kms</em>, <em class="sig-param">rp_space1</em>, <em class="sig-param">psi_space1</em>, <em class="sig-param">rp_space2</em>, <em class="sig-param">psi_space2</em>, <em class="sig-param">r_dv_rp</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.maneuver.OrbiterOrbiterDeflection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the deflection maneuver delta-V and time of flight for delivering
+two orbiter spacecraft from an approach trajectory.</p>
+<dl class="attribute">
+<dt id="AMAT.maneuver.OrbiterOrbiterDeflection.planetObj">
+<code class="sig-name descname">planetObj</code><a class="headerlink" href="#AMAT.maneuver.OrbiterOrbiterDeflection.planetObj" title="Permalink to this definition">¶</a></dt>
+<dd><p>arrival planet object for approach trajectory</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>AMAT.planet.Planet object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.OrbiterOrbiterDeflection.space1">
+<code class="sig-name descname">space1</code><a class="headerlink" href="#AMAT.maneuver.OrbiterOrbiterDeflection.space1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Approach object with approach trajectory parameters for the first orbiter spacecraft</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>AMAT.approach.Approach object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.OrbiterOrbiterDeflection.space2">
+<code class="sig-name descname">space2</code><a class="headerlink" href="#AMAT.maneuver.OrbiterOrbiterDeflection.space2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Approach object with approach trajectory parameters for the second orbiter spacecraft</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>AMAT.approach.Approach object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.OrbiterOrbiterDeflection.r_dv_rp">
+<code class="sig-name descname">r_dv_rp</code><a class="headerlink" href="#AMAT.maneuver.OrbiterOrbiterDeflection.r_dv_rp" title="Permalink to this definition">¶</a></dt>
+<dd><p>radial distance at which the deflection maneuver is
+performed, in terms of arrival planet radius
+Example: 1000, for maneuver performed at radial distance of
+1000 times the radius of the planet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.OrbiterOrbiterDeflection.r_dv">
+<code class="sig-name descname">r_dv</code><a class="headerlink" href="#AMAT.maneuver.OrbiterOrbiterDeflection.r_dv" title="Permalink to this definition">¶</a></dt>
+<dd><p>radial distance at which the deflection maneuver is
+performed, in meters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.OrbiterOrbiterDeflection.theta_star_dv_space1">
+<code class="sig-name descname">theta_star_dv_space1</code><a class="headerlink" href="#AMAT.maneuver.OrbiterOrbiterDeflection.theta_star_dv_space1" title="Permalink to this definition">¶</a></dt>
+<dd><p>true anomaly of the first orbiter spacecraft at deflection maneuver, rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.OrbiterOrbiterDeflection.r_vec_dv">
+<code class="sig-name descname">r_vec_dv</code><a class="headerlink" href="#AMAT.maneuver.OrbiterOrbiterDeflection.r_vec_dv" title="Permalink to this definition">¶</a></dt>
+<dd><p>position vector at deflection maneuver in body-inertial frame, meters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.OrbiterOrbiterDeflection.r_vec_dv_unit">
+<code class="sig-name descname">r_vec_dv_unit</code><a class="headerlink" href="#AMAT.maneuver.OrbiterOrbiterDeflection.r_vec_dv_unit" title="Permalink to this definition">¶</a></dt>
+<dd><p>position unit vector at deflection maneuver in body-inertial frame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.OrbiterOrbiterDeflection.delta_theta_star_space1">
+<code class="sig-name descname">delta_theta_star_space1</code><a class="headerlink" href="#AMAT.maneuver.OrbiterOrbiterDeflection.delta_theta_star_space1" title="Permalink to this definition">¶</a></dt>
+<dd><p>true anomaly change for first orbiter spacecraft (Eq. 2.78, REF), rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.OrbiterOrbiterDeflection.delta_theta_star_space2">
+<code class="sig-name descname">delta_theta_star_space2</code><a class="headerlink" href="#AMAT.maneuver.OrbiterOrbiterDeflection.delta_theta_star_space2" title="Permalink to this definition">¶</a></dt>
+<dd><p>true anomaly change for second orbiter spacecraft (Eq. 2.78, REF), rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.OrbiterOrbiterDeflection.v_vec_dv_space1">
+<code class="sig-name descname">v_vec_dv_space1</code><a class="headerlink" href="#AMAT.maneuver.OrbiterOrbiterDeflection.v_vec_dv_space1" title="Permalink to this definition">¶</a></dt>
+<dd><p>first orbiter spacecraft velocity vector in body-inertial frame, meters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.OrbiterOrbiterDeflection.v_vec_dv_space2">
+<code class="sig-name descname">v_vec_dv_space2</code><a class="headerlink" href="#AMAT.maneuver.OrbiterOrbiterDeflection.v_vec_dv_space2" title="Permalink to this definition">¶</a></dt>
+<dd><p>second orbiter spacecraft velocity vector in body-inertial frame, meters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.OrbiterOrbiterDeflection.v_vec_dv_maneuver">
+<code class="sig-name descname">v_vec_dv_maneuver</code><a class="headerlink" href="#AMAT.maneuver.OrbiterOrbiterDeflection.v_vec_dv_maneuver" title="Permalink to this definition">¶</a></dt>
+<dd><p>deflection maneuver delta-V vector, m/s</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.OrbiterOrbiterDeflection.v_vec_dv_maneuver_mag">
+<code class="sig-name descname">v_vec_dv_maneuver_mag</code><a class="headerlink" href="#AMAT.maneuver.OrbiterOrbiterDeflection.v_vec_dv_maneuver_mag" title="Permalink to this definition">¶</a></dt>
+<dd><p>deflection maneuver delta-V magnitude, m/s</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.OrbiterOrbiterDeflection.TOF_space1">
+<code class="sig-name descname">TOF_space1</code><a class="headerlink" href="#AMAT.maneuver.OrbiterOrbiterDeflection.TOF_space1" title="Permalink to this definition">¶</a></dt>
+<dd><p>first spacecraft orbiter time of flight from deflection maneuver until
+periapsis, days</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.OrbiterOrbiterDeflection.TOF_space2">
+<code class="sig-name descname">TOF_space2</code><a class="headerlink" href="#AMAT.maneuver.OrbiterOrbiterDeflection.TOF_space2" title="Permalink to this definition">¶</a></dt>
+<dd><p>second spacecraft orbiter time of flight from deflection maneuver until
+periapsis, days</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="AMAT.maneuver.ProbeOrbiterDeflection">
+<em class="property">class </em><code class="sig-prename descclassname">AMAT.maneuver.</code><code class="sig-name descname">ProbeOrbiterDeflection</code><span class="sig-paren">(</span><em class="sig-param">arrivalPlanet</em>, <em class="sig-param">v_inf_vec_icrf_kms</em>, <em class="sig-param">rp_probe</em>, <em class="sig-param">psi_probe</em>, <em class="sig-param">h_EI_probe</em>, <em class="sig-param">rp_space</em>, <em class="sig-param">psi_space</em>, <em class="sig-param">r_dv_rp</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.maneuver.ProbeOrbiterDeflection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the deflection manuever delta-V and time of flight for an orbiter spacecraft
+divert manuever for propulsive orbit insertion after probe release on approach.</p>
+<dl class="attribute">
+<dt id="AMAT.maneuver.ProbeOrbiterDeflection.planetObj">
+<code class="sig-name descname">planetObj</code><a class="headerlink" href="#AMAT.maneuver.ProbeOrbiterDeflection.planetObj" title="Permalink to this definition">¶</a></dt>
+<dd><p>arrival planet object for approach trajectory</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>AMAT.planet.Planet object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.ProbeOrbiterDeflection.probe">
+<code class="sig-name descname">probe</code><a class="headerlink" href="#AMAT.maneuver.ProbeOrbiterDeflection.probe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Approach object with approach trajectory parameters for the entry probe</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>AMAT.approach.Approach object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.ProbeOrbiterDeflection.space">
+<code class="sig-name descname">space</code><a class="headerlink" href="#AMAT.maneuver.ProbeOrbiterDeflection.space" title="Permalink to this definition">¶</a></dt>
+<dd><p>Approach object with approach trajectory parameters for the orbiter spacecraft</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>AMAT.approach.Approach object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.ProbeOrbiterDeflection.r_dv_rp">
+<code class="sig-name descname">r_dv_rp</code><a class="headerlink" href="#AMAT.maneuver.ProbeOrbiterDeflection.r_dv_rp" title="Permalink to this definition">¶</a></dt>
+<dd><p>radial distance at which the deflection maneuver is
+performed, in terms of arrival planet radius
+Example: 1000, for maneuver performed at radial distance of
+1000 times the radius of the planet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.ProbeOrbiterDeflection.r_dv">
+<code class="sig-name descname">r_dv</code><a class="headerlink" href="#AMAT.maneuver.ProbeOrbiterDeflection.r_dv" title="Permalink to this definition">¶</a></dt>
+<dd><p>radial distance at which the deflection maneuver is
+performed, in meters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.ProbeOrbiterDeflection.theta_star_dv_probe">
+<code class="sig-name descname">theta_star_dv_probe</code><a class="headerlink" href="#AMAT.maneuver.ProbeOrbiterDeflection.theta_star_dv_probe" title="Permalink to this definition">¶</a></dt>
+<dd><p>true anomaly of the probe at deflection maneuver, rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.ProbeOrbiterDeflection.r_vec_dv">
+<code class="sig-name descname">r_vec_dv</code><a class="headerlink" href="#AMAT.maneuver.ProbeOrbiterDeflection.r_vec_dv" title="Permalink to this definition">¶</a></dt>
+<dd><p>probe position vector at maneuver in body-inertial frame, meters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.ProbeOrbiterDeflection.r_vec_dv_unit">
+<code class="sig-name descname">r_vec_dv_unit</code><a class="headerlink" href="#AMAT.maneuver.ProbeOrbiterDeflection.r_vec_dv_unit" title="Permalink to this definition">¶</a></dt>
+<dd><p>probe position unit vector at maneuver in body-inertial frame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.ProbeOrbiterDeflection.delta_theta_star_probe">
+<code class="sig-name descname">delta_theta_star_probe</code><a class="headerlink" href="#AMAT.maneuver.ProbeOrbiterDeflection.delta_theta_star_probe" title="Permalink to this definition">¶</a></dt>
+<dd><p>true anomaly change for probe (Eq. 2.75, REF), rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.ProbeOrbiterDeflection.delta_theta_star_space">
+<code class="sig-name descname">delta_theta_star_space</code><a class="headerlink" href="#AMAT.maneuver.ProbeOrbiterDeflection.delta_theta_star_space" title="Permalink to this definition">¶</a></dt>
+<dd><p>true anomaly change for orbiter (Eq. 2.78, REF), rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.ProbeOrbiterDeflection.v_vec_dv_probe">
+<code class="sig-name descname">v_vec_dv_probe</code><a class="headerlink" href="#AMAT.maneuver.ProbeOrbiterDeflection.v_vec_dv_probe" title="Permalink to this definition">¶</a></dt>
+<dd><p>probe velocity vector in body-inertial frame, meters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.ProbeOrbiterDeflection.v_vec_dv_space">
+<code class="sig-name descname">v_vec_dv_space</code><a class="headerlink" href="#AMAT.maneuver.ProbeOrbiterDeflection.v_vec_dv_space" title="Permalink to this definition">¶</a></dt>
+<dd><p>orbiter velocity vector in body-inertial frame, meters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.ProbeOrbiterDeflection.v_vec_dv_maneuver">
+<code class="sig-name descname">v_vec_dv_maneuver</code><a class="headerlink" href="#AMAT.maneuver.ProbeOrbiterDeflection.v_vec_dv_maneuver" title="Permalink to this definition">¶</a></dt>
+<dd><p>orbiter deflection maneuver delta-V vector, m/s</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.ProbeOrbiterDeflection.v_vec_dv_maneuver_mag">
+<code class="sig-name descname">v_vec_dv_maneuver_mag</code><a class="headerlink" href="#AMAT.maneuver.ProbeOrbiterDeflection.v_vec_dv_maneuver_mag" title="Permalink to this definition">¶</a></dt>
+<dd><p>orbiter deflection maneuver delta-V magnitude, m/s</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.ProbeOrbiterDeflection.TOF_probe">
+<code class="sig-name descname">TOF_probe</code><a class="headerlink" href="#AMAT.maneuver.ProbeOrbiterDeflection.TOF_probe" title="Permalink to this definition">¶</a></dt>
+<dd><p>probe time of flight from deflection maneuver until
+atmospheric entry interface, days</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.ProbeOrbiterDeflection.TOF_space">
+<code class="sig-name descname">TOF_space</code><a class="headerlink" href="#AMAT.maneuver.ProbeOrbiterDeflection.TOF_space" title="Permalink to this definition">¶</a></dt>
+<dd><p>orbiter time of flight from deflection maneuver until
+periapsis, days</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="AMAT.maneuver.ProbeProbeDeflection">
+<em class="property">class </em><code class="sig-prename descclassname">AMAT.maneuver.</code><code class="sig-name descname">ProbeProbeDeflection</code><span class="sig-paren">(</span><em class="sig-param">arrivalPlanet</em>, <em class="sig-param">v_inf_vec_icrf_kms</em>, <em class="sig-param">rp_probe1</em>, <em class="sig-param">psi_probe1</em>, <em class="sig-param">h_EI_probe1</em>, <em class="sig-param">rp_probe2</em>, <em class="sig-param">psi_probe2</em>, <em class="sig-param">h_EI_probe2</em>, <em class="sig-param">r_dv_rp</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.maneuver.ProbeProbeDeflection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the deflection maneuver delta-V and time of flight for delivering
+two atmospheric entry systems from an approach trajectory.</p>
+<dl class="attribute">
+<dt id="AMAT.maneuver.ProbeProbeDeflection.planetObj">
+<code class="sig-name descname">planetObj</code><a class="headerlink" href="#AMAT.maneuver.ProbeProbeDeflection.planetObj" title="Permalink to this definition">¶</a></dt>
+<dd><p>arrival planet object for approach trajectory</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>AMAT.planet.Planet object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.ProbeProbeDeflection.probe1">
+<code class="sig-name descname">probe1</code><a class="headerlink" href="#AMAT.maneuver.ProbeProbeDeflection.probe1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Approach object with approach trajectory parameters for the first entry probe</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>AMAT.approach.Approach object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.ProbeProbeDeflection.probe2">
+<code class="sig-name descname">probe2</code><a class="headerlink" href="#AMAT.maneuver.ProbeProbeDeflection.probe2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Approach object with approach trajectory parameters for the second entry probe</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>AMAT.approach.Approach object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.ProbeProbeDeflection.r_dv_rp">
+<code class="sig-name descname">r_dv_rp</code><a class="headerlink" href="#AMAT.maneuver.ProbeProbeDeflection.r_dv_rp" title="Permalink to this definition">¶</a></dt>
+<dd><p>radial distance at which the deflection maneuver is
+performed, in terms of arrival planet radius
+Example: 1000, for maneuver performed at radial distance of
+1000 times the radius of the planet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.ProbeProbeDeflection.r_dv">
+<code class="sig-name descname">r_dv</code><a class="headerlink" href="#AMAT.maneuver.ProbeProbeDeflection.r_dv" title="Permalink to this definition">¶</a></dt>
+<dd><p>radial distance at which the deflection maneuver is
+performed, in meters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.ProbeProbeDeflection.theta_star_dv_probe1">
+<code class="sig-name descname">theta_star_dv_probe1</code><a class="headerlink" href="#AMAT.maneuver.ProbeProbeDeflection.theta_star_dv_probe1" title="Permalink to this definition">¶</a></dt>
+<dd><p>true anomaly of the first probe at deflection maneuver, rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.ProbeProbeDeflection.theta_star_dv_probe2">
+<code class="sig-name descname">theta_star_dv_probe2</code><a class="headerlink" href="#AMAT.maneuver.ProbeProbeDeflection.theta_star_dv_probe2" title="Permalink to this definition">¶</a></dt>
+<dd><p>true anomaly of the second probe at deflection maneuver, rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.ProbeProbeDeflection.delta_theta_star_probe1">
+<code class="sig-name descname">delta_theta_star_probe1</code><a class="headerlink" href="#AMAT.maneuver.ProbeProbeDeflection.delta_theta_star_probe1" title="Permalink to this definition">¶</a></dt>
+<dd><p>true anomaly change for first probe (Eq. 2.75, REF), rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.ProbeProbeDeflection.delta_theta_star_probe2">
+<code class="sig-name descname">delta_theta_star_probe2</code><a class="headerlink" href="#AMAT.maneuver.ProbeProbeDeflection.delta_theta_star_probe2" title="Permalink to this definition">¶</a></dt>
+<dd><p>true anomaly change for second probe (Eq. 2.75, REF), rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.ProbeProbeDeflection.v_vec_dv_probe1">
+<code class="sig-name descname">v_vec_dv_probe1</code><a class="headerlink" href="#AMAT.maneuver.ProbeProbeDeflection.v_vec_dv_probe1" title="Permalink to this definition">¶</a></dt>
+<dd><p>first probe velocity vector in body-inertial frame, meters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.ProbeProbeDeflection.v_vec_dv_probe2">
+<code class="sig-name descname">v_vec_dv_probe2</code><a class="headerlink" href="#AMAT.maneuver.ProbeProbeDeflection.v_vec_dv_probe2" title="Permalink to this definition">¶</a></dt>
+<dd><p>second probe velocity vector in body-inertial frame, meters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.ProbeProbeDeflection.v_vec_dv_maneuver">
+<code class="sig-name descname">v_vec_dv_maneuver</code><a class="headerlink" href="#AMAT.maneuver.ProbeProbeDeflection.v_vec_dv_maneuver" title="Permalink to this definition">¶</a></dt>
+<dd><p>deflection maneuver delta-V vector, m/s</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.ProbeProbeDeflection.v_vec_dv_maneuver_mag">
+<code class="sig-name descname">v_vec_dv_maneuver_mag</code><a class="headerlink" href="#AMAT.maneuver.ProbeProbeDeflection.v_vec_dv_maneuver_mag" title="Permalink to this definition">¶</a></dt>
+<dd><p>deflection maneuver delta-V magnitude, m/s</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.ProbeProbeDeflection.TOF_probe1">
+<code class="sig-name descname">TOF_probe1</code><a class="headerlink" href="#AMAT.maneuver.ProbeProbeDeflection.TOF_probe1" title="Permalink to this definition">¶</a></dt>
+<dd><p>probe time of flight from deflection maneuver until
+atmospheric entry interface, days</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.maneuver.ProbeProbeDeflection.TOF_probe2">
+<code class="sig-name descname">TOF_probe2</code><a class="headerlink" href="#AMAT.maneuver.ProbeProbeDeflection.TOF_probe2" title="Permalink to this definition">¶</a></dt>
+<dd><p>orbiter time of flight from deflection maneuver until
+atmospheric entry interface, days</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 
