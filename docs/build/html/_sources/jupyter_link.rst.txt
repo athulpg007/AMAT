@@ -63,3 +63,7 @@ Example Jupyter Notebooks
    /examples/example-56-venus-entry-tradespace.ipynb
    /examples/example-57-titan-entry-tradespace.ipynb
    /examples/example-58-user-defined-CD-mach-function.ipynb
+   /examples/example-59-compute-arrival-declination-manually-supplied-v-inf-vector.ipynb
+   /examples/example-60-compute-arrival-v-inf-and-declination-from-flyby-dates-1.ipynb
+   /examples/example-61-compute-arrival-v-inf-and-declination-from-flyby-dates-2.ipynb
+   /examples/example-62-two-probes-equatorial-polar.ipynb
