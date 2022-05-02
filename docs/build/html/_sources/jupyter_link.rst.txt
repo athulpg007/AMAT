@@ -62,3 +62,13 @@ Example Jupyter Notebooks
    /examples/example-55-titan-aerocapture-systems-study-part-1.ipynb
    /examples/example-56-venus-entry-tradespace.ipynb
    /examples/example-57-titan-entry-tradespace.ipynb
+   /examples/example-58-user-defined-CD-mach-function.ipynb
+   /examples/example-59-compute-arrival-declination-manually-supplied-v-inf-vector.ipynb
+   /examples/example-60-compute-arrival-v-inf-and-declination-from-flyby-dates-1.ipynb
+   /examples/example-61-compute-arrival-v-inf-and-declination-from-flyby-dates-2.ipynb
+   /examples/example-62-two-probes-equatorial-polar.ipynb
+   /examples/example-63-locus-of-approach-trajectories-const-gamma-inertial.ipynb
+   /examples/example-64-probe-and-orbiter-trajectory.ipynb
+   /examples/example-65-probe-orbiter-deflection.ipynb
+   /examples/example-66-multi-probe-deflection.ipynb
+   /examples/example-67-multi-orbiter-deflection.ipynb

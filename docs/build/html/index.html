@@ -1,70 +1,35 @@
-
-
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Aerocapture Mission Analysis Tool (AMAT) &mdash; AMAT v2.1.11 documentation</title>
-  
-
-  
-  
-  
-  
-
-  
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-
-    
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aerocapture Mission Analysis Tool (AMAT) &mdash; AMAT v2.2.6 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <script src="_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="About AMAT" href="about.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="#" class="icon icon-home"> AMAT
-          
-
-          
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -72,23 +37,14 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="about.html">About AMAT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="capabilities.html">Capabilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="jupyter_link.html">Example Jupyter Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jsr-notebooks.html">JSR Article Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_reference.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributions.html">Contributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credits.html">Credits</a></li>
@@ -96,68 +52,30 @@
 <li class="toctree-l1"><a class="reference internal" href="module_index.html">Module Index</a></li>
 </ul>
 
-            
-          
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="#">AMAT</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="#">Docs</a> &raquo;</li>
-        
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
       <li>Aerocapture Mission Analysis Tool (AMAT)</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   
 <style>
 /* CSS overrides for sphinx_rtd_theme */
@@ -187,11 +105,12 @@
 <img alt="_images/AMAT_logo_cropped.png" src="_images/AMAT_logo_cropped.png" />
 <p><a class="reference external" href="https://github.com/athulpg007/AMAT">AMAT</a> is designed to provide rapid mission analysis capability for aerocapture mission concepts to the planetary science community.</p>
 <p>See <a class="reference external" href="https://amat.readthedocs.io/en/latest/jupyter_link.html">Jupyter</a> notebooks to get started or refer to <a class="reference external" href="https://github.com/athulpg007/AMAT/tree/master/examples">examples</a> in the GitHub repository.</p>
+<p>If you find AMAT useful in your work, please consider citing us: Girija et al., (2021). AMAT: A Python package for rapid conceptual design of aerocapture and atmospheric Entry, Descent, and Landing (EDL) missions in a Jupyter environment. <em>Journal of Open Source Software</em>, 6(67), 3710, <a class="reference external" href="https://doi.org/10.21105/joss.03710">DOI 10.21105/joss.03710</a></p>
 <p>AMAT allows the user to peform low-fidelity broad sweep parametric studies; as well as high fidelity Monte Carlo simulations to quantify aerocapture performance. AMAT comes with a suite of interplanetary trajectories, planetary atmosphere models, aeroheating correlations, and guidance algorithms for rapid conceptual mission design. AMAT provides aerocapture and Entry, Descent, Landing (EDL) mission analysis capability for Venus, Earth, Mars, Jupiter, Saturn, Titan, Uranus, and Neptune.</p>
 <img alt="_images/planets.png" src="_images/planets.png" />
 <p>For sub-routine documentation, see <a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p>
 <div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="about.html">About AMAT</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="about.html#overview">Overview</a></li>
@@ -271,6 +190,44 @@
 <li class="toctree-l2"><a class="reference internal" href="examples/example-55-titan-aerocapture-systems-study-part-1.html">Example - 55 - Titan Aerocapture Systems Study - Part 1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples/example-56-venus-entry-tradespace.html">Example - 56 - Venus Entry Tradespace - Carpet Plot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples/example-57-titan-entry-tradespace.html">Example - 57 - Dragnofly (Titan) Entry Tradespace - Carpet Plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/example-58-user-defined-CD-mach-function.html">Example - 58 - User-defined CD Mach Function - Earth Re-entry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/example-59-compute-arrival-declination-manually-supplied-v-inf-vector.html">Example - 59 - Compute arrival declination from v-inf-vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/example-60-compute-arrival-v-inf-and-declination-from-flyby-dates-1.html">Example - 60 - Compute v_inf and arrival declination from flyby dates (1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/example-61-compute-arrival-v-inf-and-declination-from-flyby-dates-2.html">Example - 61 - Compute v_inf and arrival declination from flyby dates (2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/example-62-two-probes-equatorial-polar.html">Example - 62 - Approach Trajectories for Two Probes at Neptune</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/example-63-locus-of-approach-trajectories-const-gamma-inertial.html">Example - 63 - Locus of approach trajectories for constant inertial EFPA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/example-64-probe-and-orbiter-trajectory.html">Example - 64 - Probe and Orbiter Trajectory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/example-65-probe-orbiter-deflection.html">Example - 65 - Probe-Orbiter Deflection Maneuver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/example-66-multi-probe-deflection.html">Example - 66 - Multi-probe Deflection Maneuver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/example-67-multi-orbiter-deflection.html">Example - 67 - Multi-orbiter Deflection Maneuver</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="jsr-notebooks.html">JSR Article Notebooks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="jsr-notebooks/01-literature-survey.html">01 - Literature Survey</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jsr-notebooks/02-interplanetary.html">02 - Interplanetary Trajectories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jsr-notebooks/03-a-venus-feasibility-lift.html">03 - a - Venus - Feasibility Charts - Lift</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jsr-notebooks/03-b-venus-feasibility-drag.html">03 - b - Venus - Feasibility Charts - Drag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jsr-notebooks/04-a-earth-feasibility-lift.html">04 - a - Earth - Feasibility Charts - Lift</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jsr-notebooks/04-b-earth-feasibility-drag.html">04 - b - Earth - Feasibility Charts - Drag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jsr-notebooks/05-a-mars-feasibility-lift.html">05 - a - Mars - Feasibility Charts - Lift</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jsr-notebooks/05-b-mars-feasibility-drag.html">05 - a - Mars - Feasibility Charts - Drag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jsr-notebooks/06-a-jupiter-feasibility-lift.html">06 - a - Jupiter - Feasibility Charts - Lift</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jsr-notebooks/06-b-jupiter-feasibility-drag.html">06 - a - Jupiter - Feasibility Charts - Drag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jsr-notebooks/07-a-saturn-feasibility-lift.html">07 - a - Saturn - Feasibility Charts - Lift</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jsr-notebooks/07-b-saturn-feasibility-drag.html">07 - b - Saturn - Feasibility Charts - Drag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jsr-notebooks/08-a-titan-feasibility-lift.html">08 - a - Titan - Feasibility Charts - Lift</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jsr-notebooks/08-b-titan-feasibility-drag.html">08 - b - Titan - Feasibility Charts - Lift</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jsr-notebooks/09-a-uranus-feasibility-lift.html">09 - a - Uranus - Feasibility Charts - Lift</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jsr-notebooks/09-b-uranus-feasibility-drag.html">09 - b - Uranus - Feasibility Charts - Drag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jsr-notebooks/10-a-neptune-feasibility-lift.html">10 - a - Neptune - Feasibility Charts - Lift</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jsr-notebooks/10-b-neptune-feasibility-drag.html">10 - b - Neptune - Feasibility Charts - Drag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jsr-notebooks/11-mass-benefit-analysis-venus.html">11 - Mass-Benefit Analysis - Venus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jsr-notebooks/12-mass-benefit-analysis-earth.html">12 - Mass-Benefit Analysis - Earth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jsr-notebooks/13-mass-benefit-analysis-mars.html">13 - Mass-Benefit Analysis - Mars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jsr-notebooks/14-mass-benefit-analysis-titan.html">14 - Mass-Benefit Analysis - Titan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jsr-notebooks/15-mass-benefit-analysis-uranus.html">15 - Mass-Benefit Analysis - Uranus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jsr-notebooks/16-mass-benefit-analysis-neptune.html">16 - Mass-Benefit Analysis - Neptune</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jsr-notebooks/17-comparative-studies.html">17 - Comparative Studies</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api_reference.html">API Reference</a><ul class="simple">
@@ -297,49 +254,32 @@
 
 
            </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="about.html" class="btn btn-neutral float-right" title="About AMAT" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="about.html" class="btn btn-neutral float-right" title="About AMAT" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &copy; Copyright 2020, A.P. Girija
-
-    </p>
+    <p>&#169; Copyright 2022, A.P. Girija.</p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

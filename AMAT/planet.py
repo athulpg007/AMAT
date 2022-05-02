@@ -1,22 +1,3 @@
-"""
-GNU GENERAL PUBLIC LICENSE
-Version 3, 29 June 2007
-
-AMAT provides mission analysis capability for aerocapture and Entry, 
-Descent, and Landing (EDL) concepts for planetary science missions.
-
-Copyright (C) 2021  Athul Pradeepkumar Girija.
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License Version 3 as 
-published by the Free Software Foundation.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-"""
-
 import numpy as np
 from scipy.interpolate import interp1d
 from matplotlib import rcParams
@@ -50,6 +31,10 @@ class Planet:
 		zonal harmonic coefficient J2
 	J3 : float
 		zonal harmonic coefficient J3
+	a0 : float
+		right ascension of North Pole in ICRF, rad
+	d0 : float
+		declination of North Pole in ICRF, rad
 	h_thres : float
 		Atmospheric model cutoff altitude in meters, 
 		density is set to 0, if altitude exceeds h_thres
@@ -115,7 +100,9 @@ class Planet:
 			self.rho0   = 64.790       
 			self.CPCV   = 1.289        
 			self.J2     = 4.458E-6     
-			self.J3     = 0.000000    
+			self.J3     = 0.000000
+			self.a0 = 272.76 * np.pi / 180.0
+			self.d0 = 67.16 * np.pi / 180.0
 			self.h_thres= 180000.0     
 			self.h_skip = 180000.0     
 			self.h_trap = 10000.0
@@ -130,7 +117,9 @@ class Planet:
 			self.rho0   = 1.2250       
 			self.CPCV   = 1.4          
 			self.J2     = 1082.6E-6    
-			self.J3     = -2.532E-6    
+			self.J3     = -2.532E-6
+			self.a0 = 0.0 * np.pi / 180.0
+			self.d0 = 90.0 * np.pi / 180.0
 			self.h_thres= 120.0E3      
 			self.h_skip = 120.0E3      
 			self.h_trap = 10.0E3
@@ -145,7 +134,9 @@ class Planet:
 			self.rho0   = 0.0200       
 			self.CPCV   = 1.289        
 			self.J2     = 1960.45E-6   
-			self.J3     = 31.5E-6      
+			self.J3     = 31.5E-6
+			self.a0 = 317.68143 * np.pi / 180.0
+			self.d0 = 52.88650 * np.pi / 180.0
 			self.h_thres= 120.0E3      
 			self.h_skip = 120.0E3      
 			self.h_trap = 10.0E3 
@@ -160,8 +151,10 @@ class Planet:
 			self.rho0   = 0.16288        
 			self.CPCV   = 1.4348         
 			self.J2     = 14736E-6      
-			self.J3     = 0.0            
-			self.h_thres= 1000.0E3     
+			self.J3     = 0.0
+			self.a0 = 268.056595 * np.pi / 180.0
+			self.d0 = 64.495303 * np.pi / 180.0
+			self.h_thres= 1000.0E3
 			self.h_skip = 1000.0E3     
 			self.h_trap = 50.0E3 
 
@@ -173,7 +166,9 @@ class Planet:
 			self.rho0   = 0.19847      
 			self.CPCV   = 1.4348       
 			self.J2     = 16298E-6     
-			self.J3     = 0.0          
+			self.J3     = 0.0
+			self.a0 = 40.589 * np.pi / 180.0
+			self.d0 = 83.537 * np.pi / 180.0
 			self.h_thres= 1000.0E3     
 			self.h_skip = 1000.0E3     
 			self.h_trap = 50.0E3      
@@ -187,7 +182,9 @@ class Planet:
 			self.rho0   = 5.43500       
 			self.CPCV   = 1.400         
 			self.J2     = 31.808E-6     
-			self.J3     = -1.880E-6     
+			self.J3     = -1.880E-6
+			self.a0 = 39.4827 * np.pi / 180.0
+			self.d0 = 83.4279 * np.pi / 180.0
 			self.h_thres= 1000.0E3      
 			self.h_skip = 1000.0E3      
 			self.h_trap = 30.0E3
@@ -203,7 +200,9 @@ class Planet:
 			self.rho0   = 0.3788        
 			self.CPCV   = 1.450         
 			self.J2     = 3343.3E-6     
-			self.J3     = 0.000000      
+			self.J3     = 0.000000
+			self.a0 = 257.311 * np.pi / 180.0
+			self.d0 = -15.175 * np.pi / 180.0
 			self.h_thres= 1500.0E3      
 			self.h_skip = 1500.0E3      
 			self.h_trap = 50.0E3
@@ -218,7 +217,9 @@ class Planet:
 			self.rho0   = 0.44021       
 			self.CPCV   = 1.450         
 			self.J2     = 3411.0E-6     
-			self.J3     = 0.000000      
+			self.J3     = 0.000000
+			self.a0 = 299.36 * np.pi / 180.0
+			self.d0 = 43.36 * np.pi / 180.0
 			self.h_thres= 1000.0E3      
 			self.h_skip = 1000.0E3      
 			self.h_trap = 10.0E3

@@ -1,9 +1,8 @@
-AMAT-master-3
-=============
+AMAT
+====
 
 .. toctree::
    :maxdepth: 4
 
-   AMAT
-   setup
+   api_reference
    tests

@@ -4,6 +4,14 @@ tests package
 Submodules
 ----------
 
+tests.test\_arrival module
+--------------------------
+
+.. automodule:: tests.test_arrival
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 tests.test\_craigLyne2005 module
 --------------------------------
 
@@ -51,6 +59,7 @@ tests.test\_wernerBraun2019 module
    :members:
    :undoc-members:
    :show-inheritance:
+
 
 Module contents
 ---------------
