@@ -14,3 +14,5 @@ API Reference
    :members:
 .. automodule:: AMAT.launcher
    :members:
+.. automodule:: AMAT.maneuver
+   :members:
