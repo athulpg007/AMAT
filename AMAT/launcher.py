@@ -1,4 +1,3 @@
-
 import numpy as np
 from scipy.interpolate import interp1d
 
@@ -16,7 +15,7 @@ class Launcher:
 
 	def __init__(self, launcherID, datafile, kind='linear'):
 		"""
-		Initializes the planet object with the planetary constants.
+		Initializes the launcher class.
 		
 		Parameters
 		----------
@@ -24,6 +23,9 @@ class Launcher:
 			identifier for the launch vehicle
 		datafile : file
 			CSV file containing the C3,launch mass data
+		kind : str
+			type of interpolation to use. Defaults to 'linear'.
+
 		"""
 
 		self.ID = launcherID

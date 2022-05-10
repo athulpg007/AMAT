@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Example - 63 - Locus of approach trajectories for constant inertial EFPA &mdash; AMAT v2.2.6 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Example - 68 - Launch Vehicle Performance &mdash; AMAT v2.2.6 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
@@ -20,8 +20,8 @@
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Example - 64 - Probe and Orbiter Trajectory" href="example-64-probe-and-orbiter-trajectory.html" />
-    <link rel="prev" title="Example - 62 - Approach Trajectories for Two Probes at Neptune" href="example-62-two-probes-equatorial-polar.html" /> 
+    <link rel="next" title="JSR Article Notebooks" href="../jsr-notebooks.html" />
+    <link rel="prev" title="Example - 67 - Multi-orbiter Deflection Maneuver" href="example-67-multi-orbiter-deflection.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -107,16 +107,12 @@
 <li class="toctree-l2"><a class="reference internal" href="example-60-compute-arrival-v-inf-and-declination-from-flyby-dates-1.html">Example - 60 - Compute v_inf and arrival declination from flyby dates (1)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="example-61-compute-arrival-v-inf-and-declination-from-flyby-dates-2.html">Example - 61 - Compute v_inf and arrival declination from flyby dates (2)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="example-62-two-probes-equatorial-polar.html">Example - 62 - Approach Trajectories for Two Probes at Neptune</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Example - 63 - Locus of approach trajectories for constant inertial EFPA</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#Compute-approach-trajectories-for-psi-=-[0,-2pi]">Compute approach trajectories for psi = [0, 2pi]</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Plot-the-locus-of-approach-trajectories">Plot the locus of approach trajectories</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="example-63-locus-of-approach-trajectories-const-gamma-inertial.html">Example - 63 - Locus of approach trajectories for constant inertial EFPA</a></li>
 <li class="toctree-l2"><a class="reference internal" href="example-64-probe-and-orbiter-trajectory.html">Example - 64 - Probe and Orbiter Trajectory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="example-65-probe-orbiter-deflection.html">Example - 65 - Probe-Orbiter Deflection Maneuver</a></li>
 <li class="toctree-l2"><a class="reference internal" href="example-66-multi-probe-deflection.html">Example - 66 - Multi-probe Deflection Maneuver</a></li>
 <li class="toctree-l2"><a class="reference internal" href="example-67-multi-orbiter-deflection.html">Example - 67 - Multi-orbiter Deflection Maneuver</a></li>
-<li class="toctree-l2"><a class="reference internal" href="example-68-launch-vehicle-performance.html">Example - 68 - Launch Vehicle Performance</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Example - 68 - Launch Vehicle Performance</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../jsr-notebooks.html">JSR Article Notebooks</a></li>
@@ -142,9 +138,9 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../jupyter_link.html">Example Jupyter Notebooks</a> &raquo;</li>
-      <li>Example - 63 - Locus of approach trajectories for constant inertial EFPA</li>
+      <li>Example - 68 - Launch Vehicle Performance</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/examples/example-63-locus-of-approach-trajectories-const-gamma-inertial.ipynb.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/examples/example-68-launch-vehicle-performance.ipynb.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -394,126 +390,129 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<div class="section" id="Example---63---Locus-of-approach-trajectories-for-constant-inertial-EFPA">
-<h1>Example - 63 - Locus of approach trajectories for constant inertial EFPA<a class="headerlink" href="#Example---63---Locus-of-approach-trajectories-for-constant-inertial-EFPA" title="Permalink to this headline">¶</a></h1>
-<p>In this example, we illustrate the locus of approach trajectories for constant inertial entry-flight path angle (EFPA) from an interplanetary trajectory.</p>
-<p><strong>Note</strong>: This example requires Mayavi for visualization and requires the following packages to be to be installed in your virtual env: <code class="docutils literal notranslate"><span class="pre">pyqt5</span></code>, <code class="docutils literal notranslate"><span class="pre">vtk</span></code>, <code class="docutils literal notranslate"><span class="pre">mayavi</span></code>.</p>
-<p><strong>Note</strong>: For the 3D viz, tt is recommended that you run this example by running the python file using: <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">example-63-locus-of-approach-trajectories.py</span></code> from your virtual env terminal instead of this Jupyter Notebook. If you use this Jupyter Notebook, then you need to have the following additional packages installed <code class="docutils literal notranslate"><span class="pre">ipywidgets</span></code> and <code class="docutils literal notranslate"><span class="pre">ipyevents</span></code>, and must do <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">nbextension</span> <span class="pre">install</span> <span class="pre">--py</span> <span class="pre">mayavi</span> <span class="pre">--user</span></code> before you start the notebook.</p>
-<div class="nbinput docutils container">
+<div class="section" id="Example---68---Launch-Vehicle-Performance">
+<h1>Example - 68 - Launch Vehicle Performance<a class="headerlink" href="#Example---68---Launch-Vehicle-Performance" title="Permalink to this headline">¶</a></h1>
+<p>In this example, we illustrate the calculation of launch performance of various launch vehicles in AMAT.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">import</span> <span class="n">cm</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">mayavi</span> <span class="kn">import</span> <span class="n">mlab</span>
-<span class="n">mlab</span><span class="o">.</span><span class="n">init_notebook</span><span class="p">(</span><span class="n">backend</span><span class="o">=</span><span class="s1">&#39;ipy&#39;</span><span class="p">)</span>
-
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="kn">from</span> <span class="nn">tvtk.tools</span> <span class="kn">import</span> <span class="n">visual</span>
-<span class="kn">from</span> <span class="nn">AMAT.approach</span> <span class="kn">import</span> <span class="n">Approach</span>
+<span></span><span class="kn">from</span> <span class="nn">AMAT.launcher</span> <span class="kn">import</span> <span class="n">Launcher</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-Notebook initialized with ipy backend.
-</pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">def</span> <span class="nf">Arrow_From_A_to_B</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">z1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">z2</span><span class="p">):</span>
-    <span class="n">ar1</span> <span class="o">=</span> <span class="n">visual</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y1</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="n">z1</span><span class="p">)</span>
-    <span class="n">ar1</span><span class="o">.</span><span class="n">length_cone</span> <span class="o">=</span> <span class="mf">0.4</span>
-
-    <span class="n">arrow_length</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">x2</span> <span class="o">-</span> <span class="n">x1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y2</span> <span class="o">-</span> <span class="n">y1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">z2</span> <span class="o">-</span> <span class="n">z1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="n">ar1</span><span class="o">.</span><span class="n">actor</span><span class="o">.</span><span class="n">scale</span> <span class="o">=</span> <span class="p">[</span><span class="n">arrow_length</span><span class="p">,</span> <span class="n">arrow_length</span><span class="p">,</span> <span class="n">arrow_length</span><span class="p">]</span>
-    <span class="n">ar1</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="n">ar1</span><span class="o">.</span><span class="n">pos</span> <span class="o">/</span> <span class="n">arrow_length</span>
-    <span class="n">ar1</span><span class="o">.</span><span class="n">axis</span> <span class="o">=</span> <span class="p">[</span><span class="n">x2</span> <span class="o">-</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y2</span> <span class="o">-</span> <span class="n">y1</span><span class="p">,</span> <span class="n">z2</span> <span class="o">-</span> <span class="n">z1</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">ar1</span>
+<span></span><span class="n">launcher_01</span> <span class="o">=</span> <span class="n">Launcher</span><span class="p">(</span><span class="s1">&#39;Atlas V401&#39;</span><span class="p">,</span> <span class="n">datafile</span><span class="o">=</span><span class="s1">&#39;../launcher-data/atlas-v401.csv&#39;</span><span class="p">)</span>
+<span class="n">launcher_02</span> <span class="o">=</span> <span class="n">Launcher</span><span class="p">(</span><span class="s1">&#39;Atlas V551&#39;</span><span class="p">,</span> <span class="n">datafile</span><span class="o">=</span><span class="s1">&#39;../launcher-data/atlas-v551.csv&#39;</span><span class="p">)</span>
+<span class="n">launcher_03</span> <span class="o">=</span> <span class="n">Launcher</span><span class="p">(</span><span class="s1">&#39;Atlas V551 w-STAR48&#39;</span><span class="p">,</span> <span class="n">datafile</span><span class="o">=</span><span class="s1">&#39;../launcher-data/atlas-v551-w-star-48.csv&#39;</span><span class="p">)</span>
+<span class="n">launcher_04</span> <span class="o">=</span> <span class="n">Launcher</span><span class="p">(</span><span class="s1">&#39;Delta IVH&#39;</span><span class="p">,</span> <span class="n">datafile</span><span class="o">=</span><span class="s1">&#39;../launcher-data/delta-IVH.csv&#39;</span><span class="p">)</span>
+<span class="n">launcher_05</span> <span class="o">=</span> <span class="n">Launcher</span><span class="p">(</span><span class="s1">&#39;Delta IVH w-STAR48&#39;</span><span class="p">,</span> <span class="n">datafile</span><span class="o">=</span><span class="s1">&#39;../launcher-data/delta-IVH-w-star-48.csv&#39;</span><span class="p">)</span>
+<span class="n">launcher_06</span> <span class="o">=</span> <span class="n">Launcher</span><span class="p">(</span><span class="s1">&#39;Falcon Heavy Rec.&#39;</span><span class="p">,</span> <span class="n">datafile</span><span class="o">=</span><span class="s1">&#39;../launcher-data/falcon-heavy-reusable.csv&#39;</span><span class="p">)</span>
+<span class="n">launcher_07</span> <span class="o">=</span> <span class="n">Launcher</span><span class="p">(</span><span class="s1">&#39;Falcon Heavy Exp.&#39;</span><span class="p">,</span> <span class="n">datafile</span><span class="o">=</span><span class="s1">&#39;../launcher-data/falcon-heavy-expendable.csv&#39;</span><span class="p">)</span>
+<span class="n">launcher_08</span> <span class="o">=</span> <span class="n">Launcher</span><span class="p">(</span><span class="s1">&#39;Falcon Heavy Exp. w-STAR48&#39;</span><span class="p">,</span> <span class="n">datafile</span><span class="o">=</span><span class="s1">&#39;../launcher-data/falcon-heavy-expendable-w-star-48.csv&#39;</span><span class="p">)</span>
+<span class="n">launcher_09</span> <span class="o">=</span> <span class="n">Launcher</span><span class="p">(</span><span class="s1">&#39;Vulcan w-6 solids&#39;</span><span class="p">,</span> <span class="n">datafile</span><span class="o">=</span><span class="s1">&#39;../launcher-data/vulcan-centaur-w-6-solids.csv&#39;</span><span class="p">)</span>
+<span class="n">launcher_10</span> <span class="o">=</span> <span class="n">Launcher</span><span class="p">(</span><span class="s1">&#39;Vulcan w-6 solids w-STAR48&#39;</span><span class="p">,</span> <span class="n">datafile</span><span class="o">=</span><span class="s1">&#39;../launcher-data/vulcan-centaur-w-6-solids-w-star-48.csv&#39;</span><span class="p">)</span>
+<span class="n">launcher_11</span> <span class="o">=</span> <span class="n">Launcher</span><span class="p">(</span><span class="s1">&#39;SLS Block 1&#39;</span><span class="p">,</span> <span class="n">datafile</span><span class="o">=</span><span class="s1">&#39;../launcher-data/sls-block-1.csv&#39;</span><span class="p">)</span>
+<span class="n">launcher_12</span> <span class="o">=</span> <span class="n">Launcher</span><span class="p">(</span><span class="s1">&#39;SLS Block 1B&#39;</span><span class="p">,</span> <span class="n">datafile</span><span class="o">=</span><span class="s1">&#39;../launcher-data/sls-block-1B.csv&#39;</span><span class="p">)</span>
+<span class="n">launcher_13</span> <span class="o">=</span> <span class="n">Launcher</span><span class="p">(</span><span class="s1">&#39;SLS Block 1B w-kick stage&#39;</span><span class="p">,</span> <span class="n">datafile</span><span class="o">=</span><span class="s1">&#39;../launcher-data/sls-block-1B-with-kick.csv&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="Compute-approach-trajectories-for-psi-=-[0,-2pi]">
-<h2>Compute approach trajectories for psi = [0, 2pi]<a class="headerlink" href="#Compute-approach-trajectories-for-psi-=-[0,-2pi]" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
-<span class="n">y</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
-<span class="n">z</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">u</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
-
-<span class="n">x1</span> <span class="o">=</span> <span class="mf">1.040381198513972</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
-<span class="n">y1</span> <span class="o">=</span> <span class="mf">1.040381198513972</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
-<span class="n">z1</span> <span class="o">=</span> <span class="mf">1.040381198513972</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">u</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
-
-<span class="n">x_ring_1</span> <span class="o">=</span> <span class="mf">1.1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
-<span class="n">y_ring_1</span> <span class="o">=</span> <span class="mf">1.1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
-<span class="n">z_ring_1</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
-
-<span class="n">x_ring_2</span> <span class="o">=</span> <span class="mf">1.2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
-<span class="n">y_ring_2</span> <span class="o">=</span> <span class="mf">1.2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
-<span class="n">z_ring_2</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
-
-<span class="n">mlab</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">bgcolor</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-<span class="n">s1</span> <span class="o">=</span> <span class="n">mlab</span><span class="o">.</span><span class="n">mesh</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-<span class="n">s2</span> <span class="o">=</span> <span class="n">mlab</span><span class="o">.</span><span class="n">mesh</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">z1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
-<span class="n">r1</span> <span class="o">=</span> <span class="n">mlab</span><span class="o">.</span><span class="n">plot3d</span><span class="p">(</span><span class="n">x_ring_1</span><span class="p">,</span> <span class="n">y_ring_1</span><span class="p">,</span> <span class="n">z_ring_1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">line_width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">tube_radius</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-<span class="n">r2</span> <span class="o">=</span> <span class="n">mlab</span><span class="o">.</span><span class="n">plot3d</span><span class="p">(</span><span class="n">x_ring_2</span><span class="p">,</span> <span class="n">y_ring_2</span><span class="p">,</span> <span class="n">z_ring_2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">line_width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">tube_radius</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">psi</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">31</span><span class="p">):</span>
-    <span class="n">probe</span> <span class="o">=</span> <span class="n">Approach</span><span class="p">(</span><span class="s2">&quot;NEPTUNE&quot;</span><span class="p">,</span>
-                     <span class="n">v_inf_vec_icrf_kms</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">17.78952518</span><span class="p">,</span> <span class="mf">8.62038536</span><span class="p">,</span> <span class="mf">3.15801163</span><span class="p">]),</span>
-                     <span class="n">rp</span><span class="o">=</span><span class="p">(</span><span class="mi">24622</span> <span class="o">+</span> <span class="mi">400</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e3</span><span class="p">,</span> <span class="n">psi</span><span class="o">=</span><span class="n">psi</span><span class="p">,</span>
-                     <span class="n">is_entrySystem</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">h_EI</span><span class="o">=</span><span class="mf">1000e3</span><span class="p">)</span>
-
-    <span class="n">theta_star_arr_probe1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">1.7</span><span class="p">,</span> <span class="n">probe</span><span class="o">.</span><span class="n">theta_star_entry</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
-    <span class="n">pos_vec_bi_arr_probe1</span> <span class="o">=</span> <span class="n">probe</span><span class="o">.</span><span class="n">pos_vec_bi</span><span class="p">(</span><span class="n">theta_star_arr_probe1</span><span class="p">)</span> <span class="o">/</span> <span class="mf">24622e3</span>
-
-    <span class="n">x_arr_probe</span> <span class="o">=</span> <span class="n">pos_vec_bi_arr_probe1</span><span class="p">[</span><span class="mi">0</span><span class="p">][:]</span>
-    <span class="n">y_arr_probe</span> <span class="o">=</span> <span class="n">pos_vec_bi_arr_probe1</span><span class="p">[</span><span class="mi">1</span><span class="p">][:]</span>
-    <span class="n">z_arr_probe</span> <span class="o">=</span> <span class="n">pos_vec_bi_arr_probe1</span><span class="p">[</span><span class="mi">2</span><span class="p">][:]</span>
-
-    <span class="n">mlab</span><span class="o">.</span><span class="n">plot3d</span><span class="p">(</span><span class="n">x_arr_probe</span><span class="p">,</span> <span class="n">y_arr_probe</span><span class="p">,</span> <span class="n">z_arr_probe</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">line_width</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">tube_radius</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">psi</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">mlab</span><span class="o">.</span><span class="n">plot3d</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">probe</span><span class="o">.</span><span class="n">v_inf_vec_bi_unit</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
-                    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">probe</span><span class="o">.</span><span class="n">v_inf_vec_bi_unit</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span>
-                    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">probe</span><span class="o">.</span><span class="n">v_inf_vec_bi_unit</span><span class="p">[</span><span class="mi">2</span><span class="p">]])</span>
-
-<span class="n">mlab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span></span><span class="n">launchers</span> <span class="o">=</span> <span class="p">[</span><span class="n">launcher_01</span><span class="p">,</span> <span class="n">launcher_02</span><span class="p">,</span> <span class="n">launcher_03</span><span class="p">,</span> <span class="n">launcher_04</span><span class="p">,</span> <span class="n">launcher_05</span><span class="p">,</span>
+             <span class="n">launcher_06</span><span class="p">,</span> <span class="n">launcher_07</span><span class="p">,</span> <span class="n">launcher_08</span><span class="p">,</span> <span class="n">launcher_09</span><span class="p">,</span> <span class="n">launcher_10</span><span class="p">,</span>
+             <span class="n">launcher_11</span><span class="p">,</span> <span class="n">launcher_12</span><span class="p">,</span> <span class="n">launcher_13</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="Plot-the-locus-of-approach-trajectories">
-<h2>Plot the locus of approach trajectories<a class="headerlink" href="#Plot-the-locus-of-approach-trajectories" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
-<span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;../plots/example-63-locus-of-approach-trajectories.png&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">)</span>
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">color_list</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">nipy_spectral</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">launchers</span><span class="p">)))</span>
+
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">launcher</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">launchers</span><span class="p">):</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">launcher</span><span class="o">.</span><span class="n">XY</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">max</span><span class="p">(</span><span class="n">launcher</span><span class="o">.</span><span class="n">XY</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]),</span> <span class="mi">21</span><span class="p">)</span>
+    <span class="n">Y</span> <span class="o">=</span> <span class="n">launcher</span><span class="o">.</span><span class="n">launchMass</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="s1">&#39;^-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color_list</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="p">,</span><span class="n">markersize</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>  <span class="n">mfc</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">launcher</span><span class="o">.</span><span class="n">ID</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$C_3, km^2/s^2$&#39;</span> <span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Launch capability, kg&quot;</span> <span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span> <span class="p">,</span> <span class="mi">21</span><span class="p">),</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">14000</span> <span class="p">,</span> <span class="mi">15</span><span class="p">),</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mi">200</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">14000</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">framealpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">)</span>
+
+
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">axis</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="s1">&#39;right&#39;</span><span class="p">]:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span><span class="o">.</span><span class="n">set_linewidth</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../plots/launch-vehicle-performance.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../plots/launch-vehicle-performance.pdf&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../plots/launch-vehicle-performance.eps&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+The PostScript backend does not support transparency; partially transparent artists will be rendered opaque.
+</pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
-</pre></div>
+<div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<a class="reference internal image-reference" href="../_images/examples_example-63-locus-of-approach-trajectories-const-gamma-inertial_9_0.png"><img alt="../_images/examples_example-63-locus-of-approach-trajectories-const-gamma-inertial_9_0.png" src="../_images/examples_example-63-locus-of-approach-trajectories-const-gamma-inertial_9_0.png" style="width: 800px;" /></a>
-</div>
+<img alt="../_images/examples_example-68-launch-vehicle-performance_6_1.png" src="../_images/examples_example-68-launch-vehicle-performance_6_1.png" />
 </div>
 </div>
 </div>
@@ -522,8 +521,8 @@ Notebook initialized with ipy backend.
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="example-62-two-probes-equatorial-polar.html" class="btn btn-neutral float-left" title="Example - 62 - Approach Trajectories for Two Probes at Neptune" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="example-64-probe-and-orbiter-trajectory.html" class="btn btn-neutral float-right" title="Example - 64 - Probe and Orbiter Trajectory" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="example-67-multi-orbiter-deflection.html" class="btn btn-neutral float-left" title="Example - 67 - Multi-orbiter Deflection Maneuver" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../jsr-notebooks.html" class="btn btn-neutral float-right" title="JSR Article Notebooks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
