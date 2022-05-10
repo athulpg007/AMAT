@@ -41,8 +41,10 @@ class Girija2020(unittest.TestCase):
 		# selected launch vehicle = SLS-Block-1B with kick stage
 
 		# compute launch vehicle capability
-		launcher = Launcher('sls-block-1B-with-kick')
-		launch_mass = launcher.performanceQuery(111.0)
+		launcher = Launcher( launcherID='sls-block-1B-with-kick',
+							 datafile='../launcher-data/sls-block-1B-with-kick.csv')
+		launch_mass = launcher.launchMass(111.0)
+		assert abs(launch_mass - 6600) < 100
 
 		# vehicle and entry state description from Girija et al. [JSR, 2021]
 		vehicle = Vehicle('Trident', 1000.0, 200.0, 0.40, 3.1416, 0.0, 1.00, planet)

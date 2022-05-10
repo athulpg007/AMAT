@@ -65,6 +65,11 @@ class TestLauncher(unittest.TestCase):
 		launcher = Launcher('SLS-Block-1B-with-kick', datafile='../launcher-data/sls-block-1B-with-kick.csv')
 		self.assertAlmostEqual(launcher.launchMass(80), 10400, delta=100)
 
+	def test_sls_block_1B_kick_2(self):
+		launcher = Launcher(launcherID='sls-block-1B-with-kick',
+							datafile='../launcher-data/sls-block-1B-with-kick.csv')
+		self.assertAlmostEqual(launcher.launchMass(111.0), 6600, delta=100)
+
 
 if __name__ == '__main__':
 	unittest.main()
