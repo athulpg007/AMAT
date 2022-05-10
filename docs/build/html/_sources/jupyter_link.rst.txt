@@ -72,3 +72,4 @@ Example Jupyter Notebooks
    /examples/example-65-probe-orbiter-deflection.ipynb
    /examples/example-66-multi-probe-deflection.ipynb
    /examples/example-67-multi-orbiter-deflection.ipynb
+   /examples/example-68-launch-vehicle-performance.ipynb

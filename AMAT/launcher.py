@@ -1,8 +1,5 @@
-
 import numpy as np
 from scipy.interpolate import interp1d
-import matplotlib.pyplot as plt
-import os
 
 class Launcher:
 	"""
@@ -10,78 +7,39 @@ class Launcher:
 	
 	Attributes
 	----------
-	ID : str
-		String identifier of planet object
-	XY : numpy.ndarray
-		contains C3 in column 1, launch mass in column 2
+	launcherID : str
+		String identifier for launch vehicle
+	datafile : CSV file
+		CSV file containing C3,launch mass (kg)
+	kind : str
+			type of interpolation to use. Defaults to 'linear'
+	f : scipy.interpolate.interp1d
+		interpolation function for launch mass at a specified C3
 	"""
 
-	def __init__(self, launcherID):
+	def __init__(self, launcherID, datafile, kind='linear'):
 		"""
-		Initializes the planet object with the planetary constants.
+		Initializes the launcher class.
 		
 		Parameters
 		----------
 		launcherID : str
-			Name of the launch vehicle, must be one of the following 
-			Valid entries are: 
-			
-			'atlasV401', 
-			'atlasV551', 
-			'atlasV551-with-kick',
-			'deltaIVH',
-			'deltaIVH-with-kick', 
-			'falconH', 
-			'falconH-recovery', 
-			'sls-block-1B',
-			'sls-block-1B-with-kick'
+			identifier for the launch vehicle
+		datafile : file
+			CSV file containing the C3,launch mass data
+		kind : str
+			type of interpolation to use. Defaults to 'linear'.
+
 		"""
 
-		if launcherID == 'atlasV401':
-			self.ID     = 'Atlas V401'      
-			self.XY     =  np.loadtxt('../launcher-data/atlasV401.csv', delimiter=',')
-		
+		self.ID = launcherID
+		self.XY = np.loadtxt(datafile, delimiter=',')
+		self.f = interp1d(self.XY[:, 0], self.XY[:, 1], kind=kind, bounds_error=True)
 
-		elif launcherID == 'atlasV551':
-			self.ID     = 'Atlas V551'      
-			self.XY     =  np.loadtxt('../launcher-data/atlasV551.csv', delimiter=',')
-
-		elif launcherID == 'atlasV551-with-kick':
-			self.ID     = 'Atlas V551 with kick'      
-			self.XY     =  np.loadtxt('../launcher-data/atlasV551-with-kick.csv', delimiter=',')
-
-		elif launcherID == 'deltaIVH':
-			self.ID     = 'Delta IVH'
-			self.XY     = np.loadtxt('deltaIVH.csv', delimiter=',')
-
-		elif launcherID == 'deltaIVH-with-kick':
-			self.ID     = 'Delta IVH with kick'
-			self.XY     = np.loadtxt('../launcher-data/deltaIVH-with-kick.csv', delimiter=',')
-
-		elif launcherID == 'falconH':
-			self.ID     = 'Falcon Heavy'
-			self.XY     = np.loadtxt('../launcher-data/falconH.csv', delimiter=',')
-
-		elif launcherID == 'falconH-recovery':
-			self.ID     = 'Falcon Heavy (Recovery)'
-			self.XY     = np.loadtxt('../launcher-data/falconH-recovery.csv', delimiter=',')
-
-		elif launcherID == 'sls-block-1B':
-			self.ID     = 'SLS Block 1B'
-			self.XY     = np.loadtxt('../launcher-data/sls-block-1B.csv', delimiter=',')
-
-		elif launcherID == 'sls-block-1B-with-kick':
-			self.ID     = 'SLS Block 1B with kick'
-			self.XY     = np.loadtxt('../launcher-data/sls-block-1B-with-kick.csv', delimiter=',')
-
-		else:
-			print(" >>> ERR : Invalid planet identifier provided.")
-
-
-	def performanceQuery(self, C3):
+	def launchMass(self, C3):
 		"""
 		Returns the launch capability of the vehicle for a 
-		specified C3.
+		specified C3 array.
 
 		Parameters
 		----------
@@ -94,11 +52,7 @@ class Launcher:
 			launch mass capability, kg
 
 		"""
-
-		f = interp1d(self.XY[:,0], self.XY[:,1], kind='cubic', bounds_error=False)
-
-		mass = float(f(C3))
-
+		mass = self.f(C3)
 		return mass
 
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>API Reference &mdash; AMAT v2.2.6 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <title>API Reference &mdash; AMAT v2.2.7 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
@@ -5747,12 +5747,12 @@ atmospheric entry interface, m/s</p>
 
 <span class="target" id="module-AMAT.launcher"></span><dl class="class">
 <dt id="AMAT.launcher.Launcher">
-<em class="property">class </em><code class="sig-prename descclassname">AMAT.launcher.</code><code class="sig-name descname">Launcher</code><span class="sig-paren">(</span><em class="sig-param">launcherID</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.launcher.Launcher" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">AMAT.launcher.</code><code class="sig-name descname">Launcher</code><span class="sig-paren">(</span><em class="sig-param">launcherID</em>, <em class="sig-param">datafile</em>, <em class="sig-param">kind='linear'</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.launcher.Launcher" title="Permalink to this definition">¶</a></dt>
 <dd><p>The Launcher class is used to estimate launch vehicle performance.</p>
 <dl class="attribute">
-<dt id="AMAT.launcher.Launcher.ID">
-<code class="sig-name descname">ID</code><a class="headerlink" href="#AMAT.launcher.Launcher.ID" title="Permalink to this definition">¶</a></dt>
-<dd><p>String identifier of planet object</p>
+<dt id="AMAT.launcher.Launcher.launcherID">
+<code class="sig-name descname">launcherID</code><a class="headerlink" href="#AMAT.launcher.Launcher.launcherID" title="Permalink to this definition">¶</a></dt>
+<dd><p>String identifier for launch vehicle</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"><p>str</p>
@@ -5761,21 +5761,43 @@ atmospheric entry interface, m/s</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="AMAT.launcher.Launcher.XY">
-<code class="sig-name descname">XY</code><a class="headerlink" href="#AMAT.launcher.Launcher.XY" title="Permalink to this definition">¶</a></dt>
-<dd><p>contains C3 in column 1, launch mass in column 2</p>
+<dt id="AMAT.launcher.Launcher.datafile">
+<code class="sig-name descname">datafile</code><a class="headerlink" href="#AMAT.launcher.Launcher.datafile" title="Permalink to this definition">¶</a></dt>
+<dd><p>CSV file containing C3,launch mass (kg)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>numpy.ndarray</p>
+<dd class="field-odd"><p>CSV file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.launcher.Launcher.kind">
+<code class="sig-name descname">kind</code><a class="headerlink" href="#AMAT.launcher.Launcher.kind" title="Permalink to this definition">¶</a></dt>
+<dd><p>type of interpolation to use. Defaults to ‘linear’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.launcher.Launcher.f">
+<code class="sig-name descname">f</code><a class="headerlink" href="#AMAT.launcher.Launcher.f" title="Permalink to this definition">¶</a></dt>
+<dd><p>interpolation function for launch mass at a specified C3</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>scipy.interpolate.interp1d</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
-<dt id="AMAT.launcher.Launcher.performanceQuery">
-<code class="sig-name descname">performanceQuery</code><span class="sig-paren">(</span><em class="sig-param">C3</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.launcher.Launcher.performanceQuery" title="Permalink to this definition">¶</a></dt>
+<dt id="AMAT.launcher.Launcher.launchMass">
+<code class="sig-name descname">launchMass</code><span class="sig-paren">(</span><em class="sig-param">C3</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.launcher.Launcher.launchMass" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the launch capability of the vehicle for a
-specified C3.</p>
+specified C3 array.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>C3</strong> (<em>float</em>) – launch C3, km2/s2</p>
