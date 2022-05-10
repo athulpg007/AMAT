@@ -7,10 +7,14 @@ class Launcher:
 	
 	Attributes
 	----------
-	ID : str
+	launcherID : str
 		String identifier for launch vehicle
-	XY : numpy.ndarray
-		contains C3 in column 1, launch mass in column 2
+	datafile : CSV file
+		CSV file containing C3,launch mass (kg)
+	kind : str
+			type of interpolation to use. Defaults to 'linear'
+	f : scipy.interpolate.interp1d
+		interpolation function for launch mass at a specified C3
 	"""
 
 	def __init__(self, launcherID, datafile, kind='linear'):
