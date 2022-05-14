@@ -12,6 +12,8 @@ API Reference
    :members:
 .. automodule:: AMAT.approach
    :members:
+.. automodule:: AMAT.interplanetary
+   :members:
 .. automodule:: AMAT.launcher
    :members:
 .. automodule:: AMAT.maneuver
