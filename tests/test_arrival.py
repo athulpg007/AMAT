@@ -123,3 +123,20 @@ class Test_Arrival_Uranus_2045:
 	def test_compute_declination(self):
 		declination = self.arrival.compute_declination()
 		assert (declination + 49.69) < 0.5
+
+
+class Test_Arrival_Uranus_2039:
+
+	arrival = Arrival()
+	arrival.set_vinf_vec_from_lambert_arc('JUPITER',
+	                                  'URANUS',
+	                                  Time("2035-09-04 00:00:00", scale='tdb'),
+	                                  Time("2039-05-18 00:00:00", scale='tdb'))
+
+	def test_compute_v_inf_mag(self):
+		v_inf_mag = self.arrival.compute_v_inf_mag()
+		assert abs(v_inf_mag - 20.518) < 1e-2
+
+	def test_compute_declination(self):
+		declination = self.arrival.compute_declination()
+		assert (declination + 48.89) < 0.5

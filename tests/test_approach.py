@@ -182,3 +182,17 @@ class Test_Approach_Orbiter:
 	def test_theta_star_periapsis(self):
 		ans1 = self.approach.theta_star_periapsis
 		ans2 = self.approach.pos_vec_bi(self.approach.theta_star_periapsis)
+
+
+
+
+
+class Test_Approach_Entry_Uranus:
+
+	approach = Approach("URANUS",
+						v_inf_vec_icrf_kms=np.array([-9.62521831, 16.51192666,  7.46493598]),
+						rp=(25559+400)*1e3, psi=3*np.pi/2,
+						is_entrySystem=True, h_EI=1000e3)
+
+	def test_gamma_entry_atm(self):
+		pass

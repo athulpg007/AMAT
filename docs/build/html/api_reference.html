@@ -5745,6 +5745,220 @@ atmospheric entry interface, m/s</p>
 
 </dd></dl>
 
+<span class="target" id="module-AMAT.interplanetary"></span><dl class="class">
+<dt id="AMAT.interplanetary.Interplanetary">
+<em class="property">class </em><code class="sig-prename descclassname">AMAT.interplanetary.</code><code class="sig-name descname">Interplanetary</code><span class="sig-paren">(</span><em class="sig-param">ID</em>, <em class="sig-param">datafile</em>, <em class="sig-param">sheet_name</em>, <em class="sig-param">Lcdate_format</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.interplanetary.Interplanetary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stores a dataframe containing interplanetary data from an external source.</p>
+<dl class="attribute">
+<dt id="AMAT.interplanetary.Interplanetary.ID">
+<code class="sig-name descname">ID</code><a class="headerlink" href="#AMAT.interplanetary.Interplanetary.ID" title="Permalink to this definition">¶</a></dt>
+<dd><p>string identifier for the interplanetary dataset</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.interplanetary.Interplanetary.datafile">
+<code class="sig-name descname">datafile</code><a class="headerlink" href="#AMAT.interplanetary.Interplanetary.datafile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Excel file containing interplanetary trajectory data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>filepath</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.interplanetary.Interplanetary.sheet_name">
+<code class="sig-name descname">sheet_name</code><a class="headerlink" href="#AMAT.interplanetary.Interplanetary.sheet_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sheet name containing trajectory data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.interplanetary.Interplanetary.df">
+<code class="sig-name descname">df</code><a class="headerlink" href="#AMAT.interplanetary.Interplanetary.df" title="Permalink to this definition">¶</a></dt>
+<dd><p>dataframe containing the interplanetary trajectory data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>pandas.DataFrame object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.interplanetary.Interplanetary.Lcdate">
+<code class="sig-name descname">Lcdate</code><a class="headerlink" href="#AMAT.interplanetary.Interplanetary.Lcdate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Series containing launch date datetime objects</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.interplanetary.Interplanetary.C3">
+<code class="sig-name descname">C3</code><a class="headerlink" href="#AMAT.interplanetary.Interplanetary.C3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Series containing launch C3</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.interplanetary.Interplanetary.TOF">
+<code class="sig-name descname">TOF</code><a class="headerlink" href="#AMAT.interplanetary.Interplanetary.TOF" title="Permalink to this definition">¶</a></dt>
+<dd><p>Series containing time of flight, years</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.interplanetary.Interplanetary.Avinf">
+<code class="sig-name descname">Avinf</code><a class="headerlink" href="#AMAT.interplanetary.Interplanetary.Avinf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Series containing arrival vinf magnitude, km/s</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.interplanetary.Interplanetary.compute_launch_capability">
+<code class="sig-name descname">compute_launch_capability</code><span class="sig-paren">(</span><em class="sig-param">launcherObj</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.interplanetary.Interplanetary.compute_launch_capability" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>launcherObj</strong> (<em>AMAT.launcher.Launcher object</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>ans</strong> – array containing the launch mass capability for C3 values in the
+trajectory dataset</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.interplanetary.Interplanetary.plot_Avinf_vs_launch_date">
+<code class="sig-name descname">plot_Avinf_vs_launch_date</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.interplanetary.Interplanetary.plot_Avinf_vs_launch_date" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scatter plot of the arrival vinf magnitude as a function of launch date.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>ans</strong> – Scatter of the arrival vinf magnitude as a function of launch date</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>matplotlib.figure.Figure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.interplanetary.Interplanetary.plot_Avinf_vs_launch_date_with_launch_mass_colorbar">
+<code class="sig-name descname">plot_Avinf_vs_launch_date_with_launch_mass_colorbar</code><span class="sig-paren">(</span><em class="sig-param">launcherObj</em>, <em class="sig-param">scale=20</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.interplanetary.Interplanetary.plot_Avinf_vs_launch_date_with_launch_mass_colorbar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scatter plot of the arrival vinf magnitude as a function of launch date
+with launch capability colorbar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>launcherObj</strong> (<em>AMAT.launcher.Launcher object</em>) – AMAT Launcher object</p></li>
+<li><p><strong>scale</strong> (<em>float</em>) – scatter plot marker size, defaults to 20</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>ans</strong> – Scatter of the arrival vinf magnitude as a function of launch date
+with launch capability colorbar.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>matplotlib.figure.Figure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.interplanetary.Interplanetary.plot_TOF_vs_launch_date">
+<code class="sig-name descname">plot_TOF_vs_launch_date</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.interplanetary.Interplanetary.plot_TOF_vs_launch_date" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scatter plot of the time of flight as a function of launch date.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>ans</strong> – Scatter of the launch capability as a function of launch date</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>matplotlib.figure.Figure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.interplanetary.Interplanetary.plot_launch_mass_vs_TOF">
+<code class="sig-name descname">plot_launch_mass_vs_TOF</code><span class="sig-paren">(</span><em class="sig-param">launcherObj</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.interplanetary.Interplanetary.plot_launch_mass_vs_TOF" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scatter plot of the launch mass as a function of TOF.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>ans</strong> – Scatter plot of the launch mass as a function of TOF.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>matplotlib.figure.Figure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.interplanetary.Interplanetary.plot_launch_mass_vs_TOF_with_vinf_colorbar">
+<code class="sig-name descname">plot_launch_mass_vs_TOF_with_vinf_colorbar</code><span class="sig-paren">(</span><em class="sig-param">launcherObj</em>, <em class="sig-param">scale=20</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.interplanetary.Interplanetary.plot_launch_mass_vs_TOF_with_vinf_colorbar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scatter plot of the launch mass as a function of TOF
+with arrival vinf colorbar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>launcherObj</strong> (<em>AMAT.launcher.Launcher object</em>) – AMAT Launcher object</p></li>
+<li><p><strong>scale</strong> (<em>float</em>) – scatter plot marker size, defaults to 20</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>ans</strong> – Scatter plot of the launch mass as a function of TOF
+with arrival vinf colorbar.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>matplotlib.figure.Figure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.interplanetary.Interplanetary.plot_launch_mass_vs_launch_date">
+<code class="sig-name descname">plot_launch_mass_vs_launch_date</code><span class="sig-paren">(</span><em class="sig-param">launcherObj</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.interplanetary.Interplanetary.plot_launch_mass_vs_launch_date" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scatter plot of the launch capability as a function of launch date.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>launcherObj</strong> (<em>AMAT.launcher.Launcher object</em>) – AMAT Launcher object</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>ans</strong> – Scatter of the launch capability as a function of launch date</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>matplotlib.figure.Figure</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 <span class="target" id="module-AMAT.launcher"></span><dl class="class">
 <dt id="AMAT.launcher.Launcher">
 <em class="property">class </em><code class="sig-prename descclassname">AMAT.launcher.</code><code class="sig-name descname">Launcher</code><span class="sig-paren">(</span><em class="sig-param">launcherID</em>, <em class="sig-param">datafile</em>, <em class="sig-param">kind='linear'</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.launcher.Launcher" title="Permalink to this definition">¶</a></dt>

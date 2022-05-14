@@ -1,11 +1,54 @@
+# SOURCE FILENAME : interplanetary.py
+# AUTHOR          : Athul Pradeepkumar Girija, athulpg007@gmail.com
+# DATE CREATED    : 05/13/2022, 19:02 MT
+# DATE MODIFIED   : 05/13/2022, 19:03 MT
+# REMARKS         : Selection of a feasible interplanetary trajectory from
+#					a database for mission studies.
+
+
 import pandas as pd
 import matplotlib.pyplot as plt
 
 from AMAT.launcher import Launcher
 
 class Interplanetary:
+	"""
+	Stores a dataframe containing interplanetary data from an external source.
+
+	Attributes
+	----------
+	ID : str
+		string identifier for the interplanetary dataset
+	datafile : filepath
+		Excel file containing interplanetary trajectory data
+	sheet_name : str
+		Sheet name containing trajectory data
+	df : pandas.DataFrame object
+		dataframe containing the interplanetary trajectory data
+	Lcdate : pandas.Series
+		Series containing launch date datetime objects
+	C3 : pandas.Series
+		Series containing launch C3
+	TOF : pandas.Series
+		Series containing time of flight, years
+	Avinf : pandas.Series
+		Series containing arrival vinf magnitude, km/s
+	"""
 
 	def __init__(self, ID, datafile, sheet_name, Lcdate_format):
+		"""
+
+		Parameters
+		----------
+		ID : str
+			string identifier for the interplanetary dataset
+		datafile : filepath
+			Excel file containing interplanetary trajectory data
+		sheet_name : str
+			Sheet name containing trajectory data
+		Lcdate_format : str
+			strftime() for launch date format e.g. "%Y%m%d"
+		"""
 		self.ID = ID
 		self.datafile = datafile
 		self.sheet_name = sheet_name
@@ -17,9 +60,33 @@ class Interplanetary:
 		self.Avinf = self.df["Avinf"]
 
 	def compute_launch_capability(self, launcherObj):
+		"""
+		Parameters
+		----------
+		launcherObj : AMAT.launcher.Launcher object
+
+		Returns
+		-------
+		ans : numpy.ndarray
+			array containing the launch mass capability for C3 values in the
+			trajectory dataset
+		"""
 		return launcherObj.launchMass(self.C3)
 
 	def plot_launch_mass_vs_launch_date(self, launcherObj):
+		"""
+		Scatter plot of the launch capability as a function of launch date.
+
+		Parameters
+		----------
+		launcherObj : AMAT.launcher.Launcher object
+			AMAT Launcher object
+
+		Returns
+		-------
+		ans : matplotlib.figure.Figure
+			Scatter of the launch capability as a function of launch date
+		"""
 		Lcmass = self.compute_launch_capability(launcherObj)
 
 		plt.figure(figsize=(8,6))
@@ -55,9 +122,21 @@ class Interplanetary:
 		for axis in ['top', 'bottom', 'left', 'right']:
 			ax.spines[axis].set_linewidth(2)
 
+		plt.savefig('../plots/'+self.ID+"_"+launcherObj.ID+"_"+"launch_mass_vs_launch_date"+'.png', dpi=300, bbox_inches='tight')
+		plt.savefig('../plots/'+self.ID+"_"+launcherObj.ID+"_"+"launch_mass_vs_launch_date"+'.pdf', dpi=300, bbox_inches='tight')
+		plt.savefig('../plots/'+self.ID+"_"+launcherObj.ID+"_"+"launch_mass_vs_launch_date"+'.eps', dpi=300, bbox_inches='tight')
+
 		plt.show()
 
 	def plot_TOF_vs_launch_date(self):
+		"""
+		Scatter plot of the time of flight as a function of launch date.
+
+		Returns
+		-------
+		ans : matplotlib.figure.Figure
+			Scatter of the launch capability as a function of launch date
+		"""
 
 		plt.figure(figsize=(8,6))
 		plt.plot(self.Lcdate, self.TOF, marker='o', color='g', linestyle='None')
@@ -91,9 +170,21 @@ class Interplanetary:
 		for axis in ['top', 'bottom', 'left', 'right']:
 			ax.spines[axis].set_linewidth(2)
 
+		plt.savefig('../plots/' + self.ID + "_" + "TOF_vs_launch_date" + '.png', dpi=300,  bbox_inches='tight')
+		plt.savefig('../plots/' + self.ID + "_" + "TOF_vs_launch_date" + '.pdf', dpi=300,  bbox_inches='tight')
+		plt.savefig('../plots/' + self.ID + "_" + "TOF_vs_launch_date" + '.eps', dpi=300,  bbox_inches='tight')
+
 		plt.show()
 
 	def plot_Avinf_vs_launch_date(self):
+		"""
+		Scatter plot of the arrival vinf magnitude as a function of launch date.
+
+		Returns
+		-------
+		ans : matplotlib.figure.Figure
+			Scatter of the arrival vinf magnitude as a function of launch date
+		"""
 
 		plt.figure(figsize=(8,6))
 		plt.plot(self.Lcdate, self.Avinf, marker='o', color='g', linestyle='None')
@@ -127,9 +218,32 @@ class Interplanetary:
 		for axis in ['top', 'bottom', 'left', 'right']:
 			ax.spines[axis].set_linewidth(2)
 
+		plt.savefig('../plots/' + self.ID + "_" + "Avinf_vs_launch_date" + '.png', dpi=300, bbox_inches='tight')
+		plt.savefig('../plots/' + self.ID + "_" + "Avinf_vs_launch_date" + '.pdf', dpi=300, bbox_inches='tight')
+		plt.savefig('../plots/' + self.ID + "_" + "Avinf_vs_launch_date" + '.eps', dpi=300, bbox_inches='tight')
+
 		plt.show()
 
 	def plot_Avinf_vs_launch_date_with_launch_mass_colorbar(self, launcherObj, scale=20):
+		"""
+		Scatter plot of the arrival vinf magnitude as a function of launch date
+		with launch capability colorbar.
+
+		Parameters
+		-------
+		launcherObj : AMAT.launcher.Launcher object
+			AMAT Launcher object
+		scale : float
+			scatter plot marker size, defaults to 20
+
+
+		Returns
+		-------
+		ans : matplotlib.figure.Figure
+			Scatter of the arrival vinf magnitude as a function of launch date
+			with launch capability colorbar.
+
+		"""
 
 		Lcmass = self.compute_launch_capability(launcherObj)
 
@@ -170,11 +284,23 @@ class Interplanetary:
 		for axis in ['top', 'bottom', 'left', 'right']:
 			ax.spines[axis].set_linewidth(2)
 
+		plt.savefig('../plots/' + self.ID + "_" + "Avinf_vs_launch_date_launch_mass_colorbar" + '.png', dpi=300, bbox_inches='tight')
+		plt.savefig('../plots/' + self.ID + "_" + "Avinf_vs_launch_date_launch_mass_colorbar" + '.pdf', dpi=300, bbox_inches='tight')
+		plt.savefig('../plots/' + self.ID + "_" + "Avinf_vs_launch_date_launch_mass_colorbar" + '.eps', dpi=300, bbox_inches='tight')
+
 		plt.show()
 
 
 
 	def plot_launch_mass_vs_TOF(self, launcherObj):
+		"""
+		Scatter plot of the launch mass as a function of TOF.
+
+		Returns
+		-------
+		ans : matplotlib.figure.Figure
+			Scatter plot of the launch mass as a function of TOF.
+		"""
 		Lcmass = self.compute_launch_capability(launcherObj)
 
 		plt.figure(figsize=(8,6))
@@ -211,11 +337,35 @@ class Interplanetary:
 		for axis in ['top', 'bottom', 'left', 'right']:
 			ax.spines[axis].set_linewidth(2)
 
+		plt.savefig('../plots/' + self.ID + "_" + launcherObj.ID + "_" + "launch_mass_vs_TOF" + '.png', dpi=300, box_inches='tight')
+		plt.savefig('../plots/' + self.ID + "_" + launcherObj.ID + "_" + "launch_mass_vs_TOF" + '.pdf', dpi=300, bbox_inches='tight')
+		plt.savefig('../plots/' + self.ID + "_" + launcherObj.ID + "_" + "launch_mass_vs_TOF" + '.eps', dpi=300, bbox_inches='tight')
+
 		plt.show()
 
 
 
 	def plot_launch_mass_vs_TOF_with_vinf_colorbar(self, launcherObj, scale=20):
+		"""
+		Scatter plot of the launch mass as a function of TOF
+		with arrival vinf colorbar.
+
+		Parameters
+		-------
+		launcherObj : AMAT.launcher.Launcher object
+			AMAT Launcher object
+		scale : float
+			scatter plot marker size, defaults to 20
+
+
+		Returns
+		-------
+		ans : matplotlib.figure.Figure
+			Scatter plot of the launch mass as a function of TOF
+			with arrival vinf colorbar.
+
+		"""
+
 		Lcmass = self.compute_launch_capability(launcherObj)
 
 		plt.figure(figsize=(8,6))
@@ -257,212 +407,9 @@ class Interplanetary:
 		for axis in ['top', 'bottom', 'left', 'right']:
 			ax.spines[axis].set_linewidth(2)
 
+		plt.savefig('../plots/' + self.ID + "_" + "launch_mass_vs_TOF_Avinf_colorbar" + '.png', dpi=300, bbox_inches='tight')
+		plt.savefig('../plots/' + self.ID + "_" + "launch_mass_vs_TOF_Avinf_colorbar" + '.pdf', dpi=300, bbox_inches='tight')
+		plt.savefig('../plots/' + self.ID + "_" + "launch_mass_vs_TOF_Avinf_colorbar" + '.eps', dpi=300, bbox_inches='tight')
+
 		plt.show()
-
-
-
-class Test_Interplanetary_Uranus_Chem:
-	interplanetary1 = Interplanetary(ID="Uranus Chem.",
-									 datafile='../interplanetary-data-private/uranus/uranus-chem.xlsx',
-									 sheet_name='uranus-chem',
-									 Lcdate_format="%Y%m%d")
-
-	launcher1 = Launcher('Falcon Heavy Expendable with Kick',
-						 datafile='../launcher-data/falcon-heavy-expendable-w-star-48.csv')
-
-	def test_load_data(self):
-		assert self.interplanetary1.df is not None
-
-	def test_compute_launch_capability(self):
-		ans =  self.interplanetary1.compute_launch_capability(launcherObj=self.launcher1)
-		print(ans)
-
-	def test_plot_launch_mass_vs_launch_date(self):
-		self.interplanetary1.plot_launch_mass_vs_launch_date(launcherObj=self.launcher1)
-
-	def test_plot_TOF_vs_launch_date(self):
-		self.interplanetary1.plot_TOF_vs_launch_date()
-
-	def test_plot_Avinf_vs_launch_date(self):
-		self.interplanetary1.plot_Avinf_vs_launch_date()
-
-	def test_plot_launch_mass_vs_TOF(self):
-		self.interplanetary1.plot_launch_mass_vs_TOF(launcherObj=self.launcher1)
-
-	def test_plot_launch_mass_vs_TOF_with_vinf_colorbar(self):
-		self.interplanetary1.plot_launch_mass_vs_TOF_with_vinf_colorbar(launcherObj=self.launcher1)
-
-
-
-class Test_Interplanetary_Uranus_SEP:
-	interplanetary1 = Interplanetary(ID="Uranus SEP",
-									 datafile='../interplanetary-data-private/uranus/uranus-sep.xlsx',
-									 sheet_name='Sheet1',
-									 Lcdate_format="%Y%m%d")
-
-	launcher1 = Launcher('Falcon Heavy Expendable with Kick',
-						 datafile='../launcher-data/falcon-heavy-expendable-w-star-48.csv')
-
-	def test_load_data(self):
-		assert self.interplanetary1.df is not None
-
-	def test_compute_launch_capability(self):
-		ans =  self.interplanetary1.compute_launch_capability(launcherObj=self.launcher1)
-
-	def test_plot_launch_mass_vs_launch_date(self):
-		self.interplanetary1.plot_launch_mass_vs_launch_date(launcherObj=self.launcher1)
-
-	def test_plot_TOF_vs_launch_date(self):
-		self.interplanetary1.plot_TOF_vs_launch_date()
-
-	def test_plot_Avinf_vs_launch_date(self):
-		self.interplanetary1.plot_Avinf_vs_launch_date()
-
-	def test_plot_launch_mass_vs_TOF(self):
-		self.interplanetary1.plot_launch_mass_vs_TOF(launcherObj=self.launcher1)
-
-	def test_plot_launch_mass_vs_TOF_with_vinf_colorbar(self):
-		self.interplanetary1.plot_launch_mass_vs_TOF_with_vinf_colorbar(launcherObj=self.launcher1)
-
-
-
-
-class Test_Interplanetary_Uranus_High_Energy_FHE:
-	interplanetary1 = Interplanetary(ID="Uranus High Energy",
-									 datafile='../interplanetary-data-private/uranus/uranus-high-energy.xlsx',
-									 sheet_name='Sheet1',
-									 Lcdate_format=None)
-
-	launcher1 = Launcher('Falcon Heavy Expendable with Kick',
-						 datafile='../launcher-data/falcon-heavy-expendable-w-star-48.csv')
-
-	def test_load_data(self):
-		assert self.interplanetary1.df is not None
-
-	def test_compute_launch_capability(self):
-		ans =  self.interplanetary1.compute_launch_capability(launcherObj=self.launcher1)
-
-	def test_plot_launch_mass_vs_launch_date(self):
-		self.interplanetary1.plot_launch_mass_vs_launch_date(launcherObj=self.launcher1)
-
-	def test_plot_TOF_vs_launch_date(self):
-		self.interplanetary1.plot_TOF_vs_launch_date()
-
-	def test_plot_Avinf_vs_launch_date(self):
-		self.interplanetary1.plot_Avinf_vs_launch_date()
-
-	def test_plot_launch_mass_vs_TOF(self):
-		self.interplanetary1.plot_launch_mass_vs_TOF(launcherObj=self.launcher1)
-
-	def test_plot_launch_mass_vs_TOF_with_vinf_colorbar(self):
-		self.interplanetary1.plot_launch_mass_vs_TOF_with_vinf_colorbar(launcherObj=self.launcher1)
-
-	def test_plot_Avinf_vs_launch_date_with_launch_mass_colorbar(self):
-		self.interplanetary1.plot_Avinf_vs_launch_date_with_launch_mass_colorbar(launcherObj=self.launcher1)
-
-
-class Test_Interplanetary_Uranus_High_Energy_SLS_Block_1:
-	interplanetary1 = Interplanetary(ID="Uranus High Energy",
-									 datafile='../interplanetary-data-private/uranus/uranus-high-energy.xlsx',
-									 sheet_name='Sheet1',
-									 Lcdate_format=None)
-
-	launcher1 = Launcher('SLS Block 1',
-						 datafile='../launcher-data/sls-block-1.csv')
-
-	def test_load_data(self):
-		assert self.interplanetary1.df is not None
-
-	def test_compute_launch_capability(self):
-		ans =  self.interplanetary1.compute_launch_capability(launcherObj=self.launcher1)
-
-	def test_plot_launch_mass_vs_launch_date(self):
-		self.interplanetary1.plot_launch_mass_vs_launch_date(launcherObj=self.launcher1)
-
-	def test_plot_TOF_vs_launch_date(self):
-		self.interplanetary1.plot_TOF_vs_launch_date()
-
-	def test_plot_Avinf_vs_launch_date(self):
-		self.interplanetary1.plot_Avinf_vs_launch_date()
-
-	def test_plot_launch_mass_vs_TOF(self):
-		self.interplanetary1.plot_launch_mass_vs_TOF(launcherObj=self.launcher1)
-
-	def test_plot_launch_mass_vs_TOF_with_vinf_colorbar(self):
-		self.interplanetary1.plot_launch_mass_vs_TOF_with_vinf_colorbar(launcherObj=self.launcher1)
-
-	def test_plot_Avinf_vs_launch_date_with_launch_mass_colorbar(self):
-		self.interplanetary1.plot_Avinf_vs_launch_date_with_launch_mass_colorbar(launcherObj=self.launcher1)
-
-
-class Test_Interplanetary_Uranus_High_Energy_SLS_Block_1B:
-	interplanetary1 = Interplanetary(ID="Uranus High Energy",
-									 datafile='../interplanetary-data-private/uranus/uranus-high-energy.xlsx',
-									 sheet_name='Sheet1',
-									 Lcdate_format=None)
-
-	launcher1 = Launcher('SLS Block 1B',
-						 datafile='../launcher-data/sls-block-1B.csv')
-
-	def test_load_data(self):
-		assert self.interplanetary1.df is not None
-
-	def test_compute_launch_capability(self):
-		ans =  self.interplanetary1.compute_launch_capability(launcherObj=self.launcher1)
-
-	def test_plot_launch_mass_vs_launch_date(self):
-		self.interplanetary1.plot_launch_mass_vs_launch_date(launcherObj=self.launcher1)
-
-	def test_plot_TOF_vs_launch_date(self):
-		self.interplanetary1.plot_TOF_vs_launch_date()
-
-	def test_plot_Avinf_vs_launch_date(self):
-		self.interplanetary1.plot_Avinf_vs_launch_date()
-
-	def test_plot_launch_mass_vs_TOF(self):
-		self.interplanetary1.plot_launch_mass_vs_TOF(launcherObj=self.launcher1)
-
-	def test_plot_launch_mass_vs_TOF_with_vinf_colorbar(self):
-		self.interplanetary1.plot_launch_mass_vs_TOF_with_vinf_colorbar(launcherObj=self.launcher1)
-
-	def test_plot_Avinf_vs_launch_date_with_launch_mass_colorbar(self):
-		self.interplanetary1.plot_Avinf_vs_launch_date_with_launch_mass_colorbar(launcherObj=self.launcher1)
-
-
-
-class Test_Interplanetary_Uranus_High_Energy_SLS_Block_1B_with_kick:
-	interplanetary1 = Interplanetary(ID="Uranus High Energy",
-									 datafile='../interplanetary-data-private/uranus/uranus-high-energy.xlsx',
-									 sheet_name='Sheet1',
-									 Lcdate_format=None)
-
-	launcher1 = Launcher('SLS Block 1B with kick stage',
-						 datafile='../launcher-data/sls-block-1B-with-kick.csv')
-
-	def test_load_data(self):
-		assert self.interplanetary1.df is not None
-
-	def test_compute_launch_capability(self):
-		ans =  self.interplanetary1.compute_launch_capability(launcherObj=self.launcher1)
-
-	def test_plot_launch_mass_vs_launch_date(self):
-		self.interplanetary1.plot_launch_mass_vs_launch_date(launcherObj=self.launcher1)
-
-	def test_plot_TOF_vs_launch_date(self):
-		self.interplanetary1.plot_TOF_vs_launch_date()
-
-	def test_plot_Avinf_vs_launch_date(self):
-		self.interplanetary1.plot_Avinf_vs_launch_date()
-
-	def test_plot_launch_mass_vs_TOF(self):
-		self.interplanetary1.plot_launch_mass_vs_TOF(launcherObj=self.launcher1)
-
-	def test_plot_launch_mass_vs_TOF_with_vinf_colorbar(self):
-		self.interplanetary1.plot_launch_mass_vs_TOF_with_vinf_colorbar(launcherObj=self.launcher1)
-
-	def test_plot_Avinf_vs_launch_date_with_launch_mass_colorbar(self):
-		self.interplanetary1.plot_Avinf_vs_launch_date_with_launch_mass_colorbar(launcherObj=self.launcher1)
-
-
-
 

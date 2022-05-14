@@ -73,3 +73,5 @@ Example Jupyter Notebooks
    /examples/example-66-multi-probe-deflection.ipynb
    /examples/example-67-multi-orbiter-deflection.ipynb
    /examples/example-68-launch-vehicle-performance.ipynb
+   /examples/example-69-interplanetary-trajectories-uranus-falcon-heavy-expendable.ipynb
+   /examples/example-70-interplanetary-trajectories-uranus-SLS.ipynb
