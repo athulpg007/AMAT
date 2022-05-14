@@ -7,10 +7,14 @@ class Launcher:
 	
 	Attributes
 	----------
-	ID : str
+	launcherID : str
 		String identifier for launch vehicle
-	XY : numpy.ndarray
-		contains C3 in column 1, launch mass in column 2
+	datafile : CSV file
+		CSV file containing C3,launch mass (kg)
+	kind : str
+			type of interpolation to use. Defaults to 'linear'
+	f : scipy.interpolate.interp1d
+		interpolation function for launch mass at a specified C3
 	"""
 
 	def __init__(self, launcherID, datafile, kind='linear'):
@@ -30,7 +34,7 @@ class Launcher:
 
 		self.ID = launcherID
 		self.XY = np.loadtxt(datafile, delimiter=',')
-		self.f = interp1d(self.XY[:, 0], self.XY[:, 1], kind=kind, bounds_error=True)
+		self.f = interp1d(self.XY[:, 0], self.XY[:, 1], kind=kind, fill_value=0, bounds_error=False)
 
 	def launchMass(self, C3):
 		"""
