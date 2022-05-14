@@ -13,13 +13,13 @@ setup(name='AMAT',
       author_email='athulpg007@gmail.com',
       license='GPL-3.0-or-later',
       packages=['AMAT'],
-      install_requires=['numpy', 'scipy', 'matplotlib'],
+      install_requires=['numpy', 'scipy', 'matplotlib', 'pandas'],
       classifiers=[
         # How mature is this project? Common values are
         #   3 - Alpha
         #   4 - Beta
         #   5 - Production/Stable
-        'Development Status :: 4 - Beta',
+        'Development Status :: 5 - Stable',
 
         # Indicate who your project is intended for
         'Intended Audience :: Developers',
@@ -28,7 +28,6 @@ setup(name='AMAT',
         'Topic :: Scientific/Engineering',
         'Topic :: Scientific/Engineering :: Mathematics',
         'Topic :: Scientific/Engineering :: Physics',
-
 
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
