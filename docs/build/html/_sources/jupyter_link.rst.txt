@@ -75,3 +75,5 @@ Example Jupyter Notebooks
    /examples/example-68-launch-vehicle-performance.ipynb
    /examples/example-69-interplanetary-trajectories-uranus-falcon-heavy-expendable.ipynb
    /examples/example-70-interplanetary-trajectories-uranus-SLS.ipynb
+   /examples/example-71-uranus-arrival-approach-entry-state.ipynb
+   /examples/example-72-uranus-aerocapture-part-1.ipynb

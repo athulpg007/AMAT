@@ -8,11 +8,8 @@ probe1 = Approach("URANUS",
 						rp=(25559+400)*1e3, psi=3*np.pi/2,
 						is_entrySystem=True, h_EI=1000e3)
 
-
-
 theta_star_arr_probe1 = np.linspace(-1.8, probe1.theta_star_entry, 101)
 pos_vec_bi_arr_probe1 = probe1.pos_vec_bi(theta_star_arr_probe1)/25559e3
-
 
 
 x_arr_probe1 = pos_vec_bi_arr_probe1[0][:]

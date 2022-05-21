@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Example - 72 - Uranus Aerocapture - Part 1 &mdash; AMAT v2.2.8 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="JSR Article Notebooks" href="../jsr-notebooks.html" />
+    <link rel="prev" title="Example - 71 - Uranus Arrival, Approach, Entry State" href="example-71-uranus-arrival-approach-entry-state.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> AMAT
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About AMAT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../capabilities.html">Capabilities</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../jupyter_link.html">Example Jupyter Notebooks</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="example-01-hello-world.html">Example - 01 - Hello World!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-02-atmosphere.html">Example - 02 - Atmosphere</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-03-venus-aerocapture-1.html">Example - 03 - Venus Aerocapture: Part 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-04-venus-aerocapture-2.html">Example - 04 - Venus Aerocapture: Part 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-05-titan-aerocapture-1.html">Example - 05 - Titan Aerocapture: Part 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-06-titan-aerocapture-2.html">Example - 06 - Titan Aerocapture: Part 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-07-venus-aerocapture-3.html">Example - 07 - Venus Aerocapture: Part 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-08-venus-aerocapture-4.html">Example - 08 - Venus Aerocapture: Part 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-09-uranus-aerocapture.html">Example - 09 - Uranus Aerocapture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-10-neptune-aerocapture-part-1.html">Example - 10 - Neptune Aerocapture - Part 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-11-neptune-aerocapture-part-2a.html">Example - 11 - Neptune Aerocapture - Part 2a: Monte Carlo Simulations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-12-neptune-aerocapture-part-2b.html">Example - 12 - Neptune Aerocapture - Part 2b: Monte Carlo Simulations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-13-venus-aerocapture-5a.html">Example - 13 - Venus Aerocapture - Part 5a: Monte Carlo Simulations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-14-fire-II-earth.html">Example - 14 - Fire-II - Earth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-15-apollo-as-201-earth.html">Example - 15 - Apollo-AS-201 - Earth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-16-apollo-as-202-earth.html">Example - 16 - Apollo-AS-202 - Earth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-17-apollo-4-earth.html">Example - 17 - Apollo-4 - Earth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-18-apollo-6-earth.html">Example - 18 - Apollo-6 - Earth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-19-paet-earth.html">Example - 19 - PAET - Earth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-20-viking-1-mars.html">Example - 20 - Viking-1 - Mars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-21-viking-2-mars.html">Example - 21 - Viking-2 - Mars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-22-pv-small-north-venus.html">Example - 22 - PV Small North - Venus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-23-pv-small-night-venus.html">Example - 23 - PV Small Night - Venus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-24-pv-small-day-venus.html">Example - 24 - PV Small Day - Venus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-25-pv-large-venus.html">Example - 25 - PV Large - Venus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-26-galileo-jupiter.html">Example - 26 - Galileo - Jupiter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-27-orex-earth.html">Example - 27 - OREX - Earth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-28-pathfinder-mars.html">Example - 28 - Pathfinder - Mars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-29-mirka-earth.html">Example - 29 - Mirka - Earth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-30-huygens-titan.html">Example - 30 - Huygens - Titan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-31-atm-reentry-demonstrator-earth.html">Example - 31 - Atm. Reentry Demonstrator - Earth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-32-deep-space-2-mars.html">Example - 32 - Deep Space 2 - Mars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-33-stardust-earth.html">Example - 33 - Stardust - Earth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-34-genesis-earth.html">Example - 34 - Genesis - Earth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-35-hayabusa-earth.html">Example - 35 - Hayabusa - Earth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-36-beagle-2-mars.html">Example - 36 - Beagle-2 - Mars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-37-opportunity-mars.html">Example - 37 - Opportunity - Mars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-38-curiosity-mars.html">Example - 38 - Curiosity - Mars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-39-oceanus-probe-saturn.html">Example - 39 - Oceanus - Saturn (Concept)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-40-oceanus-probe-uranus.html">Example - 40 - Oceanus - Uranus (Concept)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-41-hera-probe-saturn.html">Example - 41 - Hera - Saturn (Concept)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-42-dragonfly-titan.html">Example - 42 - Dragonfly - Titan (Planned)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-43-ice-giant-pre-decadal-uranus-probe.html">Example - 43 - Ice Giant Pre-Decadal - Uranus Probe (Concept)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-44-ice-giant-pre-decadal-neptune-probe.html">Example - 44 - Ice Giant Pre-Decadal - Neptune Probe (Concept)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-45-adept-vital-venus.html">Example - 45 - ADEPT ViTaL - Venus (Concept)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-46-uranus-entry-probe-decadal-2010.html">Example - 46 - Uranus Probe - Decadal Study - 2010 (Concept)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-47-venus-flagship-entry-vehicle-decadal-2010.html">Example - 47 - Venus Flagship - Decadal Study - 2010 (Concept)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-48-crew-module-atmospheric-re-entry-experiment-earth.html">Example - 48 - Crew Module Atmospheric Re-entry Experiment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-49-earth-smallsat-aerocapture-demonstration-part-1.html">Example - 49 - Earth SmallSat Aerocapture Demonstration - Part 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-50-earth-smallsat-aerocapture-demonstration-part-2.html">Example - 50 - Earth SmallSat Aerocapture Demonstration - Part 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-51-mars-smallsat-aerocapture-demonstration-part-1.html">Example - 51 - Mars SmallSat Aerocapture Demonstration - Part 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-52-mars-smallsat-aerocapture-demonstration-part-2.html">Example - 52 - Mars SmallSat Aerocapture Demonstration - Part 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-53-mars-smallsat-aerocapture-demonstration-part-3.html">Example - 53 - Mars SmallSat Aerocapture Demonstration - Part 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-54-exomars-2016-mars.html">Example - 54 - ExoMars 2016 - Mars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-55-titan-aerocapture-systems-study-part-1.html">Example - 55 - Titan Aerocapture Systems Study - Part 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-56-venus-entry-tradespace.html">Example - 56 - Venus Entry Tradespace - Carpet Plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-57-titan-entry-tradespace.html">Example - 57 - Dragnofly (Titan) Entry Tradespace - Carpet Plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-58-user-defined-CD-mach-function.html">Example - 58 - User-defined CD Mach Function - Earth Re-entry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-59-compute-arrival-declination-manually-supplied-v-inf-vector.html">Example - 59 - Compute arrival declination from v-inf-vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-60-compute-arrival-v-inf-and-declination-from-flyby-dates-1.html">Example - 60 - Compute v_inf and arrival declination from flyby dates (1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-61-compute-arrival-v-inf-and-declination-from-flyby-dates-2.html">Example - 61 - Compute v_inf and arrival declination from flyby dates (2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-62-two-probes-equatorial-polar.html">Example - 62 - Approach Trajectories for Two Probes at Neptune</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-63-locus-of-approach-trajectories-const-gamma-inertial.html">Example - 63 - Locus of approach trajectories for constant inertial EFPA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-64-probe-and-orbiter-trajectory.html">Example - 64 - Probe and Orbiter Trajectory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-65-probe-orbiter-deflection.html">Example - 65 - Probe-Orbiter Deflection Maneuver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-66-multi-probe-deflection.html">Example - 66 - Multi-probe Deflection Maneuver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-67-multi-orbiter-deflection.html">Example - 67 - Multi-orbiter Deflection Maneuver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-68-launch-vehicle-performance.html">Example - 68 - Launch Vehicle Performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-69-interplanetary-trajectories-uranus-falcon-heavy-expendable.html">Example - 69 - Interplanetary Trade Space - Uranus - Falcon Heavy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-70-interplanetary-trajectories-uranus-SLS.html">Example - 70 - Interplanetary Trade Space - Uranus - SLS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-71-uranus-arrival-approach-entry-state.html">Example - 71 - Uranus Arrival, Approach, Entry State</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Example - 72 - Uranus Aerocapture - Part 1</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../jsr-notebooks.html">JSR Article Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributions.html">Contributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../credits.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module_index.html">Module Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AMAT</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../jupyter_link.html">Example Jupyter Notebooks</a> &raquo;</li>
+      <li>Example - 72 - Uranus Aerocapture - Part 1</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/examples/example-72-uranus-aerocapture-part-1.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    min-width: 5ex;
+    padding-top: 0.3rem;
+    padding-right: 0.3rem;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 0.3rem;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Example---72---Uranus-Aerocapture---Part-1">
+<h1>Example - 72 - Uranus Aerocapture - Part 1<a class="headerlink" href="#Example---72---Uranus-Aerocapture---Part-1" title="Permalink to this headline">¶</a></h1>
+<p>In this example, we illustrate the use of AMAT for a preliminary analysis of an aerocapture mission concept to Uranus.</p>
+<p><strong>Ground Rules and Assumptions</strong>:</p>
+<ol class="arabic simple">
+<li><p>The mission must launch between 2028 and 2038, and arrive at Uranus no later than 8 years after launch.</p></li>
+<li><p>The nominal orbiter and probe mass is 1700 kg and 300 kg respectively.</p></li>
+<li><p>The launch vehicle should be capable of launching a spacecraft at least 4000 kg in mass, assuming 2000 kg of useful delivered mass to Uranus orbit and 2000 kg of aerocapture system mass (including propellant for any deep space manuevers).</p></li>
+<li><p>Including 20% mass margin, the launch vehicle must have a launch capability of at least 5000 kg.</p></li>
+<li><p>The aerocapture vehicle will have a maximum L/D of 0.36 (using an Apollo-derived aeroshell).</p></li>
+<li><p>The mission design must allow at least 1 deg. of theoretical corridor width (TCW) at Uranus.</p></li>
+<li><p>The maximum deceleration load is not to exceed 15g.</p></li>
+<li><p>The maximum stagnation-point peak heat rate is not to exceed 5000 W/cm^2.</p></li>
+<li><p>The maximum stagnation-point total heat load is not to exceed 200 kJ/cm^2.</p></li>
+<li><p>The mission must place the orbiter into an orbit with an inclination as close to equatorial as possible.</p></li>
+<li><p>The maximum capability launch vehicle available is the Falcon Heavy Expendable.</p></li>
+<li><p>The initial capture orbit shall have an apoapsis altitude of 500,000 km or greater.</p></li>
+</ol>
+<p>We use an existing feasibility chart from Girija et al. (2022) <a class="reference external" href="https://athulpg007.github.io/papers/1.a35214.pdf">Girija A. P. et al. Quantitative Assessment of Aerocapture and Applications to Future Missions, Journal of Spacecraft and Rockets, 2022</a> for preliminary analysis.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;../plots/uranus-feasibility-chart-girija-et-al-2022.png&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">700</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<a class="reference internal image-reference" href="../_images/examples_example-72-uranus-aerocapture-part-1_3_0.png"><img alt="../_images/examples_example-72-uranus-aerocapture-part-1_3_0.png" src="../_images/examples_example-72-uranus-aerocapture-part-1_3_0.png" style="width: 700px;" /></a>
+</div>
+</div>
+<p><strong>Derived Mission Requirements</strong>:</p>
+<ol class="arabic simple">
+<li><p>Because of the assumption #5 that the maximum allowed vehicle L/D is 0.24, and assumption #6 that a 1 deg TCW is required, we immediately see that the interplanetary trajectory arrival <span class="math notranslate nohighlight">\(V_{\infty}\)</span> must be at least 20 km/s. This implies a high-energy trajectory is required. Because of requirement #8 that the maximum heat rate is not to exceed 5000 <span class="math notranslate nohighlight">\(W/cm^2\)</span>, we limit the maximum arrival <span class="math notranslate nohighlight">\(V_{\infty}\)</span> to 24 km/s.</p></li>
+</ol>
+<p>Let us now look at the available high-energy trajectory options to Uranus which satisfy the above derived mission requirement. We will first look at the launch capability vs launch date chart using AMAT. Requirement #4 states that the launch capability shoud be at least 5000 kg.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">AMAT.launcher</span> <span class="kn">import</span> <span class="n">Launcher</span>
+<span class="kn">from</span> <span class="nn">AMAT.interplanetary</span> <span class="kn">import</span> <span class="n">Interplanetary</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">interplanetary1</span> <span class="o">=</span> <span class="n">Interplanetary</span><span class="p">(</span><span class="n">ID</span><span class="o">=</span><span class="s2">&quot;Uranus High Energy&quot;</span><span class="p">,</span>
+                                 <span class="n">datafile</span><span class="o">=</span><span class="s1">&#39;../interplanetary-data-private/uranus/uranus-high-energy.xlsx&#39;</span><span class="p">,</span>
+                                 <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;Sheet1&#39;</span><span class="p">,</span>
+                                 <span class="n">Lcdate_format</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="n">launcher1</span> <span class="o">=</span> <span class="n">Launcher</span><span class="p">(</span><span class="s1">&#39;Falcon Heavy Exp. with kick&#39;</span><span class="p">,</span>
+                     <span class="n">datafile</span><span class="o">=</span><span class="s1">&#39;../launcher-data/falcon-heavy-expendable-w-star-48.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">interplanetary1</span><span class="o">.</span><span class="n">plot_launch_mass_vs_launch_date</span><span class="p">(</span><span class="n">launcherObj</span><span class="o">=</span><span class="n">launcher1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+The PostScript backend does not support transparency; partially transparent artists will be rendered opaque.
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/examples_example-72-uranus-aerocapture-part-1_8_1.png" src="../_images/examples_example-72-uranus-aerocapture-part-1_8_1.png" />
+</div>
+</div>
+<p>It appears that there are some trajectories which have a launch capability exceeding 5000 kg within the desired launch window. Let us now look at the trajectories with launch mass, time of flight and arrival <span class="math notranslate nohighlight">\(V_{\infty}\)</span> combined in one chart.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">interplanetary1</span><span class="o">.</span><span class="n">plot_launch_mass_vs_TOF_with_vinf_colorbar</span><span class="p">(</span><span class="n">launcherObj</span><span class="o">=</span><span class="n">launcher1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+The PostScript backend does not support transparency; partially transparent artists will be rendered opaque.
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/examples_example-72-uranus-aerocapture-part-1_10_1.png" src="../_images/examples_example-72-uranus-aerocapture-part-1_10_1.png" />
+</div>
+</div>
+<p>It appears that there is small set of trajectories (indicated by yellow and red markers) which satisfy the following constraints:</p>
+<ol class="arabic simple">
+<li><p>Launch capability &gt;= 5000 kg with Falcon Heavy Expendable. (corresponding to <span class="math notranslate nohighlight">\(C_3\)</span> &lt;= 55)</p></li>
+<li><p>TOF &lt;= 8 years.</p></li>
+<li><p>Arrival <span class="math notranslate nohighlight">\(V_{\infty}\)</span> &gt;= 20 km/s, and <span class="math notranslate nohighlight">\(V_{\infty}\)</span> &lt;= 24 km/s.</p></li>
+</ol>
+<p>We perform a query on the interplanetary trajectory dataset to filter these trajectories.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span> <span class="o">=</span> <span class="n">interplanetary1</span><span class="o">.</span><span class="n">df</span>
+<span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;TOF&quot;</span><span class="p">]</span><span class="o">&lt;=</span><span class="mi">8</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Avinf&quot;</span><span class="p">]</span><span class="o">&gt;=</span><span class="mi">20</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Avinf&quot;</span><span class="p">]</span><span class="o">&lt;=</span><span class="mi">24</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;LC3&quot;</span><span class="p">]</span><span class="o">&lt;=</span><span class="mi">55</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Bodies</th>
+      <th>Times</th>
+      <th>Lcdate</th>
+      <th>Arrival Date</th>
+      <th>LC3</th>
+      <th>TOF</th>
+      <th>DSMdv</th>
+      <th>DSM Mass</th>
+      <th>ArrivalVinf_Vector</th>
+      <th>Avinf</th>
+      <th>Adec</th>
+      <th>Unnamed: 11</th>
+      <th>Paths</th>
+      <th>Unnamed: 13</th>
+      <th>Unnamed: 14</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>11717</th>
+      <td>[399 399 599 799]</td>
+      <td>2031-07-18 2034-05-16 2035-09-09 2039-06-07</td>
+      <td>2031-07-18</td>
+      <td>2039-06-07</td>
+      <td>52.266</td>
+      <td>7.886090</td>
+      <td>1.04</td>
+      <td>864.379658</td>
+      <td>[-9.511251449584961 17.8606014251709 0.2777369...</td>
+      <td>20.237</td>
+      <td>-48.836271</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>11740</th>
+      <td>[399 399 599 799]</td>
+      <td>2031-07-22 2034-05-16 2035-09-04 2039-05-18</td>
+      <td>2031-07-22</td>
+      <td>2039-05-18</td>
+      <td>53.866</td>
+      <td>7.820462</td>
+      <td>1.04</td>
+      <td>864.379658</td>
+      <td>[-9.630807876586914 18.130252838134766 0.28104...</td>
+      <td>20.531</td>
+      <td>-48.894486</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>11745</th>
+      <td>[399 399 599 799]</td>
+      <td>2031-07-22 2034-05-24 2035-09-14 2039-06-17</td>
+      <td>2031-07-22</td>
+      <td>2039-06-17</td>
+      <td>52.823</td>
+      <td>7.902598</td>
+      <td>0.84</td>
+      <td>675.544505</td>
+      <td>[-9.463287353515625 17.745807647705078 0.27622...</td>
+      <td>20.113</td>
+      <td>-48.803860</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>We see that these trajectories belong to a group of EEJU trajectories launching between July and August 2031. For preliminary analysis, we arbitrarily choose trajectory #11740 as the initial baseline. We will now use the <strong>AMAT.arrival</strong> module to compute the arrival <span class="math notranslate nohighlight">\(V_{\infty}\)</span> and arrival declination for this trajectory.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">astropy.time</span> <span class="kn">import</span> <span class="n">Time</span>
+<span class="kn">from</span> <span class="nn">AMAT.arrival</span> <span class="kn">import</span> <span class="n">Arrival</span>
+
+<span class="n">arrival</span> <span class="o">=</span> <span class="n">Arrival</span><span class="p">()</span>
+<span class="n">arrival</span><span class="o">.</span><span class="n">set_vinf_vec_from_lambert_arc</span><span class="p">(</span><span class="s1">&#39;JUPITER&#39;</span><span class="p">,</span>
+                                      <span class="s1">&#39;URANUS&#39;</span><span class="p">,</span>
+                                      <span class="n">Time</span><span class="p">(</span><span class="s2">&quot;2035-09-04 00:00:00&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="s1">&#39;tdb&#39;</span><span class="p">),</span>
+                                      <span class="n">Time</span><span class="p">(</span><span class="s2">&quot;2039-05-18 00:00:00&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="s1">&#39;tdb&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">arrival</span><span class="o">.</span><span class="n">v_inf_vec</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([-9.62521831, 16.51192666,  7.46493598])
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">arrival</span><span class="o">.</span><span class="n">declination</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+-48.89326200262988
+</pre></div></div>
+</div>
+<p>We now compute an approach trajectory that minimizes the inclination of the initial capture orbit with respect to Uranus’ equatorial plane. Note that the entry conditions (except the EFPA) is required to compute the aerocapture ebtry corridor, and hence this must be done iteratively. We arbitrarily choose an initial periapsis radius = 400 km which results in a planet-relative EFPA of -11.1 deg.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">AMAT.approach</span> <span class="kn">import</span> <span class="n">Approach</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">approach1</span> <span class="o">=</span> <span class="n">Approach</span><span class="p">(</span><span class="s2">&quot;URANUS&quot;</span><span class="p">,</span> <span class="n">v_inf_vec_icrf_kms</span><span class="o">=</span><span class="n">arrival</span><span class="o">.</span><span class="n">v_inf_vec</span><span class="p">,</span>
+                            <span class="n">rp</span><span class="o">=</span><span class="p">(</span><span class="mi">25559</span><span class="o">+</span><span class="mi">400</span><span class="p">)</span><span class="o">*</span><span class="mf">1e3</span><span class="p">,</span> <span class="n">psi</span><span class="o">=</span><span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>
+                            <span class="n">is_entrySystem</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">h_EI</span><span class="o">=</span><span class="mf">1000e3</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Entry altitude, km: &quot;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">approach1</span><span class="o">.</span><span class="n">h_EI</span><span class="o">/</span><span class="mf">1e3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Entry longitude BI, deg: &quot;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">approach1</span><span class="o">.</span><span class="n">longitude_entry_bi</span><span class="o">*</span><span class="mi">180</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Entry latitude BI, deg: &quot;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">approach1</span><span class="o">.</span><span class="n">latitude_entry_bi</span><span class="o">*</span><span class="mi">180</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Atm. relative entry speed, km/s: &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">approach1</span><span class="o">.</span><span class="n">v_entry_atm_mag</span><span class="o">/</span><span class="mf">1e3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Atm. relative heading angle, deg: &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">approach1</span><span class="o">.</span><span class="n">heading_entry_atm</span><span class="o">*</span><span class="mi">180</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">4</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Atm. relative EFPA, deg: &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">approach1</span><span class="o">.</span><span class="n">gamma_entry_atm</span><span class="o">*</span><span class="mi">180</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">4</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Entry altitude, km: 1000.0
+Entry longitude BI, deg: -80.95
+Entry latitude BI, deg: 25.22
+Atm. relative entry speed, km/s: 27.5946
+Atm. relative heading angle, deg: 132.066
+Atm. relative EFPA, deg: -11.1875
+</pre></div></div>
+</div>
+<p>Run the file <code class="docutils literal notranslate"><span class="pre">example-72-uranus-approach.py</span></code> for a visualization of the Uranus approach trajectory.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;../plots/example-72-uranus-approach.png&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">700</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<a class="reference internal image-reference" href="../_images/examples_example-72-uranus-aerocapture-part-1_21_0.png"><img alt="../_images/examples_example-72-uranus-aerocapture-part-1_21_0.png" src="../_images/examples_example-72-uranus-aerocapture-part-1_21_0.png" style="width: 700px;" /></a>
+</div>
+</div>
+<p>Using the above entry conditions at Uranus atmospheric interface, we use <strong>AMAT.vehicle</strong> module to compute the aerocapture entry corridor for a vehicle with L/D = 0.36 and a nominal mean atmospheric profile for Uranus.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># setup the Planet object</span>
+<span class="kn">from</span> <span class="nn">AMAT.planet</span> <span class="kn">import</span> <span class="n">Planet</span>
+<span class="n">planet</span><span class="o">=</span><span class="n">Planet</span><span class="p">(</span><span class="s2">&quot;URANUS&quot;</span><span class="p">)</span>
+<span class="n">planet</span><span class="o">.</span><span class="n">h_skip</span> <span class="o">=</span> <span class="mf">1000e3</span>
+<span class="n">planet</span><span class="o">.</span><span class="n">loadAtmosphereModel</span><span class="p">(</span><span class="s1">&#39;../atmdata/Uranus/uranus-gram-avg.dat&#39;</span><span class="p">,</span> <span class="mi">0</span> <span class="p">,</span> <span class="mi">1</span> <span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">heightInKmFlag</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">planet</span><span class="o">.</span><span class="n">h_low</span> <span class="o">=</span> <span class="mf">120e3</span>
+<span class="n">planet</span><span class="o">.</span><span class="n">h_trap</span><span class="o">=</span> <span class="mf">100e3</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Setup the vehicle object : assume m=3000 kg, beta=200 kg/m2</span>
+<span class="kn">from</span> <span class="nn">AMAT.vehicle</span> <span class="kn">import</span> <span class="n">Vehicle</span>
+<span class="n">vehicle</span><span class="o">=</span><span class="n">Vehicle</span><span class="p">(</span><span class="s1">&#39;Titania&#39;</span><span class="p">,</span> <span class="mf">3000.0</span><span class="p">,</span> <span class="mi">200</span> <span class="p">,</span> <span class="mf">0.36</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="mf">4.5</span><span class="o">**</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.125</span><span class="p">,</span> <span class="n">planet</span><span class="p">)</span>
+<span class="n">vehicle</span><span class="o">.</span><span class="n">setInitialState</span><span class="p">(</span><span class="mf">1000.0</span><span class="p">,</span><span class="o">-</span><span class="mf">80.95</span><span class="p">,</span><span class="mf">25.22</span><span class="p">,</span><span class="mf">27.5946</span><span class="p">,</span><span class="mf">132.066</span><span class="p">,</span><span class="o">-</span><span class="mf">11.0</span> <span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="n">vehicle</span><span class="o">.</span><span class="n">setSolverParams</span><span class="p">(</span><span class="mf">1E-6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Compute the corridor bounds and TCW</span>
+<span class="n">overShootLimit</span><span class="p">,</span> <span class="n">exitflag_os</span>  <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">findOverShootLimit2</span><span class="p">(</span><span class="mf">2400.0</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="o">-</span><span class="mi">25</span><span class="p">,</span><span class="o">-</span><span class="mf">4.0</span><span class="p">,</span><span class="mf">1E-10</span><span class="p">,</span><span class="mf">500e3</span><span class="p">)</span>
+<span class="n">underShootLimit</span><span class="p">,</span> <span class="n">exitflag_us</span>  <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">findUnderShootLimit2</span><span class="p">(</span><span class="mf">2400.0</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="o">-</span><span class="mi">25</span> <span class="p">,</span><span class="o">-</span><span class="mf">4.0</span><span class="p">,</span><span class="mf">1E-10</span><span class="p">,</span><span class="mf">500e3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># print the overshoot and undershoot limits we just computed.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Overshoot  limit : &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:.4f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">overShootLimit</span><span class="p">))</span><span class="o">+</span> <span class="s2">&quot; deg&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Undershoot limit : &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:.4f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">underShootLimit</span><span class="p">))</span><span class="o">+</span> <span class="s2">&quot; deg&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;TCW: &quot;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:.4f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">overShootLimit</span><span class="o">-</span><span class="n">underShootLimit</span><span class="p">))</span><span class="o">+</span> <span class="s2">&quot; deg&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Overshoot  limit : -11.7077 deg
+Undershoot limit : -13.4105 deg
+TCW: 1.7029 deg
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># propogate the overshoot and undershoot trajectories</span>
+<span class="n">vehicle</span><span class="o">.</span><span class="n">setInitialState</span><span class="p">(</span><span class="mf">1000.0</span><span class="p">,</span><span class="o">-</span><span class="mf">80.95</span><span class="p">,</span><span class="mf">25.22</span><span class="p">,</span><span class="mf">27.5946</span><span class="p">,</span><span class="mf">132.066</span><span class="p">,</span><span class="n">overShootLimit</span> <span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="n">vehicle</span><span class="o">.</span><span class="n">propogateEntry</span> <span class="p">(</span><span class="mf">2400.0</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">180.0</span><span class="p">)</span>
+
+<span class="c1"># Extract and save variables to plot</span>
+<span class="n">t_min_os</span>         <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">t_minc</span>
+<span class="n">h_km_os</span>          <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">h_kmc</span>
+<span class="n">acc_net_g_os</span>     <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">acc_net_g</span>
+<span class="n">q_stag_con_os</span>    <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">q_stag_con</span>
+<span class="n">q_stag_rad_os</span>    <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">q_stag_rad</span>
+<span class="n">heatload_os</span>      <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">heatload</span>
+
+<span class="n">vehicle</span><span class="o">.</span><span class="n">setInitialState</span><span class="p">(</span><span class="mf">1000.0</span><span class="p">,</span><span class="o">-</span><span class="mf">80.95</span><span class="p">,</span><span class="mf">25.22</span><span class="p">,</span><span class="mf">27.5946</span><span class="p">,</span><span class="mf">132.066</span><span class="p">,</span><span class="n">underShootLimit</span> <span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="n">vehicle</span><span class="o">.</span><span class="n">propogateEntry</span> <span class="p">(</span><span class="mf">2400.0</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.0</span><span class="p">)</span>
+
+<span class="c1"># Extract and save variable to plot</span>
+<span class="n">t_min_us</span>         <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">t_minc</span>
+<span class="n">h_km_us</span>          <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">h_kmc</span>
+<span class="n">acc_net_g_us</span>     <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">acc_net_g</span>
+<span class="n">q_stag_con_us</span>    <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">q_stag_con</span>
+<span class="n">q_stag_rad_us</span>    <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">q_stag_rad</span>
+<span class="n">heatload_us</span>      <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">heatload</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># plot overshoot and undershoot trajectories</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">([</span><span class="mi">11</span> <span class="p">,</span> <span class="mi">8</span><span class="p">])</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;mathtext.default&#39;</span><span class="p">:</span> <span class="s1">&#39;regular&#39;</span> <span class="p">}</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_min_os</span> <span class="p">,</span> <span class="n">h_km_os</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span> <span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;xkcd:blue&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>  <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Overshoot&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_min_us</span> <span class="p">,</span> <span class="n">h_km_us</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span> <span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;xkcd:green&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>  <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Undershoot&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time, min&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Altitude, km&quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_min_os</span> <span class="p">,</span> <span class="n">acc_net_g_os</span> <span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span> <span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;xkcd:blue&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>  <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Overshoot&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_min_us</span> <span class="p">,</span> <span class="n">acc_net_g_us</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span> <span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;xkcd:green&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>  <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Undershoot&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time, min&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Deceleration, g&quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_min_os</span> <span class="p">,</span> <span class="n">q_stag_con_os</span><span class="o">+</span><span class="n">q_stag_rad_os</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span> <span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;xkcd:blue&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>  <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Overshoot&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_min_us</span> <span class="p">,</span> <span class="n">q_stag_con_us</span><span class="o">+</span><span class="n">q_stag_rad_us</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span> <span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;xkcd:green&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>  <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Undershoot&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time, min&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Heating, W/cm2&quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_min_os</span> <span class="p">,</span> <span class="n">heatload_os</span><span class="o">/</span><span class="mf">1e3</span> <span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span> <span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;xkcd:blue&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>  <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Overshoot&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_min_us</span> <span class="p">,</span> <span class="n">heatload_us</span><span class="o">/</span><span class="mf">1e3</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span> <span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;xkcd:green&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>  <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Undershoot&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time, min&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Heat load, kJ/cm2&quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/examples_example-72-uranus-aerocapture-part-1_28_0.png" src="../_images/examples_example-72-uranus-aerocapture-part-1_28_0.png" />
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="example-71-uranus-arrival-approach-entry-state.html" class="btn btn-neutral float-left" title="Example - 71 - Uranus Arrival, Approach, Entry State" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../jsr-notebooks.html" class="btn btn-neutral float-right" title="JSR Article Notebooks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, A.P. Girija.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
