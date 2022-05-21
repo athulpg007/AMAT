@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>API Reference &mdash; AMAT v2.2.7 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <title>API Reference &mdash; AMAT v2.2.9 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
@@ -2580,6 +2580,30 @@ Reference 2: Lescynzki, MS Thesis, NPS.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="AMAT.vehicle.Vehicle.EOM2">
+<code class="sig-name descname">EOM2</code><span class="sig-paren">(</span><em class="sig-param">t</em>, <em class="sig-param">y</em>, <em class="sig-param">delta</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle.EOM2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Define the EoMs to propogate the 3DoF trajectory inside the
+atmosphere of a an oblate rotating planet.</p>
+<p>Reference 1: Vinh, Chapter 3.
+Reference 2: Lescynzki, MS Thesis, NPS.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y</strong> (<em>numpy.ndarray</em>) – trajectory state vector</p></li>
+<li><p><strong>t</strong> (<em>numpy.ndarray</em>) – trajectory time vector</p></li>
+<li><p><strong>delta</strong> (<em>float</em>) – bank angle, rad</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>ans</strong> – derivate vector of state, process equations</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dydt</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="AMAT.vehicle.Vehicle.L">
 <code class="sig-name descname">L</code><span class="sig-paren">(</span><em class="sig-param">r</em>, <em class="sig-param">theta</em>, <em class="sig-param">phi</em>, <em class="sig-param">v</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle.L" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the vehicle aerodynamic lift, as a function of the
@@ -4195,47 +4219,17 @@ atmospheric profile data.</p>
 
 <dl class="method">
 <dt id="AMAT.vehicle.Vehicle.propogateEntry2">
-<code class="sig-name descname">propogateEntry2</code><span class="sig-paren">(</span><em class="sig-param">h0_km</em>, <em class="sig-param">theta0_deg</em>, <em class="sig-param">phi0_deg</em>, <em class="sig-param">v0_kms</em>, <em class="sig-param">gamma0_deg</em>, <em class="sig-param">psi0_deg</em>, <em class="sig-param">drange0_km</em>, <em class="sig-param">heatLoad0</em>, <em class="sig-param">t_sec</em>, <em class="sig-param">dt</em>, <em class="sig-param">delta_deg</em>, <em class="sig-param">density_mes_int</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle.propogateEntry2" title="Permalink to this definition">¶</a></dt>
-<dd><p>Utility propogator routine for prediction of atmospheric exit
-conditions which is then supplied to the apoapis prediction
-module.</p>
-<p>Propogates the vehicle state for using the measured
-atmospheric profile during the descending leg.</p>
+<code class="sig-name descname">propogateEntry2</code><span class="sig-paren">(</span><em class="sig-param">t_sec</em>, <em class="sig-param">dt</em>, <em class="sig-param">delta_deg</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle.propogateEntry2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Propogates the vehicle state for a specified time using
+initial conditions, vehicle properties, and
+atmospheric profile data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>h0_km</strong> (<em>float</em>) – current altitude, km</p></li>
-<li><p><strong>theta0_deg</strong> (<em>float</em>) – current longitude, deg</p></li>
-<li><p><strong>phi0_deg</strong> (<em>float</em>) – current latitude, deg</p></li>
-<li><p><strong>v0_kms</strong> (<em>float</em>) – current speed, km/s</p></li>
-<li><p><strong>gamma0_deg</strong> (<em>float</em>) – current FPA, deg</p></li>
-<li><p><strong>psi0_deg</strong> (<em>float</em>) – current heading angle, deg</p></li>
-<li><p><strong>drange0_km</strong> (<em>float</em>) – current downrange, km</p></li>
-<li><p><strong>heatLoad0</strong> (<em>float</em>) – current heatload, J/cm2</p></li>
 <li><p><strong>t_sec</strong> (<em>float</em>) – propogation time, seconds</p></li>
 <li><p><strong>dt</strong> (<em>float</em>) – max. time step, seconds</p></li>
 <li><p><strong>delta_deg</strong> (<em>float</em>) – bank angle command, deg</p></li>
 </ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><strong>t_minc</strong> (<em>numpy.ndarray</em>) – time solution array, min</p></li>
-<li><p><strong>h_kmc</strong> (<em>numpy.ndarray</em>) – altitude solution array, km</p></li>
-<li><p><strong>v_kmsc</strong> (<em>numpy.ndarray</em>) – speed solution array, km/s</p></li>
-<li><p><strong>phi_degc</strong> (<em>numpy.ndarray</em>) – latitude solution array, deg</p></li>
-<li><p><strong>psi_degc</strong> (<em>numpy.ndarray</em>) – heading angle solution array, deg</p></li>
-<li><p><strong>theta_degc</strong> (<em>numpy.ndarray</em>) – longitude solution array, deg</p></li>
-<li><p><strong>gamma_degc</strong> (<em>numpy.ndarray</em>) – FPA solution array, deg</p></li>
-<li><p><strong>drange_kmc</strong> (<em>numpy.ndarray</em>) – downrange solution array, km</p></li>
-<li><p><strong>exitflag</strong> (<em>int</em>) – exitflag</p></li>
-<li><p><strong>acc_net_g</strong> (<em>numpy.ndarray</em>) – acceleration solution array, Earth g</p></li>
-<li><p><strong>dyn_pres_atm</strong> (<em>numpy.ndarray</em>) – dynamic pressure solution array, atm</p></li>
-<li><p><strong>stag_pres_atm</strong> (<em>numpy.ndarray</em>) – stagnation pressure array, atm</p></li>
-<li><p><strong>q_stag_total</strong> (<em>numpy.ndarray</em>) – stagnation point heat rate array</p></li>
-<li><p><strong>heatload</strong> (<em>numpy.ndarray</em>) – stagnation point heat load</p></li>
-<li><p><strong>acc_drag_g</strong> (<em>numpy.ndarray</em>) – acceleration due to drag, Earth g</p></li>
-</ul>
-</p>
 </dd>
 </dl>
 </dd></dl>
@@ -4301,6 +4295,53 @@ till drag skirt jettison.</p>
 <li><p><strong>dt</strong> (<em>float</em>) – Solver max. time step, seconds</p></li>
 <li><p><strong>maxTimeSecs</strong> (<em>float</em>) – max. time for propogation, seconds</p></li>
 </ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.vehicle.Vehicle.propogateEntry_util">
+<code class="sig-name descname">propogateEntry_util</code><span class="sig-paren">(</span><em class="sig-param">h0_km</em>, <em class="sig-param">theta0_deg</em>, <em class="sig-param">phi0_deg</em>, <em class="sig-param">v0_kms</em>, <em class="sig-param">gamma0_deg</em>, <em class="sig-param">psi0_deg</em>, <em class="sig-param">drange0_km</em>, <em class="sig-param">heatLoad0</em>, <em class="sig-param">t_sec</em>, <em class="sig-param">dt</em>, <em class="sig-param">delta_deg</em>, <em class="sig-param">density_mes_int</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle.propogateEntry_util" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility propogator routine for prediction of atmospheric exit
+conditions which is then supplied to the apoapis prediction
+module.</p>
+<p>Propogates the vehicle state for using the measured
+atmospheric profile during the descending leg.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>h0_km</strong> (<em>float</em>) – current altitude, km</p></li>
+<li><p><strong>theta0_deg</strong> (<em>float</em>) – current longitude, deg</p></li>
+<li><p><strong>phi0_deg</strong> (<em>float</em>) – current latitude, deg</p></li>
+<li><p><strong>v0_kms</strong> (<em>float</em>) – current speed, km/s</p></li>
+<li><p><strong>gamma0_deg</strong> (<em>float</em>) – current FPA, deg</p></li>
+<li><p><strong>psi0_deg</strong> (<em>float</em>) – current heading angle, deg</p></li>
+<li><p><strong>drange0_km</strong> (<em>float</em>) – current downrange, km</p></li>
+<li><p><strong>heatLoad0</strong> (<em>float</em>) – current heatload, J/cm2</p></li>
+<li><p><strong>t_sec</strong> (<em>float</em>) – propogation time, seconds</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – max. time step, seconds</p></li>
+<li><p><strong>delta_deg</strong> (<em>float</em>) – bank angle command, deg</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>t_minc</strong> (<em>numpy.ndarray</em>) – time solution array, min</p></li>
+<li><p><strong>h_kmc</strong> (<em>numpy.ndarray</em>) – altitude solution array, km</p></li>
+<li><p><strong>v_kmsc</strong> (<em>numpy.ndarray</em>) – speed solution array, km/s</p></li>
+<li><p><strong>phi_degc</strong> (<em>numpy.ndarray</em>) – latitude solution array, deg</p></li>
+<li><p><strong>psi_degc</strong> (<em>numpy.ndarray</em>) – heading angle solution array, deg</p></li>
+<li><p><strong>theta_degc</strong> (<em>numpy.ndarray</em>) – longitude solution array, deg</p></li>
+<li><p><strong>gamma_degc</strong> (<em>numpy.ndarray</em>) – FPA solution array, deg</p></li>
+<li><p><strong>drange_kmc</strong> (<em>numpy.ndarray</em>) – downrange solution array, km</p></li>
+<li><p><strong>exitflag</strong> (<em>int</em>) – exitflag</p></li>
+<li><p><strong>acc_net_g</strong> (<em>numpy.ndarray</em>) – acceleration solution array, Earth g</p></li>
+<li><p><strong>dyn_pres_atm</strong> (<em>numpy.ndarray</em>) – dynamic pressure solution array, atm</p></li>
+<li><p><strong>stag_pres_atm</strong> (<em>numpy.ndarray</em>) – stagnation pressure array, atm</p></li>
+<li><p><strong>q_stag_total</strong> (<em>numpy.ndarray</em>) – stagnation point heat rate array</p></li>
+<li><p><strong>heatload</strong> (<em>numpy.ndarray</em>) – stagnation point heat load</p></li>
+<li><p><strong>acc_drag_g</strong> (<em>numpy.ndarray</em>) – acceleration due to drag, Earth g</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 </dd></dl>
@@ -4759,6 +4800,45 @@ from GRAM model output</p></li>
 <dl class="method">
 <dt id="AMAT.vehicle.Vehicle.solveTrajectory">
 <code class="sig-name descname">solveTrajectory</code><span class="sig-paren">(</span><em class="sig-param">rbar0</em>, <em class="sig-param">theta0</em>, <em class="sig-param">phi0</em>, <em class="sig-param">vbar0</em>, <em class="sig-param">psi0</em>, <em class="sig-param">gamma0</em>, <em class="sig-param">drangebar0</em>, <em class="sig-param">t_sec</em>, <em class="sig-param">dt</em>, <em class="sig-param">delta</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle.solveTrajectory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to propogate a single atmospheric entry trajectory
+given entry interface / other initial conditions and
+bank angle delta.</p>
+<p>Reference 1: Vinh, Chapter 3.
+Reference 2: Lescynzki, MS Thesis, NPS.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rbar0</strong> (<em>float</em>) – non-dimensional radial distance initial condition</p></li>
+<li><p><strong>theta0</strong> (<em>float</em>) – longitude initial condition, rad</p></li>
+<li><p><strong>phi0</strong> (<em>float</em>) – latatitude initial condition, rad</p></li>
+<li><p><strong>vbar0</strong> (<em>float</em>) – non-dimensional planet-relative speed initial condition</p></li>
+<li><p><strong>psi0</strong> (<em>float</em>) – heading angle initial condition, rad</p></li>
+<li><p><strong>gamma0</strong> (<em>float</em>) – entry flight-path angle initial condition, rad</p></li>
+<li><p><strong>drangebar0</strong> (<em>float</em>) – non-dimensional downrange initial condition</p></li>
+<li><p><strong>t_sec</strong> (<em>float</em>) – time in seconds for which propogation is done</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – max. time step size in seconds</p></li>
+<li><p><strong>delta</strong> (<em>float</em>) – bank angle command, rad</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>tbar</strong> (<em>numpy.ndarray</em>) – nondimensional time at which solution is computed</p></li>
+<li><p><strong>rbar</strong> (<em>numpy.ndarray</em>) – nondimensional radial distance solution</p></li>
+<li><p><strong>theta</strong> (<em>numpy.ndarray</em>) – longitude solution, rad</p></li>
+<li><p><strong>phi</strong> (<em>numpy.ndarray</em>) – latitude array, rad</p></li>
+<li><p><strong>vbar</strong> (<em>numpy.ndarray</em>) – nondimensional velocity solution</p></li>
+<li><p><strong>psi</strong> (<em>numpy.ndarray, rad</em>) – heading angle solution, rad</p></li>
+<li><p><strong>gamma</strong> (<em>numpy.ndarray</em>) – flight-path angle, rad</p></li>
+<li><p><strong>drangebar</strong> (<em>numpy.ndarray</em>) – downrange solution, meters</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.vehicle.Vehicle.solveTrajectory2">
+<code class="sig-name descname">solveTrajectory2</code><span class="sig-paren">(</span><em class="sig-param">rbar0</em>, <em class="sig-param">theta0</em>, <em class="sig-param">phi0</em>, <em class="sig-param">vbar0</em>, <em class="sig-param">psi0</em>, <em class="sig-param">gamma0</em>, <em class="sig-param">drangebar0</em>, <em class="sig-param">t_sec</em>, <em class="sig-param">dt</em>, <em class="sig-param">delta</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle.solveTrajectory2" title="Permalink to this definition">¶</a></dt>
 <dd><p>Function to propogate a single atmospheric entry trajectory
 given entry interface / other initial conditions and
 bank angle delta.</p>
