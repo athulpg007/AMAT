@@ -3,6 +3,7 @@ import numpy as np
 from scipy.interpolate import interp1d
 import matplotlib.pyplot as plt
 from scipy.integrate import odeint
+from scipy.integrate import solve_ivp
 from scipy.integrate import cumtrapz
 import copy
 import random as rd
@@ -1242,7 +1243,7 @@ class Vehicle():
 			non dimensional centrifugal acceleration cfpsibar
 
 		"""
-		ans = (-1.0*self.planetObj.OMEGAbar**2.0*rbar / (vbar*np.cos(gamma)))\
+		ans = (-1.0*self.planetObj.OMEGAbar**2.0*rbar / (vbar*(np.cos(gamma) + 1e-2)))\
 				*np.sin(phi)*np.cos(phi)*np.cos(psi)
 		return ans
 
@@ -1302,7 +1303,7 @@ class Vehicle():
 
 		"""
 		ans = 2.0*self.planetObj.OMEGAbar* \
-		(np.tan(gamma)*np.cos(phi)*np.sin(psi) - np.sin(phi))
+		((np.sin(gamma)/(np.cos(gamma) + 1e-2))*np.cos(phi)*np.sin(psi) - np.sin(phi))
 		return ans
 
 	def cogammabar(self,rbar,phi,vbar,psi,gamma):
@@ -1493,6 +1494,12 @@ class Vehicle():
 		ans   = term1 + term2
 		return ans
 
+	def avoid_singularity(self, x):
+		if abs(x + np.pi/2) < 2e-3:
+			return -np.pi/2 + 4e-3
+		else:
+			return x
+
 	def EOM(self,y,t,delta):
 		"""
 		Define the EoMs to propogate the 3DoF trajectory inside the 
@@ -1520,13 +1527,13 @@ class Vehicle():
 		rbar,theta,phi,vbar,psi,gamma,drangebar = y
 		dydt = [ 
 				(vbar*np.sin(gamma)),
-				(vbar*np.cos(gamma)*np.cos(psi)) / (rbar*np.cos(phi)),
-				(vbar*np.cos(gamma)*np.sin(psi)) / (rbar),
+				(vbar*(np.cos(gamma))*np.cos(psi)) / (rbar*np.cos(phi)),
+				(vbar*(np.cos(gamma))*np.sin(psi)) / (rbar),
 				(self.a_sbar(rbar,theta,phi,vbar,delta)) \
 				 + self.gsbar(rbar,phi,gamma,psi) \
 				 + self.cfvbar(rbar,phi,vbar,psi,gamma),
 				(self.a_wbar(rbar,theta,phi,vbar,delta) \
-				 + self.gwbar(rbar,phi,gamma,psi))/(vbar*np.cos(gamma)) \
+				 + self.gwbar(rbar,phi,gamma,psi))/(vbar*(np.cos(gamma) + 1e-2))\
 				 - (1.0*vbar/rbar)*np.cos(gamma)*np.cos(psi)*np.tan(phi) \
 				 + self.cfpsibar(rbar,phi,vbar,psi,gamma) \
 				 + self.copsibar(rbar,phi,vbar,psi,gamma),
@@ -1535,8 +1542,54 @@ class Vehicle():
 				 + (vbar/rbar)*np.cos(gamma) \
 				 + self.cfgammabar(rbar,phi,vbar,psi,gamma) \
 				 + self.cogammabar(rbar,phi,vbar,psi,gamma),
-				(vbar*np.cos(gamma))
+				(vbar*(np.cos(gamma)))
 				]
+		return dydt
+
+	def EOM2(self, t, y, delta):
+		"""
+		Define the EoMs to propogate the 3DoF trajectory inside the
+		atmosphere of a an oblate rotating planet.
+
+		Reference 1: Vinh, Chapter 3.
+		Reference 2: Lescynzki, MS Thesis, NPS.
+
+		Parameters
+		----------
+		y : numpy.ndarray
+			trajectory state vector
+		t : numpy.ndarray
+			trajectory time vector
+		delta : float
+			bank angle, rad
+
+		Returns
+		----------
+		ans : dydt
+			derivate vector of state, process equations
+
+		"""
+
+		rbar, theta, phi, vbar, psi, gamma, drangebar = y
+		dydt = [
+			(vbar * np.sin(gamma)),
+			(vbar * (np.cos(gamma)) * np.cos(psi)) / (rbar * np.cos(phi)),
+			(vbar * (np.cos(gamma)) * np.sin(psi)) / (rbar),
+			(self.a_sbar(rbar, theta, phi, vbar, delta)) \
+			+ self.gsbar(rbar, phi, gamma, psi) \
+			+ self.cfvbar(rbar, phi, vbar, psi, gamma),
+			(self.a_wbar(rbar, theta, phi, vbar, delta) \
+			 + self.gwbar(rbar, phi, gamma, psi)) / (vbar * (np.cos(gamma) + 1e-2)) \
+			- (1.0 * vbar / rbar) * np.cos(gamma) * np.cos(psi) * np.tan(phi) \
+			+ self.cfpsibar(rbar, phi, vbar, psi, gamma) \
+			+ self.copsibar(rbar, phi, vbar, psi, gamma),
+			(self.a_nbar(rbar, theta, phi, vbar, delta) \
+			 + self.gnbar(rbar, phi, gamma, psi)) / vbar \
+			+ (vbar / rbar) * np.cos(gamma) \
+			+ self.cfgammabar(rbar, phi, vbar, psi, gamma) \
+			+ self.cogammabar(rbar, phi, vbar, psi, gamma),
+			(vbar * (np.cos(gamma)))
+		]
 		return dydt
 
 	def solveTrajectory(self, rbar0, theta0, phi0, vbar0, psi0,\
@@ -1615,6 +1668,89 @@ class Vehicle():
 		drangebar  = xbar[:,6] # downrange solution
 
 		return tbar,rbar,theta,phi,vbar,psi,gamma,drangebar
+
+	def hit_EFPA_90(self, t, y, delta):
+		return y[5] + 88*np.pi/180
+	hit_EFPA_90.terminal = True
+
+
+	def solveTrajectory2(self, rbar0, theta0, phi0, vbar0, psi0, \
+						gamma0, drangebar0, t_sec, dt, delta):
+		"""
+		Function to propogate a single atmospheric entry trajectory
+		given entry interface / other initial conditions and
+		bank angle delta.
+
+		Reference 1: Vinh, Chapter 3.
+		Reference 2: Lescynzki, MS Thesis, NPS.
+
+		Parameters
+		----------
+		rbar0 : float
+			non-dimensional radial distance initial condition
+		theta0 : float
+			longitude initial condition, rad
+		phi0 : float
+			latatitude initial condition, rad
+		vbar0 : float
+			non-dimensional planet-relative speed initial condition
+		psi0 : float
+			heading angle initial condition, rad
+		gamma0 : float
+			entry flight-path angle initial condition, rad
+		drangebar0 : float
+			non-dimensional downrange initial condition
+		t_sec : float
+			time in seconds for which propogation is done
+		dt : float
+			max. time step size in seconds
+		delta : float
+			bank angle command, rad
+
+		Returns
+		----------
+		tbar : numpy.ndarray
+			nondimensional time at which solution is computed
+		rbar : numpy.ndarray
+			nondimensional radial distance solution
+		theta : numpy.ndarray
+			longitude solution, rad
+		phi : numpy.ndarray
+			latitude array, rad
+		vbar : numpy.ndarray
+			nondimensional velocity solution
+		psi : numpy.ndarray, rad
+			heading angle solution, rad
+		gamma : numpy.ndarray
+			flight-path angle, rad
+		drangebar : numpy.ndarray
+			downrange solution, meters
+		"""
+
+		# store nondimensional initial conditions in xbar_0
+		xbar_0 = [rbar0, theta0, phi0, vbar0, \
+				  psi0, gamma0, drangebar0]
+
+		# discretize time interval [0,time] in steps of dt
+		tbar = np.arange(0, (t_sec + dt) / self.planetObj.tau, \
+						 dt / self.planetObj.tau)
+
+		# use scipy odeint to solve for the entry trajectory using initial
+		# conditions xbar_0 and vehicle parameters in args
+		xbar = solve_ivp(self.EOM2, (0, tbar[-1]), xbar_0, t_eval=tbar,  \
+					  rtol=self.tol, atol=self.tol, events=self.hit_EFPA_90, args=(delta,))
+
+		tbar = xbar.t
+		# extract solution from odeint into solution variable vectors
+		rbar = xbar.y[0, :]  # radial distance rbar solution
+		theta = xbar.y[1, :]   # longitude theta solution
+		phi = xbar.y[2, :]   # latitude phi solution
+		vbar = xbar.y[3, :]  # velocity vbar solution
+		psi = xbar.y[4, :]   # heading angle psi solution
+		gamma = xbar.y[5, :]   # flight path angle solution
+		drangebar = xbar.y[6, :]   # downrange solution
+
+		return tbar, rbar, theta, phi, vbar, psi, gamma, drangebar
 
 	def convertToPlotUnits(self,t,r,v,phi,psi,theta,gamma,drange):
 		"""
@@ -2318,6 +2454,95 @@ class Vehicle():
 		self.heatload        = cumtrapz(self.q_stag_total , self.tc, \
 			initial=self.heatLoad0)
 
+	def propogateEntry2(self, t_sec, dt, delta_deg):
+		"""
+		Propogates the vehicle state for a specified time using
+		initial conditions, vehicle properties, and
+		atmospheric profile data.
+
+		Parameters
+		----------
+		t_sec : float
+			propogation time, seconds
+		dt : float
+			max. time step, seconds
+		delta_deg : float
+			bank angle command, deg
+
+		"""
+
+		# Define entry conditions at entry interface
+		# Convert initial state variables from input/plot
+		# units to calculation/SI units
+
+		# Entry altitude above planet surface in meters
+		# Entry latitude in radians
+		# Entry velocity in meters/sec, relative to planet
+		# Entry velocity in meters/sec, relative to planet
+		# Entry heading angle in radians
+		# Entry flight path angle in radians
+		# Entry downrange in m
+
+		h0 = self.h0_km * 1.0E3
+		theta0 = self.theta0_deg * np.pi / 180.0
+		phi0 = self.phi0_deg * np.pi / 180.0
+		v0 = self.v0_kms * 1.000E3
+		psi0 = self.psi0_deg * np.pi / 180.0
+		gamma0 = self.gamma0_deg * np.pi / 180.0
+		drange0 = self.drange0_km * 1E3
+
+		# Define control variables
+		# Constant bank angle in radians
+		delta = delta_deg * np.pi / 180.0
+
+		r0 = self.planetObj.computeR(h0)
+
+		# Compute non-dimensional entry conditions
+		rbar0, theta0, phi0, vbar0, psi0, gamma0, drangebar0 = \
+			self.planetObj.nonDimState(r0, theta0, phi0, v0, psi0, gamma0, drange0)
+
+		# Solve for the entry trajectory
+		tbar, rbar, theta, phi, vbar, psi, gamma, drangebar = \
+			self.solveTrajectory2(rbar0, theta0, phi0, vbar0, psi0, gamma0, \
+								 drangebar0, t_sec, dt, delta)
+		# Note : solver returns non-dimensional variables
+		# Convert to dimensional variables for plotting
+		t, r, theta, phi, v, psi, gamma, drange = \
+			self.planetObj.dimensionalize(tbar, rbar, theta, phi, vbar, psi, gamma, drangebar)
+		# print(t[-1])
+		# dimensional state variables are in SI units
+		# convert to more rational units for plotting
+		t_min, h_km, v_kms, phi_deg, psi_deg, theta_deg, gamma_deg, drange_km \
+			= self.convertToPlotUnits(t, r, v, phi, psi, theta, gamma, drange)
+		# classify trajectory
+		self.index, self.exitflag = self.classifyTrajectory(r)
+		# truncate trajectory
+		self.tc, self.rc, self.thetac, self.phic, self.vc, self.psic, self.gammac, self.drangec \
+			= self.truncateTrajectory(t, r, theta, phi, v, psi, gamma, drange, self.index)
+		self.t_minc, self.h_kmc, self.v_kmsc, self.phi_degc, self.psi_degc, \
+		self.theta_degc, self.gamma_degc, self.drange_kmc = \
+			self.truncateTrajectory(t_min, h_km, v_kms, phi_deg, psi_deg, \
+									theta_deg, gamma_deg, drange_km, self.index)
+		# compute acceleration loads
+		self.acc_net_g = self.computeAccelerationLoad(self.tc, self.rc, \
+													  self.thetac, self.phic, self.vc, self.index, delta)
+		# compute drag acceleration
+		self.acc_drag_g = self.computeAccelerationDrag(self.tc, self.rc, \
+													   self.thetac, self.phic, self.vc, self.index, delta)
+		# compute dynamic pressure
+		self.dyn_pres_atm = self.computeDynPres(self.rc, self.vc) / (1.01325E5)
+		# compute stagnation pressure
+		self.stag_pres_atm = self.computeStagPres(self.rc, self.vc) / (1.01325E5)
+
+		# compute stagnation point convective and radiative heating rate
+		self.q_stag_con = self.qStagConvective(self.rc, self.vc)
+		self.q_stag_rad = self.qStagRadiative(self.rc, self.vc)
+		# compute total stagnation point heating rate
+		self.q_stag_total = self.q_stag_con + self.q_stag_rad
+		# compute stagnation point heating load
+		self.heatload = cumtrapz(self.q_stag_total, self.tc, \
+								 initial=self.heatLoad0)
+
 	def dummyVehicle(self, density_mes_int):
 		"""
 		Create a copy of the vehicle object which uses a 
@@ -2344,7 +2569,7 @@ class Vehicle():
 
 
 
-	def propogateEntry2(self, h0_km, theta0_deg, phi0_deg, v0_kms, \
+	def propogateEntry_util(self, h0_km, theta0_deg, phi0_deg, v0_kms, \
 						gamma0_deg, psi0_deg, drange0_km, heatLoad0,\
 						t_sec, dt, delta_deg, density_mes_int):
 		"""
@@ -2724,7 +2949,7 @@ class Vehicle():
 			-1 indicates overshoot, +1 indicates undershoot
 		
 		"""
-		self.propogateEntry(t_sec, dt, delta_deg)
+		self.propogateEntry2(t_sec, dt, delta_deg)
 
 		# Compute the specific energy of the vehicle over the 
 		# entire trajectory.
@@ -2989,7 +3214,7 @@ class Vehicle():
 			#apoapsis altitude or is not captured.")
 			#print("EFPA = "+str(gamma0_deg_guess_high)+" deg. does not hit \
 			#target apospasis but is captured.")
-			#print("Overshoot limit is within user specified bounds. 
+			#print("Overshoot limit is within user specified bounds.")
 			#Beginning bisection search...")
 			#print("")
 			#bisection algorithm begins here, while abs(ub-lb)>tol continue bisection
@@ -3009,8 +3234,7 @@ class Vehicle():
 					#print('ans2*ans3<0')
 					gamma0_deg_guess_low  = gamma0_deg_guess_mid
 				#print("EFPA = "+str(gamma0_deg_guess_low)+ " deg. exceeds target apoapsis altitude or is not captured.")
-				#print("EFPA = "+str(gamma0_deg_guess_high)+" deg. does not hit target 
-				#apospasis but is captured.")
+				#print("EFPA = "+str(gamma0_deg_guess_high)+" deg. does not hit target apospasis but is captured.")
 				#print("")
 				# set overShootLimit to upper bound
 				# set exitflag to 1.0
@@ -4044,7 +4268,7 @@ class Vehicle():
 		t_minc, h_kmc, v_kmsc, phi_degc, psi_degc, theta_degc, gamma_degc,\
 	    drange_kmc, exitflag, acc_net_g, dyn_pres_atm, stag_pres_atm, q_stag_total,\
 	    heatload, acc_drag_g = \
-	    self.propogateEntry2(h0_km, theta0_deg, phi0_deg, v0_kms, gamma0_deg,\
+	    self.propogateEntry_util(h0_km, theta0_deg, phi0_deg, v0_kms, gamma0_deg,\
 	    psi0_deg, drange0_km, heatLoad0, t_sec, dt, delta_deg, density_mes_int)
 		
 		terminal_apoapsis_km = self.compute_ApoapsisAltitudeKm(self.planetObj.RP+h_kmc[-1]*1E3,\

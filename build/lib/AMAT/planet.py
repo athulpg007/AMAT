@@ -205,8 +205,8 @@ class Planet:
 			self.d0 = -15.175 * np.pi / 180.0
 			self.h_thres= 1500.0E3      
 			self.h_skip = 1500.0E3      
-			self.h_trap = 50.0E3
-			self.h_low  = 100.0E3        
+			self.h_trap = 10.0E3
+			self.h_low  = 10.0E3
 
 		elif planetID == 'NEPTUNE':
 
