@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Example - 74 - Uranus Aerocapture - Part 3 &mdash; AMAT v2.2.10 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="JSR Article Notebooks" href="../jsr-notebooks.html" />
+    <link rel="prev" title="Example - 73 - Uranus Aerocapture - Part 2" href="example-73-uranus-aerocapture-part-2.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> AMAT
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About AMAT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../capabilities.html">Capabilities</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../jupyter_link.html">Example Jupyter Notebooks</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="example-01-hello-world.html">Example - 01 - Hello World!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-02-atmosphere.html">Example - 02 - Atmosphere</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-03-venus-aerocapture-1.html">Example - 03 - Venus Aerocapture: Part 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-04-venus-aerocapture-2.html">Example - 04 - Venus Aerocapture: Part 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-05-titan-aerocapture-1.html">Example - 05 - Titan Aerocapture: Part 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-06-titan-aerocapture-2.html">Example - 06 - Titan Aerocapture: Part 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-07-venus-aerocapture-3.html">Example - 07 - Venus Aerocapture: Part 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-08-venus-aerocapture-4.html">Example - 08 - Venus Aerocapture: Part 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-09-uranus-aerocapture.html">Example - 09 - Uranus Aerocapture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-10-neptune-aerocapture-part-1.html">Example - 10 - Neptune Aerocapture - Part 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-11-neptune-aerocapture-part-2a.html">Example - 11 - Neptune Aerocapture - Part 2a: Monte Carlo Simulations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-12-neptune-aerocapture-part-2b.html">Example - 12 - Neptune Aerocapture - Part 2b: Monte Carlo Simulations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-13-venus-aerocapture-5a.html">Example - 13 - Venus Aerocapture - Part 5a: Monte Carlo Simulations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-14-fire-II-earth.html">Example - 14 - Fire-II - Earth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-15-apollo-as-201-earth.html">Example - 15 - Apollo-AS-201 - Earth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-16-apollo-as-202-earth.html">Example - 16 - Apollo-AS-202 - Earth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-17-apollo-4-earth.html">Example - 17 - Apollo-4 - Earth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-18-apollo-6-earth.html">Example - 18 - Apollo-6 - Earth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-19-paet-earth.html">Example - 19 - PAET - Earth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-20-viking-1-mars.html">Example - 20 - Viking-1 - Mars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-21-viking-2-mars.html">Example - 21 - Viking-2 - Mars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-22-pv-small-north-venus.html">Example - 22 - PV Small North - Venus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-23-pv-small-night-venus.html">Example - 23 - PV Small Night - Venus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-24-pv-small-day-venus.html">Example - 24 - PV Small Day - Venus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-25-pv-large-venus.html">Example - 25 - PV Large - Venus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-26-galileo-jupiter.html">Example - 26 - Galileo - Jupiter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-27-orex-earth.html">Example - 27 - OREX - Earth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-28-pathfinder-mars.html">Example - 28 - Pathfinder - Mars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-29-mirka-earth.html">Example - 29 - Mirka - Earth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-30-huygens-titan.html">Example - 30 - Huygens - Titan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-31-atm-reentry-demonstrator-earth.html">Example - 31 - Atm. Reentry Demonstrator - Earth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-32-deep-space-2-mars.html">Example - 32 - Deep Space 2 - Mars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-33-stardust-earth.html">Example - 33 - Stardust - Earth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-34-genesis-earth.html">Example - 34 - Genesis - Earth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-35-hayabusa-earth.html">Example - 35 - Hayabusa - Earth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-36-beagle-2-mars.html">Example - 36 - Beagle-2 - Mars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-37-opportunity-mars.html">Example - 37 - Opportunity - Mars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-38-curiosity-mars.html">Example - 38 - Curiosity - Mars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-39-oceanus-probe-saturn.html">Example - 39 - Oceanus - Saturn (Concept)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-40-oceanus-probe-uranus.html">Example - 40 - Oceanus - Uranus (Concept)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-41-hera-probe-saturn.html">Example - 41 - Hera - Saturn (Concept)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-42-dragonfly-titan.html">Example - 42 - Dragonfly - Titan (Planned)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-43-ice-giant-pre-decadal-uranus-probe.html">Example - 43 - Ice Giant Pre-Decadal - Uranus Probe (Concept)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-44-ice-giant-pre-decadal-neptune-probe.html">Example - 44 - Ice Giant Pre-Decadal - Neptune Probe (Concept)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-45-adept-vital-venus.html">Example - 45 - ADEPT ViTaL - Venus (Concept)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-46-uranus-entry-probe-decadal-2010.html">Example - 46 - Uranus Probe - Decadal Study - 2010 (Concept)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-47-venus-flagship-entry-vehicle-decadal-2010.html">Example - 47 - Venus Flagship - Decadal Study - 2010 (Concept)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-48-crew-module-atmospheric-re-entry-experiment-earth.html">Example - 48 - Crew Module Atmospheric Re-entry Experiment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-49-earth-smallsat-aerocapture-demonstration-part-1.html">Example - 49 - Earth SmallSat Aerocapture Demonstration - Part 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-50-earth-smallsat-aerocapture-demonstration-part-2.html">Example - 50 - Earth SmallSat Aerocapture Demonstration - Part 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-51-mars-smallsat-aerocapture-demonstration-part-1.html">Example - 51 - Mars SmallSat Aerocapture Demonstration - Part 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-52-mars-smallsat-aerocapture-demonstration-part-2.html">Example - 52 - Mars SmallSat Aerocapture Demonstration - Part 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-53-mars-smallsat-aerocapture-demonstration-part-3.html">Example - 53 - Mars SmallSat Aerocapture Demonstration - Part 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-54-exomars-2016-mars.html">Example - 54 - ExoMars 2016 - Mars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-55-titan-aerocapture-systems-study-part-1.html">Example - 55 - Titan Aerocapture Systems Study - Part 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-56-venus-entry-tradespace.html">Example - 56 - Venus Entry Tradespace - Carpet Plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-57-titan-entry-tradespace.html">Example - 57 - Dragnofly (Titan) Entry Tradespace - Carpet Plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-58-user-defined-CD-mach-function.html">Example - 58 - User-defined CD Mach Function - Earth Re-entry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-59-compute-arrival-declination-manually-supplied-v-inf-vector.html">Example - 59 - Compute arrival declination from v-inf-vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-60-compute-arrival-v-inf-and-declination-from-flyby-dates-1.html">Example - 60 - Compute v_inf and arrival declination from flyby dates (1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-61-compute-arrival-v-inf-and-declination-from-flyby-dates-2.html">Example - 61 - Compute v_inf and arrival declination from flyby dates (2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-62-two-probes-equatorial-polar.html">Example - 62 - Approach Trajectories for Two Probes at Neptune</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-63-locus-of-approach-trajectories-const-gamma-inertial.html">Example - 63 - Locus of approach trajectories for constant inertial EFPA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-64-probe-and-orbiter-trajectory.html">Example - 64 - Probe and Orbiter Trajectory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-65-probe-orbiter-deflection.html">Example - 65 - Probe-Orbiter Deflection Maneuver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-66-multi-probe-deflection.html">Example - 66 - Multi-probe Deflection Maneuver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-67-multi-orbiter-deflection.html">Example - 67 - Multi-orbiter Deflection Maneuver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-68-launch-vehicle-performance.html">Example - 68 - Launch Vehicle Performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-69-interplanetary-trajectories-uranus-falcon-heavy-expendable.html">Example - 69 - Interplanetary Trade Space - Uranus - Falcon Heavy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-70-interplanetary-trajectories-uranus-SLS.html">Example - 70 - Interplanetary Trade Space - Uranus - SLS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-71-uranus-arrival-approach-entry-state.html">Example - 71 - Uranus Arrival, Approach, Entry State</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-72-uranus-aerocapture-part-1.html">Example - 72 - Uranus Aerocapture - Part 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example-73-uranus-aerocapture-part-2.html">Example - 73 - Uranus Aerocapture - Part 2</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Example - 74 - Uranus Aerocapture - Part 3</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../jsr-notebooks.html">JSR Article Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributions.html">Contributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../credits.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../module_index.html">Module Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AMAT</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../jupyter_link.html">Example Jupyter Notebooks</a> &raquo;</li>
+      <li>Example - 74 - Uranus Aerocapture - Part 3</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/examples/example-74-uranus-aerocapture-part-3.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    min-width: 5ex;
+    padding-top: 0.3rem;
+    padding-right: 0.3rem;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 0.3rem;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Example---74---Uranus-Aerocapture---Part-3">
+<h1>Example - 74 - Uranus Aerocapture - Part 3<a class="headerlink" href="#Example---74---Uranus-Aerocapture---Part-3" title="Permalink to this headline">¶</a></h1>
+<p>In this example we illustrate the selection of a equilibrium glide guidance parameters and setting up a Monte Carlo simulation for aerocapture at Uranus.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">from</span> <span class="nn">AMAT.planet</span> <span class="kn">import</span> <span class="n">Planet</span>
+<span class="kn">from</span> <span class="nn">AMAT.vehicle</span> <span class="kn">import</span> <span class="n">Vehicle</span>
+</pre></div>
+</div>
+</div>
+<p>Set up a Planet object for Uranus.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">planet</span> <span class="o">=</span> <span class="n">Planet</span><span class="p">(</span><span class="s1">&#39;URANUS&#39;</span><span class="p">)</span>
+<span class="n">planet</span><span class="o">.</span><span class="n">loadAtmosphereModel</span><span class="p">(</span><span class="s1">&#39;../atmdata/Uranus/uranus-gram-avg.dat&#39;</span><span class="p">,</span> <span class="mi">0</span> <span class="p">,</span> <span class="mi">1</span> <span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">heightInKmFlag</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">planet</span><span class="o">.</span><span class="n">h_skip</span> <span class="o">=</span> <span class="mf">1000.0E3</span>
+<span class="n">planet</span><span class="o">.</span><span class="n">h_low</span>  <span class="o">=</span> <span class="mf">120e3</span>
+<span class="n">planet</span><span class="o">.</span><span class="n">h_trap</span> <span class="o">=</span> <span class="mf">100e3</span>
+</pre></div>
+</div>
+</div>
+<p>Set up a vehicle object. Set the intitial state based on the discussion in <code class="docutils literal notranslate"><span class="pre">example-72-uranus-aerocapture-part-2</span></code></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">vehicle</span><span class="o">=</span><span class="n">Vehicle</span><span class="p">(</span><span class="s1">&#39;Titania&#39;</span><span class="p">,</span> <span class="mf">3000.0</span><span class="p">,</span> <span class="mf">200.0</span> <span class="p">,</span> <span class="mf">0.36</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="mf">4.5</span><span class="o">**</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.125</span><span class="p">,</span> <span class="n">planet</span><span class="p">)</span>
+<span class="n">vehicle</span><span class="o">.</span><span class="n">setInitialState</span><span class="p">(</span><span class="mf">1000.0</span><span class="p">,</span><span class="o">-</span><span class="mf">80.95</span><span class="p">,</span><span class="mf">25.22</span><span class="p">,</span><span class="mf">27.5946</span><span class="p">,</span><span class="mf">132.066</span><span class="p">,</span><span class="o">-</span><span class="mf">13.0</span> <span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="n">vehicle</span><span class="o">.</span><span class="n">setSolverParams</span><span class="p">(</span><span class="mf">1E-6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Compute the parameters used in the equilibrium glide aerocapture guidance algorithm following Cerimele and Gamble. <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">Simplified</span> <span class="pre">Guidance</span> <span class="pre">Algorithm</span> <span class="pre">for</span> <span class="pre">Lifting</span> <span class="pre">Aeroassist</span> <span class="pre">Orbital</span> <span class="pre">Transfer</span> <span class="pre">Vehicles,”</span> <span class="pre">in</span> <span class="pre">23rd</span> <span class="pre">Aerospace</span> <span class="pre">Sciences</span> <span class="pre">Meeting,</span> <span class="pre">Houston,</span> <span class="pre">TX,</span> <span class="pre">1985,</span> <span class="pre">p.</span> <span class="pre">348.</span> <span class="pre">doi:</span> <span class="pre">10.2514/6.1985-348.</span></code> Propogate the entry for a few seconds to compute the dynamic pressure profile during entry, and compute a linear fit: <code class="docutils literal notranslate"><span class="pre">q</span> <span class="pre">=</span> <span class="pre">ah</span> <span class="pre">+</span> <span class="pre">b</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">vehicle</span><span class="o">.</span><span class="n">propogateEntry2</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Values for -13.64 deg, these are the linear fit</span>
+<span class="c1"># y = ax + b parameters used to compute Ghdot and Gq (see refs.)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.155</span>
+<span class="n">b</span> <span class="o">=</span>  <span class="mi">56000</span>
+
+<span class="n">x_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">260.0E3</span><span class="p">,</span><span class="mf">350.0E3</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>
+<span class="n">y_arr</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="n">x_arr</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">([</span><span class="mf">4.25</span><span class="p">,</span><span class="mf">4.25</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span><span class="n">family</span><span class="o">=</span><span class="s1">&#39;Times New Roman&#39;</span><span class="p">)</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;mathtext.default&#39;</span><span class="p">:</span> <span class="s1">&#39;regular&#39;</span> <span class="p">}</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">vehicle</span><span class="o">.</span><span class="n">h_kmc</span><span class="o">*</span><span class="mf">1E3</span><span class="p">,</span><span class="n">vehicle</span><span class="o">.</span><span class="n">dyn_pres_atm</span><span class="o">*</span><span class="mf">1.01325E5</span><span class="p">,</span><span class="s1">&#39;r-&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">3.0</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">100.0E3</span><span class="p">,</span> <span class="mf">700.0E3</span><span class="p">)</span>
+<span class="c1">#plt.ylim(0.0,12500.0)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_arr</span><span class="p">,</span><span class="n">y_arr</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Altitude, m&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Dynamic pressure, Pa &quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">200.0E3</span> <span class="p">,</span><span class="mf">300E3</span><span class="p">,</span> <span class="mf">400.00E3</span><span class="p">,</span>  <span class="mf">500e3</span><span class="p">,</span> <span class="mf">600.0E3</span><span class="p">]),</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\bar</span><span class="si">{q}</span><span class="s1"> = -0.155h + 56000$&#39;</span><span class="p">,</span>
+    <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">348586</span><span class="p">,</span> <span class="mf">9103.4</span><span class="p">)</span> <span class="p">,</span>
+    <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">431181</span><span class="p">,</span> <span class="mf">9103.4</span><span class="p">),</span>
+    <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s2">&quot;&lt;-&quot;</span><span class="p">),</span>  <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+findfont: Font family [&#39;Times New Roman&#39;] not found. Falling back to DejaVu Sans.
+findfont: Font family [&#39;Times New Roman&#39;] not found. Falling back to DejaVu Sans.
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/examples_example-74-uranus-aerocapture-part-3_8_1.png" src="../_images/examples_example-74-uranus-aerocapture-part-3_8_1.png" />
+</div>
+</div>
+<p>From the above, a = -0.155, b = 56000. Following Cerimel and Gamble (1985)</p>
+<p><span class="math">\begin{equation}
+\label{eq:omega}
+{\omega_n}^2 = -\frac{C_L S}{m} G_{\bar{q}} a
+\end{equation}</span></p>
+<p><span class="math">\begin{equation}
+\label{eq:zeta}
+2 \zeta {\omega_n} = \frac{C_L S}{m} G_{\dot{h}}
+\end{equation}</span></p>
+<p>Using <span class="math notranslate nohighlight">\(\omega_n\)</span> = 0.05, and <span class="math notranslate nohighlight">\(\zeta\)</span> = 1.5, <span class="math notranslate nohighlight">\(G_{\bar{q}}\)</span> and <span class="math notranslate nohighlight">\(G_{\dot{h}}\)</span> are computed as follows</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="mf">0.05</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="mi">200</span><span class="o">/</span><span class="p">(</span><span class="mf">0.36</span><span class="o">*</span><span class="mf">0.155</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+8.960573476702512
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="mi">2</span><span class="o">*</span><span class="mf">1.5</span><span class="o">*</span><span class="mf">0.05</span><span class="o">*</span><span class="mi">200</span><span class="o">/</span><span class="mf">0.36</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+83.33333333333334
+</pre></div></div>
+</div>
+<p>The vehicle initial state (other than the EFPA) is easy to set from the approach trajectory result.</p>
+<p>The selection of the target EFPA is a slightly tricky problem. A first estimate of the target EFPA is available from <code class="docutils literal notranslate"><span class="pre">example-72-uranus-aerocapture-part-2</span></code>. We assume the approach navigation is able to deliver a 1-sigma EFPA error of 0.1667 deg, or 0.50 deg (3-sigma). The EFPA must be chosen such that the (target value - 3-sigma) should be able to capture in the expected thin atmosphere (nominal density - 3-sigma), and the (target value + 3-sigma) should not result in considerable apoapsis
+undershoot in case of thick atmosphere (nominal density + 3-sigma). For this example, we choose a target EFPA = -12.80 deg. This puts the -3-sigma EFPA at -12.30 deg, providing some margin (0.27 deg.) against escape in case of shallow entry combined with thin atmosphere. At the other end, the +3-sigma EFPA is -13.30 deg which also provides some margin (0.65 deg) against apoapsis undershoot in case of steep entry and thick atmosphere.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">vehicle</span><span class="o">=</span><span class="n">Vehicle</span><span class="p">(</span><span class="s1">&#39;Titania&#39;</span><span class="p">,</span> <span class="mf">3000.0</span><span class="p">,</span> <span class="mi">200</span> <span class="p">,</span> <span class="mf">0.36</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="mf">4.5</span><span class="o">**</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.125</span><span class="p">,</span> <span class="n">planet</span><span class="p">)</span>
+<span class="n">vehicle</span><span class="o">.</span><span class="n">setInitialState</span><span class="p">(</span><span class="mf">1000.0</span><span class="p">,</span><span class="o">-</span><span class="mf">80.95</span><span class="p">,</span><span class="mf">25.22</span><span class="p">,</span><span class="mf">27.5946</span><span class="p">,</span><span class="mf">132.066</span><span class="p">,</span><span class="o">-</span><span class="mf">12.80</span> <span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="n">vehicle</span><span class="o">.</span><span class="n">setSolverParams</span><span class="p">(</span><span class="mf">1E-6</span><span class="p">)</span>
+<span class="c1"># Set the guidance parameters described in the paper.</span>
+<span class="c1"># See the function description for parameter details.</span>
+
+<span class="c1"># Set max roll rate constraint to 30 deg/s</span>
+<span class="n">vehicle</span><span class="o">.</span><span class="n">setMaxRollRate</span><span class="p">(</span><span class="mf">30.0</span><span class="p">)</span>
+
+<span class="c1"># Set Ghdot = 83</span>
+<span class="c1"># Set Gq = 9.0</span>
+<span class="c1"># Set v_switch_kms = 16.0 :: this parameter is not really used, and should just be set to low value</span>
+<span class="c1"># Set low_Alt_km = 120</span>
+<span class="c1"># Set numPoints_lowAlt = 101</span>
+<span class="c1"># Set hdot_threshold = -500 m/s</span>
+<span class="n">vehicle</span><span class="o">.</span><span class="n">setEquilibriumGlideParams</span><span class="p">(</span><span class="mf">83.0</span><span class="p">,</span> <span class="mf">9.0</span><span class="p">,</span> <span class="mf">16.0</span><span class="p">,</span> <span class="mf">120.0</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="o">-</span><span class="mf">500.0</span><span class="p">)</span>
+
+<span class="c1"># Set target orbit parameters</span>
+<span class="c1"># periapsis = 4000.0 km</span>
+<span class="c1"># apoapsis = 550,000 km :: set slightly above target (500e3) to account for bias in targeting algorithm</span>
+<span class="c1"># apoapsis tolerance = 10 km</span>
+<span class="n">vehicle</span><span class="o">.</span><span class="n">setTargetOrbitParams</span><span class="p">(</span><span class="mf">4000.0</span><span class="p">,</span> <span class="mf">550.0E3</span><span class="p">,</span> <span class="mf">10.0E3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Set path to atmfiles with randomly perturbed atmosphere files.</span>
+<span class="n">atmfiles</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;../atmdata/Uranus/perturbed/G-01.txt&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;../atmdata/Uranus/perturbed/G-02.txt&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;../atmdata/Uranus/perturbed/G-03.txt&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;../atmdata/Uranus/perturbed/G-04.txt&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;../atmdata/Uranus/perturbed/G-05.txt&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">vehicle</span><span class="o">.</span><span class="n">setupMonteCarloSimulation</span><span class="p">(</span><span class="mi">1201</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="n">atmfiles</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> \
+                                 <span class="o">-</span><span class="mf">12.80</span><span class="p">,</span> <span class="mf">0.1667</span><span class="p">,</span> <span class="mf">0.36</span><span class="p">,</span> <span class="mf">0.013</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">2400.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Propogate 100 guided trajectories.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">vehicle</span><span class="o">.</span><span class="n">runMonteCarlo2</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;../data/uranus2022/MCBX1&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+RUN #: 1, SAMPLE #: 180, EFPA: -12.55, SIGMA: -0.83, LD: 0.36, APO : 524027.02
+RUN #: 2, SAMPLE #: 5, EFPA: -12.68, SIGMA: 0.44, LD: 0.35, APO : 478167.79
+RUN #: 3, SAMPLE #: 73, EFPA: -12.73, SIGMA: -1.82, LD: 0.37, APO : 513511.78
+RUN #: 4, SAMPLE #: 77, EFPA: -12.87, SIGMA: -0.10, LD: 0.37, APO : 534446.41
+RUN #: 5, SAMPLE #: 149, EFPA: -13.08, SIGMA: -0.65, LD: 0.38, APO : 490116.72
+RUN #: 6, SAMPLE #: 100, EFPA: -12.83, SIGMA: -0.51, LD: 0.36, APO : 519722.91
+RUN #: 7, SAMPLE #: 135, EFPA: -12.58, SIGMA: -1.75, LD: 0.37, APO : 513747.29
+RUN #: 8, SAMPLE #: 4, EFPA: -12.69, SIGMA: 0.58, LD: 0.35, APO : 507983.07
+RUN #: 9, SAMPLE #: 105, EFPA: -12.83, SIGMA: -1.48, LD: 0.37, APO : 503749.90
+RUN #: 10, SAMPLE #: 98, EFPA: -12.73, SIGMA: -1.31, LD: 0.37, APO : 493052.87
+RUN #: 11, SAMPLE #: 118, EFPA: -13.03, SIGMA: -0.68, LD: 0.37, APO : 494389.86
+RUN #: 12, SAMPLE #: 119, EFPA: -12.99, SIGMA: 1.81, LD: 0.37, APO : 491178.05
+RUN #: 13, SAMPLE #: 156, EFPA: -12.83, SIGMA: -0.42, LD: 0.36, APO : 524869.79
+RUN #: 14, SAMPLE #: 7, EFPA: -12.82, SIGMA: 0.37, LD: 0.37, APO : 515989.66
+RUN #: 15, SAMPLE #: 133, EFPA: -12.86, SIGMA: -0.53, LD: 0.36, APO : 489755.47
+RUN #: 16, SAMPLE #: 176, EFPA: -12.94, SIGMA: 0.93, LD: 0.38, APO : 497603.29
+RUN #: 17, SAMPLE #: 81, EFPA: -12.79, SIGMA: -1.30, LD: 0.36, APO : 481778.39
+RUN #: 18, SAMPLE #: 167, EFPA: -12.76, SIGMA: 1.16, LD: 0.38, APO : 493829.19
+RUN #: 19, SAMPLE #: 35, EFPA: -12.65, SIGMA: 1.51, LD: 0.37, APO : 531571.21
+RUN #: 20, SAMPLE #: 168, EFPA: -12.63, SIGMA: -0.14, LD: 0.37, APO : 526488.86
+RUN #: 21, SAMPLE #: 6, EFPA: -12.66, SIGMA: 0.43, LD: 0.34, APO : 520835.40
+RUN #: 22, SAMPLE #: 197, EFPA: -13.04, SIGMA: 1.26, LD: 0.36, APO : 471494.05
+RUN #: 23, SAMPLE #: 5, EFPA: -12.85, SIGMA: -0.04, LD: 0.36, APO : 489225.16
+RUN #: 24, SAMPLE #: 188, EFPA: -12.66, SIGMA: 1.03, LD: 0.37, APO : 528314.71
+RUN #: 25, SAMPLE #: 3, EFPA: -13.06, SIGMA: 0.89, LD: 0.38, APO : 524305.86
+RUN #: 26, SAMPLE #: 136, EFPA: -12.54, SIGMA: 0.38, LD: 0.38, APO : 507730.05
+RUN #: 27, SAMPLE #: 38, EFPA: -12.54, SIGMA: -0.57, LD: 0.37, APO : 516998.32
+RUN #: 28, SAMPLE #: 79, EFPA: -12.60, SIGMA: 0.06, LD: 0.36, APO : 515393.97
+RUN #: 29, SAMPLE #: 31, EFPA: -12.78, SIGMA: -1.85, LD: 0.38, APO : 530331.87
+RUN #: 30, SAMPLE #: 30, EFPA: -12.52, SIGMA: 1.00, LD: 0.35, APO : 505280.49
+RUN #: 31, SAMPLE #: 62, EFPA: -12.80, SIGMA: 1.06, LD: 0.35, APO : 522314.70
+RUN #: 32, SAMPLE #: 120, EFPA: -12.55, SIGMA: -0.43, LD: 0.36, APO : 523096.02
+RUN #: 33, SAMPLE #: 111, EFPA: -12.80, SIGMA: 1.56, LD: 0.35, APO : 495903.99
+RUN #: 34, SAMPLE #: 2, EFPA: -12.71, SIGMA: -1.11, LD: 0.37, APO : 534945.17
+RUN #: 35, SAMPLE #: 143, EFPA: -12.82, SIGMA: -0.03, LD: 0.34, APO : 513493.81
+RUN #: 36, SAMPLE #: 105, EFPA: -12.53, SIGMA: 0.61, LD: 0.34, APO : 517309.07
+RUN #: 37, SAMPLE #: 106, EFPA: -12.82, SIGMA: 0.89, LD: 0.40, APO : 488196.50
+RUN #: 38, SAMPLE #: 25, EFPA: -12.90, SIGMA: -0.37, LD: 0.36, APO : 545628.94
+RUN #: 39, SAMPLE #: 124, EFPA: -12.80, SIGMA: 1.42, LD: 0.37, APO : 499014.22
+RUN #: 40, SAMPLE #: 137, EFPA: -12.70, SIGMA: 0.81, LD: 0.34, APO : 512430.75
+RUN #: 41, SAMPLE #: 34, EFPA: -12.69, SIGMA: 0.45, LD: 0.34, APO : 510861.72
+RUN #: 42, SAMPLE #: 77, EFPA: -12.75, SIGMA: 0.03, LD: 0.35, APO : 522768.12
+RUN #: 43, SAMPLE #: 74, EFPA: -12.56, SIGMA: -1.05, LD: 0.35, APO : 551946.45
+RUN #: 44, SAMPLE #: 39, EFPA: -12.96, SIGMA: -0.18, LD: 0.37, APO : 533457.26
+RUN #: 45, SAMPLE #: 70, EFPA: -12.70, SIGMA: -0.27, LD: 0.35, APO : 497373.61
+RUN #: 46, SAMPLE #: 108, EFPA: -12.91, SIGMA: 1.25, LD: 0.35, APO : 484137.24
+RUN #: 47, SAMPLE #: 18, EFPA: -13.05, SIGMA: 0.37, LD: 0.35, APO : 476890.11
+RUN #: 48, SAMPLE #: 2, EFPA: -12.80, SIGMA: -0.17, LD: 0.36, APO : 541290.54
+RUN #: 49, SAMPLE #: 14, EFPA: -12.86, SIGMA: -2.28, LD: 0.36, APO : 487840.40
+RUN #: 50, SAMPLE #: 58, EFPA: -12.82, SIGMA: -0.88, LD: 0.36, APO : 503981.29
+RUN #: 51, SAMPLE #: 113, EFPA: -12.56, SIGMA: -0.47, LD: 0.34, APO : 523246.70
+RUN #: 52, SAMPLE #: 171, EFPA: -12.85, SIGMA: -1.26, LD: 0.35, APO : 504941.78
+RUN #: 53, SAMPLE #: 17, EFPA: -12.81, SIGMA: 1.02, LD: 0.36, APO : 492121.66
+RUN #: 54, SAMPLE #: 79, EFPA: -13.00, SIGMA: 0.84, LD: 0.36, APO : 479304.88
+RUN #: 55, SAMPLE #: 134, EFPA: -12.66, SIGMA: -0.17, LD: 0.37, APO : 493614.90
+RUN #: 56, SAMPLE #: 115, EFPA: -13.11, SIGMA: 0.55, LD: 0.37, APO : 484755.64
+RUN #: 57, SAMPLE #: 118, EFPA: -12.48, SIGMA: -0.38, LD: 0.34, APO : 531621.18
+RUN #: 58, SAMPLE #: 20, EFPA: -12.86, SIGMA: -0.03, LD: 0.36, APO : 485232.59
+RUN #: 59, SAMPLE #: 130, EFPA: -12.98, SIGMA: 0.25, LD: 0.36, APO : 490032.26
+RUN #: 60, SAMPLE #: 141, EFPA: -12.48, SIGMA: 0.37, LD: 0.36, APO : 516582.02
+RUN #: 61, SAMPLE #: 169, EFPA: -12.84, SIGMA: 1.22, LD: 0.33, APO : 500604.74
+RUN #: 62, SAMPLE #: 118, EFPA: -12.41, SIGMA: 1.16, LD: 0.35, APO : 525646.86
+RUN #: 63, SAMPLE #: 179, EFPA: -13.12, SIGMA: 0.37, LD: 0.35, APO : 466605.95
+RUN #: 64, SAMPLE #: 181, EFPA: -12.37, SIGMA: -0.97, LD: 0.35, APO : 558141.63
+RUN #: 65, SAMPLE #: 53, EFPA: -12.65, SIGMA: 0.24, LD: 0.37, APO : 512587.08
+RUN #: 66, SAMPLE #: 175, EFPA: -12.72, SIGMA: 1.14, LD: 0.34, APO : 501872.14
+RUN #: 67, SAMPLE #: 169, EFPA: -13.04, SIGMA: -0.17, LD: 0.39, APO : 495872.18
+RUN #: 68, SAMPLE #: 20, EFPA: -12.83, SIGMA: 0.46, LD: 0.35, APO : 521723.34
+RUN #: 69, SAMPLE #: 174, EFPA: -12.76, SIGMA: -1.63, LD: 0.37, APO : 487852.34
+RUN #: 70, SAMPLE #: 43, EFPA: -12.58, SIGMA: 0.64, LD: 0.35, APO : 497722.47
+RUN #: 71, SAMPLE #: 53, EFPA: -12.63, SIGMA: 0.41, LD: 0.35, APO : 503835.13
+RUN #: 72, SAMPLE #: 110, EFPA: -12.68, SIGMA: 0.26, LD: 0.36, APO : 532383.09
+RUN #: 73, SAMPLE #: 142, EFPA: -12.70, SIGMA: -0.81, LD: 0.35, APO : 515436.90
+RUN #: 74, SAMPLE #: 66, EFPA: -12.65, SIGMA: -1.08, LD: 0.35, APO : 527546.06
+RUN #: 75, SAMPLE #: 142, EFPA: -12.73, SIGMA: -0.31, LD: 0.37, APO : 515880.01
+RUN #: 76, SAMPLE #: 103, EFPA: -12.85, SIGMA: -0.55, LD: 0.36, APO : 494269.99
+RUN #: 77, SAMPLE #: 9, EFPA: -12.82, SIGMA: -1.38, LD: 0.36, APO : 507053.59
+RUN #: 78, SAMPLE #: 71, EFPA: -12.92, SIGMA: -0.68, LD: 0.38, APO : 496068.24
+RUN #: 79, SAMPLE #: 30, EFPA: -12.76, SIGMA: -0.41, LD: 0.36, APO : 524483.08
+RUN #: 80, SAMPLE #: 175, EFPA: -12.85, SIGMA: 0.73, LD: 0.36, APO : 500812.75
+RUN #: 81, SAMPLE #: 12, EFPA: -12.81, SIGMA: -0.29, LD: 0.34, APO : 527159.37
+RUN #: 82, SAMPLE #: 98, EFPA: -12.66, SIGMA: 0.36, LD: 0.35, APO : 520884.95
+RUN #: 83, SAMPLE #: 42, EFPA: -12.95, SIGMA: 0.18, LD: 0.37, APO : 486903.20
+RUN #: 84, SAMPLE #: 139, EFPA: -12.66, SIGMA: -1.89, LD: 0.37, APO : 518124.02
+RUN #: 85, SAMPLE #: 42, EFPA: -12.98, SIGMA: 1.05, LD: 0.34, APO : 494035.94
+RUN #: 86, SAMPLE #: 159, EFPA: -12.86, SIGMA: -0.62, LD: 0.35, APO : 477250.88
+RUN #: 87, SAMPLE #: 108, EFPA: -12.71, SIGMA: 2.01, LD: 0.35, APO : 485696.98
+RUN #: 88, SAMPLE #: 52, EFPA: -12.63, SIGMA: -0.30, LD: 0.35, APO : 528134.82
+RUN #: 89, SAMPLE #: 195, EFPA: -12.60, SIGMA: 0.40, LD: 0.36, APO : 502138.06
+RUN #: 90, SAMPLE #: 128, EFPA: -12.91, SIGMA: -0.39, LD: 0.35, APO : 519437.38
+RUN #: 91, SAMPLE #: 71, EFPA: -12.83, SIGMA: -2.33, LD: 0.35, APO : 531887.18
+RUN #: 92, SAMPLE #: 188, EFPA: -12.83, SIGMA: 0.07, LD: 0.35, APO : 494853.64
+RUN #: 93, SAMPLE #: 163, EFPA: -12.55, SIGMA: -1.53, LD: 0.35, APO : 521681.44
+RUN #: 94, SAMPLE #: 163, EFPA: -12.49, SIGMA: 0.15, LD: 0.35, APO : 533140.78
+RUN #: 95, SAMPLE #: 187, EFPA: -12.68, SIGMA: -0.46, LD: 0.37, APO : 508596.95
+RUN #: 96, SAMPLE #: 188, EFPA: -12.64, SIGMA: 1.70, LD: 0.37, APO : 505111.16
+RUN #: 97, SAMPLE #: 124, EFPA: -12.72, SIGMA: 0.98, LD: 0.35, APO : 521911.31
+RUN #: 98, SAMPLE #: 142, EFPA: -12.72, SIGMA: 0.99, LD: 0.32, APO : 537695.15
+RUN #: 99, SAMPLE #: 181, EFPA: -12.53, SIGMA: -0.89, LD: 0.37, APO : 527053.16
+RUN #: 100, SAMPLE #: 87, EFPA: -12.60, SIGMA: 0.60, LD: 0.37, APO : 525199.55
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">p1</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;../data/uranus2022/MCBX1/terminal_periapsis_arr.txt&#39;</span><span class="p">)</span>
+<span class="n">x1</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;../data/uranus2022/MCBX1/terminal_apoapsis_arr.txt&#39;</span><span class="p">)</span>
+<span class="n">y1</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;../data/uranus2022/MCBX1/acc_net_g_max_arr.txt&#39;</span><span class="p">)</span>
+<span class="n">z1</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;../data/uranus2022/MCBX1/q_stag_max_arr.txt&#39;</span><span class="p">)</span>
+<span class="n">h1</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;../data/uranus2022/MCBX1/heatload_max_arr.txt&#39;</span><span class="p">)</span>
+<span class="n">u1</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;../data/uranus2022/MCBX1/periapsis_raise_DV_arr.txt&#39;</span><span class="p">)</span>
+<span class="n">v1</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;../data/uranus2022/MCBX1/apoapsis_raise_DV_arr.txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Plot apoapsis historgram and apoapsis vs periapsis (before periapsis raise maneuver)</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mf">6.5</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">))</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span><span class="o">=</span><span class="mf">0.30</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x1</span><span class="o">/</span><span class="mf">1000.0</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;xkcd:periwinkle&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Apoapsis altitude x &#39;</span><span class="o">+</span><span class="sa">r</span><span class="s1">&#39;$10^3$&#39;</span><span class="o">+</span><span class="s1">&#39;, km&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number of cases&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">x1</span><span class="o">/</span><span class="mf">1000.0</span><span class="p">,</span> <span class="s1">&#39;bo&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">mfc</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Periapsis altitude, km&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Apoapsis altitude x &#39;</span><span class="o">+</span><span class="sa">r</span><span class="s1">&#39;$10^3$&#39;</span><span class="o">+</span><span class="s1">&#39;, km&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">axis</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="s1">&#39;right&#39;</span><span class="p">]:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span><span class="o">.</span><span class="n">set_linewidth</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/examples_example-74-uranus-aerocapture-part-3_20_0.png" src="../_images/examples_example-74-uranus-aerocapture-part-3_20_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mf">6.5</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">))</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span><span class="o">=</span><span class="mf">0.30</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span> <span class="n">z1</span><span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">mfc</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Peak deceleration, Earth g&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Peak stagnation-point heat rate, &#39;</span><span class="o">+</span><span class="sa">r</span><span class="s1">&#39;$W/cm^2$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">z1</span><span class="p">,</span> <span class="n">h1</span><span class="p">,</span> <span class="s1">&#39;go&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">mfc</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Peak stagnation-point heat rate, &#39;</span><span class="o">+</span><span class="sa">r</span><span class="s1">&#39;$W/cm^2$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Peak stagnation-point heat load, &#39;</span><span class="o">+</span><span class="sa">r</span><span class="s1">&#39;$kJ/cm^2$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+
+
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">axis</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="s1">&#39;right&#39;</span><span class="p">]:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span><span class="o">.</span><span class="n">set_linewidth</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/examples_example-74-uranus-aerocapture-part-3_21_0.png" src="../_images/examples_example-74-uranus-aerocapture-part-3_21_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mf">6.5</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">))</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span><span class="o">=</span><span class="mf">0.30</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">u1</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;xkcd:periwinkle&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Periapse raise &#39;</span><span class="o">+</span><span class="sa">r</span><span class="s1">&#39;$\Delta V$&#39;</span><span class="o">+</span><span class="s1">&#39;, m/s&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number of cases&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;xkcd:orange&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Apoapsis correction &#39;</span><span class="o">+</span><span class="sa">r</span><span class="s1">&#39;$\Delta V$&#39;</span><span class="o">+</span><span class="s1">&#39;, m/s&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number of cases&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+
+
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">axis</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="s1">&#39;right&#39;</span><span class="p">]:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span><span class="o">.</span><span class="n">set_linewidth</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/examples_example-74-uranus-aerocapture-part-3_22_0.png" src="../_images/examples_example-74-uranus-aerocapture-part-3_22_0.png" />
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="example-73-uranus-aerocapture-part-2.html" class="btn btn-neutral float-left" title="Example - 73 - Uranus Aerocapture - Part 2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../jsr-notebooks.html" class="btn btn-neutral float-right" title="JSR Article Notebooks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, A.P. Girija.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
