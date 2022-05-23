@@ -78,3 +78,4 @@ Example Jupyter Notebooks
    /examples/example-71-uranus-arrival-approach-entry-state.ipynb
    /examples/example-72-uranus-aerocapture-part-1.ipynb
    /examples/example-73-uranus-aerocapture-part-2.ipynb
+   /examples/example-74-uranus-aerocapture-part-3.ipynb

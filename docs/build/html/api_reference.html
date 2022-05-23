@@ -4201,6 +4201,31 @@ command from current vehicle state till atmospheric exit.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="AMAT.vehicle.Vehicle.predictApoapsisAltitudeKm_withLiftUp2">
+<code class="sig-name descname">predictApoapsisAltitudeKm_withLiftUp2</code><span class="sig-paren">(</span><em class="sig-param">h0_km</em>, <em class="sig-param">theta0_deg</em>, <em class="sig-param">phi0_deg</em>, <em class="sig-param">v0_kms</em>, <em class="sig-param">gamma0_deg</em>, <em class="sig-param">psi0_deg</em>, <em class="sig-param">drange0_km</em>, <em class="sig-param">heatLoad0</em>, <em class="sig-param">t_sec</em>, <em class="sig-param">dt</em>, <em class="sig-param">delta_deg</em>, <em class="sig-param">density_mes_int</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle.predictApoapsisAltitudeKm_withLiftUp2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute apoapsis altitude using full lift up bank
+command from current vehicle state till atmospheric exit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>h0_km</strong> (<em>float</em>) – current vehicle altitude, km</p></li>
+<li><p><strong>theta0_deg</strong> (<em>float</em>) – current vehicle longitude, deg</p></li>
+<li><p><strong>phi0_deg</strong> (<em>float</em>) – current vehicle latitude, deg</p></li>
+<li><p><strong>v0_kms</strong> (<em>float</em>) – current vehicle speed, km/s</p></li>
+<li><p><strong>gamma0_deg</strong> (<em>float</em>) – current FPA, deg</p></li>
+<li><p><strong>psi0_deg</strong> (<em>float</em>) – current heading angle, deg</p></li>
+<li><p><strong>drange0_km</strong> (<em>float</em>) – current downrange, km</p></li>
+<li><p><strong>heatLoad0</strong> (<em>float</em>) – current heatload, J/cm2</p></li>
+<li><p><strong>t_sec</strong> (<em>float</em>) – propogation time, seconds</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – max. solver timestep</p></li>
+<li><p><strong>delta_deg</strong> (<em>float</em>) – commanded bank angle, deg</p></li>
+<li><p><strong>density_mes_int</strong> (<em>scipy.interpolate.interpolate.interp1d</em>) – measured density interpolation function</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="AMAT.vehicle.Vehicle.propogateEntry">
 <code class="sig-name descname">propogateEntry</code><span class="sig-paren">(</span><em class="sig-param">t_sec</em>, <em class="sig-param">dt</em>, <em class="sig-param">delta_deg</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle.propogateEntry" title="Permalink to this definition">¶</a></dt>
 <dd><p>Propogates the vehicle state for a specified time using
@@ -4347,6 +4372,53 @@ atmospheric profile during the descending leg.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="AMAT.vehicle.Vehicle.propogateEntry_util2">
+<code class="sig-name descname">propogateEntry_util2</code><span class="sig-paren">(</span><em class="sig-param">h0_km</em>, <em class="sig-param">theta0_deg</em>, <em class="sig-param">phi0_deg</em>, <em class="sig-param">v0_kms</em>, <em class="sig-param">gamma0_deg</em>, <em class="sig-param">psi0_deg</em>, <em class="sig-param">drange0_km</em>, <em class="sig-param">heatLoad0</em>, <em class="sig-param">t_sec</em>, <em class="sig-param">dt</em>, <em class="sig-param">delta_deg</em>, <em class="sig-param">density_mes_int</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle.propogateEntry_util2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility propogator routine for prediction of atmospheric exit
+conditions which is then supplied to the apoapis prediction
+module.</p>
+<p>Propogates the vehicle state for using the measured
+atmospheric profile during the descending leg.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>h0_km</strong> (<em>float</em>) – current altitude, km</p></li>
+<li><p><strong>theta0_deg</strong> (<em>float</em>) – current longitude, deg</p></li>
+<li><p><strong>phi0_deg</strong> (<em>float</em>) – current latitude, deg</p></li>
+<li><p><strong>v0_kms</strong> (<em>float</em>) – current speed, km/s</p></li>
+<li><p><strong>gamma0_deg</strong> (<em>float</em>) – current FPA, deg</p></li>
+<li><p><strong>psi0_deg</strong> (<em>float</em>) – current heading angle, deg</p></li>
+<li><p><strong>drange0_km</strong> (<em>float</em>) – current downrange, km</p></li>
+<li><p><strong>heatLoad0</strong> (<em>float</em>) – current heatload, J/cm2</p></li>
+<li><p><strong>t_sec</strong> (<em>float</em>) – propogation time, seconds</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – max. time step, seconds</p></li>
+<li><p><strong>delta_deg</strong> (<em>float</em>) – bank angle command, deg</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>t_minc</strong> (<em>numpy.ndarray</em>) – time solution array, min</p></li>
+<li><p><strong>h_kmc</strong> (<em>numpy.ndarray</em>) – altitude solution array, km</p></li>
+<li><p><strong>v_kmsc</strong> (<em>numpy.ndarray</em>) – speed solution array, km/s</p></li>
+<li><p><strong>phi_degc</strong> (<em>numpy.ndarray</em>) – latitude solution array, deg</p></li>
+<li><p><strong>psi_degc</strong> (<em>numpy.ndarray</em>) – heading angle solution array, deg</p></li>
+<li><p><strong>theta_degc</strong> (<em>numpy.ndarray</em>) – longitude solution array, deg</p></li>
+<li><p><strong>gamma_degc</strong> (<em>numpy.ndarray</em>) – FPA solution array, deg</p></li>
+<li><p><strong>drange_kmc</strong> (<em>numpy.ndarray</em>) – downrange solution array, km</p></li>
+<li><p><strong>exitflag</strong> (<em>int</em>) – exitflag</p></li>
+<li><p><strong>acc_net_g</strong> (<em>numpy.ndarray</em>) – acceleration solution array, Earth g</p></li>
+<li><p><strong>dyn_pres_atm</strong> (<em>numpy.ndarray</em>) – dynamic pressure solution array, atm</p></li>
+<li><p><strong>stag_pres_atm</strong> (<em>numpy.ndarray</em>) – stagnation pressure array, atm</p></li>
+<li><p><strong>q_stag_total</strong> (<em>numpy.ndarray</em>) – stagnation point heat rate array</p></li>
+<li><p><strong>heatload</strong> (<em>numpy.ndarray</em>) – stagnation point heat load</p></li>
+<li><p><strong>acc_drag_g</strong> (<em>numpy.ndarray</em>) – acceleration due to drag, Earth g</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="AMAT.vehicle.Vehicle.propogateEquilibriumGlide">
 <code class="sig-name descname">propogateEquilibriumGlide</code><span class="sig-paren">(</span><em class="sig-param">timeStep</em>, <em class="sig-param">dt</em>, <em class="sig-param">maxTimeSecs</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle.propogateEquilibriumGlide" title="Permalink to this definition">¶</a></dt>
 <dd><p>Implements the equilibrium glide phase of the guidance scheme.</p>
@@ -4362,8 +4434,38 @@ atmospheric profile during the descending leg.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="AMAT.vehicle.Vehicle.propogateEquilibriumGlide2">
+<code class="sig-name descname">propogateEquilibriumGlide2</code><span class="sig-paren">(</span><em class="sig-param">timeStep</em>, <em class="sig-param">dt</em>, <em class="sig-param">maxTimeSecs</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle.propogateEquilibriumGlide2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implements the equilibrium glide phase of the guidance scheme.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>timeStep</strong> (<em>float</em>) – Guidance cycle time, seconds</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Solver max. time step, seconds</p></li>
+<li><p><strong>maxTimeSecs</strong> (<em>float</em>) – max. time for propogation, seconds</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="AMAT.vehicle.Vehicle.propogateExitPhase">
 <code class="sig-name descname">propogateExitPhase</code><span class="sig-paren">(</span><em class="sig-param">timeStep</em>, <em class="sig-param">dt</em>, <em class="sig-param">maxTimeSecs</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle.propogateExitPhase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implements the exit phase of the guidance scheme (full lift-up).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>timeStep</strong> (<em>float</em>) – Guidance cycle time, seconds</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Solver max. time step, seconds</p></li>
+<li><p><strong>maxTimeSecs</strong> (<em>float</em>) – max. time for propogation, seconds</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.vehicle.Vehicle.propogateExitPhase2">
+<code class="sig-name descname">propogateExitPhase2</code><span class="sig-paren">(</span><em class="sig-param">timeStep</em>, <em class="sig-param">dt</em>, <em class="sig-param">maxTimeSecs</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle.propogateExitPhase2" title="Permalink to this definition">¶</a></dt>
 <dd><p>Implements the exit phase of the guidance scheme (full lift-up).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -4394,6 +4496,21 @@ atmospheric profile during the descending leg.</p>
 <dl class="method">
 <dt id="AMAT.vehicle.Vehicle.propogateGuidedEntry">
 <code class="sig-name descname">propogateGuidedEntry</code><span class="sig-paren">(</span><em class="sig-param">timeStep</em>, <em class="sig-param">dt</em>, <em class="sig-param">maxTimeSecs</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle.propogateGuidedEntry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implements the full guidance scheme (eq. glide + exit phase)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>timeStep</strong> (<em>float</em>) – Guidance cycle time, seconds</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Solver max. time step, seconds</p></li>
+<li><p><strong>maxTimeSecs</strong> (<em>float</em>) – max. time for propogation, seconds</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.vehicle.Vehicle.propogateGuidedEntry2">
+<code class="sig-name descname">propogateGuidedEntry2</code><span class="sig-paren">(</span><em class="sig-param">timeStep</em>, <em class="sig-param">dt</em>, <em class="sig-param">maxTimeSecs</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle.propogateGuidedEntry2" title="Permalink to this definition">¶</a></dt>
 <dd><p>Implements the full guidance scheme (eq. glide + exit phase)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -4528,6 +4645,21 @@ convective and radiative heating rates.</p>
 <dl class="method">
 <dt id="AMAT.vehicle.Vehicle.runMonteCarlo">
 <code class="sig-name descname">runMonteCarlo</code><span class="sig-paren">(</span><em class="sig-param">N</em>, <em class="sig-param">mainFolder</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle.runMonteCarlo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run a Monte Carlo simulation for lift modulation
+aerocapture.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>N</strong> (<em>int</em>) – Number of trajectories</p></li>
+<li><p><strong>mainFolder</strong> (<em>str</em>) – path where data is to be stored</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.vehicle.Vehicle.runMonteCarlo2">
+<code class="sig-name descname">runMonteCarlo2</code><span class="sig-paren">(</span><em class="sig-param">N</em>, <em class="sig-param">mainFolder</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle.runMonteCarlo2" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run a Monte Carlo simulation for lift modulation
 aerocapture.</p>
 <dl class="field-list simple">
