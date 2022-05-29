@@ -2735,8 +2735,170 @@ class Vehicle():
 			   gamma_degc, drange_kmc, exitflag, acc_net_g, dyn_pres_atm, \
 			   stag_pres_atm, q_stag_total, heatload, acc_drag_g
 
+	def propogateEntry_util2(self, h0_km, theta0_deg, phi0_deg, v0_kms, \
+							gamma0_deg, psi0_deg, drange0_km, heatLoad0, \
+							t_sec, dt, delta_deg, density_mes_int):
+		"""
+		Utility propogator routine for prediction of atmospheric exit
+		conditions which is then supplied to the apoapis prediction
+		module.
 
-	
+		Propogates the vehicle state for using the measured
+		atmospheric profile during the descending leg.
+
+		Parameters
+		-----------
+		h0_km : float
+			current altitude, km
+		theta0_deg : float
+			current longitude, deg
+		phi0_deg : float
+			current latitude, deg
+		v0_kms : float
+			current speed, km/s
+		gamma0_deg : float
+			current FPA, deg
+		psi0_deg : float
+			current heading angle, deg
+		drange0_km : float
+			current downrange, km
+		heatLoad0 : float
+			current heatload, J/cm2
+		t_sec : float
+			propogation time, seconds
+		dt : float
+			max. time step, seconds
+		delta_deg : float
+			bank angle command, deg
+
+
+		Returns
+		----------
+		t_minc : numpy.ndarray
+			time solution array, min
+		h_kmc : numpy.ndarray
+			altitude solution array, km
+		v_kmsc : numpy.ndarray
+			speed solution array, km/s
+		phi_degc : numpy.ndarray
+			latitude solution array, deg
+		psi_degc : numpy.ndarray
+			heading angle solution array, deg
+		theta_degc : numpy.ndarray
+			longitude solution array, deg
+		gamma_degc : numpy.ndarray
+			FPA solution array, deg
+		drange_kmc : numpy.ndarray
+			downrange solution array, km
+		exitflag : int
+			exitflag
+		acc_net_g : numpy.ndarray
+			acceleration solution array, Earth g
+		dyn_pres_atm : numpy.ndarray
+			dynamic pressure solution array, atm
+		stag_pres_atm : numpy.ndarray
+			stagnation pressure array, atm
+		q_stag_total : numpy.ndarray
+			stagnation point heat rate array
+		heatload : numpy.ndarray
+			stagnation point heat load
+		acc_drag_g : numpy.ndarray
+			acceleration due to drag, Earth g
+
+		"""
+
+		# Create a copy of the planet object associated
+		# with the vehicle.
+		# Set the density_int attribute to be the
+		# density_mes_int which is the measured
+		# density function.
+
+		planetCopy = copy.deepcopy(self.planetObj)
+		planetCopy.density_int = density_mes_int
+
+		# Create a copy of the vehicle object so it does
+		# not affect the existing vehicle state variables
+		vehicleCopy = copy.deepcopy(self)
+		vehicleCopy.planetObj = planetCopy
+
+		# Define entry conditions at entry interface
+		# Convert initial state variables from input/plot
+		# units to calculation/SI units
+
+		# Entry altitude above planet surface in meters
+		# Entry latitude in radians
+		# Entry velocity in meters/sec, relative to planet
+		# Entry velocity in meters/sec, relative to planet
+		# Entry heading angle in radians
+		# Entry flight path angle in radians
+		# Entry downrange in m
+
+		h0 = h0_km * 1.0E3
+		theta0 = theta0_deg * np.pi / 180.0
+		phi0 = phi0_deg * np.pi / 180.0
+		v0 = v0_kms * 1.000E3
+		psi0 = psi0_deg * np.pi / 180.0
+		gamma0 = gamma0_deg * np.pi / 180.0
+		drange0 = drange0_km * 1E3
+
+		# Define control variables
+		# Constant bank angle in radians
+		delta = delta_deg * np.pi / 180.0
+
+		r0 = vehicleCopy.planetObj.computeR(h0)
+
+		# Compute non-dimensional entry conditions
+		rbar0, theta0, phi0, vbar0, psi0, gamma0, drangebar0 = \
+			vehicleCopy.planetObj.nonDimState(r0, theta0, phi0, v0, psi0, gamma0, drange0)
+
+		# Solve for the entry trajectory
+		tbar, rbar, theta, phi, vbar, psi, gamma, drangebar = \
+			vehicleCopy.solveTrajectory2(rbar0, theta0, phi0, vbar0, psi0, gamma0, \
+										drangebar0, t_sec, dt, delta)
+		# Note : solver returns non-dimensional variables
+		# Convert to dimensional variables for plotting
+		t, r, theta, phi, v, psi, gamma, drange = \
+			vehicleCopy.planetObj.dimensionalize(tbar, rbar, theta, phi, vbar, psi, gamma, \
+												 drangebar)
+		# print(t[-1])
+		# dimensional state variables are in SI units
+		# convert to more rational units for plotting
+		t_min, h_km, v_kms, phi_deg, psi_deg, theta_deg, gamma_deg, drange_km \
+			= vehicleCopy.convertToPlotUnits(t, r, v, phi, psi, theta, gamma, drange)
+		# classify trajectory
+		index, exitflag = vehicleCopy.classifyTrajectory(r)
+		# truncate trajectory
+		tc, rc, thetac, phic, vc, psic, gammac, drangec \
+			= vehicleCopy.truncateTrajectory(t, r, theta, phi, v, psi, gamma, drange, \
+											 index)
+		t_minc, h_kmc, v_kmsc, phi_degc, psi_degc, \
+		theta_degc, gamma_degc, drange_kmc = \
+			vehicleCopy.truncateTrajectory(t_min, h_km, v_kms, phi_deg, psi_deg, \
+										   theta_deg, gamma_deg, drange_km, index)
+		# compute acceleration loads
+		acc_net_g = vehicleCopy.computeAccelerationLoad(tc, rc, \
+														thetac, phic, vc, index, delta)
+		# compute drag acceleration
+		acc_drag_g = vehicleCopy.computeAccelerationDrag(tc, rc, \
+														 thetac, phic, vc, index, delta)
+		# compute dynamic pressure
+		dyn_pres_atm = vehicleCopy.computeDynPres(rc, vc) / (1.01325E5)
+		# compute stagnation pressure
+		stag_pres_atm = vehicleCopy.computeStagPres(rc, vc) / (1.01325E5)
+
+		# compute stagnation point convective and radiative heating rate
+		q_stag_con = vehicleCopy.qStagConvective(rc, vc)
+		q_stag_rad = vehicleCopy.qStagRadiative(rc, vc)
+		# compute total stagnation point heating rate
+		q_stag_total = q_stag_con + q_stag_rad
+		# compute stagnation point heating load
+		heatload = cumtrapz(q_stag_total, tc, \
+							initial=heatLoad0)
+
+		return t_minc, h_kmc, v_kmsc, phi_degc, psi_degc, theta_degc, \
+			   gamma_degc, drange_kmc, exitflag, acc_net_g, dyn_pres_atm, \
+			   stag_pres_atm, q_stag_total, heatload, acc_drag_g
+
 
 
 	def makeBasicEntryPlots(self):
@@ -2756,8 +2918,7 @@ class Vehicle():
 
 		fig = plt.figure()
 		fig.set_size_inches([6.5,6.5])
-		rcParams['font.family'] = 'sans-serif'
-		rcParams['font.sans-serif'] = ['DejaVu Sans']
+
 			
 		plt.subplot(2,2,1)
 		plt.plot(self.t_minc,self.h_kmc,'r-',linewidth=2.0)
@@ -3875,7 +4036,7 @@ class Vehicle():
 		plt.xlim(100.0E3, 700.0E3)
 		plt.ylim(0.0,12500.0)
 		
-		plt.plot(x_arr,y_arr,'k-',linewidth=2.0,linestyle='dashed')
+		#plt.plot(x_arr,y_arr,'k-',linewidth=2.0,linestyle='dashed')
 		plt.xlabel("Altitude, m", fontsize=10)
 		plt.ylabel("Dynamic pressure, Pa ",fontsize=10)
 
@@ -4278,6 +4439,56 @@ class Vehicle():
 
 		return terminal_apoapsis_km
 
+	def predictApoapsisAltitudeKm_withLiftUp2(self, h0_km, theta0_deg, \
+											 phi0_deg, v0_kms, gamma0_deg, psi0_deg, drange0_km, \
+											 heatLoad0, t_sec, dt, delta_deg, density_mes_int):
+		"""
+		Compute apoapsis altitude using full lift up bank
+		command from current vehicle state till atmospheric exit.
+
+		Parameters
+		----------
+		h0_km : float
+			current vehicle altitude, km
+		theta0_deg : float
+			current vehicle longitude, deg
+		phi0_deg : float
+			current vehicle latitude, deg
+		v0_kms : float
+			current vehicle speed, km/s
+		gamma0_deg : float
+			current FPA, deg
+		psi0_deg : float
+			current heading angle, deg
+		drange0_km : float
+			current downrange, km
+		heatLoad0 : float
+			current heatload, J/cm2
+		t_sec : float
+			propogation time, seconds
+		dt : float
+			max. solver timestep
+		delta_deg : float
+			commanded bank angle, deg
+		density_mes_int : scipy.interpolate.interpolate.interp1d
+			measured density interpolation function
+
+		"""
+
+		t_minc, h_kmc, v_kmsc, phi_degc, psi_degc, theta_degc, gamma_degc, \
+		drange_kmc, exitflag, acc_net_g, dyn_pres_atm, stag_pres_atm, q_stag_total, \
+		heatload, acc_drag_g = \
+		self.propogateEntry_util2(h0_km, theta0_deg, phi0_deg, v0_kms, gamma0_deg, \
+								 psi0_deg, drange0_km, heatLoad0, t_sec, dt, delta_deg, density_mes_int)
+
+		terminal_apoapsis_km = self.compute_ApoapsisAltitudeKm(self.planetObj.RP + h_kmc[-1] * 1E3, \
+															   v_kmsc[-1] * 1E3, gamma_degc[-1] * np.pi / 180.0, \
+															   theta_degc[-1] * np.pi / 180.0,
+															   phi_degc[-1] * np.pi / 180.0, \
+															   psi_degc[-1] * np.pi / 180.0)
+
+		return terminal_apoapsis_km
+
 	def setTargetOrbitParams(self, target_peri_km, target_apo_km, target_apo_km_tol):
 		"""
 		Set the target capture orbit parameters.
@@ -4654,8 +4865,245 @@ class Vehicle():
 		self.q_stag_total_eg = q_stag_total
 		self.heatload_eg     = heatload
 
+	def propogateEquilibriumGlide2(self, timeStep, dt, maxTimeSecs):
+		"""
+		Implements the equilibrium glide phase of the guidance scheme.
 
-	
+		Parameters
+		--------
+		timeStep : float
+			Guidance cycle time, seconds
+		dt : float
+			Solver max. time step, seconds
+		maxTimeSecs : float
+			max. time for propogation, seconds
+
+		"""
+
+		counter = 0
+
+		# -------------------------------------------
+		g0 = self.planetObj.GM / (self.planetObj.RP ** 2)
+
+		h_skip_km = self.planetObj.h_skip / 1000.0
+
+		self.t_step_array = np.array([0.0])
+		self.delta_deg_array = np.array([0.0])
+		self.hdot_array = np.array([0.0])
+		self.hddot_array = np.array([0.0])
+		self.qref_array = np.array([0.0])
+		self.q_array = np.array([0.0])
+		self.h_step_array = np.array([0.0])
+		self.acc_step_array = np.array([0.0])
+		self.acc_drag_array = np.array([0.0])
+		self.density_mes_array = np.array([0.0])
+
+		self.propogateEntry2(1.0, dt, 0.0)
+
+		t_min = self.t_minc
+		h_km = self.h_kmc
+		v_kms = self.v_kmsc
+		phi_deg = self.phi_degc
+		psi_deg = self.psi_degc
+		theta_deg = self.theta_degc
+		gamma_deg = self.gamma_degc
+		drange_km = self.drange_kmc
+
+		acc_net_g = self.acc_net_g
+		dyn_pres_atm = self.dyn_pres_atm
+		stag_pres_atm = self.stag_pres_atm
+		q_stag_total = self.q_stag_total
+		heatload = self.heatload
+		acc_drag_g = self.acc_drag_g
+
+		# Set the current vehicle speed here.
+		self.h_current_km = h_km[-1]
+		self.v_current_kms = v_kms[-1]
+
+		customFlag = 0.0
+
+		Delta_deg_ini = 0.0
+
+		# if the currrent speed is greater than the exit phase
+		# switch speed continue iterating in the equilibrium glide
+		# phase mode
+		while self.v_current_kms > self.v_switch_kms:
+			# Reset the initial conditions to the terminal conditions
+			# of the propgated solution from the previous step.
+
+			h0_km = h_km[-1]  # Entry altitude above planet surface
+			theta0_deg = theta_deg[-1]  # Entry longitude
+			phi0_deg = phi_deg[-1]  # Entry latitude
+			v0_kms = v_kms[-1]  # Entry velocity
+			psi0_deg = psi_deg[-1]  # Entry heading angle
+			gamma0_deg = gamma_deg[-1]  # Entry flight path angle
+			drange0_km = drange_km[-1]  # Downrange
+
+			h0 = h0_km * 1.0E3  # Entry altitude above planet surface in meters
+			theta0 = theta0_deg * np.pi / 180.0  # Entry longitude in radians
+			phi0 = phi0_deg * np.pi / 180.0  # Entry latitude in radians
+			v0 = v0_kms * 1.000E3  # Entry velocity in meters/sec, relative to planet
+			psi0 = psi0_deg * np.pi / 180.0  # Entry heading angle in radians
+			gamma0 = gamma0_deg * np.pi / 180.0  # Entry flight path angle in radians
+			# ------------------------------------------------------------------------------------------------
+
+			# ------------------------------------------------------------------------------------------------
+			# Initialize iterable variables used in guidance loop, i = at the current time
+			# ------------------------------------------------------------------------------------------------
+			hi = h0  # Set the current altitude as the entry altitude
+			ri = h0 + self.planetObj.RP  # Set the current radial distance
+			vi = v0  # Set the current speed (m/s) as the entry speed
+			qi = 0.5 * self.planetObj.density(hi) * vi ** 2.0  # Set the current dynamic pressure
+			gammai = gamma0  # Set the current FPA to entry FPA
+			hdoti = vi * np.sin(gammai)  # Compute the current altitude rate hdot
+
+			# ------------------------------------------------------------------------------------------------
+			# Initialize reference quantities used in the algorithm
+			qrefi = (-1.0 * self.mass * g0) / (0.75 * self.CL * self.A) * (1 - vi ** 2.0 / (g0 * ri))
+			# Set initial reference dyn pres.
+			# ------------------------------------------------------------------------------------------------
+
+			# Set the current heatload Ji = terminal heatload
+			# of the previous propogated solution
+			Ji = self.heatload[-1]
+
+			# Compute the equilibrium glide bank angle (sigma_EQ.GL)
+			cosDeltaEQGL = ((self.mass * g0) / (self.CL * qi * self.A)) * (1.0 - vi ** 2.0 / (g0 * ri))
+
+			# Compute the commanded bank angle (sigma CMD)
+			cosDeltaCMD = cosDeltaEQGL - self.Ghdot * hdoti / qi + self.Gq * ((qi - qrefi) / qi)
+
+			# if the |cosDeltaCMD| > 1.0 then set the bank angle  = 0.0 (full lift up)
+			if cosDeltaCMD > 1.0:
+				DeltaCMD = 0.0
+			# else compute the commanded bank angle using arccos(cosDeltaCMD)
+			elif cosDeltaCMD < -1.0:
+				DeltaCMD = np.pi
+			else:
+				DeltaCMD = np.arccos(cosDeltaCMD)
+
+			# Compute the commanded bank angle in degrees
+			DeltaCMD_deg_command = DeltaCMD * 180.0 / np.pi
+
+			DeltaCMD_deg, Delta_deg_ini = self.psuedoController(DeltaCMD_deg_command, \
+																Delta_deg_ini, timeStep)
+
+			# propogate the vehicle state to 1 second in advance from
+			# the current state using the commanded bank angle deltaCMD
+			self.setInitialState(h0_km, theta0_deg, phi0_deg, v0_kms, psi0_deg, gamma0_deg, \
+								 drange0_km, Ji)
+			self.propogateEntry2(timeStep, dt, DeltaCMD_deg)
+
+			t_min_c = self.t_minc
+			h_km_c = self.h_kmc
+			v_kms_c = self.v_kmsc
+			phi_deg_c = self.phi_degc
+			psi_deg_c = self.psi_degc
+			theta_deg_c = self.theta_degc
+			gamma_deg_c = self.gamma_degc
+			drange_km_c = self.drange_kmc
+
+			acc_net_g_c = self.acc_net_g
+			dyn_pres_atm_c = self.dyn_pres_atm
+			stag_pres_atm_c = self.stag_pres_atm
+			q_stag_total_c = self.q_stag_total
+			heatload_c = self.heatload
+			acc_drag_g_c = self.acc_drag_g
+
+			# Update the time solution array to account for non-zero start time
+			t_min_c = t_min_c + t_min[-1]
+
+			self.t_step_array = np.append(self.t_step_array, t_min[-1])
+			self.delta_deg_array = np.append(self.delta_deg_array, DeltaCMD_deg)
+			self.hdot_array = np.append(self.hdot_array, hdoti)
+			self.qref_array = np.append(self.qref_array, qrefi)
+			self.q_array = np.append(self.q_array, qi)
+			self.h_step_array = np.append(self.h_step_array, h0_km)
+
+			self.hdotref_array = np.zeros(len(self.t_step_array))
+			self.hddoti = (self.hdot_array[-1] - self.hdot_array[-2]) / \
+						  (self.t_step_array[-1] * 60.0 - \
+						   self.t_step_array[-2] * 60.0)
+			self.hddot_array = np.append(self.hddot_array, self.hddoti)
+			self.acc_step_array = np.append(self.acc_step_array, self.acc_net_g[-1])
+			self.acc_drag_array = np.append(self.acc_drag_array, self.acc_drag_g[-1])
+
+			# Update time and other solution vectors
+			t_min = np.concatenate((t_min, t_min_c), axis=0)
+			h_km = np.concatenate((h_km, h_km_c), axis=0)
+			v_kms = np.concatenate((v_kms, v_kms_c), axis=0)
+			phi_deg = np.concatenate((phi_deg, phi_deg_c), axis=0)
+			psi_deg = np.concatenate((psi_deg, psi_deg_c), axis=0)
+			theta_deg = np.concatenate((theta_deg, theta_deg_c), axis=0)
+			gamma_deg = np.concatenate((gamma_deg, gamma_deg_c), axis=0)
+			drange_km = np.concatenate((drange_km, drange_km_c), axis=0)
+
+			# Update entry parameter vectors
+			acc_net_g = np.concatenate((acc_net_g, acc_net_g_c), axis=0)
+			acc_drag_g = np.concatenate((acc_drag_g, acc_drag_g_c), axis=0)
+			dyn_pres_atm = np.concatenate((dyn_pres_atm, dyn_pres_atm_c), axis=0)
+			stag_pres_atm = np.concatenate((stag_pres_atm, stag_pres_atm_c), axis=0)
+			q_stag_total = np.concatenate((q_stag_total, q_stag_total_c), axis=0)
+			heatload = np.concatenate((heatload, heatload_c), axis=0)
+
+			self.acc_step_array = np.append(self.acc_step_array, acc_net_g[-1])
+			density_mes = 2 * self.mass * acc_drag_g[-1] * \
+						  self.planetObj.EARTHG / \
+						  (self.CD * self.A * (0.5 * (vi + v_kms[-1] * 1E3)) ** 2.0)
+			self.density_mes_array = np.append(self.density_mes_array, density_mes)
+
+			if hdoti > self.hdot_threshold and customFlag == 0:
+				self.density_mes_int, self.minAlt = \
+					self.createDensityMeasuredFunction(self.h_step_array, \
+													   self.density_mes_array, self.lowAlt_km, self.numPoints_lowAlt)
+				customFlag = 1.0
+
+			if hdoti > self.hdot_threshold:
+				terminal_apoapsis_km = \
+					self.predictApoapsisAltitudeKm_withLiftUp(h_km[-1], \
+															  theta_deg[-1], phi_deg[-1], v_kms[-1], gamma_deg[-1], \
+															  psi_deg[-1], drange_km[-1], heatload[-1], maxTimeSecs, dt, \
+															  0.0, self.density_mes_int)
+
+			else:
+				terminal_apoapsis_km = 0.0
+
+			#print("H (km): "+ str('{:.2f}'.format(h0_km))+" HDOT (m/s): \
+			# "+ str('{:.2f}'.format(hdoti))+", DeltaCMD :"+str('{:.2f}'. \
+			# format(DeltaCMD_deg_command))+", DELTAACT: "+str('{:.2f}'. \
+			# format(DeltaCMD_deg))+", PRED. APO: "+str('{:.2f}'.\
+			# format(terminal_apoapsis_km)))
+
+			counter += 1
+
+			# update current speed
+			h_current_km = h_km[-1]
+			v_current_kms = v_kms[-1]
+
+			if terminal_apoapsis_km > 0 and terminal_apoapsis_km < self.target_apo_km:
+				break
+
+			if abs(terminal_apoapsis_km - self.target_apo_km) < self.target_apo_km_tol:
+				break
+
+			if h_current_km > self.planetObj.h_skip / 1000 - 2.0:
+				break
+
+		self.t_min_eg = t_min
+		self.h_km_eg = h_km
+		self.v_kms_eg = v_kms
+		self.theta_deg_eg = theta_deg
+		self.phi_deg_eg = phi_deg
+		self.psi_deg_eg = psi_deg
+		self.gamma_deg_eg = gamma_deg
+		self.drange_km_eg = drange_km
+
+		self.acc_net_g_eg = acc_net_g
+		self.dyn_pres_atm_eg = dyn_pres_atm
+		self.stag_pres_atm_eg = stag_pres_atm
+		self.q_stag_total_eg = q_stag_total
+		self.heatload_eg = heatload
+
 	def propogateExitPhase(self, timeStep, dt, maxTimeSecs):
 		"""
 		Implements the exit phase of the guidance scheme (full lift-up).
@@ -4852,6 +5300,198 @@ class Vehicle():
 		#print("Apoapis Altitude at Exit: "+str(self.terminal_apoapsis)+" km")
 		#print("Periapsis Altitude at Exit: "+str(terminal_periapsis)+" km")
 
+	def propogateExitPhase2(self, timeStep, dt, maxTimeSecs):
+		"""
+		Implements the exit phase of the guidance scheme (full lift-up).
+
+		Parameters
+		--------
+		timeStep : float
+			Guidance cycle time, seconds
+		dt : float
+			Solver max. time step, seconds
+		maxTimeSecs : float
+			max. time for propogation, seconds
+
+		"""
+		self.t_switch = self.t_min_eg[-1]
+		self.h_switch = self.h_km_eg[-1]
+		self.v_switch = self.v_kms_eg[-1]
+		self.p_switch = self.delta_deg_array[-1]
+
+		t_min = self.t_min_eg
+		h_km = self.h_km_eg
+		v_kms = self.v_kms_eg
+		theta_deg = self.theta_deg_eg
+		phi_deg = self.phi_deg_eg
+		psi_deg = self.psi_deg_eg
+		gamma_deg = self.gamma_deg_eg
+		drange_km = self.drange_km_eg
+
+		acc_net_g = self.acc_net_g_eg
+		dyn_pres_atm = self.dyn_pres_atm_eg
+		stag_pres_atm = self.stag_pres_atm_eg
+		q_stag_total = self.q_stag_total_eg
+		heatload = self.heatload_eg
+
+		# Set the current altitude to the terminal altitude of
+		# the equlibrium glide phase (km).
+		h_current_km = h_km[-1]
+		t_current_min = t_min[-1]
+
+		# Set the skip altitude (km) based on definition in planet.py
+		h_skip_km = self.planetObj.h_skip / 1.0E3
+
+		# initialize hdot_ref as terminal hdot of equilibrium glide phase
+		hdot_refi = self.hdot_array[-1]
+		Ji = self.heatload_eg[-1]
+
+		#print('Exit Phase Guidance Initiated')
+
+		Delta_deg_ini = self.p_switch
+
+		while h_current_km < h_skip_km:
+			# print(minAlt)
+			# Reset the initial conditions to the terminal conditions of
+			# the propgated solution from the previous step.
+			# Terminal conditions of the equilibrium glide phase are initial
+			# conditions for the exit phase algorithm.
+			# ----------------------------------------------------------------
+			h0_km = h_km[-1]  # Entry altitude above planet surface
+			theta0_deg = theta_deg[-1]  # Entry longitude
+			phi0_deg = phi_deg[-1]  # Entry latitude
+			v0_kms = v_kms[-1]  # Entry velocity
+			psi0_deg = psi_deg[-1]  # Entry heading angle
+			gamma0_deg = gamma_deg[-1]  # Entry flight path angle
+			drange0_km = drange_km[-1]  # Downrange
+
+			# ----------------------------------------------------------------------------
+			# Convert entry state variables from IO/plot units to calculation (SI) units
+			# ----------------------------------------------------------------------------
+			h0 = h0_km * 1.0E3  # Entry altitude above planet
+			theta0 = theta0_deg * np.pi / 180.0  # Entry longitude in radians
+			phi0 = phi0_deg * np.pi / 180.0  # Entry latitude in radians
+			v0 = v0_kms * 1.000E3  # Entry velocity in meters/se
+			psi0 = psi0_deg * np.pi / 180.0  # Entry heading angle in radians
+			gamma0 = gamma0_deg * np.pi / 180.0  # Entry flight path angle in radians
+			# -------------------------------------------------------------------------------
+
+			# --------------------------------------------------------------------------
+			# Initialize iterable variables used in guidance loop, i = at the current time
+			# ----------------------------------------------------------------------------
+			hi = h0  # Set the current altitude as the entry altitude
+			ri = h0 + self.planetObj.RP  # Set the current radial distance
+			vi = v0  # Set the current speed (m/s) as the entry speed
+			qi = 0.5 * self.planetObj.density(hi) * vi ** 2.0  # Set the current dynamic pressure
+			gammai = gamma0  # Set the current FPA to entry FPA
+			hdoti = vi * np.sin(gammai)  # Compute the current altitude rate hdot
+
+			DeltaCMD_deg_command = 0.0
+			DeltaCMD_deg, Delta_deg_ini = self.psuedoController(DeltaCMD_deg_command, \
+																Delta_deg_ini, timeStep)
+			# DeltaCMD_deg = 0.0
+
+			# propogate the vehicle state to advance from the current
+			# state using the commanded bank angle deltaCMD
+			self.setInitialState(h0_km, theta0_deg, phi0_deg, v0_kms, psi0_deg, gamma0_deg, \
+								 drange0_km, Ji)
+			self.propogateEntry2(timeStep, dt, DeltaCMD_deg)
+
+			t_min_c = self.t_minc
+			h_km_c = self.h_kmc
+			v_kms_c = self.v_kmsc
+			phi_deg_c = self.phi_degc
+			psi_deg_c = self.psi_degc
+			theta_deg_c = self.theta_degc
+			gamma_deg_c = self.gamma_degc
+			drange_km_c = self.drange_kmc
+
+			acc_net_g_c = self.acc_net_g
+			dyn_pres_atm_c = self.dyn_pres_atm
+			stag_pres_atm_c = self.stag_pres_atm
+			q_stag_total_c = self.q_stag_total
+			heatload_c = self.heatload
+			acc_drag_g_c = self.acc_drag_g
+
+			# Update the time solution array to account for non-zero start time
+			t_min_c = t_min_c + t_min[-1]
+
+			self.t_step_array = np.append(self.t_step_array, t_min[-1])
+			self.delta_deg_array = np.append(self.delta_deg_array, DeltaCMD_deg)
+			self.hdot_array = np.append(self.hdot_array, hdoti)
+			self.hdotref_array = np.append(self.hdotref_array, hdot_refi)
+
+			self.hddoti = (self.hdot_array[-1] - self.hdot_array[-2]) / \
+						  (self.t_step_array[-1] * 60.0 - self.t_step_array[-2] * 60.0)
+
+			self.hddot_array = np.append(self.hddot_array, self.hddoti)
+
+			# Update time and other solution vectors
+			t_min = np.concatenate((t_min, t_min_c), axis=0)
+			h_km = np.concatenate((h_km, h_km_c), axis=0)
+			v_kms = np.concatenate((v_kms, v_kms_c), axis=0)
+			phi_deg = np.concatenate((phi_deg, phi_deg_c), axis=0)
+			psi_deg = np.concatenate((psi_deg, psi_deg_c), axis=0)
+			theta_deg = np.concatenate((theta_deg, theta_deg_c), axis=0)
+			gamma_deg = np.concatenate((gamma_deg, gamma_deg_c), axis=0)
+			drange_km = np.concatenate((drange_km, drange_km_c), axis=0)
+
+			# Update entry parameter vectors
+			acc_net_g = np.concatenate((acc_net_g, acc_net_g_c), axis=0)
+			dyn_pres_atm = np.concatenate((dyn_pres_atm, dyn_pres_atm_c), axis=0)
+			stag_pres_atm = np.concatenate((stag_pres_atm, stag_pres_atm_c), axis=0)
+			q_stag_total = np.concatenate((q_stag_total, q_stag_total_c), axis=0)
+			heatload = np.concatenate((heatload, heatload_c), axis=0)
+
+			terminal_apoapsis_km = self.compute_ApoapsisAltitudeKm( \
+				self.planetObj.RP + h_km[-1] * 1E3, v_kms[-1] * 1E3, \
+				gamma_deg[-1] * np.pi / 180.0, theta_deg[-1] * np.pi / 180.0, \
+				phi_deg[-1] * np.pi / 180.0, psi_deg[-1] * np.pi / 180.0)
+
+			#print("H (km): "+ str('{:.2f}'.format(h0_km))+", HDOT: "+str('{:.2f}'.format(hdoti)) +", DeltaCMD :"+str('{:.2f}'.format(DeltaCMD_deg_command))+", DELTAACT: "+str('{:.2f}'.format(DeltaCMD_deg))+", PREDICT. APO. ALT. :"+str(terminal_apoapsis_km))
+
+			if hi > self.planetObj.h_skip - 10.0E3:
+				break
+
+			h_current_km = h_km[-1]
+			t_current_min = t_min[-1]
+
+		self.t_min_full = t_min
+		self.h_km_full = h_km
+		self.v_kms_full = v_kms
+		self.theta_deg_full = theta_deg
+		self.phi_deg_full = phi_deg
+		self.psi_deg_full = psi_deg
+		self.gamma_deg_full = gamma_deg
+		self.drange_km_full = drange_km
+
+		self.acc_net_g_full = acc_net_g
+		self.dyn_pres_atm_full = dyn_pres_atm
+		self.stag_pres_atm_full = stag_pres_atm
+		self.q_stag_total_full = q_stag_total
+		self.heatload_full = heatload
+
+		self.terminal_apoapsis = self.compute_ApoapsisAltitudeKm( \
+			self.planetObj.RP + h_km[-1] * 1E3, v_kms[-1] * 1E3, \
+			gamma_deg[-1] * np.pi / 180.0, theta_deg[-1] * np.pi / 180.0, \
+			phi_deg[-1] * np.pi / 180.0, psi_deg[-1] * np.pi / 180.0)
+		self.terminal_periapsis = self.compute_PeriapsisAltitudeKm( \
+			self.planetObj.RP + h_km[-1] * 1E3, v_kms[-1] * 1E3, \
+			gamma_deg[-1] * np.pi / 180.0, theta_deg[-1] * np.pi / 180.0, \
+			phi_deg[-1] * np.pi / 180.0, psi_deg[-1] * np.pi / 180.0)
+		self.apoapsis_perc_error = (self.terminal_apoapsis - self.target_apo_km) * 100.0 / \
+								   self.target_apo_km
+
+		self.periapsis_raise_DV = self.compute_periapsis_raise_DV( \
+			self.terminal_periapsis, self.terminal_apoapsis, \
+			self.target_peri_km)
+		self.apoapsis_raise_DV = self.compute_apoapsis_raise_DV( \
+			self.target_peri_km, self.terminal_apoapsis, \
+			self.target_apo_km)
+
+		#print("Apoapis Altitude at Exit: "+str(self.terminal_apoapsis)+" km")
+		#print("Periapsis Altitude at Exit: "+str(self.terminal_periapsis)+" km")
+
 
 	def propogateGuidedEntry(self, timeStep, dt, maxTimeSecs):
 		"""
@@ -4869,6 +5509,24 @@ class Vehicle():
 		"""
 		self.propogateEquilibriumGlide(timeStep, dt, maxTimeSecs)
 		self.propogateExitPhase(timeStep, dt, maxTimeSecs)
+
+	def propogateGuidedEntry2(self, timeStep, dt, maxTimeSecs):
+		"""
+		Implements the full guidance scheme (eq. glide + exit phase)
+
+		Parameters
+		--------
+		timeStep : float
+			Guidance cycle time, seconds
+		dt : float
+			Solver max. time step, seconds
+		maxTimeSecs : float
+			max. time for propogation, seconds
+
+		"""
+		self.propogateEquilibriumGlide2(timeStep, dt, maxTimeSecs)
+		self.propogateExitPhase2(timeStep, dt, maxTimeSecs)
+
 
 	def setupMonteCarloSimulation(self, NPOS, NMONTE, atmfiles,
 								  heightCol, densLowCol, densAvgCol,
@@ -5047,6 +5705,117 @@ class Vehicle():
 			np.savetxt(mainFolder+'/'+'acc_net_g_max_arr.txt',acc_net_g_max_arr)
 			np.savetxt(mainFolder+'/'+'q_stag_max_arr.txt',q_stag_max_arr)
 			np.savetxt(mainFolder+'/'+'heatload_max_arr.txt',heatload_max_arr)
+
+	def runMonteCarlo2(self, N, mainFolder):
+		"""
+		Run a Monte Carlo simulation for lift modulation
+		aerocapture.
+
+		Parameters
+		--------
+		N : int
+			Number of trajectories
+		mainFolder : str
+			path where data is to be stored
+		"""
+
+		terminal_apoapsis_arr = np.zeros(N)
+		terminal_periapsis_arr = np.zeros(N)
+		periapsis_raise_DV_arr = np.zeros(N)
+		apoapsis_raise_DV_arr = np.zeros(N)
+		acc_net_g_max_arr = np.zeros(N)
+		q_stag_max_arr = np.zeros(N)
+		heatload_max_arr = np.zeros(N)
+
+		h0_km = self.vehicleCopy.h0_km_ref
+		theta0_deg = self.vehicleCopy.theta0_deg_ref
+		phi0_deg = self.vehicleCopy.phi0_deg_ref
+		v0_kms = self.vehicleCopy.v0_kms_ref
+		psi0_deg = self.vehicleCopy.psi0_deg_ref
+		drange0_km = self.vehicleCopy.drange0_km_ref
+		heatLoad0 = self.vehicleCopy.heatLoad0_ref
+
+		os.makedirs(mainFolder)
+
+		for i in range(N):
+			selected_atmfile = rd.choice(self.atmfiles)
+
+			# selected_profile   = 65
+			selected_profile = rd.randint(1, self.NMONTE)
+			# selected_efpa     = -11.53
+			selected_efpa = np.random.normal(self.nominalEFPA, self.EFPA_1sigma_value)
+			# selected_atmSigma = +0.0
+			selected_atmSigma = np.random.normal(0, 1)
+			selected_LD = np.random.normal(self.nominalLD, self.LD_1sigma_value)
+
+			ATM_height, ATM_density_low, ATM_density_avg, ATM_density_high, \
+			ATM_density_pert = self.planetObj.loadMonteCarloDensityFile2( \
+				selected_atmfile, self.heightCol, \
+				self.densLowCol, self.densAvgCol,
+				self.densHighCol, self.densTotalCol, self.heightInKmFlag)
+			self.planetObj.density_int = self.planetObj.loadAtmosphereModel5(ATM_height, \
+																			 ATM_density_low, ATM_density_avg,
+																			 ATM_density_high, \
+																			 ATM_density_pert, selected_atmSigma,
+																			 self.NPOS, \
+																			 selected_profile)
+
+			self.setInitialState(h0_km, theta0_deg, phi0_deg, v0_kms, \
+								 psi0_deg, selected_efpa, drange0_km, heatLoad0)
+			self.propogateGuidedEntry2(self.timeStep, self.dt, self.maxTimeSecs)
+
+			terminal_apoapsis = self.terminal_apoapsis
+			apoapsis_error = self.apoapsis_perc_error
+			terminal_periapsis = self.terminal_periapsis
+
+			periapsis_raise_DV = self.periapsis_raise_DV
+			apoapsis_raise_DV = self.apoapsis_raise_DV
+
+			terminal_apoapsis_arr[i] = self.terminal_apoapsis
+			terminal_periapsis_arr[i] = self.terminal_periapsis
+
+			periapsis_raise_DV_arr[i] = self.periapsis_raise_DV
+			apoapsis_raise_DV_arr[i] = self.apoapsis_raise_DV
+
+			acc_net_g_max_arr[i] = max(self.acc_net_g_full)
+			q_stag_max_arr[i] = max(self.q_stag_total_full)
+			heatload_max_arr[i] = max(cumtrapz(self.q_stag_total_full, self.t_min_full*60, initial=0))/1e3
+
+			print("RUN #: " + str(i + 1) + ", SAMPLE #: " + str(selected_profile) + ", EFPA: " + str(
+				'{:.2f}'.format(selected_efpa, 2)) + ", SIGMA: " + str(
+				'{:.2f}'.format(selected_atmSigma, 2)) + ", LD: " + str(
+				'{:.2f}'.format(selected_LD, 2)) + ", APO : " + str('{:.2f}'.format(terminal_apoapsis, 2)))
+
+			os.makedirs(mainFolder + '/' + '#' + str(i + 1))
+
+			np.savetxt(mainFolder + '/' + '#' + str(i + 1) + '/' + 'atmfile.txt', np.array([selected_atmfile]),
+					   fmt='%s')
+			np.savetxt(mainFolder + '/' + '#' + str(i + 1) + '/' + 'profile.txt', np.array([selected_profile]))
+			np.savetxt(mainFolder + '/' + '#' + str(i + 1) + '/' + 'efpa.txt', np.array([selected_efpa]))
+			np.savetxt(mainFolder + '/' + '#' + str(i + 1) + '/' + 'atmSigma.txt', np.array([selected_atmSigma]))
+			np.savetxt(mainFolder + '/' + '#' + str(i + 1) + '/' + 'LD.txt', np.array([selected_LD]))
+
+			np.savetxt(mainFolder + '/' + '#' + str(i + 1) + '/' + 'terminal_apoapsis.txt',
+					   np.array([terminal_apoapsis]))
+			np.savetxt(mainFolder + '/' + '#' + str(i + 1) + '/' + 'apoapsis_error.txt', np.array([apoapsis_error]))
+			np.savetxt(mainFolder + '/' + '#' + str(i + 1) + '/' + 'terminal_periapsis.txt',
+					   np.array([terminal_periapsis]))
+
+			np.savetxt(mainFolder + '/' + '#' + str(i + 1) + '/' + 'periapsis_raise_DV.txt',
+					   np.array([periapsis_raise_DV]))
+			np.savetxt(mainFolder + '/' + '#' + str(i + 1) + '/' + 'apoapsis_raise_DV.txt',
+					   np.array([apoapsis_raise_DV]))
+
+			np.savetxt(mainFolder + '/' + 'terminal_apoapsis_arr.txt', terminal_apoapsis_arr)
+			np.savetxt(mainFolder + '/' + 'terminal_periapsis_arr.txt', terminal_periapsis_arr)
+
+			np.savetxt(mainFolder + '/' + 'periapsis_raise_DV_arr.txt', periapsis_raise_DV_arr)
+			np.savetxt(mainFolder + '/' + 'apoapsis_raise_DV_arr.txt', apoapsis_raise_DV_arr)
+
+			np.savetxt(mainFolder + '/' + 'acc_net_g_max_arr.txt', acc_net_g_max_arr)
+			np.savetxt(mainFolder + '/' + 'q_stag_max_arr.txt', q_stag_max_arr)
+			np.savetxt(mainFolder + '/' + 'heatload_max_arr.txt', heatload_max_arr)
+
 
 
 	def setDragEntryPhaseParams(self, v_switch_kms,\
