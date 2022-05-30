@@ -80,3 +80,4 @@ Example Jupyter Notebooks
    /examples/example-73-uranus-aerocapture-part-2.ipynb
    /examples/example-74-uranus-aerocapture-part-3.ipynb
    /examples/example-75-literature-survey-uranus-study.ipynb
+   /examples/example-76-uranus-mission-concept-study.ipynb
