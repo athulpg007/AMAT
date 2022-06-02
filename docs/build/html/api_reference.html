@@ -6795,6 +6795,631 @@ atmospheric entry interface, days</p>
 
 </dd></dl>
 
+<span class="target" id="module-AMAT.orbiter"></span><dl class="class">
+<dt id="AMAT.orbiter.Orbiter">
+<em class="property">class </em><code class="sig-prename descclassname">AMAT.orbiter.</code><code class="sig-name descname">Orbiter</code><span class="sig-paren">(</span><em class="sig-param">vehicle</em>, <em class="sig-param">peri_alt_km</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.orbiter.Orbiter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the coast trajectory from atmospheric exit until
+apoapsis, the periapsis raise manuever dv, and the
+first full orbit trajectory post aerocapture.</p>
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.vehicle">
+<code class="sig-name descname">vehicle</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.vehicle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Vehicle object which has been propagated until atmospheric exit</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#AMAT.vehicle.Vehicle" title="AMAT.vehicle.Vehicle">AMAT.vehicle.Vehicle</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.peri_alt_km">
+<code class="sig-name descname">peri_alt_km</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.peri_alt_km" title="Permalink to this definition">¶</a></dt>
+<dd><p>target orbit periapsis altitude, km</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.r_periapsis_mag">
+<code class="sig-name descname">r_periapsis_mag</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.r_periapsis_mag" title="Permalink to this definition">¶</a></dt>
+<dd><p>target orbit periapsis radial distance, m</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.terminal_r">
+<code class="sig-name descname">terminal_r</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.terminal_r" title="Permalink to this definition">¶</a></dt>
+<dd><p>planet-relative atmospheric exit state terminal radial distance, m</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.terminal_theta">
+<code class="sig-name descname">terminal_theta</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.terminal_theta" title="Permalink to this definition">¶</a></dt>
+<dd><p>planet-relative atmospheric exit state terminal longitude, rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.terminal_phi">
+<code class="sig-name descname">terminal_phi</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.terminal_phi" title="Permalink to this definition">¶</a></dt>
+<dd><p>planet-relative atmospheric exit state terminal latitude, rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.terminal_v">
+<code class="sig-name descname">terminal_v</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.terminal_v" title="Permalink to this definition">¶</a></dt>
+<dd><p>planet-relative atmospheric exit state terminal speed, m/s</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.terminal_g">
+<code class="sig-name descname">terminal_g</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.terminal_g" title="Permalink to this definition">¶</a></dt>
+<dd><p>planet-relative atmospheric exit state terminal flight-path angle, rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.terminal_psi">
+<code class="sig-name descname">terminal_psi</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.terminal_psi" title="Permalink to this definition">¶</a></dt>
+<dd><p>planet-relative atmospheric exit state terminal heading angle, rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.terminal_r_vec">
+<code class="sig-name descname">terminal_r_vec</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.terminal_r_vec" title="Permalink to this definition">¶</a></dt>
+<dd><p>planet-relative atmospheric exit state radius vector, m</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.terminal_r_hat_vec">
+<code class="sig-name descname">terminal_r_hat_vec</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.terminal_r_hat_vec" title="Permalink to this definition">¶</a></dt>
+<dd><p>planet-relative atmospheric exit state radius unit vector</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.terminal_v_vec">
+<code class="sig-name descname">terminal_v_vec</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.terminal_v_vec" title="Permalink to this definition">¶</a></dt>
+<dd><p>planet-relative atmospheric exit state velocity vector, m/s</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="sig-name descname">terminal_r_hat_vec</code></dt>
+<dd><p>planet-relative atmospheric exit state velocity unit vector</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.terminal_v_ie_vec">
+<code class="sig-name descname">terminal_v_ie_vec</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.terminal_v_ie_vec" title="Permalink to this definition">¶</a></dt>
+<dd><p>inertial atmospheric exit state velocity vector, m/s</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.terminal_v_ie_hat_vec">
+<code class="sig-name descname">terminal_v_ie_hat_vec</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.terminal_v_ie_hat_vec" title="Permalink to this definition">¶</a></dt>
+<dd><p>inertial atmospheric exit state velocity unit vector</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.terminal_fpa_ie_deg">
+<code class="sig-name descname">terminal_fpa_ie_deg</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.terminal_fpa_ie_deg" title="Permalink to this definition">¶</a></dt>
+<dd><p>inertial atmospheric exit state flight-path angle, deg</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.terminal_fpa_ie_rad">
+<code class="sig-name descname">terminal_fpa_ie_rad</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.terminal_fpa_ie_rad" title="Permalink to this definition">¶</a></dt>
+<dd><p>inertial atmospheric exit state flight-path angle, rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.terminal_r_bi">
+<code class="sig-name descname">terminal_r_bi</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.terminal_r_bi" title="Permalink to this definition">¶</a></dt>
+<dd><p>body-inertial atmospheric exit state terminal radial distance, m</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.terminal_theta_bi">
+<code class="sig-name descname">terminal_theta_bi</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.terminal_theta_bi" title="Permalink to this definition">¶</a></dt>
+<dd><p>body-inertial atmospheric exit state terminal longitude, rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.terminal_phi_bi">
+<code class="sig-name descname">terminal_phi_bi</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.terminal_phi_bi" title="Permalink to this definition">¶</a></dt>
+<dd><p>body-inertial atmospheric exit state terminal latitude, rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.terminal_v_bi">
+<code class="sig-name descname">terminal_v_bi</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.terminal_v_bi" title="Permalink to this definition">¶</a></dt>
+<dd><p>body-inertial atmospheric exit state terminal speed, m/s</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.terminal_g_bi">
+<code class="sig-name descname">terminal_g_bi</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.terminal_g_bi" title="Permalink to this definition">¶</a></dt>
+<dd><p>body-inertial atmospheric exit state terminal flight-path angle, rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.terminal_psi_bi">
+<code class="sig-name descname">terminal_psi_bi</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.terminal_psi_bi" title="Permalink to this definition">¶</a></dt>
+<dd><p>body-inertial atmospheric exit state terminal heading angle, rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.terminal_E">
+<code class="sig-name descname">terminal_E</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.terminal_E" title="Permalink to this definition">¶</a></dt>
+<dd><p>orbit total specific energy at atmospheric exit</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.terminal_h">
+<code class="sig-name descname">terminal_h</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.terminal_h" title="Permalink to this definition">¶</a></dt>
+<dd><p>orbit specific angular momentum scalar at atmospheric exit</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.a">
+<code class="sig-name descname">a</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.a" title="Permalink to this definition">¶</a></dt>
+<dd><p>final orbit semi-major axis, m</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.e">
+<code class="sig-name descname">e</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.e" title="Permalink to this definition">¶</a></dt>
+<dd><p>final orbit eccentricity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.i">
+<code class="sig-name descname">i</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.i" title="Permalink to this definition">¶</a></dt>
+<dd><p>final orbit inclination, rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.h">
+<code class="sig-name descname">h</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.h" title="Permalink to this definition">¶</a></dt>
+<dd><p>final orbit specific angular momentum, SI units</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.OMEGA">
+<code class="sig-name descname">OMEGA</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.OMEGA" title="Permalink to this definition">¶</a></dt>
+<dd><p>final orbit RAAN, rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.omega">
+<code class="sig-name descname">omega</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.omega" title="Permalink to this definition">¶</a></dt>
+<dd><p>final orbit AoP, rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.theta_star_exit">
+<code class="sig-name descname">theta_star_exit</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.theta_star_exit" title="Permalink to this definition">¶</a></dt>
+<dd><p>true anomaly at atmospheric exit, rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.x_coast_arr">
+<code class="sig-name descname">x_coast_arr</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.x_coast_arr" title="Permalink to this definition">¶</a></dt>
+<dd><p>body-inertial x-coordinate positions of coast trajectory from atmospheric exit until apoapsis,
+in non-dimensional units in terms of planet radius (vehicle.planetObj.RP)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.y_coast_arr">
+<code class="sig-name descname">y_coast_arr</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.y_coast_arr" title="Permalink to this definition">¶</a></dt>
+<dd><p>body-inertial y-coordinate positions of coast trajectory from atmospheric exit until apoapsis,
+in non-dimensional units in terms of planet radius (vehicle.planetObj.RP)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.z_coast_arr">
+<code class="sig-name descname">z_coast_arr</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.z_coast_arr" title="Permalink to this definition">¶</a></dt>
+<dd><p>body-inertial z-coordinate positions of coast trajectory from atmospheric exit until apoapsis,
+in non-dimensional units in terms of planet radius (vehicle.planetObj.RP)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.r_apoapsis_vec">
+<code class="sig-name descname">r_apoapsis_vec</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.r_apoapsis_vec" title="Permalink to this definition">¶</a></dt>
+<dd><p>body-inertial radial vector of apoapsis, in terms of planet radius (vehicle.planetObj.RP)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.r_apoapsis_mag">
+<code class="sig-name descname">r_apoapsis_mag</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.r_apoapsis_mag" title="Permalink to this definition">¶</a></dt>
+<dd><p>body-inertial radial apoapsis distance, m</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.v_apoapsis_vec_coast">
+<code class="sig-name descname">v_apoapsis_vec_coast</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.v_apoapsis_vec_coast" title="Permalink to this definition">¶</a></dt>
+<dd><p>body-inertial velocity vector at apoapsis for coast orbit, m/s</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.v_apoapsis_mag_coast">
+<code class="sig-name descname">v_apoapsis_mag_coast</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.v_apoapsis_mag_coast" title="Permalink to this definition">¶</a></dt>
+<dd><p>body-inertial velocity vector magnitude at apoapsis for coast orbit, m/s</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.v_apoapsis_vec_orbit">
+<code class="sig-name descname">v_apoapsis_vec_orbit</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.v_apoapsis_vec_orbit" title="Permalink to this definition">¶</a></dt>
+<dd><p>body-inertial velocity vector at apoapsis for final orbit, m/s</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.v_apoapsis_mag_orbit">
+<code class="sig-name descname">v_apoapsis_mag_orbit</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.v_apoapsis_mag_orbit" title="Permalink to this definition">¶</a></dt>
+<dd><p>body-inertial velocity vector magnitude at apoapsis for final orbit, m/s</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.PRM_dv_vec">
+<code class="sig-name descname">PRM_dv_vec</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.PRM_dv_vec" title="Permalink to this definition">¶</a></dt>
+<dd><p>periapsis raise manuever delta-V vector, m/s</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.PRM_dv_mag">
+<code class="sig-name descname">PRM_dv_mag</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.PRM_dv_mag" title="Permalink to this definition">¶</a></dt>
+<dd><p>periapsis raise manuever delta-V magnitude, m/s</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.x_orbit_arr">
+<code class="sig-name descname">x_orbit_arr</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.x_orbit_arr" title="Permalink to this definition">¶</a></dt>
+<dd><p>body-inertial x-coordinate positions of one full final orbit after PRM
+in non-dimensional units in terms of planet radius (vehicle.planetObj.RP)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.y_orbit_arr">
+<code class="sig-name descname">y_orbit_arr</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.y_orbit_arr" title="Permalink to this definition">¶</a></dt>
+<dd><p>body-inertial y-coordinate positions of one full final orbit after PRM
+in non-dimensional units in terms of planet radius (vehicle.planetObj.RP)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.z_orbit_arr">
+<code class="sig-name descname">z_orbit_arr</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.z_orbit_arr" title="Permalink to this definition">¶</a></dt>
+<dd><p>body-inertial z-coordinate positions of one full final orbit after PRM
+in non-dimensional units in terms of planet radius (vehicle.planetObj.RP)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.orbiter.Orbiter.compute_PRM_dv">
+<code class="sig-name descname">compute_PRM_dv</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.orbiter.Orbiter.compute_PRM_dv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the periapsis raise manuever delta-V vector and magnitude</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.orbiter.Orbiter.compute_coast_orbital_elements">
+<code class="sig-name descname">compute_coast_orbital_elements</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.orbiter.Orbiter.compute_coast_orbital_elements" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the orbital elements of the coast phase</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.orbiter.Orbiter.compute_coast_trajectory">
+<code class="sig-name descname">compute_coast_trajectory</code><span class="sig-paren">(</span><em class="sig-param">num_points=301</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.orbiter.Orbiter.compute_coast_trajectory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the coast trajectory from atmospheric exit until first apoapsis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>num_points</strong> (<em>int</em>) – number of grid points</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.orbiter.Orbiter.compute_exit_state_atm_relative">
+<code class="sig-name descname">compute_exit_state_atm_relative</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.orbiter.Orbiter.compute_exit_state_atm_relative" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extracts the exit state vector in atmosphere relative coordinates
+from the propagated vehicle exit state.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.orbiter.Orbiter.compute_exit_state_inertial">
+<code class="sig-name descname">compute_exit_state_inertial</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.orbiter.Orbiter.compute_exit_state_inertial" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the exit state vector in body inertial frame.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.orbiter.Orbiter.compute_orbit_trajectory">
+<code class="sig-name descname">compute_orbit_trajectory</code><span class="sig-paren">(</span><em class="sig-param">num_points=601</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.orbiter.Orbiter.compute_orbit_trajectory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the coordinates of one full orbit after periapsis raise manuever</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>num_points</strong> (<em>int</em>) – grid points for full final orbit trajectory</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.orbiter.Orbiter.pos_vec_bi">
+<code class="sig-name descname">pos_vec_bi</code><span class="sig-paren">(</span><em class="sig-param">theta_star</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.orbiter.Orbiter.pos_vec_bi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the position vector in body-inertial frame
+for a specified true-anomaly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>theta_star</strong> (<em>float</em>) – true anomaly, rad</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>pos_vec_bi</strong> – position vector in body-inertial frame, meters</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.orbiter.Orbiter.post_PRM_orbital_elements">
+<code class="sig-name descname">post_PRM_orbital_elements</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.orbiter.Orbiter.post_PRM_orbital_elements" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the orbit elements for orbit with periapsis raised</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.orbiter.Orbiter.r_mag_bi">
+<code class="sig-name descname">r_mag_bi</code><span class="sig-paren">(</span><em class="sig-param">theta_star</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.orbiter.Orbiter.r_mag_bi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the position vector magnitude in body-inertial frame at a given true anomaly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>theta_star</strong> (<em>float</em>) – true anomaly, rad</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>r_mag_bi</strong> – position vector magnitude, meters</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.orbiter.Orbiter.vel_vec_bi">
+<code class="sig-name descname">vel_vec_bi</code><span class="sig-paren">(</span><em class="sig-param">theta_star</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.orbiter.Orbiter.vel_vec_bi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the velocity vector magnitude in body-inertial frame at a given true anomaly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>theta_star</strong> (<em>float</em>) – true anomaly, rad</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>vel_vec_bi</strong> – velocity vector in body-inertial frame, m/s</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 

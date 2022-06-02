@@ -101,13 +101,20 @@
  | <a href="#T"><strong>T</strong></a>
  | <a href="#U"><strong>U</strong></a>
  | <a href="#V"><strong>V</strong></a>
+ | <a href="#X"><strong>X</strong></a>
+ | <a href="#Y"><strong>Y</strong></a>
+ | <a href="#Z"><strong>Z</strong></a>
  
 </div>
 <h2 id="A">A</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api_reference.html#AMAT.approach.Approach.a">a (AMAT.approach.Approach attribute)</a>
+
+      <ul>
+        <li><a href="api_reference.html#AMAT.orbiter.Orbiter.a">(AMAT.orbiter.Orbiter attribute)</a>
 </li>
+      </ul></li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.A">A (AMAT.vehicle.Vehicle attribute)</a>
 </li>
       <li><a href="api_reference.html#AMAT.planet.Planet.a0">a0 (AMAT.planet.Planet attribute)</a>
@@ -159,6 +166,8 @@
       <li><a href="api_reference.html#module-AMAT.launcher">AMAT.launcher (module)</a>
 </li>
       <li><a href="api_reference.html#module-AMAT.maneuver">AMAT.maneuver (module)</a>
+</li>
+      <li><a href="api_reference.html#module-AMAT.orbiter">AMAT.orbiter (module)</a>
 </li>
       <li><a href="api_reference.html#module-AMAT.planet">AMAT.planet (module)</a>
 </li>
@@ -242,13 +251,25 @@
 </li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.compute_ApoapsisAltitudeKm">compute_ApoapsisAltitudeKm() (AMAT.vehicle.Vehicle method)</a>
 </li>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.compute_coast_orbital_elements">compute_coast_orbital_elements() (AMAT.orbiter.Orbiter method)</a>
+</li>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.compute_coast_trajectory">compute_coast_trajectory() (AMAT.orbiter.Orbiter method)</a>
+</li>
       <li><a href="api_reference.html#AMAT.arrival.Arrival.compute_declination">compute_declination() (AMAT.arrival.Arrival method)</a>
 </li>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.compute_exit_state_atm_relative">compute_exit_state_atm_relative() (AMAT.orbiter.Orbiter method)</a>
+</li>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.compute_exit_state_inertial">compute_exit_state_inertial() (AMAT.orbiter.Orbiter method)</a>
+</li>
       <li><a href="api_reference.html#AMAT.interplanetary.Interplanetary.compute_launch_capability">compute_launch_capability() (AMAT.interplanetary.Interplanetary method)</a>
+</li>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.compute_orbit_trajectory">compute_orbit_trajectory() (AMAT.orbiter.Orbiter method)</a>
 </li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.compute_periapsis_raise_DV">compute_periapsis_raise_DV() (AMAT.vehicle.Vehicle method)</a>
 </li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.compute_PeriapsisAltitudeKm">compute_PeriapsisAltitudeKm() (AMAT.vehicle.Vehicle method)</a>
+</li>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.compute_PRM_dv">compute_PRM_dv() (AMAT.orbiter.Orbiter method)</a>
 </li>
       <li><a href="api_reference.html#AMAT.arrival.Arrival.compute_v_inf_mag">compute_v_inf_mag() (AMAT.arrival.Arrival method)</a>
 </li>
@@ -256,14 +277,14 @@
 </li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.computeAccelerationDrag">computeAccelerationDrag() (AMAT.vehicle.Vehicle method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.computeAccelerationLoad">computeAccelerationLoad() (AMAT.vehicle.Vehicle method)</a>
 </li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.computeAngMomScalar">computeAngMomScalar() (AMAT.vehicle.Vehicle method)</a>
 </li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.computeDynPres">computeDynPres() (AMAT.vehicle.Vehicle method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.computeEccScalar">computeEccScalar() (AMAT.vehicle.Vehicle method)</a>
 </li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.computeEnergy">computeEnergy() (AMAT.vehicle.Vehicle method)</a>
@@ -397,15 +418,19 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api_reference.html#AMAT.approach.Approach.e">e (AMAT.approach.Approach attribute)</a>
+
+      <ul>
+        <li><a href="api_reference.html#AMAT.orbiter.Orbiter.e">(AMAT.orbiter.Orbiter attribute)</a>
 </li>
+      </ul></li>
       <li><a href="api_reference.html#AMAT.approach.Approach.e_vec_bi">e_vec_bi (AMAT.approach.Approach attribute)</a>
 </li>
       <li><a href="api_reference.html#AMAT.approach.Approach.e_vec_bi_unit">e_vec_bi_unit (AMAT.approach.Approach attribute)</a>
 </li>
-      <li><a href="api_reference.html#AMAT.planet.Planet.EARTHG">EARTHG (AMAT.planet.Planet attribute)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference.html#AMAT.planet.Planet.EARTHG">EARTHG (AMAT.planet.Planet attribute)</a>
+</li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.EFPA_1sigma_value">EFPA_1sigma_value (AMAT.vehicle.Vehicle attribute)</a>
 </li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.EOM">EOM() (AMAT.vehicle.Vehicle method)</a>
@@ -489,7 +514,11 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api_reference.html#AMAT.approach.Approach.h">h (AMAT.approach.Approach attribute)</a>
+
+      <ul>
+        <li><a href="api_reference.html#AMAT.orbiter.Orbiter.h">(AMAT.orbiter.Orbiter attribute)</a>
 </li>
+      </ul></li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.h0_km">h0_km (AMAT.vehicle.Vehicle attribute)</a>
 </li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.h_km_eg">h_km_eg (AMAT.vehicle.Vehicle attribute)</a>
@@ -551,7 +580,11 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api_reference.html#AMAT.approach.Approach.i">i (AMAT.approach.Approach attribute)</a>
+
+      <ul>
+        <li><a href="api_reference.html#AMAT.orbiter.Orbiter.i">(AMAT.orbiter.Orbiter attribute)</a>
 </li>
+      </ul></li>
       <li><a href="api_reference.html#AMAT.approach.Approach.ICRF_to_BI">ICRF_to_BI() (AMAT.approach.Approach method)</a>
 </li>
       <li><a href="api_reference.html#AMAT.interplanetary.Interplanetary.ID">ID (AMAT.interplanetary.Interplanetary attribute)</a>
@@ -692,11 +725,17 @@
 </li>
       <li><a href="api_reference.html#AMAT.approach.Approach.omega">omega (AMAT.approach.Approach attribute)</a>
 </li>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.OMEGA">OMEGA (AMAT.orbiter.Orbiter attribute)</a>
+</li>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.omega">omega (AMAT.orbiter.Orbiter attribute)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api_reference.html#AMAT.planet.Planet.OMEGA">OMEGA (AMAT.planet.Planet attribute)</a>
 </li>
       <li><a href="api_reference.html#AMAT.planet.Planet.OMEGAbar">OMEGAbar (AMAT.planet.Planet attribute)</a>
+</li>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter">Orbiter (class in AMAT.orbiter)</a>
 </li>
       <li><a href="api_reference.html#AMAT.maneuver.OrbiterOrbiterDeflection">OrbiterOrbiterDeflection (class in AMAT.maneuver)</a>
 </li>
@@ -707,6 +746,8 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.p_switch">p_switch (AMAT.vehicle.Vehicle attribute)</a>
+</li>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.peri_alt_km">peri_alt_km (AMAT.orbiter.Orbiter attribute)</a>
 </li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.phi0_deg">phi0_deg (AMAT.vehicle.Vehicle attribute)</a>
 </li>
@@ -751,8 +792,14 @@
       <li><a href="api_reference.html#AMAT.interplanetary.Interplanetary.plot_TOF_vs_launch_date">plot_TOF_vs_launch_date() (AMAT.interplanetary.Interplanetary method)</a>
 </li>
       <li><a href="api_reference.html#AMAT.approach.Approach.pos_vec_bi">pos_vec_bi() (AMAT.approach.Approach method)</a>
+
+      <ul>
+        <li><a href="api_reference.html#AMAT.orbiter.Orbiter.pos_vec_bi">(AMAT.orbiter.Orbiter method)</a>
 </li>
+      </ul></li>
       <li><a href="api_reference.html#AMAT.approach.Approach.pos_vec_bi_dprime">pos_vec_bi_dprime() (AMAT.approach.Approach method)</a>
+</li>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.post_PRM_orbital_elements">post_PRM_orbital_elements() (AMAT.orbiter.Orbiter method)</a>
 </li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.predictApoapsisAltitudeKm_afterJettision">predictApoapsisAltitudeKm_afterJettision() (AMAT.vehicle.Vehicle method)</a>
 </li>
@@ -762,11 +809,15 @@
 </li>
       <li><a href="api_reference.html#AMAT.planet.Planet.pressure_int">pressure_int (AMAT.planet.Planet attribute)</a>
 </li>
-      <li><a href="api_reference.html#AMAT.planet.Planet.pressurevectorized">pressurevectorized() (AMAT.planet.Planet method)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference.html#AMAT.planet.Planet.pressurevectorized">pressurevectorized() (AMAT.planet.Planet method)</a>
+</li>
       <li><a href="api_reference.html#AMAT.planet.Planet.presvectorized">presvectorized() (AMAT.planet.Planet method)</a>
+</li>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.PRM_dv_mag">PRM_dv_mag (AMAT.orbiter.Orbiter attribute)</a>
+</li>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.PRM_dv_vec">PRM_dv_vec (AMAT.orbiter.Orbiter attribute)</a>
 </li>
       <li><a href="api_reference.html#AMAT.maneuver.ProbeOrbiterDeflection.probe">probe (AMAT.maneuver.ProbeOrbiterDeflection attribute)</a>
 </li>
@@ -864,6 +915,10 @@
 </li>
       <li><a href="api_reference.html#AMAT.approach.Approach.R3">R3() (AMAT.approach.Approach method)</a>
 </li>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.r_apoapsis_mag">r_apoapsis_mag (AMAT.orbiter.Orbiter attribute)</a>
+</li>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.r_apoapsis_vec">r_apoapsis_vec (AMAT.orbiter.Orbiter attribute)</a>
+</li>
       <li><a href="api_reference.html#AMAT.maneuver.OrbiterOrbiterDeflection.r_dv">r_dv (AMAT.maneuver.OrbiterOrbiterDeflection attribute)</a>
 
       <ul>
@@ -883,6 +938,12 @@
       <li><a href="api_reference.html#AMAT.approach.Approach.r_EI">r_EI (AMAT.approach.Approach attribute)</a>
 </li>
       <li><a href="api_reference.html#AMAT.approach.Approach.r_mag_bi">r_mag_bi() (AMAT.approach.Approach method)</a>
+
+      <ul>
+        <li><a href="api_reference.html#AMAT.orbiter.Orbiter.r_mag_bi">(AMAT.orbiter.Orbiter method)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.r_periapsis_mag">r_periapsis_mag (AMAT.orbiter.Orbiter attribute)</a>
 </li>
       <li><a href="api_reference.html#AMAT.approach.Approach.R_vec_bi">R_vec_bi (AMAT.approach.Approach attribute)</a>
 </li>
@@ -894,14 +955,14 @@
         <li><a href="api_reference.html#AMAT.maneuver.ProbeOrbiterDeflection.r_vec_dv">(AMAT.maneuver.ProbeOrbiterDeflection attribute)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api_reference.html#AMAT.maneuver.OrbiterOrbiterDeflection.r_vec_dv_unit">r_vec_dv_unit (AMAT.maneuver.OrbiterOrbiterDeflection attribute)</a>
 
       <ul>
         <li><a href="api_reference.html#AMAT.maneuver.ProbeOrbiterDeflection.r_vec_dv_unit">(AMAT.maneuver.ProbeOrbiterDeflection attribute)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api_reference.html#AMAT.approach.Approach.r_vec_entry_bi">r_vec_entry_bi (AMAT.approach.Approach attribute)</a>
 </li>
       <li><a href="api_reference.html#AMAT.approach.Approach.r_vec_entry_bi_mag">r_vec_entry_bi_mag (AMAT.approach.Approach attribute)</a>
@@ -1040,12 +1101,54 @@
 </li>
       <li><a href="api_reference.html#AMAT.planet.Planet.tempvectorized">tempvectorized() (AMAT.planet.Planet method)</a>
 </li>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.terminal_E">terminal_E (AMAT.orbiter.Orbiter attribute)</a>
+</li>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.terminal_fpa_ie_deg">terminal_fpa_ie_deg (AMAT.orbiter.Orbiter attribute)</a>
+</li>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.terminal_fpa_ie_rad">terminal_fpa_ie_rad (AMAT.orbiter.Orbiter attribute)</a>
+</li>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.terminal_g">terminal_g (AMAT.orbiter.Orbiter attribute)</a>
+</li>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.terminal_g_bi">terminal_g_bi (AMAT.orbiter.Orbiter attribute)</a>
+</li>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.terminal_h">terminal_h (AMAT.orbiter.Orbiter attribute)</a>
+</li>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.terminal_phi">terminal_phi (AMAT.orbiter.Orbiter attribute)</a>
+</li>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.terminal_phi_bi">terminal_phi_bi (AMAT.orbiter.Orbiter attribute)</a>
+</li>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.terminal_psi">terminal_psi (AMAT.orbiter.Orbiter attribute)</a>
+</li>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.terminal_psi_bi">terminal_psi_bi (AMAT.orbiter.Orbiter attribute)</a>
+</li>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.terminal_r">terminal_r (AMAT.orbiter.Orbiter attribute)</a>
+</li>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.terminal_r_bi">terminal_r_bi (AMAT.orbiter.Orbiter attribute)</a>
+</li>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.terminal_r_hat_vec">terminal_r_hat_vec (AMAT.orbiter.Orbiter attribute)</a>, <a href="api_reference.html#AMAT.orbiter.Orbiter.terminal_r_hat_vec">[1]</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.terminal_r_vec">terminal_r_vec (AMAT.orbiter.Orbiter attribute)</a>
+</li>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.terminal_theta">terminal_theta (AMAT.orbiter.Orbiter attribute)</a>
+</li>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.terminal_theta_bi">terminal_theta_bi (AMAT.orbiter.Orbiter attribute)</a>
+</li>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.terminal_v">terminal_v (AMAT.orbiter.Orbiter attribute)</a>
+</li>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.terminal_v_bi">terminal_v_bi (AMAT.orbiter.Orbiter attribute)</a>
+</li>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.terminal_v_ie_hat_vec">terminal_v_ie_hat_vec (AMAT.orbiter.Orbiter attribute)</a>
+</li>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.terminal_v_ie_vec">terminal_v_ie_vec (AMAT.orbiter.Orbiter attribute)</a>
+</li>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.terminal_v_vec">terminal_v_vec (AMAT.orbiter.Orbiter attribute)</a>
+</li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.theta0_deg">theta0_deg (AMAT.vehicle.Vehicle attribute)</a>
 </li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.theta_deg_eg">theta_deg_eg (AMAT.vehicle.Vehicle attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.theta_deg_en">theta_deg_en (AMAT.vehicle.Vehicle attribute)</a>
 </li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.theta_deg_full">theta_deg_full (AMAT.vehicle.Vehicle attribute)</a>
@@ -1061,6 +1164,8 @@
       <li><a href="api_reference.html#AMAT.maneuver.OrbiterOrbiterDeflection.theta_star_dv_space1">theta_star_dv_space1 (AMAT.maneuver.OrbiterOrbiterDeflection attribute)</a>
 </li>
       <li><a href="api_reference.html#AMAT.approach.Approach.theta_star_entry">theta_star_entry (AMAT.approach.Approach attribute)</a>
+</li>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.theta_star_exit">theta_star_exit (AMAT.orbiter.Orbiter attribute)</a>
 </li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.thetac">thetac (AMAT.vehicle.Vehicle attribute)</a>
 </li>
@@ -1100,6 +1205,14 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.v0_kms">v0_kms (AMAT.vehicle.Vehicle attribute)</a>
 </li>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.v_apoapsis_mag_coast">v_apoapsis_mag_coast (AMAT.orbiter.Orbiter attribute)</a>
+</li>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.v_apoapsis_mag_orbit">v_apoapsis_mag_orbit (AMAT.orbiter.Orbiter attribute)</a>
+</li>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.v_apoapsis_vec_coast">v_apoapsis_vec_coast (AMAT.orbiter.Orbiter attribute)</a>
+</li>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.v_apoapsis_vec_orbit">v_apoapsis_vec_orbit (AMAT.orbiter.Orbiter attribute)</a>
+</li>
       <li><a href="api_reference.html#AMAT.approach.Approach.v_entry_atm_mag">v_entry_atm_mag (AMAT.approach.Approach attribute)</a>
 </li>
       <li><a href="api_reference.html#AMAT.approach.Approach.v_entry_inertial_mag">v_entry_inertial_mag (AMAT.approach.Approach attribute)</a>
@@ -1136,6 +1249,8 @@
         <li><a href="api_reference.html#AMAT.maneuver.ProbeProbeDeflection.v_vec_dv_maneuver">(AMAT.maneuver.ProbeProbeDeflection attribute)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api_reference.html#AMAT.maneuver.OrbiterOrbiterDeflection.v_vec_dv_maneuver_mag">v_vec_dv_maneuver_mag (AMAT.maneuver.OrbiterOrbiterDeflection attribute)</a>
 
       <ul>
@@ -1144,8 +1259,6 @@
         <li><a href="api_reference.html#AMAT.maneuver.ProbeProbeDeflection.v_vec_dv_maneuver_mag">(AMAT.maneuver.ProbeProbeDeflection attribute)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api_reference.html#AMAT.maneuver.ProbeOrbiterDeflection.v_vec_dv_probe">v_vec_dv_probe (AMAT.maneuver.ProbeOrbiterDeflection attribute)</a>
 </li>
       <li><a href="api_reference.html#AMAT.maneuver.ProbeProbeDeflection.v_vec_dv_probe1">v_vec_dv_probe1 (AMAT.maneuver.ProbeProbeDeflection attribute)</a>
@@ -1170,6 +1283,8 @@
 </li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.vc">vc (AMAT.vehicle.Vehicle attribute)</a>
 </li>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.vehicle">vehicle (AMAT.orbiter.Orbiter attribute)</a>
+</li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle">Vehicle (class in AMAT.vehicle)</a>
 </li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.vehicleCopy">vehicleCopy (AMAT.vehicle.Vehicle attribute)</a>
@@ -1177,10 +1292,50 @@
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.vehicleID">vehicleID (AMAT.vehicle.Vehicle attribute)</a>
 </li>
       <li><a href="api_reference.html#AMAT.approach.Approach.vel_vec_bi">vel_vec_bi() (AMAT.approach.Approach method)</a>
+
+      <ul>
+        <li><a href="api_reference.html#AMAT.orbiter.Orbiter.vel_vec_bi">(AMAT.orbiter.Orbiter method)</a>
 </li>
+      </ul></li>
       <li><a href="api_reference.html#AMAT.approach.Approach.vel_vec_entry_atm">vel_vec_entry_atm() (AMAT.approach.Approach method)</a>
 </li>
       <li><a href="api_reference.html#AMAT.planet.Planet.Vref">Vref (AMAT.planet.Planet attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="X">X</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.x_coast_arr">x_coast_arr (AMAT.orbiter.Orbiter attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.x_orbit_arr">x_orbit_arr (AMAT.orbiter.Orbiter attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="Y">Y</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.y_coast_arr">y_coast_arr (AMAT.orbiter.Orbiter attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.y_orbit_arr">y_orbit_arr (AMAT.orbiter.Orbiter attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="Z">Z</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.z_coast_arr">z_coast_arr (AMAT.orbiter.Orbiter attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference.html#AMAT.orbiter.Orbiter.z_orbit_arr">z_orbit_arr (AMAT.orbiter.Orbiter attribute)</a>
 </li>
   </ul></td>
 </tr></table>
