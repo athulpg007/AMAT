@@ -13,7 +13,6 @@
 import numpy as np
 from AMAT.planet import Planet
 from AMAT.vehicle import Vehicle
-from mayavi import mlab
 
 from AMAT.approach import Approach
 
