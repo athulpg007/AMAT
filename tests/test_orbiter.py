@@ -63,7 +63,7 @@ class TestCoast:
 
 
 	def test_probe_delivery(self):
-		assert abs(self.orbiter.h_periapsis_probe/1e3 - -743.232968506448) < 1e-6
+		assert abs(self.orbiter.h_periapsis_probe/1e3 - -743.23) < 1e-2
 
 	def test_inertial_entry_speed(self):
 		assert abs(self.orbiter.v_bi_mag_probe_entry / 1e3 - 20.3808330) < 1e-6
