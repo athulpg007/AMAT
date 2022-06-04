@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>API Reference &mdash; AMAT v2.2.10 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <title>API Reference &mdash; AMAT v2.2.11 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
@@ -6800,7 +6800,10 @@ atmospheric entry interface, days</p>
 <em class="property">class </em><code class="sig-prename descclassname">AMAT.orbiter.</code><code class="sig-name descname">Orbiter</code><span class="sig-paren">(</span><em class="sig-param">vehicle</em>, <em class="sig-param">peri_alt_km</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.orbiter.Orbiter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the coast trajectory from atmospheric exit until
 apoapsis, the periapsis raise manuever dv, and the
-first full orbit trajectory post aerocapture.</p>
+first full orbit post aerocapture. Also computes the
+probe trajectory following a probe-targeting maneuver,
+probe atmospheric entry conditions, and the orbiter trajectory
+following an orbiter deflection manuever.</p>
 <dl class="attribute">
 <dt id="AMAT.orbiter.Orbiter.vehicle">
 <code class="sig-name descname">vehicle</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.vehicle" title="Permalink to this definition">¶</a></dt>
@@ -7079,7 +7082,7 @@ first full orbit trajectory post aerocapture.</p>
 <dl class="attribute">
 <dt id="AMAT.orbiter.Orbiter.a">
 <code class="sig-name descname">a</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.a" title="Permalink to this definition">¶</a></dt>
-<dd><p>final orbit semi-major axis, m</p>
+<dd><p>initial capture orbit semi-major axis, m</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"><p>float</p>
@@ -7090,7 +7093,7 @@ first full orbit trajectory post aerocapture.</p>
 <dl class="attribute">
 <dt id="AMAT.orbiter.Orbiter.e">
 <code class="sig-name descname">e</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.e" title="Permalink to this definition">¶</a></dt>
-<dd><p>final orbit eccentricity</p>
+<dd><p>initial capture orbit eccentricity</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"><p>float</p>
@@ -7101,7 +7104,7 @@ first full orbit trajectory post aerocapture.</p>
 <dl class="attribute">
 <dt id="AMAT.orbiter.Orbiter.i">
 <code class="sig-name descname">i</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.i" title="Permalink to this definition">¶</a></dt>
-<dd><p>final orbit inclination, rad</p>
+<dd><p>initial capture inclination, rad</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"><p>float</p>
@@ -7112,7 +7115,7 @@ first full orbit trajectory post aerocapture.</p>
 <dl class="attribute">
 <dt id="AMAT.orbiter.Orbiter.h">
 <code class="sig-name descname">h</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.h" title="Permalink to this definition">¶</a></dt>
-<dd><p>final orbit specific angular momentum, SI units</p>
+<dd><p>initial capture specific angular momentum, SI units</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"><p>float</p>
@@ -7123,7 +7126,7 @@ first full orbit trajectory post aerocapture.</p>
 <dl class="attribute">
 <dt id="AMAT.orbiter.Orbiter.OMEGA">
 <code class="sig-name descname">OMEGA</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.OMEGA" title="Permalink to this definition">¶</a></dt>
-<dd><p>final orbit RAAN, rad</p>
+<dd><p>initial capture RAAN, rad</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"><p>float</p>
@@ -7134,7 +7137,7 @@ first full orbit trajectory post aerocapture.</p>
 <dl class="attribute">
 <dt id="AMAT.orbiter.Orbiter.omega">
 <code class="sig-name descname">omega</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.omega" title="Permalink to this definition">¶</a></dt>
-<dd><p>final orbit AoP, rad</p>
+<dd><p>initial capture AoP, rad</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"><p>float</p>
@@ -7313,6 +7316,556 @@ in non-dimensional units in terms of planet radius (vehicle.planetObj.RP)</p>
 </dl>
 </dd></dl>
 
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.theta_star_probe_targeting">
+<code class="sig-name descname">theta_star_probe_targeting</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.theta_star_probe_targeting" title="Permalink to this definition">¶</a></dt>
+<dd><p>true anomaly of the probe targeting manuever, from the initial capture orbit
+[0, 2*pi], rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.a_probe_orbit">
+<code class="sig-name descname">a_probe_orbit</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.a_probe_orbit" title="Permalink to this definition">¶</a></dt>
+<dd><p>probe approach orbit semi-major axis, m</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.e_probe_orbit">
+<code class="sig-name descname">e_probe_orbit</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.e_probe_orbit" title="Permalink to this definition">¶</a></dt>
+<dd><p>probe approach eccentricity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.i_probe_orbit">
+<code class="sig-name descname">i_probe_orbit</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.i_probe_orbit" title="Permalink to this definition">¶</a></dt>
+<dd><p>probe approach inclination, rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.h_probe_orbit">
+<code class="sig-name descname">h_probe_orbit</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.h_probe_orbit" title="Permalink to this definition">¶</a></dt>
+<dd><p>probe approach  specific angular momentum, SI units</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.OMEGA_probe_orbit">
+<code class="sig-name descname">OMEGA_probe_orbit</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.OMEGA_probe_orbit" title="Permalink to this definition">¶</a></dt>
+<dd><p>probe approach  RAAN, rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.omega_probe_orbit">
+<code class="sig-name descname">omega_probe_orbit</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.omega_probe_orbit" title="Permalink to this definition">¶</a></dt>
+<dd><p>probe approach  AoP, rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.r_periapsis_probe">
+<code class="sig-name descname">r_periapsis_probe</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.r_periapsis_probe" title="Permalink to this definition">¶</a></dt>
+<dd><p>periapsis radius of probe approach trajectory, m</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.r_apoapsis_probe">
+<code class="sig-name descname">r_apoapsis_probe</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.r_apoapsis_probe" title="Permalink to this definition">¶</a></dt>
+<dd><p>apoapsis radius of probe approach trajectory, m</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.h_periapsis_probe">
+<code class="sig-name descname">h_periapsis_probe</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.h_periapsis_probe" title="Permalink to this definition">¶</a></dt>
+<dd><p>periapsis altitude of probe approach trajectory, m</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.h_EI">
+<code class="sig-name descname">h_EI</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.h_EI" title="Permalink to this definition">¶</a></dt>
+<dd><p>probe atmospheric interface altitude, m</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.r_EI">
+<code class="sig-name descname">r_EI</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.r_EI" title="Permalink to this definition">¶</a></dt>
+<dd><p>probe atmospheric interface radius, m</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.theta_star_probe_entry">
+<code class="sig-name descname">theta_star_probe_entry</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.theta_star_probe_entry" title="Permalink to this definition">¶</a></dt>
+<dd><p>true anomaly at probe atmospheric entry, rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.r_vec_bi_probe_entry">
+<code class="sig-name descname">r_vec_bi_probe_entry</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.r_vec_bi_probe_entry" title="Permalink to this definition">¶</a></dt>
+<dd><p>position vector at probe atmospheric entry, m</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.r_vec_bi_probe_entry_unit">
+<code class="sig-name descname">r_vec_bi_probe_entry_unit</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.r_vec_bi_probe_entry_unit" title="Permalink to this definition">¶</a></dt>
+<dd><p>unit position vector at probe atmospheric entry</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.r_vec_bi_probe_entry_mag">
+<code class="sig-name descname">r_vec_bi_probe_entry_mag</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.r_vec_bi_probe_entry_mag" title="Permalink to this definition">¶</a></dt>
+<dd><p>position vector magnitude at probe atmospheric entry, m</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.v_bi_vec_probe_entry">
+<code class="sig-name descname">v_bi_vec_probe_entry</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.v_bi_vec_probe_entry" title="Permalink to this definition">¶</a></dt>
+<dd><p>inertial velocity vector at probe atmospheric entry, m/s</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.v_bi_mag_probe_entry">
+<code class="sig-name descname">v_bi_mag_probe_entry</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.v_bi_mag_probe_entry" title="Permalink to this definition">¶</a></dt>
+<dd><p>inertial velocity magnitude at probe atmospheric entry, m/s</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.v_bi_vec_probe_entry_unit">
+<code class="sig-name descname">v_bi_vec_probe_entry_unit</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.v_bi_vec_probe_entry_unit" title="Permalink to this definition">¶</a></dt>
+<dd><p>unit inertial velocity vector at probe atmospheric entry, m/s</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.gamma_inertial_probe_entry">
+<code class="sig-name descname">gamma_inertial_probe_entry</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.gamma_inertial_probe_entry" title="Permalink to this definition">¶</a></dt>
+<dd><p>inertial flight-path angle at probe atmospheric entry, rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.latitude_probe_entry_bi">
+<code class="sig-name descname">latitude_probe_entry_bi</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.latitude_probe_entry_bi" title="Permalink to this definition">¶</a></dt>
+<dd><p>inertial latitude at probe atmospheric entry, rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.longitude_probe_entry_bi">
+<code class="sig-name descname">longitude_probe_entry_bi</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.longitude_probe_entry_bi" title="Permalink to this definition">¶</a></dt>
+<dd><p>inertial longitude at probe atmospheric entry, rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.v_vec_probe_entry_atm">
+<code class="sig-name descname">v_vec_probe_entry_atm</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.v_vec_probe_entry_atm" title="Permalink to this definition">¶</a></dt>
+<dd><p>atmosphere-relative velocity vector at probe atmospheric entry, m/s</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.v_mag_probe_entry_atm">
+<code class="sig-name descname">v_mag_probe_entry_atm</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.v_mag_probe_entry_atm" title="Permalink to this definition">¶</a></dt>
+<dd><p>atmosphere-relative velocity magnitude at probe atmospheric entry, m/s</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.v_vec_probe_entry_atm_unit">
+<code class="sig-name descname">v_vec_probe_entry_atm_unit</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.v_vec_probe_entry_atm_unit" title="Permalink to this definition">¶</a></dt>
+<dd><p>atmosphere-relative velocity unit vector at probe atmospheric entry, m/s</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.gamma_atm_probe_entry">
+<code class="sig-name descname">gamma_atm_probe_entry</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.gamma_atm_probe_entry" title="Permalink to this definition">¶</a></dt>
+<dd><p>atmosphere-relative flight-path angle at probe atmospheric entry, rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.v_atm_probe_entry_unit_proj">
+<code class="sig-name descname">v_atm_probe_entry_unit_proj</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.v_atm_probe_entry_unit_proj" title="Permalink to this definition">¶</a></dt>
+<dd><p>atmosphere-relative velocity unit vector projection on local horizontal plane</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.atm_probe_entry_local_latitude_parallel_vec_unit">
+<code class="sig-name descname">atm_probe_entry_local_latitude_parallel_vec_unit</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.atm_probe_entry_local_latitude_parallel_vec_unit" title="Permalink to this definition">¶</a></dt>
+<dd><p>local parallel of latitude unit vector at probe atmospheric entry interface</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.heading_atm_probe_entry">
+<code class="sig-name descname">heading_atm_probe_entry</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.heading_atm_probe_entry" title="Permalink to this definition">¶</a></dt>
+<dd><p>atmosphere-relative heading angle at probe atmospheric entry, rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.x_probe_arr">
+<code class="sig-name descname">x_probe_arr</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.x_probe_arr" title="Permalink to this definition">¶</a></dt>
+<dd><p>body-inertial x-coordinate positions of probe approach trajectory from
+probe targeting manuever until atmospheric entry
+in non-dimensional units in terms of planet radius (vehicle.planetObj.RP)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.y_probe_arr">
+<code class="sig-name descname">y_probe_arr</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.y_probe_arr" title="Permalink to this definition">¶</a></dt>
+<dd><p>body-inertial y-coordinate positions of probe approach trajectory from
+probe targeting manuever until atmospheric entry
+in non-dimensional units in terms of planet radius (vehicle.planetObj.RP)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.z_probe_arr">
+<code class="sig-name descname">z_probe_arr</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.z_probe_arr" title="Permalink to this definition">¶</a></dt>
+<dd><p>body-inertial z-coordinate positions of probe approach trajectory from
+probe targeting manuever until atmospheric entry
+in non-dimensional units in terms of planet radius (vehicle.planetObj.RP)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.dV_mag_probe_targeting">
+<code class="sig-name descname">dV_mag_probe_targeting</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.dV_mag_probe_targeting" title="Permalink to this definition">¶</a></dt>
+<dd><p>probe targeting maneuver delta-V magnitude, m/s</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.dV_vec_probe_targeting">
+<code class="sig-name descname">dV_vec_probe_targeting</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.dV_vec_probe_targeting" title="Permalink to this definition">¶</a></dt>
+<dd><p>probe targeting maneuver delta-V vector, m/s</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.theta_star_orbiter_defl">
+<code class="sig-name descname">theta_star_orbiter_defl</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.theta_star_orbiter_defl" title="Permalink to this definition">¶</a></dt>
+<dd><p>true anomaly of the orbiter deflection maneuever, from the probe targeting orbit
+[0, 2*pi], rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.a_orbiter_defl">
+<code class="sig-name descname">a_orbiter_defl</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.a_orbiter_defl" title="Permalink to this definition">¶</a></dt>
+<dd><p>orbiter deflection orbit semi-major axis, m</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.e_orbiter_defl">
+<code class="sig-name descname">e_orbiter_defl</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.e_orbiter_defl" title="Permalink to this definition">¶</a></dt>
+<dd><p>orbiter deflection orbit eccentricity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.i_orbiter_defl">
+<code class="sig-name descname">i_orbiter_defl</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.i_orbiter_defl" title="Permalink to this definition">¶</a></dt>
+<dd><p>orbiter deflection orbit inclination, rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.h_orbiter_defl">
+<code class="sig-name descname">h_orbiter_defl</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.h_orbiter_defl" title="Permalink to this definition">¶</a></dt>
+<dd><p>orbiter deflection orbit  specific angular momentum, SI units</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.OMEGA_orbiter_defl">
+<code class="sig-name descname">OMEGA_orbiter_defl</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.OMEGA_orbiter_defl" title="Permalink to this definition">¶</a></dt>
+<dd><p>orbiter deflection orbit  approach  RAAN, rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.omega_orbiter_defl">
+<code class="sig-name descname">omega_orbiter_defl</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.omega_orbiter_defl" title="Permalink to this definition">¶</a></dt>
+<dd><p>orbiter deflection  AoP, rad</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.r_periapsis_orbiter_defl">
+<code class="sig-name descname">r_periapsis_orbiter_defl</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.r_periapsis_orbiter_defl" title="Permalink to this definition">¶</a></dt>
+<dd><p>periapsis radius of orbiter deflection orbit trajectory, m</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.r_apoapsis_orbiter_defl">
+<code class="sig-name descname">r_apoapsis_orbiter_defl</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.r_apoapsis_orbiter_defl" title="Permalink to this definition">¶</a></dt>
+<dd><p>apoapsis radius of orbiter deflection orbit trajectory, m</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.h_periapsis_orbiter_defl">
+<code class="sig-name descname">h_periapsis_orbiter_defl</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.h_periapsis_orbiter_defl" title="Permalink to this definition">¶</a></dt>
+<dd><p>periapsis altitude of orbiter deflection orbit, m</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.x_orbiter_defl_arr">
+<code class="sig-name descname">x_orbiter_defl_arr</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.x_orbiter_defl_arr" title="Permalink to this definition">¶</a></dt>
+<dd><p>body-inertial x-coordinate positions of orbiter deflection trajectory
+in non-dimensional units in terms of planet radius (vehicle.planetObj.RP)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.y_orbiter_defl_arr">
+<code class="sig-name descname">y_orbiter_defl_arr</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.y_orbiter_defl_arr" title="Permalink to this definition">¶</a></dt>
+<dd><p>body-inertial y-coordinate positions of orbiter deflection trajectory
+in non-dimensional units in terms of planet radius (vehicle.planetObj.RP)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.z_orbiter_defl_arr">
+<code class="sig-name descname">z_orbiter_defl_arr</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.z_orbiter_defl_arr" title="Permalink to this definition">¶</a></dt>
+<dd><p>body-inertial z-coordinate positions of orbiter deflection trajectory
+in non-dimensional units in terms of planet radius (vehicle.planetObj.RP)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.dV_mag_orbiter_defl">
+<code class="sig-name descname">dV_mag_orbiter_defl</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.dV_mag_orbiter_defl" title="Permalink to this definition">¶</a></dt>
+<dd><p>orbiter deflection maneuver delta-V magnitude, m/s</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="AMAT.orbiter.Orbiter.dV_vec_orbiter_defl">
+<code class="sig-name descname">dV_vec_orbiter_defl</code><a class="headerlink" href="#AMAT.orbiter.Orbiter.dV_vec_orbiter_defl" title="Permalink to this definition">¶</a></dt>
+<dd><p>orbiter deflection maneuver delta-V vector, m/s</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="method">
 <dt id="AMAT.orbiter.Orbiter.compute_PRM_dv">
 <code class="sig-name descname">compute_PRM_dv</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.orbiter.Orbiter.compute_PRM_dv" title="Permalink to this definition">¶</a></dt>
@@ -7352,10 +7905,54 @@ from the propagated vehicle exit state.</p>
 <dl class="method">
 <dt id="AMAT.orbiter.Orbiter.compute_orbit_trajectory">
 <code class="sig-name descname">compute_orbit_trajectory</code><span class="sig-paren">(</span><em class="sig-param">num_points=601</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.orbiter.Orbiter.compute_orbit_trajectory" title="Permalink to this definition">¶</a></dt>
-<dd><p>Computes the coordinates of one full orbit after periapsis raise manuever</p>
+<dd><p>Computes the coordinates of initial capture orbit after periapsis raise manuever</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>num_points</strong> (<em>int</em>) – grid points for full final orbit trajectory</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.orbiter.Orbiter.compute_orbiter_deflection_trajectory">
+<code class="sig-name descname">compute_orbiter_deflection_trajectory</code><span class="sig-paren">(</span><em class="sig-param">theta_star</em>, <em class="sig-param">dV</em>, <em class="sig-param">num_points=601</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.orbiter.Orbiter.compute_orbiter_deflection_trajectory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the coordinates of orbiter deflection trajectory following an orbiter deflection manuever
+at theta_star of the probe approach trajectory orbit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>theta_star</strong> (<em>float</em>) – true anomaly of the probe approach trajectory orbit at which the orbiter deflection manuever
+is performed [0,2pi], rad</p></li>
+<li><p><strong>dV</strong> (<em>float</em>) – delta-V magnitude of the orbiter deflection manuever, along the direction
+of orbital velocity, can be positive or negative. Must be positive to
+raise the periapsis outside the atmosphere. m/s</p></li>
+<li><p><strong>num_points</strong> (<em>int</em>) – number of grid points for the orbiter deflection trajectory</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.orbiter.Orbiter.compute_post_PRM_orbital_elements">
+<code class="sig-name descname">compute_post_PRM_orbital_elements</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.orbiter.Orbiter.compute_post_PRM_orbital_elements" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the orbit elements for orbit with periapsis raised</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.orbiter.Orbiter.compute_probe_targeting_trajectory">
+<code class="sig-name descname">compute_probe_targeting_trajectory</code><span class="sig-paren">(</span><em class="sig-param">theta_star</em>, <em class="sig-param">dV</em>, <em class="sig-param">num_points=301</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.orbiter.Orbiter.compute_probe_targeting_trajectory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the coordinates of probe approach trajectory following a probe targeting manuever
+at theta_star of the initial capture orbit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>theta_star</strong> (<em>float</em>) – true anomaly of the initial capture orbit at which the probe targeting maneuever
+is performed [0,2pi], rad</p></li>
+<li><p><strong>dV</strong> (<em>float</em>) – delta-V magnitude of the probe targeting maneuver, along the direction
+of orbital velocity, can be positive or negative. Must be negative to
+deliver probe into the atmosphere from the initial capture orbit. m/s</p></li>
+<li><p><strong>num_points</strong> (<em>int</em>) – number of grid points for the probe approach trajectory</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -7379,9 +7976,39 @@ for a specified true-anomaly.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="AMAT.orbiter.Orbiter.post_PRM_orbital_elements">
-<code class="sig-name descname">post_PRM_orbital_elements</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.orbiter.Orbiter.post_PRM_orbital_elements" title="Permalink to this definition">¶</a></dt>
-<dd><p>Computes the orbit elements for orbit with periapsis raised</p>
+<dt id="AMAT.orbiter.Orbiter.pos_vec_bi_orbiter_defl">
+<code class="sig-name descname">pos_vec_bi_orbiter_defl</code><span class="sig-paren">(</span><em class="sig-param">theta_star</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.orbiter.Orbiter.pos_vec_bi_orbiter_defl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the position vector in body-inertial frame
+of the orbiter deflection trajectory for a specified true-anomaly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>theta_star</strong> (<em>float</em>) – true anomaly, rad</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>pos_vec_bi</strong> – position vector in body-inertial frame, meters</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.orbiter.Orbiter.pos_vec_bi_probe">
+<code class="sig-name descname">pos_vec_bi_probe</code><span class="sig-paren">(</span><em class="sig-param">theta_star</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.orbiter.Orbiter.pos_vec_bi_probe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the position vector in body-inertial frame
+of the probe trajectory for a specified true-anomaly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>theta_star</strong> (<em>float</em>) – true anomaly, rad</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>pos_vec_bi</strong> – position vector in body-inertial frame, meters</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -7404,7 +8031,7 @@ for a specified true-anomaly.</p>
 <dl class="method">
 <dt id="AMAT.orbiter.Orbiter.vel_vec_bi">
 <code class="sig-name descname">vel_vec_bi</code><span class="sig-paren">(</span><em class="sig-param">theta_star</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.orbiter.Orbiter.vel_vec_bi" title="Permalink to this definition">¶</a></dt>
-<dd><p>Computes the velocity vector magnitude in body-inertial frame at a given true anomaly.</p>
+<dd><p>Computes the velocity vector in body-inertial frame at a given true anomaly.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>theta_star</strong> (<em>float</em>) – true anomaly, rad</p>
@@ -7414,6 +8041,40 @@ for a specified true-anomaly.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.orbiter.Orbiter.vel_vec_bi_probe">
+<code class="sig-name descname">vel_vec_bi_probe</code><span class="sig-paren">(</span><em class="sig-param">theta_star</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.orbiter.Orbiter.vel_vec_bi_probe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the velocity vector  in body-inertial frame for the probe trajectory
+at a given true anomaly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>theta_star</strong> (<em>float</em>) – true anomaly, rad</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>vel_vec_bi</strong> – velocity vector in body-inertial frame, m/s</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.orbiter.Orbiter.vel_vec_probe_entry_atm">
+<code class="sig-name descname">vel_vec_probe_entry_atm</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.orbiter.Orbiter.vel_vec_probe_entry_atm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the atmosphere-relative velocity vector magnitude in body-inertial frame
+of the probe at atmospheric entry interface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>vel_vec_entry_atm</strong> – atmosphere-relative velocity vector in body-inertial frame, at
+atmospheric entry interface, m/s</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>numpy.ndarray</p>
 </dd>
 </dl>
 </dd></dl>
