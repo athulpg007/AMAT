@@ -35,7 +35,7 @@ setup(name='AMAT',
     ],
 
 
-    include_package_data=True,
+    include_package_data=False,
     
     package_data = {
       'AMAT' : ['tests/*']

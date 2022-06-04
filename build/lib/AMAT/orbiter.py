@@ -4,17 +4,27 @@
 # DATE MODIFIED   : 06/01/2022 07:51 MT
 # REMARKS         : Compute the coast trajectory from atmospheric exit until
 #					apoapsis, the periapsis raise manuever dv, and the
-#   				first full orbit post aerocapture.
-
+#   				first full orbit post aerocapture. Also computes the
+#					probe trajectory following a probe-targeting maneuver,
+#					probe atmospheric entry conditions, and the orbiter trajectory
+#					following an orbiter deflection manuever.
 
 
 import numpy as np
+from AMAT.planet import Planet
+from AMAT.vehicle import Vehicle
+from mayavi import mlab
+
+from AMAT.approach import Approach
 
 class Orbiter:
 	"""
 	Compute the coast trajectory from atmospheric exit until
 	apoapsis, the periapsis raise manuever dv, and the
-	first full orbit trajectory post aerocapture.
+	first full orbit post aerocapture. Also computes the
+	probe trajectory following a probe-targeting maneuver,
+	probe atmospheric entry conditions, and the orbiter trajectory
+	following an orbiter deflection manuever.
 
 	Attributes
 	----------
@@ -69,17 +79,17 @@ class Orbiter:
 	terminal_h : float
 		orbit specific angular momentum scalar at atmospheric exit
 	a : float
-		final orbit semi-major axis, m
+		initial capture orbit semi-major axis, m
 	e : float
-		final orbit eccentricity
+		initial capture orbit eccentricity
 	i : float
-		final orbit inclination, rad
+		initial capture inclination, rad
 	h : float
-		final orbit specific angular momentum, SI units
+		initial capture specific angular momentum, SI units
 	OMEGA : float
-		final orbit RAAN, rad
+		initial capture RAAN, rad
 	omega : float
-		final orbit AoP, rad
+		initial capture AoP, rad
 	theta_star_exit : float
 		true anomaly at atmospheric exit, rad
 	x_coast_arr : numpy.ndarray
@@ -116,7 +126,115 @@ class Orbiter:
 	z_orbit_arr : numpy.ndarray
 		body-inertial z-coordinate positions of one full final orbit after PRM
 		in non-dimensional units in terms of planet radius (vehicle.planetObj.RP)
-
+	theta_star_probe_targeting : float
+		true anomaly of the probe targeting manuever, from the initial capture orbit
+		[0, 2*pi], rad
+	a_probe_orbit : float
+		probe approach orbit semi-major axis, m
+	e_probe_orbit : float
+		probe approach eccentricity
+	i_probe_orbit : float
+		probe approach inclination, rad
+	h_probe_orbit : float
+		probe approach  specific angular momentum, SI units
+	OMEGA_probe_orbit  : float
+		probe approach  RAAN, rad
+	omega_probe_orbit : float
+		probe approach  AoP, rad
+	r_periapsis_probe : float
+		periapsis radius of probe approach trajectory, m
+	r_apoapsis_probe : float
+		apoapsis radius of probe approach trajectory, m
+	h_periapsis_probe : float
+		periapsis altitude of probe approach trajectory, m
+	h_EI : float
+		probe atmospheric interface altitude, m
+	r_EI : float
+		probe atmospheric interface radius, m
+	theta_star_probe_entry : float
+		true anomaly at probe atmospheric entry, rad
+	r_vec_bi_probe_entry : numpy.ndarray
+		position vector at probe atmospheric entry, m
+	r_vec_bi_probe_entry_unit : numpy.ndarray
+		unit position vector at probe atmospheric entry
+	r_vec_bi_probe_entry_mag : float
+		position vector magnitude at probe atmospheric entry, m
+	v_bi_vec_probe_entry : numpy.ndarray
+		inertial velocity vector at probe atmospheric entry, m/s
+	v_bi_mag_probe_entry : float
+	 	inertial velocity magnitude at probe atmospheric entry, m/s
+	v_bi_vec_probe_entry_unit : numpy.ndarray
+		unit inertial velocity vector at probe atmospheric entry, m/s
+	gamma_inertial_probe_entry : float
+		inertial flight-path angle at probe atmospheric entry, rad
+	latitude_probe_entry_bi : float
+		inertial latitude at probe atmospheric entry, rad
+	longitude_probe_entry_bi : float
+		inertial longitude at probe atmospheric entry, rad
+	v_vec_probe_entry_atm : numpy.ndarray
+		atmosphere-relative velocity vector at probe atmospheric entry, m/s
+	v_mag_probe_entry_atm : float
+		atmosphere-relative velocity magnitude at probe atmospheric entry, m/s
+	v_vec_probe_entry_atm_unit : numpy.ndarray
+		atmosphere-relative velocity unit vector at probe atmospheric entry, m/s
+	gamma_atm_probe_entry : float
+		atmosphere-relative flight-path angle at probe atmospheric entry, rad
+	v_atm_probe_entry_unit_proj : numpy.ndarray
+		atmosphere-relative velocity unit vector projection on local horizontal plane
+	atm_probe_entry_local_latitude_parallel_vec_unit : numpy.ndarray
+		local parallel of latitude unit vector at probe atmospheric entry interface
+	heading_atm_probe_entry : float
+		atmosphere-relative heading angle at probe atmospheric entry, rad
+	x_probe_arr : numpy.ndarray
+		body-inertial x-coordinate positions of probe approach trajectory from
+		probe targeting manuever until atmospheric entry
+		in non-dimensional units in terms of planet radius (vehicle.planetObj.RP)
+	y_probe_arr : numpy.ndarray
+		body-inertial y-coordinate positions of probe approach trajectory from
+		probe targeting manuever until atmospheric entry
+		in non-dimensional units in terms of planet radius (vehicle.planetObj.RP)
+	z_probe_arr : numpy.ndarray
+		body-inertial z-coordinate positions of probe approach trajectory from
+		probe targeting manuever until atmospheric entry
+		in non-dimensional units in terms of planet radius (vehicle.planetObj.RP)
+	dV_mag_probe_targeting : float
+		probe targeting maneuver delta-V magnitude, m/s
+	dV_vec_probe_targeting : float
+		probe targeting maneuver delta-V vector, m/s
+	theta_star_orbiter_defl : float
+		true anomaly of the orbiter deflection maneuever, from the probe targeting orbit
+		[0, 2*pi], rad
+	a_orbiter_defl : float
+		orbiter deflection orbit semi-major axis, m
+	e_orbiter_defl : float
+		orbiter deflection orbit eccentricity
+	i_orbiter_defl : float
+		orbiter deflection orbit inclination, rad
+	h_orbiter_defl : float
+		orbiter deflection orbit  specific angular momentum, SI units
+	OMEGA_orbiter_defl  : float
+		orbiter deflection orbit  approach  RAAN, rad
+	omega_orbiter_defl : float
+		orbiter deflection  AoP, rad
+	r_periapsis_orbiter_defl : float
+		periapsis radius of orbiter deflection orbit trajectory, m
+	r_apoapsis_orbiter_defl : float
+		apoapsis radius of orbiter deflection orbit trajectory, m
+	h_periapsis_orbiter_defl : float
+		periapsis altitude of orbiter deflection orbit, m
+	x_orbiter_defl_arr : numpy.ndarray
+		body-inertial x-coordinate positions of orbiter deflection trajectory
+		in non-dimensional units in terms of planet radius (vehicle.planetObj.RP)
+	y_orbiter_defl_arr : numpy.ndarray
+		body-inertial y-coordinate positions of orbiter deflection trajectory
+		in non-dimensional units in terms of planet radius (vehicle.planetObj.RP)
+	z_orbiter_defl_arr : numpy.ndarray
+		body-inertial z-coordinate positions of orbiter deflection trajectory
+		in non-dimensional units in terms of planet radius (vehicle.planetObj.RP)
+	dV_mag_orbiter_defl : float
+		orbiter deflection maneuver delta-V magnitude, m/s
+	dV_vec_orbiter_defl : float
+		orbiter deflection maneuver delta-V vector, m/s
 	"""
 
 	def __init__(self, vehicle, peri_alt_km):
@@ -139,7 +257,7 @@ class Orbiter:
 		self.compute_coast_orbital_elements()
 		self.compute_theta_star_exit()
 		self.compute_coast_trajectory()
-		self.post_PRM_orbital_elements()
+		self.compute_post_PRM_orbital_elements()
 		self.compute_PRM_dv()
 		self.compute_orbit_trajectory()
 
@@ -303,9 +421,61 @@ class Orbiter:
 		pos_vec_bi = r*np.array([rx_unit, ry_unit, rz_unit])
 		return pos_vec_bi
 
+	def pos_vec_bi_probe(self, theta_star):
+		"""
+		Computes the position vector in body-inertial frame
+		of the probe trajectory for a specified true-anomaly.
+
+		Parameters
+		----------
+		theta_star : float
+			true anomaly, rad
+
+		Returns
+		-------
+		pos_vec_bi : numpy.ndarray
+			position vector in body-inertial frame, meters
+		"""
+
+		r = (self.h_probe_orbit**2 / self.vehicle.planetObj.GM) / (1 + self.e_probe_orbit*np.cos(theta_star))
+		theta = theta_star + self.omega
+
+		rx_unit = np.cos(self.OMEGA_probe_orbit)*np.cos(theta) - np.sin(self.OMEGA_probe_orbit)*np.cos(self.i)*np.sin(theta)
+		ry_unit = np.sin(self.OMEGA_probe_orbit)*np.cos(theta) + np.cos(self.OMEGA_probe_orbit)*np.cos(self.i)*np.sin(theta)
+		rz_unit = np.sin(self.i_probe_orbit)*np.sin(theta)
+
+		pos_vec_bi = r*np.array([rx_unit, ry_unit, rz_unit])
+		return pos_vec_bi
+
+	def pos_vec_bi_orbiter_defl(self, theta_star):
+		"""
+		Computes the position vector in body-inertial frame
+		of the orbiter deflection trajectory for a specified true-anomaly.
+
+		Parameters
+		----------
+		theta_star : float
+			true anomaly, rad
+
+		Returns
+		-------
+		pos_vec_bi : numpy.ndarray
+			position vector in body-inertial frame, meters
+		"""
+
+		r = (self.h_orbiter_defl**2 / self.vehicle.planetObj.GM) / (1 + self.e_orbiter_defl*np.cos(theta_star))
+		theta = theta_star + self.omega
+
+		rx_unit = np.cos(self.OMEGA_orbiter_defl)*np.cos(theta) - np.sin(self.OMEGA_orbiter_defl)*np.cos(self.i_orbiter_defl)*np.sin(theta)
+		ry_unit = np.sin(self.OMEGA_orbiter_defl)*np.cos(theta) + np.cos(self.OMEGA_orbiter_defl)*np.cos(self.i_orbiter_defl)*np.sin(theta)
+		rz_unit = np.sin(self.i_orbiter_defl)*np.sin(theta)
+
+		pos_vec_bi = r*np.array([rx_unit, ry_unit, rz_unit])
+		return pos_vec_bi
+
 	def vel_vec_bi(self, theta_star):
 		"""
-		Computes the velocity vector magnitude in body-inertial frame at a given true anomaly.
+		Computes the velocity vector in body-inertial frame at a given true anomaly.
 
 		Parameters
 		----------
@@ -335,6 +505,44 @@ class Orbiter:
 		     vt*( np.cos(theta)*np.cos(self.i)*np.cos(self.OMEGA) - np.sin(theta)*np.sin(self.OMEGA))
 
 		vz = vr*np.sin(theta)*np.sin(self.i) + vt*np.cos(theta)*np.sin(self.i)
+
+		vel_vec_bi = np.array([vx, vy, vz])
+		return vel_vec_bi
+
+
+	def vel_vec_bi_probe(self, theta_star):
+		"""
+		Computes the velocity vector  in body-inertial frame for the probe trajectory
+		at a given true anomaly.
+
+		Parameters
+		----------
+		theta_star : float
+			true anomaly, rad
+
+		Returns
+		-------
+		vel_vec_bi : numpy.ndarray
+			velocity vector in body-inertial frame, m/s
+
+		"""
+
+		r_mag_bi = np.linalg.norm(self.pos_vec_bi_probe(theta_star))
+		v_mag_bi = np.sqrt(self.vehicle.planetObj.GM*(2/r_mag_bi - 1/self.a_probe_orbit))
+
+		gamma = -1*np.arccos(self.h_probe_orbit/(r_mag_bi*v_mag_bi*1.0000001))
+
+		vr = v_mag_bi*np.sin(gamma)
+		vt = v_mag_bi*np.cos(gamma)
+		theta = theta_star + self.omega_probe_orbit
+
+		vx = vr*( np.cos(theta)*np.cos(self.OMEGA_probe_orbit) - np.sin(theta)*np.cos(self.i_probe_orbit)*np.sin(self.OMEGA_probe_orbit)) +\
+		     vt*(-np.sin(theta)*np.cos(self.OMEGA_probe_orbit) - np.cos(theta)*np.cos(self.i_probe_orbit)*np.sin(self.OMEGA_probe_orbit))
+
+		vy = vr*( np.cos(theta)*np.sin(self.OMEGA_probe_orbit) + np.sin(theta)*np.cos(self.i_probe_orbit)*np.cos(self.OMEGA_probe_orbit)) +\
+		     vt*( np.cos(theta)*np.cos(self.i_probe_orbit)*np.cos(self.OMEGA_probe_orbit) - np.sin(theta)*np.sin(self.OMEGA_probe_orbit))
+
+		vz = vr*np.sin(theta)*np.sin(self.i_probe_orbit) + vt*np.cos(theta)*np.sin(self.i_probe_orbit)
 
 		vel_vec_bi = np.array([vx, vy, vz])
 		return vel_vec_bi
@@ -370,7 +578,7 @@ class Orbiter:
 		self.v_apoapsis_vec_coast = self.vel_vec_bi(np.pi)
 		self.v_apoapsis_mag_coast = np.linalg.norm(self.v_apoapsis_vec_coast)
 
-	def post_PRM_orbital_elements(self):
+	def compute_post_PRM_orbital_elements(self):
 		"""
 		Computes the orbit elements for orbit with periapsis raised
 		"""
@@ -392,7 +600,7 @@ class Orbiter:
 
 	def compute_orbit_trajectory(self, num_points=601):
 		"""
-		Computes the coordinates of one full orbit after periapsis raise manuever
+		Computes the coordinates of initial capture orbit after periapsis raise manuever
 
 		Parameters
 		----------
@@ -407,3 +615,356 @@ class Orbiter:
 		self.x_orbit_arr = pos_vec_bi_arr[0][:]
 		self.y_orbit_arr = pos_vec_bi_arr[1][:]
 		self.z_orbit_arr = pos_vec_bi_arr[2][:]
+
+	def vel_vec_probe_entry_atm(self):
+		"""
+		Computes the atmosphere-relative velocity vector magnitude in body-inertial frame
+		of the probe at atmospheric entry interface.
+
+		Parameters
+		----------
+
+		Returns
+		-------
+		vel_vec_entry_atm : numpy.ndarray
+			atmosphere-relative velocity vector in body-inertial frame, at
+			atmospheric entry interface, m/s
+
+		"""
+		v_entry_atm_x = self.v_bi_vec_probe_entry[0] - \
+		          self.r_vec_bi_probe_entry_mag * self.vehicle.planetObj.OMEGA * \
+		          np.cos(self.latitude_probe_entry_bi) * (-np.sin(self.longitude_probe_entry_bi))
+		v_entry_atm_y = self.v_bi_vec_probe_entry[1] - \
+		          self.r_vec_bi_probe_entry_mag * self.vehicle.planetObj.OMEGA * \
+		          np.cos(self.latitude_probe_entry_bi) * (np.cos(self.longitude_probe_entry_bi))
+		v_entry_atm_z = self.v_bi_vec_probe_entry[2]
+
+		vel_vec_entry_atm = np.array([v_entry_atm_x, v_entry_atm_y, v_entry_atm_z])
+		return vel_vec_entry_atm
+
+
+	def compute_probe_targeting_trajectory(self, theta_star, dV, num_points=301):
+		"""
+		Computes the coordinates of probe approach trajectory following a probe targeting manuever
+		at theta_star of the initial capture orbit.
+
+		Parameters
+		----------
+		theta_star : float
+			true anomaly of the initial capture orbit at which the probe targeting maneuever
+			is performed [0,2pi], rad
+		dV : float
+			delta-V magnitude of the probe targeting maneuver, along the direction
+			of orbital velocity, can be positive or negative. Must be negative to
+			deliver probe into the atmosphere from the initial capture orbit. m/s
+		num_points : int
+			number of grid points for the probe approach trajectory
+		"""
+
+		self.theta_star_probe_targeting = theta_star
+		self.dV_mag_probe_targeting = dV
+
+		# Compute state vector (r1,v1) at theta_star before manuever
+		r_vec_1 = self.pos_vec_bi(theta_star)
+		v_vec_1 = self.vel_vec_bi(theta_star)
+
+		# Compute state vector (r2, v2) after applying dV
+		r_vec_2 = r_vec_1
+		v_vec_2 = v_vec_1 + dV*v_vec_1/(np.linalg.norm(v_vec_1))
+
+		self.dV_vec_probe_targeting =  dV*v_vec_1/(np.linalg.norm(v_vec_1))
+
+		r2 = np.linalg.norm(r_vec_2)
+		v2 = np.linalg.norm(v_vec_2)
+
+		r_vec_2_unit = r_vec_2 / np.linalg.norm(r_vec_2)
+		v_vec_2_unit = v_vec_2 / np.linalg.norm(v_vec_2)
+
+		ie_fpa_2_deg     = 90.0 - (180 / np.pi) * \
+								   np.arccos(np.dot(r_vec_2_unit, v_vec_2_unit))
+		ie_fpa_2_rad     = ie_fpa_2_deg*np.pi/180
+
+		# Compute orbit energy and angular momentum post manueuver
+		self.E_post_maneuver = self.vehicle.computeEnergyScalar(r2, v2)
+		self.h_post_maneuver = self.vehicle.computeAngMomScalar(r2, v2, ie_fpa_2_rad)
+
+		# Compute semi-major axis and eccentricity of the probe orbit
+		self.a_probe_orbit = self.vehicle.computeSemiMajorAxisScalar(self.E_post_maneuver)
+		self.e_probe_orbit = self.vehicle.computeEccScalar(self.h_post_maneuver, self.E_post_maneuver)
+		self.h_probe_orbit = np.sqrt(self.a_probe_orbit * self.vehicle.planetObj.GM * (1 - self.e_probe_orbit ** 2))
+
+		self.h_vec_bi_probe_orbit = np.cross(r_vec_2, v_vec_2)
+		self.h_vec_bi_unit_probe_orbit = self.h_vec_bi_probe_orbit / np.linalg.norm(self.h_vec_bi_probe_orbit)
+
+		self.i_probe_orbit = np.arccos(self.h_vec_bi_unit_probe_orbit[2])
+
+		self.N_vec_bi_probe_orbit = np.cross(np.array([0, 0, 1]), self.h_vec_bi_probe_orbit)
+		self.N_vec_bi_unit_probe_orbit = self.N_vec_bi_probe_orbit / np.linalg.norm(self.N_vec_bi_probe_orbit)
+
+		if self.N_vec_bi_unit_probe_orbit[1] >= 0:
+			self.OMEGA_probe_orbit = np.arccos(self.N_vec_bi_unit_probe_orbit[0])
+		else:
+			self.OMEGA_probe_orbit = 2 * np.pi - np.arccos(self.N_vec_bi_unit_probe_orbit[0])
+
+		self.e_vec_bi_probe_orbit = ((v2 ** 2 - self.vehicle.planetObj.GM / r2) * r_vec_2 - \
+						 			np.dot(r_vec_2, v_vec_2) * v_vec_2) / self.vehicle.planetObj.GM
+
+		self.e_vec_bi_unit_probe_orbit = self.e_vec_bi_probe_orbit / np.linalg.norm(self.e_vec_bi_probe_orbit)
+
+		if self.e_vec_bi_unit_probe_orbit[2] >= 0:
+			self.omega_probe_orbit = np.arccos(np.dot(self.N_vec_bi_unit_probe_orbit, self.e_vec_bi_unit_probe_orbit))
+		else:
+			self.omega_probe_orbit = 2 * np.pi - np.arccos(np.dot(self.N_vec_bi_unit_probe_orbit, self.e_vec_bi_unit_probe_orbit))
+
+		self.r_periapsis_probe = self.a_probe_orbit * (1 - self.e_probe_orbit)
+		self.r_apoapsis_probe = self.a_probe_orbit * (1 + self.e_probe_orbit)
+		self.h_periapsis_probe = self.r_periapsis_probe - self.vehicle.planetObj.RP
+
+		if self.h_periapsis_probe < self.vehicle.planetObj.h_skip:
+			self.h_EI = self.vehicle.planetObj.h_skip
+			self.r_EI = self.vehicle.planetObj.RP + self.h_EI
+			self.theta_star_probe_entry = 2*np.pi - np.arccos(((self.h_probe_orbit ** 2 / (self.vehicle.planetObj.GM * self.r_EI)) - 1) * (1.0 / self.e_probe_orbit))
+
+			self.r_vec_bi_probe_entry = self.pos_vec_bi_probe(self.theta_star_probe_entry)
+			self.r_vec_bi_probe_entry_unit = self.r_vec_bi_probe_entry / np.linalg.norm(self.r_vec_bi_probe_entry)
+			self.r_vec_bi_probe_entry_mag = np.linalg.norm(self.r_vec_bi_probe_entry)
+
+			self.v_bi_vec_probe_entry = self.vel_vec_bi_probe(self.theta_star_probe_entry)
+			self.v_bi_mag_probe_entry = np.linalg.norm(self.v_bi_vec_probe_entry)
+			self.v_bi_vec_probe_entry_unit = self.v_bi_vec_probe_entry / self.v_bi_mag_probe_entry
+
+			self.gamma_inertial_probe_entry = -1 * np.arccos(self.h_probe_orbit / (self.r_EI * self.v_bi_mag_probe_entry))
+
+			self.latitude_probe_entry_bi = np.arcsin(self.r_vec_bi_probe_entry_unit[2])
+			self.longitude_probe_entry_bi = np.arctan(self.r_vec_bi_probe_entry_unit[1] / self.r_vec_bi_probe_entry_unit[0])
+
+			self.v_vec_probe_entry_atm = self.vel_vec_probe_entry_atm()
+			self.v_mag_probe_entry_atm = np.linalg.norm(self.v_vec_probe_entry_atm)
+			self.v_vec_probe_entry_atm_unit = self.v_vec_probe_entry_atm / self.v_mag_probe_entry_atm
+
+			self.gamma_atm_probe_entry = np.pi / 2 - np.arccos(np.dot(self.r_vec_bi_probe_entry_unit, self.v_bi_vec_probe_entry_unit))
+
+			self.v_atm_probe_entry_unit_proj = self.v_vec_probe_entry_atm_unit  - \
+											 np.dot(self.v_vec_probe_entry_atm_unit ,
+													self.r_vec_bi_probe_entry_unit) * self.r_vec_bi_probe_entry_unit
+
+			self.atm_probe_entry_local_latitude_parallel_vec_unit = np.array([-np.sin(self.longitude_probe_entry_bi),
+															  				   np.cos(self.longitude_probe_entry_bi),
+															  				   0.0])
+
+			self.heading_atm_probe_entry = np.arccos(np.dot(self.v_atm_probe_entry_unit_proj,
+													  self.atm_probe_entry_local_latitude_parallel_vec_unit))
+
+		else:
+			print("Probe orbit periapsis outside atmospheric skip altitude.")
+
+		theta_star_arr = np.linspace(theta_star, self.theta_star_probe_entry, num_points)
+		pos_vec_bi_arr = self.pos_vec_bi_probe(theta_star_arr) / self.vehicle.planetObj.RP
+
+		self.x_probe_orbit_arr = pos_vec_bi_arr[0][:]
+		self.y_probe_orbit_arr = pos_vec_bi_arr[1][:]
+		self.z_probe_orbit_arr = pos_vec_bi_arr[2][:]
+
+	def compute_orbiter_deflection_trajectory(self, theta_star, dV, num_points=601):
+		"""
+		Computes the coordinates of orbiter deflection trajectory following an orbiter deflection manuever
+		at theta_star of the probe approach trajectory orbit.
+
+		Parameters
+		----------
+		theta_star : float
+			true anomaly of the probe approach trajectory orbit at which the orbiter deflection manuever
+			is performed [0,2pi], rad
+		dV : float
+			delta-V magnitude of the orbiter deflection manuever, along the direction
+			of orbital velocity, can be positive or negative. Must be positive to
+			raise the periapsis outside the atmosphere. m/s
+		num_points : int
+			number of grid points for the orbiter deflection trajectory
+		"""
+
+		self.theta_star_orbiter_defl = theta_star
+		self.dV_mag_orbiter_deflection = dV
+
+
+		# Compute state vector (r1,v1) at theta_star before manuever
+		r_vec_1 = self.pos_vec_bi_probe(theta_star)
+		v_vec_1 = self.vel_vec_bi_probe(theta_star)
+
+		# Compute state vector (r2, v2) after applying dV
+		r_vec_2 = r_vec_1
+		v_vec_2 = v_vec_1 + dV * v_vec_1 / (np.linalg.norm(v_vec_1))
+
+		self.dV_vec_orbiter_deflection =  dV * v_vec_1 / (np.linalg.norm(v_vec_1))
+
+		r2 = np.linalg.norm(r_vec_2)
+		v2 = np.linalg.norm(v_vec_2)
+
+		r_vec_2_unit = r_vec_2 / np.linalg.norm(r_vec_2)
+		v_vec_2_unit = v_vec_2 / np.linalg.norm(v_vec_2)
+
+		ie_fpa_2_deg = 90.0 - (180 / np.pi) * \
+					   np.arccos(np.dot(r_vec_2_unit, v_vec_2_unit))
+		ie_fpa_2_rad = ie_fpa_2_deg * np.pi / 180
+
+		# Compute orbit energy and angular momentum for orbiter deflection trajectory
+		self.E_orbiter_defl = self.vehicle.computeEnergyScalar(r2, v2)
+		self.h_orbiter_defl = self.vehicle.computeAngMomScalar(r2, v2, ie_fpa_2_rad)
+
+		# Compute semi-major axis and eccentricity of the probe orbit
+		self.a_orbiter_defl = self.vehicle.computeSemiMajorAxisScalar(self.E_orbiter_defl)
+		self.e_orbiter_defl = self.vehicle.computeEccScalar(self.h_orbiter_defl, self.E_orbiter_defl)
+		self.h_orbiter_defl = np.sqrt(self.a_orbiter_defl * self.vehicle.planetObj.GM * (1 - self.e_orbiter_defl ** 2))
+
+		self.h_vec_bi_orbiter_defl  = np.cross(r_vec_2, v_vec_2)
+		self.h_vec_bi_unit_orbiter_defl  = self.h_vec_bi_orbiter_defl  / np.linalg.norm(self.h_vec_bi_orbiter_defl)
+
+		self.i_orbiter_defl = np.arccos(self.h_vec_bi_unit_orbiter_defl[2])
+
+		self.N_vec_bi_orbiter_defl = np.cross(np.array([0, 0, 1]), self.h_vec_bi_orbiter_defl)
+		self.N_vec_bi_unit_orbiter_defl = self.N_vec_bi_orbiter_defl / np.linalg.norm(self.N_vec_bi_orbiter_defl)
+
+		if self.N_vec_bi_unit_orbiter_defl[1] >= 0:
+			self.OMEGA_orbiter_defl = np.arccos(self.N_vec_bi_unit_orbiter_defl[0])
+		else:
+			self.OMEGA_orbiter_defl = 2 * np.pi - np.arccos(self.N_vec_bi_unit_orbiter_defl[0])
+
+		self.e_vec_bi_orbiter_defl = ((v2 ** 2 - self.vehicle.planetObj.GM / r2) * r_vec_2 -
+									 np.dot(r_vec_2, v_vec_2) * v_vec_2) / self.vehicle.planetObj.GM
+
+		self.e_vec_bi_unit_orbiter_defl =  self.e_vec_bi_orbiter_defl  / np.linalg.norm(self.e_vec_bi_orbiter_defl)
+
+		if self.e_vec_bi_unit_orbiter_defl[2] >= 0:
+			self.omega_orbiter_defl = np.arccos(np.dot(self.N_vec_bi_unit_orbiter_defl, self.e_vec_bi_unit_orbiter_defl))
+		else:
+			self.omega_orbiter_defl = 2 * np.pi - np.arccos(np.dot(self.N_vec_bi_unit_orbiter_defl, self.e_vec_bi_unit_orbiter_defl))
+
+		self.r_periapsis_orbiter_defl = self.a_orbiter_defl * (1 - self.e_orbiter_defl)
+		self.r_apoapsis_orbiter_defl = self.a_orbiter_defl* (1 + self.e_orbiter_defl)
+		self.h_periapsis_orbiter_defl = self.r_periapsis_orbiter_defl - self.vehicle.planetObj.RP
+
+		theta_star_arr = np.linspace(0, 2*np.pi, num_points)
+		pos_vec_bi_arr = self.pos_vec_bi_orbiter_defl(theta_star_arr) / self.vehicle.planetObj.RP
+
+		self.x_orbiter_defl_arr = pos_vec_bi_arr[0][:]
+		self.y_orbiter_defl_arr = pos_vec_bi_arr[1][:]
+		self.z_orbiter_defl_arr = pos_vec_bi_arr[2][:]
+
+		if self.h_periapsis_orbiter_defl < self.vehicle.planetObj.h_skip:
+			print("Periapsis inside atmospheric skip altitude.")
+
+
+class TestProbeDelivery:
+	planet = Planet("URANUS")
+	planet.h_skip = 1000e3
+	planet.loadAtmosphereModel('../atmdata/Uranus/uranus-gram-avg.dat', 0, 1, 2, 3, heightInKmFlag=True)
+	planet.h_low = 120e3
+	planet.h_trap = 100e3
+
+	vehicle = Vehicle('Titania', 3200.0, 146, 0.24, np.pi * 4.5 ** 2.0, 0.0, 1.125, planet)
+	vehicle.setInitialState(1000.0, -15.22, 75.55, 29.2877, 88.687, -11.0088, 0.0, 0.0)
+	vehicle.setSolverParams(1E-6)
+	vehicle.propogateEntry2(2400.0, 0.1, 180.0)
+
+	orbiter = Orbiter(vehicle, 4000.0)
+
+
+	def test_probe_delivery(self):
+		assert abs(self.orbiter.h_periapsis_probe/1e3 - -743.232968506448) < 1e-6
+
+	def test_inertial_entry_speed(self):
+		assert abs(self.orbiter.v_bi_mag_probe_entry / 1e3 - 20.3808330) < 1e-6
+
+	def test_inertial_gamma_entry(self):
+		assert abs(self.orbiter.gamma_inertial_probe_entry*180/np.pi - -14.482985116) < 1e-6
+
+	def test_atm_relative_entry_speed(self):
+		assert abs(self.orbiter.v_mag_probe_entry_atm/1e3 - 20.4058249) < 1e-6
+
+	def test_atm_gamma_entry(self):
+		assert abs(self.orbiter.gamma_atm_probe_entry*180/np.pi - -14.14625695788) < 1e-6
+
+	def test_atm_heading_entry(self):
+		assert abs(self.orbiter.heading_atm_probe_entry*180/np.pi - 87.162773860) < 1e-6
+
+	def test_probe_entry_state(self):
+		print("")
+		assert abs(self.orbiter.h_EI / 1e3 - 1000.0) < 1e-6
+		assert abs(round(self.orbiter.longitude_probe_entry_bi * 180 / np.pi, 2) - -10.96) < 1e-2
+		assert abs(round(self.orbiter.latitude_probe_entry_bi * 180 / np.pi, 2) - 67.25) < 1e-2
+		assert abs(round(self.orbiter.v_mag_probe_entry_atm / 1e3, 4) - 20.4058) < 1e-2
+		assert abs(round(self.orbiter.heading_atm_probe_entry * 180 / np.pi, 4) - 87.1628) < 1e-2
+		assert abs(round(self.orbiter.gamma_atm_probe_entry * 180 / np.pi, 4) - -14.1463) < 1e-2
+
+	def test_orbiter_deflection_trajectory_periapsis(self):
+		assert abs(self.orbiter.h_periapsis_orbiter_defl/1e3 - 4033.662882) < 1e-3
+
+
+	def test_plot_trajectories(self):
+		probe1 = Approach("URANUS",
+						  v_inf_vec_icrf_kms=np.array([-9.62521831, 16.51192666, 7.46493598]),
+						  rp=(25559 + 345) * 1e3, psi=np.pi,
+						  is_entrySystem=True, h_EI=1000e3)
+
+		theta_star_arr_probe1 = np.linspace(-1.8, probe1.theta_star_entry, 101)
+		pos_vec_bi_arr_probe1 = probe1.pos_vec_bi(theta_star_arr_probe1) / 25559e3
+
+		x_arr_probe1 = pos_vec_bi_arr_probe1[0][:]
+		y_arr_probe1 = pos_vec_bi_arr_probe1[1][:]
+		z_arr_probe1 = pos_vec_bi_arr_probe1[2][:]
+
+		planet = Planet("URANUS")
+		planet.h_skip = 1000e3
+		planet.loadAtmosphereModel('../atmdata/Uranus/uranus-gram-avg.dat', 0, 1, 2, 3, heightInKmFlag=True)
+		planet.h_low = 120e3
+		planet.h_trap = 100e3
+
+		vehicle = Vehicle('Titania', 3200.0, 146, 0.24, np.pi * 4.5 ** 2.0, 0.0, 1.125, planet)
+		vehicle.setInitialState(1000.0, -15.22, 75.55, 29.2877, 88.687, -11.0088, 0.0, 0.0)
+		vehicle.setSolverParams(1E-6)
+		vehicle.propogateEntry2(2400.0, 0.1, 180.0)
+
+
+		u = np.linspace(0, 2 * np.pi, 100)
+		v = np.linspace(0, np.pi, 100)
+		x = 1 * np.outer(np.cos(u), np.sin(v))
+		y = 1 * np.outer(np.sin(u), np.sin(v))
+		z = 1 * np.outer(np.ones(np.size(u)), np.cos(v))
+
+		x1 = 1.040381198513972 * np.outer(np.cos(u), np.sin(v))
+		y1 = 1.040381198513972 * np.outer(np.sin(u), np.sin(v))
+		z1 = 1.040381198513972 * np.outer(np.ones(np.size(u)), np.cos(v))
+
+		x_ring_1 = 1.4 * np.cos(u)
+		y_ring_1 = 1.4 * np.sin(u)
+		z_ring_1 = 0.0 * np.cos(u)
+
+		x_ring_2 = 1.6 * np.cos(u)
+		y_ring_2 = 1.6 * np.sin(u)
+		z_ring_2 = 0.0 * np.cos(u)
+
+		mlab.figure(bgcolor=(0, 0, 0))
+		s1 = mlab.mesh(x, y, z, color=(0.10, 0.55, 0.35))
+		s2 = mlab.mesh(x1, y1, z1, color=(0.2, 0.4, 0.4), opacity=0.3)
+		r1 = mlab.plot3d(x_ring_1, y_ring_1, z_ring_1, color=(1, 1, 1), line_width=1, tube_radius=None)
+		r2 = mlab.plot3d(x_ring_2, y_ring_2, z_ring_2, color=(1, 1, 1), line_width=1, tube_radius=None)
+
+		p1 = mlab.plot3d(x_arr_probe1, y_arr_probe1, z_arr_probe1, color=(1, 1, 1), line_width=3, tube_radius=None)
+
+		p2 = mlab.plot3d(self.orbiter.x_coast_arr,
+						 self.orbiter.y_coast_arr,
+						 self.orbiter.z_coast_arr, color=(1, 1, 0), line_width=3, tube_radius=None)
+
+		p3 = mlab.plot3d(self.orbiter.x_orbit_arr,
+						 self.orbiter.y_orbit_arr,
+						 self.orbiter.z_orbit_arr, color=(1, 0, 1), line_width=3, tube_radius=None)
+
+		p4 = mlab.plot3d(self.orbiter.x_probe_orbit_arr,
+						 self.orbiter.y_probe_orbit_arr,
+						 self.orbiter.z_probe_orbit_arr, color=(1, 0, 0), line_width=3, tube_radius=None)
+
+		p4 = mlab.plot3d(self.orbiter.x_orbiter_defl_arr,
+						 self.orbiter.y_orbiter_defl_arr,
+						 self.orbiter.z_orbiter_defl_arr, color=(0, 1, 0), line_width=3, tube_radius=None)
+
+		mlab.show()
