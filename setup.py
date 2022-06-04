@@ -38,10 +38,6 @@ setup(name='AMAT',
     include_package_data=True,
     
     package_data = {
-      'AMAT' : ['data/*'],
-      'AMAT' : ['docs/*'],
-      'AMAT' : ['examples/*'],
-      'AMAT' : ['plots/*'],
       'AMAT' : ['tests/*']
   },
       zip_safe=False)
