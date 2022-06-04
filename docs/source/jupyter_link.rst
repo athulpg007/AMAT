@@ -82,3 +82,4 @@ Example Jupyter Notebooks
    /examples/example-75-literature-survey-uranus-study.ipynb
    /examples/example-76-uranus-mission-concept-study.ipynb
    /examples/example-77-uranus-orbiter-coast-and-orbit.ipynb
+   /examples/example-78-uranus-orbiter-probe-targeting-and-orbiter-deflection-manuevers.ipynb
