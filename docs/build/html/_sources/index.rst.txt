@@ -39,6 +39,7 @@ For sub-routine documentation, see :ref:`modindex`
    capabilities
    jupyter_link
    jsr-notebooks
+   acta-astronautica
    api_reference
    contributions
    credits
