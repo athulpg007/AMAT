@@ -110,6 +110,28 @@ class TestPlanetConstants(unittest.TestCase):
 		self.assertAlmostEqual(planet7.GM, 5.793939E15,  places=4, msg="Check Uranus GM")
 		self.assertAlmostEqual(planet8.GM, 6.8365299E15, places=4, msg="Check Neptune GM")
 
+	def test_planet_RP(self):
+		"""
+		check GM values for all planet objects
+		"""
+		planet1 = Planet("VENUS")
+		planet2 = Planet("EARTH")
+		planet3 = Planet("MARS")
+		planet4 = Planet("JUPITER")
+		planet5 = Planet("SATURN")
+		planet6 = Planet("TITAN")
+		planet7 = Planet("URANUS")
+		planet8 = Planet("NEPTUNE")
+
+		self.assertAlmostEqual(planet1.RP, 6051.8000E3, delta=10e3, msg="Check Venus RP")
+		self.assertAlmostEqual(planet2.RP, 6371.0000E3, delta=10e3, msg="Check Earth RP")
+		self.assertAlmostEqual(planet3.RP, 3389.5000E3, delta=10e3, msg="Check Mars RP")
+		self.assertAlmostEqual(planet4.RP, 69911.0E3, delta=100e3, msg="Check Jupiter RP")
+		self.assertAlmostEqual(planet5.RP, 58232.0E3, delta=100e3, msg="Check Saturn RP")
+		self.assertAlmostEqual(planet6.RP, 2575.0000E3, delta=10e3, msg="Check Titan RP")
+		self.assertAlmostEqual(planet7.RP, 25559.0E3, delta=100e3, msg="Check Uranus RP")
+		self.assertAlmostEqual(planet8.RP, 24622.000E3, delta=100e3, msg="Check Neptune RP")
+
 	def test_planet_h_thres_h_trap(self):
 
 		"""
