@@ -3856,11 +3856,111 @@ class Vehicle:
 
 		return EFPALimit, exitflag
 
+	def findEFPALimitD2(self, t_sec, dt, gamma0_deg_guess_low, gamma0_deg_guess_high, gamma_deg_tol,
+					   targetApopasisAltitude_km):
+		"""
+		This function computes the limiting EFPA for drag modulation
+		aerocapture. Includes planetary rotation correction. Includes planet rotation.
+
+		A bisection algorithm is used to compute the limit.
+
+		Parameters
+		----------
+		t_sec : float
+			propogation time, seconds
+		dt : float
+			max. time step, seconds
+		gamma0_deg_guess_low : float
+			lower bound for the guess of limit FPA, deg
+		gamma0_deg_guess_high : float
+			upper bound for the guess of limit FPA, deg
+		gamma_deg_tol : float
+			desired accuracy for computation of the limit, deg
+		targetApopasisAltitude_km : float
+			target apoapsis altitude , km
+
+		Returns
+		----------
+		EFPALimit : float
+			limit EFPA, deg
+		exitflag : float
+			flag to indicate if a solution could not be found for the
+			limit EFPA
+
+		exitflag = 1.0 indicates over shoot limit was found.
+		exitflag = 0.0 indicates overshoot limit was not found
+		within user specified bounds.
+
+		"""
+		temp_var_1 = self.gamma0_deg
+		temp_var_2 = self.LD
+
+		delta_deg = 0.0
+
+		self.LD = 0.0
+
+		self.gamma0_deg = gamma0_deg_guess_low
+		ans1 = self.hitsTargetApoapsis2(t_sec, dt, delta_deg, targetApopasisAltitude_km)
+
+		self.gamma0_deg = gamma0_deg_guess_high
+		ans2 = self.hitsTargetApoapsis2(t_sec, dt, delta_deg, targetApopasisAltitude_km)
+
+		# if product of above flags is negative, then overshoot limit is within user
+		# specified bounds, proceed to bisection.
+		if ans1 * ans2 < 0:
+			# print("EFPA = "+str(gamma0_deg_guess_low)+ " deg. does not meet target \
+			# apoapsis altitude.")
+			# print("EFPA = "+str(gamma0_deg_guess_high)+" deg. exceeds target
+			# apoapsis altitude.")
+			# print("Undershoot limit is within user specified bounds. Beginning
+			# bisection search...")
+			# print("")
+			# bisection algorithm begins here, while abs(ub-lb)>tol continue bisection
+			while abs(gamma0_deg_guess_high - gamma0_deg_guess_low) > gamma_deg_tol:
+				gamma0_deg_guess_mid = 0.5 * (gamma0_deg_guess_low + gamma0_deg_guess_high)
+
+				self.gamma0_deg = gamma0_deg_guess_low
+				ans1 = self.hitsTargetApoapsis2(t_sec, dt, delta_deg, targetApopasisAltitude_km)
+
+				self.gamma0_deg = gamma0_deg_guess_mid
+				ans2 = self.hitsTargetApoapsis2(t_sec, dt, delta_deg, targetApopasisAltitude_km)
+
+				self.gamma0_deg = gamma0_deg_guess_high
+				ans3 = self.hitsTargetApoapsis2(t_sec, dt, delta_deg, targetApopasisAltitude_km)
+
+				if ans1 * ans2 < 0:
+					gamma0_deg_guess_high = gamma0_deg_guess_mid
+				elif ans2 * ans3 < 0:
+					gamma0_deg_guess_low = gamma0_deg_guess_mid
+
+				# print("EFPA = "+str(gamma0_deg_guess_low)+ " deg. does not meet\
+				# target apoapsis altitude.")
+				# print("EFPA = "+str(gamma0_deg_guess_high)+" deg. exceeds target\
+				# apoapsis altitude.")
+				# print("")
+
+				# set overShootLimit to lower bound
+				# set exitflag to 1.0
+				EFPALimit = gamma0_deg_guess_high
+				exitflag = 1.0
+
+		# if product of flags is positive, overshootlimit is outside user \
+		# specified bounds, print warning message.
+		else:
+			print("EFPA limit is outside user specified bounds.")
+			EFPALimit = 0.0
+			exitflag = 0.0
+
+		self.gamma0_deg = temp_var_1
+		self.LD = temp_var_2
+
+		return EFPALimit, exitflag
+
 	def findUnderShootLimitD(self, t_sec, dt, gamma0_deg_guess_low, gamma0_deg_guess_high, gamma_deg_tol,
 									targetApopasisAltitude_km):
 		"""
 		This function computes the limiting undershoot 
-		EFPA for drag modulation aerocapture.
+		EFPA for drag modulation aerocapture. Does not include planet rotation.
 
 		Parameters
 		-------------
@@ -3900,11 +4000,55 @@ class Vehicle:
 
 		return underShootLimitD, exitflagD_us
 
+	def findUnderShootLimitD2(self, t_sec, dt, gamma0_deg_guess_low, gamma0_deg_guess_high, gamma_deg_tol,
+							 targetApopasisAltitude_km):
+		"""
+		This function computes the limiting undershoot
+		EFPA for drag modulation aerocapture. Includes planet rotation.
+
+		Parameters
+		-------------
+		t_sec : float
+			propogation time, seconds
+		dt : float
+			max. time step, seconds
+		gamma0_deg_guess_low : float
+			lower bound for the guess of limit FPA, deg
+		gamma0_deg_guess_high : float
+			upper bound for the guess of limit FPA, deg
+		gamma_deg_tol : float
+			desired accuracy for computation of the limit, deg
+		targetApopasisAltitude_km : float
+			target apoapsis altitude , km
+
+		Returns
+		----------
+		underShootLimitD : float
+			undershoot limit EFPA, deg
+		exitflagD_us : float
+			flag to indicate if a solution could not be found for the
+			undershoot limit EFPA
+
+		exitflagD_us = 1.0 indicates undershoot limit was found.
+		exitflagD_us = 0.0 indicates undershoot limit was not found
+		within user specified bounds.
+
+		"""
+
+		self.beta = self.beta1 * self.betaRatio
+		self.CD = self.mass / (self.beta * self.A)
+
+		underShootLimitD, exitflagD_us = self.findEFPALimitD2(t_sec, dt, gamma0_deg_guess_low,
+															 gamma0_deg_guess_high, gamma_deg_tol,
+															 targetApopasisAltitude_km)
+
+		return underShootLimitD, exitflagD_us
+
 	def findOverShootLimitD(self, t_sec, dt, gamma0_deg_guess_low, gamma0_deg_guess_high, gamma_deg_tol,
 								targetApopasisAltitude_km):
 		"""
 		This function computes the limiting overshoot 
-		EFPA for drag modulation aerocapture.
+		EFPA for drag modulation aerocapture. Does not include planet rotation.
 
 		Parameters
 		------------
@@ -3943,11 +4087,55 @@ class Vehicle:
 		
 		return overShootLimitD, exitflagD_os
 
+	def findOverShootLimitD2(self, t_sec, dt, gamma0_deg_guess_low, gamma0_deg_guess_high, gamma_deg_tol,
+							targetApopasisAltitude_km):
+		"""
+		This function computes the limiting overshoot
+		EFPA for drag modulation aerocapture. Includes planet rotation.
+
+		Parameters
+		------------
+		t_sec : float
+			propogation time, seconds
+		dt : float
+			max. time step, seconds
+		gamma0_deg_guess_low : float
+			lower bound for the guess of limit FPA, deg
+		gamma0_deg_guess_high : float
+			upper bound for the guess of limit FPA, deg
+		gamma_deg_tol : float
+			desired accuracy for computation of the limit, deg
+		targetApopasisAltitude_km : float
+			target apoapsis altitude , km
+
+		Returns
+		----------
+		overShootLimitD : float
+			overshoot limit EFPA, deg
+		exitflagD_os : float
+			flag to indicate if a solution could not be found for the
+			overshoot limit EFPA
+
+		exitflagD_os = 1.0 indicates over shoot limit was found.
+		exitflagD_os = 0.0 indicates overshoot limit was not found
+		within user specified bounds.
+
+		"""
+		self.beta = self.beta1
+		self.CD = self.mass / (self.beta * self.A)
+
+		overShootLimitD, exitflagD_os = self.findEFPALimitD2(t_sec, dt, gamma0_deg_guess_low,
+															gamma0_deg_guess_high, gamma_deg_tol,
+															targetApopasisAltitude_km)
+		# print('overShootLimit: '+str(overShootLimitD))
+
+		return overShootLimitD, exitflagD_os
+
 	def computeTCWD(self, t_sec, dt, gamma0_deg_guess_low, gamma0_deg_guess_high,
 							gamma_deg_tol, targetApopasisAltitude_km):
 		"""
 		Computes the theoretical corridor width (TCWD) for 
-		drag modulation aerocapture.
+		drag modulation aerocapture. Does not include planet rotation.
 
 		TCWD = overShootLimit - underShootLimit
 		
@@ -3982,6 +4170,49 @@ class Vehicle:
 
 		TCWD = overshootLimitD-underShootLimitD
 		
+		return TCWD
+
+	def computeTCWD2(self, t_sec, dt, gamma0_deg_guess_low, gamma0_deg_guess_high,
+					gamma_deg_tol, targetApopasisAltitude_km):
+		"""
+		Computes the theoretical corridor width (TCWD) for
+		drag modulation aerocapture. Includes planet rotation.
+
+		TCWD = overShootLimit - underShootLimit
+
+		Parameters
+		------------
+		t_sec : float
+			propogation time, seconds
+		dt : float
+			max. time step, seconds
+		gamma0_deg_guess_low : float
+			lower bound for the EFPA guess, deg
+		gamma0_deg_guess_high : float
+			upper bound for the EFPA guess, deg
+		gamma_deg_tol : float
+			EFPA error tolerance
+		targetApopasisAltitude_km : float
+			target apoapsis altitude , km
+
+		Returns
+		----------
+		TCWD : float
+			Theoretical Corridor Width (Drag Modulation), deg
+		"""
+
+		underShootLimitD, exitflagD_us = self.findUnderShootLimitD2(t_sec, dt, gamma0_deg_guess_low,
+																   gamma0_deg_guess_high, gamma_deg_tol,
+																   targetApopasisAltitude_km)
+		overshootLimitD, exitflagD_os = self.findOverShootLimitD2(t_sec, dt, gamma0_deg_guess_low, \
+																 gamma0_deg_guess_high, gamma_deg_tol,
+																 targetApopasisAltitude_km)
+		# print('underShootLimitD: '+str(underShootLimitD))
+		# print('overShootLimitD : '+str(overshootLimitD))
+		# print('TCWD            : '+str(overshootLimitD-underShootLimitD))
+
+		TCWD = overshootLimitD - underShootLimitD
+
 		return TCWD
 
 	def createQPlot(self, t_sec, dt, delta_deg):
@@ -5956,7 +6187,217 @@ class Vehicle:
 		self.q_stag_total_en = q_stag_total
 		self.heatload_en     = heatload
 
-	
+	def propogateEntryPhaseD2(self, timeStep, dt, maxTimeSecs):
+		"""
+		Implements the entry phase of the guided drag modulation
+		aerocapture (Single-event discrete drag modulation).
+
+		The entry phase is defined from the atmospheric entry interface
+		till drag skirt jettison.
+
+		Parameters
+		--------
+		timeStep : float
+			Guidance cycle time, seconds
+		dt : float
+			Solver max. time step, seconds
+		maxTimeSecs : float
+			max. time for propogation, seconds
+
+		"""
+
+		# Set the ballistic coeff = beta1 for entry phase
+		# Re-calculate CD based on new beta value
+		self.beta = self.beta1
+		self.CD = self.mass / (self.beta * self.A)
+
+		# Initialize solution arrays
+		self.t_step_array = np.array([0.0])
+		self.delta_deg_array = np.array([0.0])
+		self.hdot_array = np.array([0.0])
+		self.hddot_array = np.array([0.0])
+		self.qref_array = np.array([0.0])
+		self.q_array = np.array([0.0])
+		self.h_step_array = np.array([0.0])
+		self.acc_step_array = np.array([0.0])
+		self.acc_drag_array = np.array([0.0])
+		self.density_mes_array = np.array([0.0])
+
+		# Propogate for 1 second from EI
+		self.propogateEntry2(1.0, dt, 0.0)
+
+		# Store solution at end of 1 sec
+		t_min = self.t_minc
+		h_km = self.h_kmc
+		v_kms = self.v_kmsc
+		phi_deg = self.phi_degc
+		psi_deg = self.psi_degc
+		theta_deg = self.theta_degc
+		gamma_deg = self.gamma_degc
+		drange_km = self.drange_kmc
+
+		acc_net_g = self.acc_net_g
+		dyn_pres_atm = self.dyn_pres_atm
+		stag_pres_atm = self.stag_pres_atm
+		q_stag_total = self.q_stag_total
+		heatload = self.heatload
+		acc_drag_g = self.acc_drag_g
+
+		# Set the current vehicle speed here.
+		self.h_current_km = h_km[-1]
+		self.v_current_kms = v_kms[-1]
+
+		customFlag = 0.0
+
+		# if the currrent speed is greater than the exit phase
+		# switch speed continue iterating in the entry
+		# phase mode
+		while self.v_current_kms > self.v_switch_kms:
+			# Reset the initial conditions to the terminal conditions
+			# of the propgated solution from the previous step.
+
+			h0_km = h_km[-1]  # Entry altitude above planet surface
+			theta0_deg = theta_deg[-1]  # Entry longitude
+			phi0_deg = phi_deg[-1]  # Entry latitude
+			v0_kms = v_kms[-1]  # Entry velocity
+			psi0_deg = psi_deg[-1]  # Entry heading angle
+			gamma0_deg = gamma_deg[-1]  # Entry flight path angle
+			drange0_km = drange_km[-1]  # Downrange
+
+			h0 = h0_km * 1.0E3  # Entry altitude above planet surface in meters
+			theta0 = theta0_deg * np.pi / 180.0  # Entry longitude in radians
+			phi0 = phi0_deg * np.pi / 180.0  # Entry latitude in radians
+			v0 = v0_kms * 1.000E3  # Entry velocity in meters/sec, relative to planet
+			psi0 = psi0_deg * np.pi / 180.0  # Entry heading angle in radians
+			gamma0 = gamma0_deg * np.pi / 180.0  # Entry flight path angle in radians
+			# ------------------------------------------------------------------------------------------------
+
+			# ------------------------------------------------------------------------------------------------
+			# Initialize iterable variables used in guidance loop, i = at the current time
+			# ------------------------------------------------------------------------------------------------
+			hi = h0  # Set the current altitude as the entry altitude
+			ri = h0 + self.planetObj.RP  # Set the current radial distance
+			vi = v0  # Set the current speed (m/s) as the entry speed
+			qi = 0.5 * self.planetObj.density(hi) * vi ** 2.0  # Set the current dynamic pressure
+			gammai = gamma0  # Set the current FPA to entry FPA
+			hdoti = vi * np.sin(gammai)  # Compute the current altitude rate hdot
+
+			# Set the current heatload Ji = terminal heatload
+			# of the previous propogated solution
+			Ji = self.heatload[-1]
+
+			DeltaCMD_deg = 0.0
+
+			# propogate the vehicle state to the next time step.
+			self.setInitialState(h0_km, theta0_deg, phi0_deg, v0_kms, psi0_deg, gamma0_deg, \
+								 drange0_km, Ji)
+			self.propogateEntry2(timeStep, dt, DeltaCMD_deg)
+
+			t_min_c = self.t_minc
+			h_km_c = self.h_kmc
+			v_kms_c = self.v_kmsc
+			phi_deg_c = self.phi_degc
+			psi_deg_c = self.psi_degc
+			theta_deg_c = self.theta_degc
+			gamma_deg_c = self.gamma_degc
+			drange_km_c = self.drange_kmc
+
+			acc_net_g_c = self.acc_net_g
+			dyn_pres_atm_c = self.dyn_pres_atm
+			stag_pres_atm_c = self.stag_pres_atm
+			q_stag_total_c = self.q_stag_total
+			heatload_c = self.heatload
+			acc_drag_g_c = self.acc_drag_g
+
+			# Update the time solution array to account for non-zero start time
+			t_min_c = t_min_c + t_min[-1]
+
+			self.t_step_array = np.append(self.t_step_array, t_min[-1])
+			self.delta_deg_array = np.append(self.delta_deg_array, DeltaCMD_deg)
+			self.hdot_array = np.append(self.hdot_array, hdoti)
+
+			self.q_array = np.append(self.q_array, qi)
+			self.h_step_array = np.append(self.h_step_array, h0_km)
+
+			self.hdotref_array = np.zeros(len(self.t_step_array))
+			self.hddoti = (self.hdot_array[-1] - self.hdot_array[-2]) / \
+						  (self.t_step_array[-1] * 60.0 - \
+						   self.t_step_array[-2] * 60.0)
+			self.hddot_array = np.append(self.hddot_array, self.hddoti)
+			self.acc_step_array = np.append(self.acc_step_array, self.acc_net_g[-1])
+			self.acc_drag_array = np.append(self.acc_drag_array, self.acc_drag_g[-1])
+
+			# Update time and other solution vectors
+			t_min = np.concatenate((t_min, t_min_c), axis=0)
+			h_km = np.concatenate((h_km, h_km_c), axis=0)
+			v_kms = np.concatenate((v_kms, v_kms_c), axis=0)
+			phi_deg = np.concatenate((phi_deg, phi_deg_c), axis=0)
+			psi_deg = np.concatenate((psi_deg, psi_deg_c), axis=0)
+			theta_deg = np.concatenate((theta_deg, theta_deg_c), axis=0)
+			gamma_deg = np.concatenate((gamma_deg, gamma_deg_c), axis=0)
+			drange_km = np.concatenate((drange_km, drange_km_c), axis=0)
+
+			# Update entry parameter vectors
+			acc_net_g = np.concatenate((acc_net_g, acc_net_g_c), axis=0)
+			acc_drag_g = np.concatenate((acc_drag_g, acc_drag_g_c), axis=0)
+			dyn_pres_atm = np.concatenate((dyn_pres_atm, dyn_pres_atm_c), axis=0)
+			stag_pres_atm = np.concatenate((stag_pres_atm, stag_pres_atm_c), axis=0)
+			q_stag_total = np.concatenate((q_stag_total, q_stag_total_c), axis=0)
+			heatload = np.concatenate((heatload, heatload_c), axis=0)
+
+			self.acc_step_array = np.append(self.acc_step_array, acc_net_g[-1])
+			density_mes = 2 * self.mass * acc_drag_g[-1] * \
+						  self.planetObj.EARTHG / \
+						  (self.CD * self.A * (0.5 * (vi + v_kms[-1] * 1E3)) ** 2.0)
+			self.density_mes_array = np.append(self.density_mes_array, density_mes)
+
+			if hdoti > self.hdot_threshold and customFlag == 0:
+				self.density_mes_int, self.minAlt = \
+					self.createDensityMeasuredFunction(self.h_step_array, \
+													   self.density_mes_array, self.lowAlt_km, self.numPoints_lowAlt)
+				customFlag = 1.0
+
+			if hdoti > self.hdot_threshold:
+				terminal_apoapsis_km = \
+					self.predictApoapsisAltitudeKm_afterJettision2(h_km[-1], \
+																  theta_deg[-1], phi_deg[-1], v_kms[-1], gamma_deg[-1], \
+																  psi_deg[-1], drange_km[-1], heatload[-1], maxTimeSecs,
+																  dt, \
+																  0.0, self.density_mes_int)
+
+			else:
+				terminal_apoapsis_km = 0.0
+
+			# print("H (km): "+ str('{:.2f}'.format(h0_km))+" HDOT (m/s): "+ str('{:.2f}'.format(hdoti))+"  PRED. APO: "+str('{:.2f}'.format(terminal_apoapsis_km)))
+
+			# update current speed
+			h_current_km = h_km[-1]
+			v_current_kms = v_kms[-1]
+
+			if terminal_apoapsis_km > 0 and terminal_apoapsis_km < self.target_apo_km:
+				break
+
+			if abs(terminal_apoapsis_km - self.target_apo_km) < self.target_apo_km_tol:
+				break
+
+			if h_current_km > self.planetObj.h_skip / 1000 - 1.0:
+				break
+
+		self.t_min_en = t_min
+		self.h_km_en = h_km
+		self.v_kms_en = v_kms
+		self.theta_deg_en = theta_deg
+		self.phi_deg_en = phi_deg
+		self.psi_deg_en = psi_deg
+		self.gamma_deg_en = gamma_deg
+		self.drange_km_en = drange_km
+
+		self.acc_net_g_en = acc_net_g
+		self.dyn_pres_atm_en = dyn_pres_atm
+		self.stag_pres_atm_en = stag_pres_atm
+		self.q_stag_total_en = q_stag_total
+		self.heatload_en = heatload
+
 	def predictApoapsisAltitudeKm_afterJettision(self, h0_km, theta0_deg, \
 						phi0_deg, v0_kms, gamma0_deg, psi0_deg, drange0_km,\
 						heatLoad0, t_sec, dt, delta_deg, density_mes_int ):
@@ -6004,7 +6445,7 @@ class Vehicle:
 		t_minc, h_kmc, v_kmsc, phi_degc, psi_degc, theta_degc, gamma_degc,\
 		drange_kmc, exitflag, acc_net_g, dyn_pres_atm, stag_pres_atm, q_stag_total,\
 		heatload, acc_drag_g = \
-		self.propogateEntry2D(h0_km, theta0_deg, phi0_deg, v0_kms, gamma0_deg,\
+		self.propogateEntry_utilD(h0_km, theta0_deg, phi0_deg, v0_kms, gamma0_deg,\
 		psi0_deg, drange0_km, heatLoad0, t_sec, dt, delta_deg, density_mes_int)
 		
 		terminal_apoapsis_km = self.compute_ApoapsisAltitudeKm(\
@@ -6015,15 +6456,73 @@ class Vehicle:
 
 		return terminal_apoapsis_km
 
+	def predictApoapsisAltitudeKm_afterJettision2(self, h0_km, theta0_deg, \
+												 phi0_deg, v0_kms, gamma0_deg, psi0_deg, drange0_km, \
+												 heatLoad0, t_sec, dt, delta_deg, density_mes_int):
+
+		"""
+		Compute the apoapsis altitude at exit if the drag skirt is
+		jettisoned at the current vehicle state. Uses new solver.
+
+		Parameters
+		----------
+		h0_km : float
+			current vehicle altitude, km
+		theta0_deg : float
+			current vehicle longitude, deg
+		phi0_deg : float
+			current vehicle latitude, deg
+		v0_kms : float
+			current vehicle speed, km/s
+		gamma0_deg : float
+			current FPA, deg
+		psi0_deg : float
+			current heading angle, deg
+		drange0_km : float
+			current downrange, km
+		heatLoad0 : float
+			current heatload, J/cm2
+		t_sec : float
+			propogation time, seconds
+		dt : float
+			max. solver timestep
+		delta_deg : float
+			commanded bank angle, deg
+		density_mes_int : scipy.interpolate.interpolate.interp1d
+			measured density interpolation function
 
 
-	def propogateEntry2D(self, h0_km, theta0_deg, phi0_deg, v0_kms, \
+		Returns
+		----------
+		terminal_apoapsis_km : float
+			apoapsis altitude achieved if drag skirt is
+			jettisoned at the current time, km
+
+		"""
+
+		t_minc, h_kmc, v_kmsc, phi_degc, psi_degc, theta_degc, gamma_degc, \
+		drange_kmc, exitflag, acc_net_g, dyn_pres_atm, stag_pres_atm, q_stag_total, \
+		heatload, acc_drag_g = \
+			self.propogateEntry_utilD2(h0_km, theta0_deg, phi0_deg, v0_kms, gamma0_deg, \
+									  psi0_deg, drange0_km, heatLoad0, t_sec, dt, delta_deg, density_mes_int)
+
+		terminal_apoapsis_km = self.compute_ApoapsisAltitudeKm( \
+			self.planetObj.RP + h_kmc[-1] * 1E3, \
+			v_kmsc[-1] * 1E3, gamma_degc[-1] * np.pi / 180.0, \
+			theta_degc[-1] * np.pi / 180.0, phi_degc[-1] * np.pi / 180.0, \
+			psi_degc[-1] * np.pi / 180.0)
+
+		return terminal_apoapsis_km
+
+
+
+	def propogateEntry_utilD(self, h0_km, theta0_deg, phi0_deg, v0_kms, \
 						gamma0_deg, psi0_deg, drange0_km, heatLoad0,\
 						t_sec, dt, delta_deg, density_mes_int):
 		"""
 		Utility propogator routine for prediction of atmospheric exit
 		conditions which is then supplied to the apoapis prediction 
-		module.
+		module. Does not include planetary rotation.
 
 		Propogates the vehicle state for using the measured 
 		atmospheric profile during the descending leg.
@@ -6191,12 +6690,181 @@ class Vehicle:
 			   gamma_degc, drange_kmc, exitflag, acc_net_g, dyn_pres_atm, \
 			   stag_pres_atm, q_stag_total, heatload, acc_drag_g
 
+	def propogateEntry_utilD2(self, h0_km, theta0_deg, phi0_deg, v0_kms, \
+							 gamma0_deg, psi0_deg, drange0_km, heatLoad0, \
+							 t_sec, dt, delta_deg, density_mes_int):
+		"""
+		Utility propogator routine for prediction of atmospheric exit
+		conditions which is then supplied to the apoapis prediction
+		module. Includes planetary rotation.
+
+		Propogates the vehicle state for using the measured
+		atmospheric profile during the descending leg.
+
+		Parameters
+		-----------
+		h0_km : float
+			current altitude, km
+		theta0_deg : float
+			current longitude, deg
+		phi0_deg : float
+			current latitude, deg
+		v0_kms : float
+			current speed, km/s
+		gamma0_deg : float
+			current FPA, deg
+		psi0_deg : float
+			current heading angle, deg
+		drange0_km : float
+			current downrange, km
+		heatLoad0 : float
+			current heatload, J/cm2
+		t_sec : float
+			propogation time, seconds
+		dt : float
+			max. time step, seconds
+		delta_deg : float
+			bank angle command, deg
 
 
+		Returns
+		----------
+		t_minc : numpy.ndarray
+			time solution array, min
+		h_kmc : numpy.ndarray
+			altitude solution array, km
+		v_kmsc : numpy.ndarray
+			speed solution array, km/s
+		phi_degc : numpy.ndarray
+			latitude solution array, deg
+		psi_degc : numpy.ndarray
+			heading angle solution array, deg
+		theta_degc : numpy.ndarray
+			longitude solution array, deg
+		gamma_degc : numpy.ndarray
+			FPA solution array, deg
+		drange_kmc : numpy.ndarray
+			downrange solution array, km
+		exitflag : int
+			exitflag
+		acc_net_g : numpy.ndarray
+			acceleration solution array, Earth g
+		dyn_pres_atm : numpy.ndarray
+			dynamic pressure solution array, atm
+		stag_pres_atm : numpy.ndarray
+			stagnation pressure array, atm
+		q_stag_total : numpy.ndarray
+			stagnation point heat rate array
+		heatload : numpy.ndarray
+			stagnation point heat load
+		acc_drag_g : numpy.ndarray
+			acceleration due to drag, Earth g
+
+		"""
+
+		"""
+		Create a copy of the planet object associated 
+		with the vehicle.
+		Set the density_int attribute to be the
+		density_mes_int which is the measured 
+		density function.
+		"""
+
+		planetCopy = copy.deepcopy(self.planetObj)
+		planetCopy.density_int = density_mes_int
+
+		# Create a copy of the vehicle object so it does
+		# not affect the existing vehicle state variables
+		vehicleCopy = copy.deepcopy(self)
+		vehicleCopy.planetObj = planetCopy
+
+		# Set the beta value used by the propogator to be
+		# the higher ballistic coefficient value.
+		# Update vehicle CD for new ballistic coefficient.
+		vehicleCopy.beta = self.beta1 * self.betaRatio
+		vehicleCopy.CD = self.mass / (vehicleCopy.beta * self.A)
+
+		# Define entry conditions at entry interface
+		# Convert initial state variables from input/plot
+		# units to calculation/SI units
+
+		# Entry altitude above planet surface in meters
+		# Entry latitude in radians
+		# Entry velocity in meters/sec, relative to planet
+		# Entry velocity in meters/sec, relative to planet
+		# Entry heading angle in radians
+		# Entry flight path angle in radians
+		# Entry downrange in m
+
+		h0 = h0_km * 1.0E3
+		theta0 = theta0_deg * np.pi / 180.0
+		phi0 = phi0_deg * np.pi / 180.0
+		v0 = v0_kms * 1.000E3
+		psi0 = psi0_deg * np.pi / 180.0
+		gamma0 = gamma0_deg * np.pi / 180.0
+		drange0 = drange0_km * 1E3
+
+		# Define control variables
+		# Constant bank angle in radians
+		delta = delta_deg * np.pi / 180.0
+
+		r0 = vehicleCopy.planetObj.computeR(h0)
+
+		# Compute non-dimensional entry conditions
+		rbar0, theta0, phi0, vbar0, psi0, gamma0, drangebar0 = \
+			vehicleCopy.planetObj.nonDimState(r0, theta0, phi0, v0, psi0, gamma0, drange0)
+
+		# Solve for the entry trajectory
+		tbar, rbar, theta, phi, vbar, psi, gamma, drangebar = \
+			vehicleCopy.solveTrajectory2(rbar0, theta0, phi0, vbar0, psi0, gamma0, \
+										drangebar0, t_sec, dt, delta)
+		# Note : solver returns non-dimensional variables
+		# Convert to dimensional variables for plotting
+		t, r, theta, phi, v, psi, gamma, drange = \
+			vehicleCopy.planetObj.dimensionalize(tbar, rbar, theta, phi, vbar, psi, gamma, \
+												 drangebar)
+		# print(t[-1])
+		# dimensional state variables are in SI units
+		# convert to more rational units for plotting
+		t_min, h_km, v_kms, phi_deg, psi_deg, theta_deg, gamma_deg, drange_km \
+			= vehicleCopy.convertToPlotUnits(t, r, v, phi, psi, theta, gamma, drange)
+		# classify trajectory
+		index, exitflag = vehicleCopy.classifyTrajectory(r)
+		# truncate trajectory
+		tc, rc, thetac, phic, vc, psic, gammac, drangec \
+			= vehicleCopy.truncateTrajectory(t, r, theta, phi, v, psi, gamma, drange, \
+											 index)
+		t_minc, h_kmc, v_kmsc, phi_degc, psi_degc, \
+		theta_degc, gamma_degc, drange_kmc = \
+			vehicleCopy.truncateTrajectory(t_min, h_km, v_kms, phi_deg, psi_deg, \
+										   theta_deg, gamma_deg, drange_km, index)
+		# compute acceleration loads
+		acc_net_g = vehicleCopy.computeAccelerationLoad(tc, rc, \
+														thetac, phic, vc, index, delta)
+		# compute drag acceleration
+		acc_drag_g = vehicleCopy.computeAccelerationDrag(tc, rc, \
+														 thetac, phic, vc, index, delta)
+		# compute dynamic pressure
+		dyn_pres_atm = vehicleCopy.computeDynPres(rc, vc) / (1.01325E5)
+		# compute stagnation pressure
+		stag_pres_atm = vehicleCopy.computeStagPres(rc, vc) / (1.01325E5)
+
+		# compute stagnation point convective and radiative heating rate
+		q_stag_con = vehicleCopy.qStagConvective(rc, vc)
+		q_stag_rad = vehicleCopy.qStagRadiative(rc, vc)
+		# compute total stagnation point heating rate
+		q_stag_total = q_stag_con + q_stag_rad
+		# compute stagnation point heating load
+		heatload = cumtrapz(q_stag_total, tc, \
+							initial=heatLoad0)
+
+		return t_minc, h_kmc, v_kmsc, phi_degc, psi_degc, theta_degc, \
+			   gamma_degc, drange_kmc, exitflag, acc_net_g, dyn_pres_atm, \
+			   stag_pres_atm, q_stag_total, heatload, acc_drag_g
 
 	def propogateExitPhaseD(self, timeStep, dt, maxTimeSecs):
 		"""
-		Implements the exit phase of the guidance scheme (full lift-up).
+		Implements the exit phase of the guidance scheme for drag modulation.
 
 		Parameters
 		--------
@@ -6389,7 +7057,195 @@ class Vehicle:
 								  self.target_peri_km, self.terminal_apoapsis,
 								  self.target_apo_km)
 
+	def propogateExitPhaseD2(self, timeStep, dt, maxTimeSecs):
+		"""
+		Implements the exit phase of the guidance scheme for drag modulation, with new solver.
 
+		Parameters
+		--------
+		timeStep : float
+			Guidance cycle time, seconds
+		dt : float
+			Solver max. time step, seconds
+		maxTimeSecs : float
+			max. time for propogation, seconds
+
+		"""
+
+		self.beta = self.beta1 * self.betaRatio
+		self.CD = self.mass / (self.beta * self.A)
+
+		self.t_switch = self.t_min_en[-1]
+		self.h_switch = self.h_km_en[-1]
+		self.v_switch = self.v_kms_en[-1]
+		self.p_switch = self.delta_deg_array[-1]
+
+		t_min = self.t_min_en
+		h_km = self.h_km_en
+		v_kms = self.v_kms_en
+		theta_deg = self.theta_deg_en
+		phi_deg = self.phi_deg_en
+		psi_deg = self.psi_deg_en
+		gamma_deg = self.gamma_deg_en
+		drange_km = self.drange_km_en
+
+		acc_net_g = self.acc_net_g_en
+		dyn_pres_atm = self.dyn_pres_atm_en
+		stag_pres_atm = self.stag_pres_atm_en
+		q_stag_total = self.q_stag_total_en
+		heatload = self.heatload_en
+
+		# Set the current altitude to the terminal altitude of
+		# the equlibrium glide phase (km).
+		h_current_km = h_km[-1]
+		t_current_min = t_min[-1]
+
+		# Set the skip altitude (km) based on definition in planet.py
+		h_skip_km = self.planetObj.h_skip / 1.0E3
+
+		# initialize hdot_ref as terminal hdot of equilibrium glide phase
+		hdot_refi = self.hdot_array[-1]
+		Ji = self.heatload_en[-1]
+
+		# print('Exit Phase Guidance Initiated')
+		while h_current_km < h_skip_km:
+			# print(minAlt)
+			# Reset the initial conditions to the terminal conditions of
+			# the propgated solution from the previous step.
+			# Terminal conditions of the equilibrium glide phase are initial
+			# conditions for the exit phase algorithm.
+			# ----------------------------------------------------------------
+			h0_km = h_km[-1]  # Entry altitude above planet surface
+			theta0_deg = theta_deg[-1]  # Entry longitude
+			phi0_deg = phi_deg[-1]  # Entry latitude
+			v0_kms = v_kms[-1]  # Entry velocity
+			psi0_deg = psi_deg[-1]  # Entry heading angle
+			gamma0_deg = gamma_deg[-1]  # Entry flight path angle
+			drange0_km = drange_km[-1]  # Downrange
+
+			# ----------------------------------------------------------------------------
+			# Convert entry state variables from IO/plot units to calculation (SI) units
+			# ----------------------------------------------------------------------------
+			h0 = h0_km * 1.0E3  # Entry altitude above planet
+			theta0 = theta0_deg * np.pi / 180.0  # Entry longitude in radians
+			phi0 = phi0_deg * np.pi / 180.0  # Entry latitude in radians
+			v0 = v0_kms * 1.000E3  # Entry velocity in meters/se
+			psi0 = psi0_deg * np.pi / 180.0  # Entry heading angle in radians
+			gamma0 = gamma0_deg * np.pi / 180.0  # Entry flight path angle in radians
+			# -------------------------------------------------------------------------------
+
+			# --------------------------------------------------------------------------
+			# Initialize iterable variables used in guidance loop, i = at the current time
+			# ----------------------------------------------------------------------------
+			hi = h0  # Set the current altitude as the entry altitude
+			ri = h0 + self.planetObj.RP  # Set the current radial distance
+			vi = v0  # Set the current speed (m/s) as the entry speed
+			qi = 0.5 * self.planetObj.density(hi) * vi ** 2.0  # Set the current dynamic pressure
+			gammai = gamma0  # Set the current FPA to entry FPA
+			hdoti = vi * np.sin(gammai)  # Compute the current altitude rate hdot
+
+			DeltaCMD_deg = 0.0
+
+			# propogate the vehicle state to advance from the current
+			# state using the commanded bank angle deltaCMD
+			self.setInitialState(h0_km, theta0_deg, phi0_deg, v0_kms, psi0_deg, gamma0_deg, \
+								 drange0_km, Ji)
+			self.propogateEntry2(timeStep, dt, DeltaCMD_deg)
+
+			t_min_c = self.t_minc
+			h_km_c = self.h_kmc
+			v_kms_c = self.v_kmsc
+			phi_deg_c = self.phi_degc
+			psi_deg_c = self.psi_degc
+			theta_deg_c = self.theta_degc
+			gamma_deg_c = self.gamma_degc
+			drange_km_c = self.drange_kmc
+
+			acc_net_g_c = self.acc_net_g
+			dyn_pres_atm_c = self.dyn_pres_atm
+			stag_pres_atm_c = self.stag_pres_atm
+			q_stag_total_c = self.q_stag_total
+			heatload_c = self.heatload
+			acc_drag_g_c = self.acc_drag_g
+
+			# Update the time solution array to account for non-zero start time
+			t_min_c = t_min_c + t_min[-1]
+
+			self.t_step_array = np.append(self.t_step_array, t_min[-1])
+			self.delta_deg_array = np.append(self.delta_deg_array, DeltaCMD_deg)
+			self.hdot_array = np.append(self.hdot_array, hdoti)
+			self.hdotref_array = np.append(self.hdotref_array, hdot_refi)
+
+			self.hddoti = (self.hdot_array[-1] - self.hdot_array[-2]) / \
+						  (self.t_step_array[-1] * 60.0 - self.t_step_array[-2] * 60.0)
+
+			self.hddot_array = np.append(self.hddot_array, self.hddoti)
+
+			# Update time and other solution vectors
+			t_min = np.concatenate((t_min, t_min_c), axis=0)
+			h_km = np.concatenate((h_km, h_km_c), axis=0)
+			v_kms = np.concatenate((v_kms, v_kms_c), axis=0)
+			phi_deg = np.concatenate((phi_deg, phi_deg_c), axis=0)
+			psi_deg = np.concatenate((psi_deg, psi_deg_c), axis=0)
+			theta_deg = np.concatenate((theta_deg, theta_deg_c), axis=0)
+			gamma_deg = np.concatenate((gamma_deg, gamma_deg_c), axis=0)
+			drange_km = np.concatenate((drange_km, drange_km_c), axis=0)
+
+			# Update entry parameter vectors
+			acc_net_g = np.concatenate((acc_net_g, acc_net_g_c), axis=0)
+			dyn_pres_atm = np.concatenate((dyn_pres_atm, dyn_pres_atm_c), axis=0)
+			stag_pres_atm = np.concatenate((stag_pres_atm, stag_pres_atm_c), axis=0)
+			q_stag_total = np.concatenate((q_stag_total, q_stag_total_c), axis=0)
+			heatload = np.concatenate((heatload, heatload_c), axis=0)
+
+			terminal_apoapsis_km = self.compute_ApoapsisAltitudeKm( \
+				self.planetObj.RP + h_km[-1] * 1E3, v_kms[-1] * 1E3, \
+				gamma_deg[-1] * np.pi / 180.0, theta_deg[-1] * np.pi / 180.0, \
+				phi_deg[-1] * np.pi / 180.0, psi_deg[-1] * np.pi / 180.0)
+
+			# print("H (km): "+ str('{:.2f}'.format(h0_km))+", HDOT: "+str('{:.2f}'.format(hdoti))+", PREDICT. APO. ALT. :"+str(terminal_apoapsis_km))
+
+			if hi > self.planetObj.h_skip - 1.0E3:
+				break
+
+			if hi < 20.0E3:
+				break
+
+			h_current_km = h_km[-1]
+			t_current_min = t_min[-1]
+
+		self.t_min_full = t_min
+		self.h_km_full = h_km
+		self.v_kms_full = v_kms
+		self.theta_deg_full = theta_deg
+		self.phi_deg_full = phi_deg
+		self.psi_deg_full = psi_deg
+		self.gamma_deg_full = gamma_deg
+		self.drange_km_full = drange_km
+
+		self.acc_net_g_full = acc_net_g
+		self.dyn_pres_atm_full = dyn_pres_atm
+		self.stag_pres_atm_full = stag_pres_atm
+		self.q_stag_total_full = q_stag_total
+		self.heatload_full = heatload
+
+		self.terminal_apoapsis = self.compute_ApoapsisAltitudeKm(
+			self.planetObj.RP + h_km[-1] * 1E3, v_kms[-1] * 1E3,
+			gamma_deg[-1] * np.pi / 180.0, theta_deg[-1] * np.pi / 180.0,
+			phi_deg[-1] * np.pi / 180.0, psi_deg[-1] * np.pi / 180.0)
+		self.terminal_periapsis = self.compute_PeriapsisAltitudeKm(
+			self.planetObj.RP + h_km[-1] * 1E3, v_kms[-1] * 1E3,
+			gamma_deg[-1] * np.pi / 180.0, theta_deg[-1] * np.pi / 180.0,
+			phi_deg[-1] * np.pi / 180.0, psi_deg[-1] * np.pi / 180.0)
+		self.apoapsis_perc_error = (self.terminal_apoapsis - self.target_apo_km) * 100.0 / \
+								   self.target_apo_km
+
+		self.periapsis_raise_DV = self.compute_periapsis_raise_DV(
+			self.terminal_periapsis, self.terminal_apoapsis,
+			self.target_peri_km)
+		self.apoapsis_raise_DV = self.compute_apoapsis_raise_DV(
+			self.target_peri_km, self.terminal_apoapsis,
+			self.target_apo_km)
 
 	def propogateGuidedEntryD(self, timeStepEntry, timeStepExit, dt, maxTimeSecs):
 		"""
@@ -6410,6 +7266,28 @@ class Vehicle:
 		"""
 		self.propogateEntryPhaseD(timeStepEntry, dt, maxTimeSecs)
 		self.propogateExitPhaseD(timeStepExit, dt, maxTimeSecs)
+
+
+	def propogateGuidedEntryD2(self, timeStepEntry, timeStepExit, dt, maxTimeSecs):
+		"""
+		Implements the full guidance scheme for drag modulation aerocapture
+		(entry phase + exit phase). Includes inertial correction.
+
+		Parameters
+		--------
+		timeStepEntry : float
+			Guidance cycle time (entry phase), seconds
+		timeStepExit : float
+			Guidance cycle time (exit phase), seconds
+		dt : float
+			Solver max. time step, seconds
+		maxTimeSecs : float
+			max. time for propogation, seconds
+
+		"""
+		self.propogateEntryPhaseD2(timeStepEntry, dt, maxTimeSecs)
+		self.propogateExitPhaseD2(timeStepExit, dt, maxTimeSecs)
+
 
 
 	def setupMonteCarloSimulationD(self, NPOS, NMONTE, atmfiles,
