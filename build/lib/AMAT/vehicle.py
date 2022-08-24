@@ -6368,7 +6368,7 @@ class Vehicle:
 			else:
 				terminal_apoapsis_km = 0.0
 
-			# print("H (km): "+ str('{:.2f}'.format(h0_km))+" HDOT (m/s): "+ str('{:.2f}'.format(hdoti))+"  PRED. APO: "+str('{:.2f}'.format(terminal_apoapsis_km)))
+			#print("H (km): "+ str('{:.2f}'.format(h0_km))+" HDOT (m/s): "+ str('{:.2f}'.format(hdoti))+"  PRED. APO: "+str('{:.2f}'.format(terminal_apoapsis_km)))
 
 			# update current speed
 			h_current_km = h_km[-1]
@@ -7203,7 +7203,7 @@ class Vehicle:
 				gamma_deg[-1] * np.pi / 180.0, theta_deg[-1] * np.pi / 180.0, \
 				phi_deg[-1] * np.pi / 180.0, psi_deg[-1] * np.pi / 180.0)
 
-			# print("H (km): "+ str('{:.2f}'.format(h0_km))+", HDOT: "+str('{:.2f}'.format(hdoti))+", PREDICT. APO. ALT. :"+str(terminal_apoapsis_km))
+			#print("H (km): "+ str('{:.2f}'.format(h0_km))+", HDOT: "+str('{:.2f}'.format(hdoti))+", PREDICT. APO. ALT. :"+str(terminal_apoapsis_km))
 
 			if hi > self.planetObj.h_skip - 1.0E3:
 				break
@@ -7550,6 +7550,118 @@ class Vehicle:
 			np.savetxt(mainFolder+'/'+'acc_net_g_max_arr.txt',acc_net_g_max_arr)
 			np.savetxt(mainFolder+'/'+'q_stag_max_arr.txt',q_stag_max_arr)
 			np.savetxt(mainFolder+'/'+'heatload_max_arr.txt',heatload_max_arr)
+
+	def runMonteCarloD2(self, N, mainFolder):
+		"""
+		Run a Monte Carlo simulation for drag modulation
+		aerocapture with new solver.
+
+		Parameters
+		--------
+		N : int
+			Number of trajectories
+		mainFolder : str
+			path where data is to be stored
+		"""
+
+		terminal_apoapsis_arr = np.zeros(N)
+		terminal_periapsis_arr = np.zeros(N)
+		periapsis_raise_DV_arr = np.zeros(N)
+		apoapsis_raise_DV_arr = np.zeros(N)
+		acc_net_g_max_arr = np.zeros(N)
+		q_stag_max_arr = np.zeros(N)
+		heatload_max_arr = np.zeros(N)
+
+		h0_km = self.vehicleCopy.h0_km_ref
+		theta0_deg = self.vehicleCopy.theta0_deg_ref
+		phi0_deg = self.vehicleCopy.phi0_deg_ref
+		v0_kms = self.vehicleCopy.v0_kms_ref
+		psi0_deg = self.vehicleCopy.psi0_deg_ref
+		drange0_km = self.vehicleCopy.drange0_km_ref
+		heatLoad0 = self.vehicleCopy.heatLoad0_ref
+
+		os.makedirs(mainFolder)
+
+		for i in range(N):
+			selected_atmfile = rd.choice(self.atmfiles)
+
+			# selected_profile   = 65
+			selected_profile = rd.randint(1, self.NMONTE)
+			# selected_efpa     = -11.53
+			selected_efpa = np.random.normal(self.nominalEFPA, self.EFPA_1sigma_value)
+			# selected_atmSigma = +0.0
+			selected_atmSigma = np.random.normal(0, 1)
+
+			selected_LD = 0.0
+
+			ATM_height, ATM_density_low, ATM_density_avg, ATM_density_high, \
+			ATM_density_pert = self.planetObj.loadMonteCarloDensityFile2( \
+				selected_atmfile, self.heightCol, \
+				self.densLowCol, self.densAvgCol,
+				self.densHighCol, self.densTotalCol, self.heightInKmFlag)
+
+			self.planetObj.density_int = self.planetObj.loadAtmosphereModel5(ATM_height, \
+																			 ATM_density_low, ATM_density_avg,
+																			 ATM_density_high, \
+																			 ATM_density_pert, selected_atmSigma,
+																			 self.NPOS, \
+																			 selected_profile)
+
+			self.setInitialState(h0_km, theta0_deg, phi0_deg, v0_kms, \
+								 psi0_deg, selected_efpa, drange0_km, heatLoad0)
+			self.propogateGuidedEntryD2(self.timeStepEntry, self.timeStepExit, self.dt, self.maxTimeSecs)
+
+			terminal_apoapsis = self.terminal_apoapsis
+			apoapsis_error = self.apoapsis_perc_error
+			terminal_periapsis = self.terminal_periapsis
+
+			periapsis_raise_DV = self.periapsis_raise_DV
+			apoapsis_raise_DV = self.apoapsis_raise_DV
+
+			terminal_apoapsis_arr[i] = self.terminal_apoapsis
+			terminal_periapsis_arr[i] = self.terminal_periapsis
+
+			periapsis_raise_DV_arr[i] = self.periapsis_raise_DV
+			apoapsis_raise_DV_arr[i] = self.apoapsis_raise_DV
+
+			acc_net_g_max_arr[i] = max(self.acc_net_g_full)
+			q_stag_max_arr[i] = max(self.q_stag_total_full)
+			heatload_max_arr[i] = max(cumtrapz(self.q_stag_total_full, self.t_min_full*60, initial=0))/1e3
+
+			print("BATCH :" + str(mainFolder) + ", RUN #: " + str(i + 1) + ", PROF: " + str(
+				selected_atmfile) + ", SAMPLE #: " + str(selected_profile) + ", EFPA: " + str(
+				'{:.2f}'.format(selected_efpa, 2)) + ", SIGMA: " + str(
+				'{:.2f}'.format(selected_atmSigma, 2)) + ", APO : " + str('{:.2f}'.format(terminal_apoapsis, 2)))
+
+			os.makedirs(mainFolder + '/' + '#' + str(i + 1))
+
+			np.savetxt(mainFolder + '/' + '#' + str(i + 1) + '/' + 'atmfile.txt', np.array([selected_atmfile]),
+					   fmt='%s')
+			np.savetxt(mainFolder + '/' + '#' + str(i + 1) + '/' + 'profile.txt', np.array([selected_profile]))
+			np.savetxt(mainFolder + '/' + '#' + str(i + 1) + '/' + 'efpa.txt', np.array([selected_efpa]))
+			np.savetxt(mainFolder + '/' + '#' + str(i + 1) + '/' + 'atmSigma.txt', np.array([selected_atmSigma]))
+			np.savetxt(mainFolder + '/' + '#' + str(i + 1) + '/' + 'LD.txt', np.array([selected_LD]))
+
+			np.savetxt(mainFolder + '/' + '#' + str(i + 1) + '/' + 'terminal_apoapsis.txt',
+					   np.array([terminal_apoapsis]))
+			np.savetxt(mainFolder + '/' + '#' + str(i + 1) + '/' + 'apoapsis_error.txt', np.array([apoapsis_error]))
+			np.savetxt(mainFolder + '/' + '#' + str(i + 1) + '/' + 'terminal_periapsis.txt',
+					   np.array([terminal_periapsis]))
+
+			np.savetxt(mainFolder + '/' + '#' + str(i + 1) + '/' + 'periapsis_raise_DV.txt',
+					   np.array([periapsis_raise_DV]))
+			np.savetxt(mainFolder + '/' + '#' + str(i + 1) + '/' + 'apoapsis_raise_DV.txt',
+					   np.array([apoapsis_raise_DV]))
+
+			np.savetxt(mainFolder + '/' + 'terminal_apoapsis_arr.txt', terminal_apoapsis_arr)
+			np.savetxt(mainFolder + '/' + 'terminal_periapsis_arr.txt', terminal_periapsis_arr)
+
+			np.savetxt(mainFolder + '/' + 'periapsis_raise_DV_arr.txt', periapsis_raise_DV_arr)
+			np.savetxt(mainFolder + '/' + 'apoapsis_raise_DV_arr.txt', apoapsis_raise_DV_arr)
+
+			np.savetxt(mainFolder + '/' + 'acc_net_g_max_arr.txt', acc_net_g_max_arr)
+			np.savetxt(mainFolder + '/' + 'q_stag_max_arr.txt', q_stag_max_arr)
+			np.savetxt(mainFolder + '/' + 'heatload_max_arr.txt', heatload_max_arr)
 
 
 	def runMonteCarloD_Earth(self, N, mainFolder):

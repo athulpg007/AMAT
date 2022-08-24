@@ -851,3 +851,151 @@ class Orbiter:
 
 		if self.h_periapsis_orbiter_defl < self.vehicle.planetObj.h_skip:
 			print("Periapsis inside atmospheric skip altitude.")
+
+
+class PropulsiveOrbiter:
+	"""
+	Compute the orbit of a propulsive insertion orbiter after OI burn.
+	"""
+
+	def __init__(self, approach, apoapsis_alt_km):
+		"""
+
+		Parameters
+		----------
+		approach : AMAT.approach.Approach
+			Approach object which has been propagated until periapsis
+		apoapsis_alt_km : float
+			orbit apoapsis altitude, km
+		"""
+
+		self.approach = approach
+		self.apoapsis_alt_km = apoapsis_alt_km
+
+		self.approach_terminal_r = self.approach.r_vec_rp_bi
+		self.approach_terminal_v = self.approach.v_vec_rp_bi
+
+		self.rp = self.approach.rp
+		self.ra = self.approach.planetObj.RP + self.apoapsis_alt_km*1e3
+
+		self.a = (self.rp + self.ra)/2
+		self.e = (self.ra - self.rp) / (self.ra + self.rp)
+		self.h = np.sqrt(self.a * self.approach.planetObj.GM * (1 - self.e ** 2))
+
+		self.i = self.approach.i
+		self.OMEGA = self.approach.OMEGA
+		self.omega = self.approach.omega
+
+		self.vp_vec = self.vel_vec_bi(theta_star=0)
+		self.vp = np.linalg.norm(self.vp_vec)
+
+		self.DV_OI_vec = self.approach_terminal_v - self.vp_vec
+		self.DV_OI_mag = np.linalg.norm(self.DV_OI_vec)
+
+		self.vp_check = np.sqrt(self.approach.planetObj.GM * (2 / self.rp - 1 / self.a))
+		self.DV_OI_mag_check = np.linalg.norm(self.approach.v_vec_rp_bi) - self.vp_check
+
+		self.compute_orbit_trajectory()
+
+
+	def r_mag_bi(self, theta_star):
+		"""
+		Computes the position vector magnitude in body-inertial frame at a given true anomaly.
+
+		Parameters
+		----------
+		theta_star : float
+			true anomaly, rad
+
+		Returns
+		-------
+		r_mag_bi : float
+			position vector magnitude, meters
+
+		"""
+		r_mag_bi = (self.h**2 / self.approach.planetObj.GM) / (1 + self.e*np.cos(theta_star))
+		return r_mag_bi
+
+	def pos_vec_bi(self, theta_star):
+		"""
+		Computes the position vector in body-inertial frame
+		for a specified true-anomaly.
+
+		Parameters
+		----------
+		theta_star : float
+			true anomaly, rad
+
+		Returns
+		-------
+		pos_vec_bi : numpy.ndarray
+			position vector in body-inertial frame, meters
+		"""
+
+		r = (self.h**2 / self.approach.planetObj.GM) / (1 + self.e*np.cos(theta_star))
+		theta = theta_star + self.omega
+
+		rx_unit = np.cos(self.OMEGA)*np.cos(theta) - np.sin(self.OMEGA)*np.cos(self.i)*np.sin(theta)
+		ry_unit = np.sin(self.OMEGA)*np.cos(theta) + np.cos(self.OMEGA)*np.cos(self.i)*np.sin(theta)
+		rz_unit = np.sin(self.i)*np.sin(theta)
+
+		pos_vec_bi = r*np.array([rx_unit, ry_unit, rz_unit])
+		return pos_vec_bi
+
+	def vel_vec_bi(self, theta_star):
+		"""
+		Computes the velocity vector in body-inertial frame at a given true anomaly.
+
+		Parameters
+		----------
+		theta_star : float
+			true anomaly, rad
+
+		Returns
+		-------
+		vel_vec_bi : numpy.ndarray
+			velocity vector in body-inertial frame, m/s
+
+		"""
+
+		r_mag_bi = self.r_mag_bi(theta_star)
+		v_mag_bi = np.sqrt(self.approach.planetObj.GM*(2/r_mag_bi - 1/self.a))
+
+		gamma = 1*np.arccos(self.h/(r_mag_bi*v_mag_bi*1.0000001))
+
+		vr = v_mag_bi*np.sin(gamma)
+		vt = v_mag_bi*np.cos(gamma)
+		theta = theta_star + self.omega
+
+		vx = vr*( np.cos(theta)*np.cos(self.OMEGA) - np.sin(theta)*np.cos(self.i)*np.sin(self.OMEGA)) +\
+		     vt*(-np.sin(theta)*np.cos(self.OMEGA) - np.cos(theta)*np.cos(self.i)*np.sin(self.OMEGA))
+
+		vy = vr*( np.cos(theta)*np.sin(self.OMEGA) + np.sin(theta)*np.cos(self.i)*np.cos(self.OMEGA)) +\
+		     vt*( np.cos(theta)*np.cos(self.i)*np.cos(self.OMEGA) - np.sin(theta)*np.sin(self.OMEGA))
+
+		vz = vr*np.sin(theta)*np.sin(self.i) + vt*np.cos(theta)*np.sin(self.i)
+
+		vel_vec_bi = np.array([vx, vy, vz])
+		return vel_vec_bi
+
+	def compute_orbit_trajectory(self, num_points=601):
+		"""
+		Computes the coordinates of initial capture orbit of the propulsive orbiter
+
+		Parameters
+		----------
+		num_points : int
+			grid points for full final orbit trajectory
+
+
+		"""
+		theta_star_arr = np.linspace(0, 2*np.pi, num_points)
+		pos_vec_bi_arr = self.pos_vec_bi(theta_star_arr) / self.approach.planetObj.RP
+
+		self.x_orbit_arr = pos_vec_bi_arr[0][:]
+		self.y_orbit_arr = pos_vec_bi_arr[1][:]
+		self.z_orbit_arr = pos_vec_bi_arr[2][:]
+
+
+
+

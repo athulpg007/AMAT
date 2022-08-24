@@ -1,6 +1,6 @@
 # SOURCE FILENAME : approach.py
 # AUTHOR          : Athul Pradeepkumar Girija, apradee@purdue.edu
-# DAT CREATED     : 04/26/2022, 21:23 MT
+# DATE CREATED    : 08/12/2022, 08:03 MT
 # DATE MODIFIED   : 05/01/2022 16:14 MT
 # REMARKS         : Compute the probe/spacecraft arrival trajectory
 #                   following Kyle's dissertation Chapter 2.
@@ -20,7 +20,7 @@ class Approach:
 	Attributes
 	----------
 	planetObj : AMAT.planet.Planet object
-		arrival planet object for approach trajectory
+		arrival planet object for approach traje
 	a : float
 		semi-major axis, meters
 	e : float
@@ -174,17 +174,16 @@ class Approach:
 		self.v_inf_vec_bi_kms = self.ICRF_to_BI(self.v_inf_vec_icrf_kms)
 		self.v_inf_vec_bi = self.v_inf_vec_bi_kms * 1e3
 		self.v_inf_vec_bi_mag_kms = LA.norm(self.v_inf_vec_bi_kms)
-
 		self.v_inf_vec_bi_unit = self.v_inf_vec_bi_kms / LA.norm(self.v_inf_vec_bi_kms)
 
 		# Equation (2.16)
-		self.phi_1 = np.arctan(self.v_inf_vec_bi[1] / self.v_inf_vec_bi[0])
+		self.phi_1 = np.arctan2(self.v_inf_vec_bi[1], self.v_inf_vec_bi[0])
 		self.v_inf_vec_bi_prime = (np.matmul(self.R3(self.phi_1), self.v_inf_vec_bi.T)).T
 
 		# Equation (2.17)
-		self.phi_2 = np.arctan(self.v_inf_vec_bi_prime[0] / self.v_inf_vec_bi_prime[2])
-		self.phi_2_analytic = np.arctan((self.v_inf_vec_bi[0] * np.cos(self.phi_1) + \
-									     self.v_inf_vec_bi[1] * np.sin(self.phi_1)) / \
+		self.phi_2 = np.arctan2(self.v_inf_vec_bi_prime[0], self.v_inf_vec_bi_prime[2])
+		self.phi_2_analytic = np.arctan2((self.v_inf_vec_bi[0] * np.cos(self.phi_1) + \
+									     self.v_inf_vec_bi[1] * np.sin(self.phi_1)), \
 								         self.v_inf_vec_bi[2])
 
 		self.rp_vec_bi_x_unit = np.cos(self.phi_1)*(np.sin(self.beta) * np.cos(self.psi) * np.cos(self.phi_2) + np.cos(self.beta) * np.sin(self.phi_2)) - \
@@ -292,6 +291,9 @@ class Approach:
 
 		else:
 			self.theta_star_periapsis = 0
+			self.r_vec_rp_bi = self.rp_vec_bi
+			self.v_vec_rp_bi = self.vel_vec_bi(self.theta_star_periapsis)
+
 
 	def R1(self, theta):
 		"""
@@ -365,7 +367,7 @@ class Approach:
 			input vector in body-inertial frame
 
 		"""
-		R1R3 = np.matmul(self.R1(np.pi/2 - self.d0), self.R3(np.pi / 2 + self.a0))
+		R1R3 = np.matmul(self.R1(np.pi/2 - self.d0), self.R3(np.pi/2 + self.a0))
 		return np.matmul(R1R3, X_ICRF.T).T
 
 	def BI_to_BI_dprime(self, X_ICRF):
