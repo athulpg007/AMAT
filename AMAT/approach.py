@@ -474,7 +474,7 @@ class Approach:
 			velocity vector in body-inertial frame, m/s
 
 		"""
-
+		
 		r_mag_bi = self.r_mag_bi(theta_star)
 		v_mag_bi = np.sqrt((self.v_inf_mag)**2 + 2*self.planetObj.GM/r_mag_bi)
 		gamma = -1*np.arccos(self.h/(r_mag_bi*v_mag_bi))

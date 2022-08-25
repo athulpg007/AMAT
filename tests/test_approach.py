@@ -191,9 +191,9 @@ class Test_Approach_Orbiter:
 class Test_Approach_Orbiter_Mars:
 
 	approach = Approach("MARS", v_inf_vec_icrf_kms=np.array([2.23930484, 1.20086474,-0.73683366]),
-						rp=(3389.5+250)*1e3, psi=np.pi)
+						rp=(3389.5+200)*1e3, psi=np.pi)
 
-	orbiter = PropulsiveOrbiter(approach=approach, apoapsis_alt_km=50e3)
+	orbiter = PropulsiveOrbiter(approach=approach, apoapsis_alt_km=2000)
 
 	def test_theta_star_periapsis(self):
 		ans1 = self.approach.r_vec_rp_bi
