@@ -8,7 +8,7 @@ from AMAT.orbiter import Orbiter
 
 probe1 = Approach("URANUS",
 				  v_inf_vec_icrf_kms=np.array([-9.62521831, 16.51192666, 7.46493598]),
-				  rp=(25559 + 345) * 1e3, psi=np.pi,
+				  rp=(25559+260) * 1e3, psi=np.pi,
 				  is_entrySystem=True, h_EI=1000e3)
 
 theta_star_arr_probe1 = np.linspace(-1.8, probe1.theta_star_entry, 101)
@@ -25,7 +25,7 @@ planet.h_low = 120e3
 planet.h_trap = 100e3
 
 vehicle = Vehicle('Titania', 3200.0, 146, 0.24, np.pi * 4.5 ** 2.0, 0.0, 1.125, planet)
-vehicle.setInitialState(1000.0, -15.22, 75.55, 29.2877, 88.687, -11.0088, 0.0, 0.0)
+vehicle.setInitialState(1000.0,-15.22,36.51,29.3597,85.7789, -10.9669, 0.0, 0.0)
 vehicle.setSolverParams(1E-6)
 vehicle.propogateEntry2(2400.0, 0.1, 180.0)
 

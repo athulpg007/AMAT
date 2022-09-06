@@ -5670,7 +5670,7 @@ class Vehicle:
 
 	def setupMonteCarloSimulation(self, NPOS, NMONTE, atmfiles, heightCol, densLowCol, densAvgCol,
 								densHighCol, densTotalCol, heightInKmFlag, nominalEFPA,  EFPA_1sigma_value,
-								nominalLD, LD_1sigma_value, timeStep, dt, maxTimeSecs):
+								nominalLD, LD_1sigma_value, timeStep, dt, maxTimeSecs, atmSigmaFactor=1):
 		"""
 		Set the Monte Carlo simulation parameters.
 
@@ -5736,6 +5736,8 @@ class Vehicle:
 		self.dt = dt
 		self.maxTimeSecs = maxTimeSecs
 
+		self.atmSigmaFactor = atmSigmaFactor
+
 
 	def runMonteCarlo(self, N, mainFolder):
 		"""
@@ -5772,7 +5774,7 @@ class Vehicle:
 			selected_atmfile  = rd.choice(self.atmfiles)
 			selected_profile = rd.randint(1, self.NMONTE)
 			selected_efpa = np.random.normal(self.nominalEFPA, self.EFPA_1sigma_value)
-			selected_atmSigma = np.random.normal(0, 1)
+			selected_atmSigma = np.random.normal(0, self.atmSigmaFactor)
 			selected_LD = np.random.normal(self.nominalLD, self.LD_1sigma_value)
 
 			ATM_height, ATM_density_low, ATM_density_avg, ATM_density_high, \
@@ -5876,7 +5878,7 @@ class Vehicle:
 			# selected_efpa     = -11.53
 			selected_efpa = np.random.normal(self.nominalEFPA, self.EFPA_1sigma_value)
 			# selected_atmSigma = +0.0
-			selected_atmSigma = np.random.normal(0, 1)
+			selected_atmSigma = np.random.normal(0, self.atmSigmaFactor)
 			selected_LD = np.random.normal(self.nominalLD, self.LD_1sigma_value)
 
 			ATM_height, ATM_density_low, ATM_density_avg, ATM_density_high, \
