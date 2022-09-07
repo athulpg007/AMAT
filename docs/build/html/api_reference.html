@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>API Reference &mdash; AMAT v2.2.15 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <title>API Reference &mdash; AMAT v2.2.16 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
@@ -21,7 +21,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Contributions" href="contributions.html" />
-    <link rel="prev" title="Acta Astronautica" href="acta-astronautica.html" /> 
+    <link rel="prev" title="Section 10 - Flight System Summary" href="acta-aa-notebooks/uranus-orbiter-probe/10-flight-system.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -46,7 +46,7 @@
 <li class="toctree-l1"><a class="reference internal" href="capabilities.html">Capabilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="jupyter_link.html">Example Jupyter Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="jsr-notebooks.html">JSR Article Notebooks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="acta-astronautica.html">Acta Astronautica</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acta-astronautica.html">Acta Astronautica Notebooks</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul class="simple">
 </ul>
 </li>
@@ -585,6 +585,8 @@ height, temperature, pressure, and density</p>
 <li><p><strong>datfile</strong> (<em>str</em>) – file containing atmospheric lookup table</p></li>
 <li><p><strong>heightCol</strong> (<em>int</em>) – column number of height values, assumes unit = meters
 (first column = 0, second column = 1, etc.)</p></li>
+<li><p><strong>tempCol</strong> (<em>int</em>) – column number of temperature values, assumes unit = K
+(first column = 0, second column = 1, etc.)</p></li>
 <li><p><strong>presCol</strong> (<em>int</em>) – column number of pressure values, assumes unit = Pascals
 (first column = 0, second column = 1, etc.)</p></li>
 <li><p><strong>densCol</strong> (<em>int</em>) – column number of density values, assumes unit = kg/m3
@@ -617,6 +619,7 @@ with mean=0, sigma=1)</p></li>
 <li><p><strong>NPOS</strong> (<em>int</em>) – NPOS value from GRAM model
 equals the number of positions (altitude) for which
 density value is available in look up table.</p></li>
+<li><p><strong>i</strong> (<em>int</em>) – index of atmospheric profile to load</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -646,6 +649,7 @@ with mean=0, sigma=1)</p></li>
 <li><p><strong>NPOS</strong> (<em>int</em>) – NPOS value from GRAM model
 equals the number of positions (altitude) for which
 density value is available in look up table.</p></li>
+<li><p><strong>i</strong> (<em>int</em>) – index of atmospheric profile to load</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -669,9 +673,9 @@ density value is available in look up table.</p></li>
 (first column = 0, second column = 1, etc.)</p></li>
 <li><p><strong>densLowCol</strong> (<em>int</em>) – column number of the low mean density</p></li>
 <li><p><strong>densAvgCol</strong> (<em>int</em>) – column number of the average mean density</p></li>
-<li><p><strong>densHigCol</strong> (<em>int</em>) – column number of the high mean desnity</p></li>
+<li><p><strong>densHighCol</strong> (<em>int</em>) – column number of the high mean desnity</p></li>
 <li><p><strong>densTotalCol</strong> (<em>int</em>) – column number of the total (=mean + perturb.) density</p></li>
-<li><p><strong>heightinKmFlag</strong> (<em>bool</em><em>, </em><em>optional</em>) – optional, set this to True if heightCol has units of km,
+<li><p><strong>heightInKmFlag</strong> (<em>bool</em><em>, </em><em>optional</em>) – optional, set this to True if heightCol has units of km,
 False by default</p></li>
 </ul>
 </dd>
@@ -702,7 +706,7 @@ Utility function for EARTH-GRAM atmospheric data</p>
 <li><p><strong>densAvgCol</strong> (<em>int</em>) – column number of the average mean density</p></li>
 <li><p><strong>densSD_percCol</strong> (<em>int</em>) – column number of mean density one sigma SD</p></li>
 <li><p><strong>densTotalCol</strong> (<em>int</em>) – column number of the total (=mean + perturb.) density</p></li>
-<li><p><strong>heightinKmFlag</strong> (<em>bool</em><em>, </em><em>optional</em>) – optional, set this to True if heightCol has units of km,
+<li><p><strong>heightInKmFlag</strong> (<em>bool</em><em>, </em><em>optional</em>) – optional, set this to True if heightCol has units of km,
 False by default</p></li>
 </ul>
 </dd>
@@ -2663,8 +2667,8 @@ vehicle location array (r[:],theta[:], phi[:]), and velocity.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>r</strong> (<em>numpy.ndarray</em>) – radial position array, m</p></li>
 <li><p><strong>theta</strong> (<em>numpy.ndarray</em>) – longitude array, radians</p></li>
-<li><p><strong>phi</strong> (<em>float</em>) – latitude array, radians</p></li>
-<li><p><strong>v</strong> (<em>float</em>) – planet-relative speed array, m/s</p></li>
+<li><p><strong>phi</strong> (<em>numpy.ndarray</em>) – latitude array, radians</p></li>
+<li><p><strong>v</strong> (<em>numpy.ndarray</em>) – planet-relative speed array, m/s</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -3396,19 +3400,42 @@ lift modulation aerocapture. Includes effect of planet rotation.</p>
 <dt id="AMAT.vehicle.Vehicle.computeTCWD">
 <code class="sig-name descname">computeTCWD</code><span class="sig-paren">(</span><em class="sig-param">t_sec</em>, <em class="sig-param">dt</em>, <em class="sig-param">gamma0_deg_guess_low</em>, <em class="sig-param">gamma0_deg_guess_high</em>, <em class="sig-param">gamma_deg_tol</em>, <em class="sig-param">targetApopasisAltitude_km</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle.computeTCWD" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the theoretical corridor width (TCWD) for
-drag modulation aerocapture.</p>
+drag modulation aerocapture. Does not include planet rotation.</p>
 <p>TCWD = overShootLimit - underShootLimit</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>t_sec</strong> (<em>float</em>) – propogation time, seconds</p></li>
 <li><p><strong>dt</strong> (<em>float</em>) – max. time step, seconds</p></li>
-<li><p><strong>gamma0_deg_guess_low_os</strong> (<em>float</em>) – lower bound for the guess of overshoot limit FPA, deg</p></li>
-<li><p><strong>gamma0_deg_guess_high_os</strong> (<em>float</em>) – upper bound for the guess of overshoot limit FPA, deg</p></li>
-<li><p><strong>gamma0_deg_guess_low_us</strong> (<em>float</em>) – lower bound for the guess of undershoot limit FPA, deg</p></li>
-<li><p><strong>gamma0_deg_guess_high_us</strong> (<em>float</em>) – upper bound for the guess of undershoot limit FPA, deg</p></li>
-<li><p><strong>gamma_deg_tol_os</strong> (<em>float</em>) – desired accuracy for computation of the overshoot limit, deg</p></li>
-<li><p><strong>gamma_deg_tol_us</strong> (<em>float</em>) – desired accuracy for computation of the undershoot limit, deg</p></li>
+<li><p><strong>gamma0_deg_guess_low</strong> (<em>float</em>) – lower bound for the EFPA guess, deg</p></li>
+<li><p><strong>gamma0_deg_guess_high</strong> (<em>float</em>) – upper bound for the EFPA guess, deg</p></li>
+<li><p><strong>gamma_deg_tol</strong> (<em>float</em>) – EFPA error tolerance</p></li>
+<li><p><strong>targetApopasisAltitude_km</strong> (<em>float</em>) – target apoapsis altitude , km</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>TCWD</strong> – Theoretical Corridor Width (Drag Modulation), deg</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.vehicle.Vehicle.computeTCWD2">
+<code class="sig-name descname">computeTCWD2</code><span class="sig-paren">(</span><em class="sig-param">t_sec</em>, <em class="sig-param">dt</em>, <em class="sig-param">gamma0_deg_guess_low</em>, <em class="sig-param">gamma0_deg_guess_high</em>, <em class="sig-param">gamma_deg_tol</em>, <em class="sig-param">targetApopasisAltitude_km</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle.computeTCWD2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the theoretical corridor width (TCWD) for
+drag modulation aerocapture. Includes planet rotation.</p>
+<p>TCWD = overShootLimit - underShootLimit</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t_sec</strong> (<em>float</em>) – propogation time, seconds</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – max. time step, seconds</p></li>
+<li><p><strong>gamma0_deg_guess_low</strong> (<em>float</em>) – lower bound for the EFPA guess, deg</p></li>
+<li><p><strong>gamma0_deg_guess_high</strong> (<em>float</em>) – upper bound for the EFPA guess, deg</p></li>
+<li><p><strong>gamma_deg_tol</strong> (<em>float</em>) – EFPA error tolerance</p></li>
 <li><p><strong>targetApopasisAltitude_km</strong> (<em>float</em>) – target apoapsis altitude , km</p></li>
 </ul>
 </dd>
@@ -3620,7 +3647,7 @@ descending leg of the aerocapture maneuver.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>h_step_array</strong> (<em>numpy.ndarray</em>) – height array at which density is measured, km</p></li>
-<li><p><strong>density_mes_array</strong> (<em>float</em>) – density array corresponding to h_step_array, kg/m3</p></li>
+<li><p><strong>density_mes_array</strong> (<em>numpy.ndarray</em>) – density array corresponding to h_step_array, kg/m3</p></li>
 <li><p><strong>lowAlt_km</strong> (<em>float</em>) – lower altitude to which density model is to be extrapolated
 based on available measurements, km</p></li>
 <li><p><strong>numPoints_lowAlt</strong> (<em>int</em>) – number of points to evaluate extrapolation at below the
@@ -3680,7 +3707,38 @@ measured density profile for propogation.</p>
 <dt id="AMAT.vehicle.Vehicle.findEFPALimitD">
 <code class="sig-name descname">findEFPALimitD</code><span class="sig-paren">(</span><em class="sig-param">t_sec</em>, <em class="sig-param">dt</em>, <em class="sig-param">gamma0_deg_guess_low</em>, <em class="sig-param">gamma0_deg_guess_high</em>, <em class="sig-param">gamma_deg_tol</em>, <em class="sig-param">targetApopasisAltitude_km</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle.findEFPALimitD" title="Permalink to this definition">¶</a></dt>
 <dd><p>This function computes the limiting EFPA for drag modulation
-aerocapture.</p>
+aerocapture. Does not include planetary rotation correction.</p>
+<p>A bisection algorithm is used to compute the limit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t_sec</strong> (<em>float</em>) – propogation time, seconds</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – max. time step, seconds</p></li>
+<li><p><strong>gamma0_deg_guess_low</strong> (<em>float</em>) – lower bound for the guess of limit FPA, deg</p></li>
+<li><p><strong>gamma0_deg_guess_high</strong> (<em>float</em>) – upper bound for the guess of limit FPA, deg</p></li>
+<li><p><strong>gamma_deg_tol</strong> (<em>float</em>) – desired accuracy for computation of the limit, deg</p></li>
+<li><p><strong>targetApopasisAltitude_km</strong> (<em>float</em>) – target apoapsis altitude , km</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>EFPALimit</strong> (<em>float</em>) – limit EFPA, deg</p></li>
+<li><p><strong>exitflag</strong> (<em>float</em>) – flag to indicate if a solution could not be found for the
+limit EFPA</p></li>
+<li><p><em>exitflag = 1.0 indicates over shoot limit was found.</em></p></li>
+<li><p><em>exitflag = 0.0 indicates overshoot limit was not found</em></p></li>
+<li><p><em>within user specified bounds.</em></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.vehicle.Vehicle.findEFPALimitD2">
+<code class="sig-name descname">findEFPALimitD2</code><span class="sig-paren">(</span><em class="sig-param">t_sec</em>, <em class="sig-param">dt</em>, <em class="sig-param">gamma0_deg_guess_low</em>, <em class="sig-param">gamma0_deg_guess_high</em>, <em class="sig-param">gamma_deg_tol</em>, <em class="sig-param">targetApopasisAltitude_km</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle.findEFPALimitD2" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function computes the limiting EFPA for drag modulation
+aerocapture. Includes planetary rotation correction. Includes planet rotation.</p>
 <p>A bisection algorithm is used to compute the limit.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -3786,7 +3844,37 @@ overshoot limit</p></li>
 <dt id="AMAT.vehicle.Vehicle.findOverShootLimitD">
 <code class="sig-name descname">findOverShootLimitD</code><span class="sig-paren">(</span><em class="sig-param">t_sec</em>, <em class="sig-param">dt</em>, <em class="sig-param">gamma0_deg_guess_low</em>, <em class="sig-param">gamma0_deg_guess_high</em>, <em class="sig-param">gamma_deg_tol</em>, <em class="sig-param">targetApopasisAltitude_km</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle.findOverShootLimitD" title="Permalink to this definition">¶</a></dt>
 <dd><p>This function computes the limiting overshoot
-EFPA for drag modulation aerocapture.</p>
+EFPA for drag modulation aerocapture. Does not include planet rotation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t_sec</strong> (<em>float</em>) – propogation time, seconds</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – max. time step, seconds</p></li>
+<li><p><strong>gamma0_deg_guess_low</strong> (<em>float</em>) – lower bound for the guess of limit FPA, deg</p></li>
+<li><p><strong>gamma0_deg_guess_high</strong> (<em>float</em>) – upper bound for the guess of limit FPA, deg</p></li>
+<li><p><strong>gamma_deg_tol</strong> (<em>float</em>) – desired accuracy for computation of the limit, deg</p></li>
+<li><p><strong>targetApopasisAltitude_km</strong> (<em>float</em>) – target apoapsis altitude , km</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>overShootLimitD</strong> (<em>float</em>) – overshoot limit EFPA, deg</p></li>
+<li><p><strong>exitflagD_os</strong> (<em>float</em>) – flag to indicate if a solution could not be found for the
+overshoot limit EFPA</p></li>
+<li><p><em>exitflagD_os = 1.0 indicates over shoot limit was found.</em></p></li>
+<li><p><em>exitflagD_os = 0.0 indicates overshoot limit was not found</em></p></li>
+<li><p><em>within user specified bounds.</em></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.vehicle.Vehicle.findOverShootLimitD2">
+<code class="sig-name descname">findOverShootLimitD2</code><span class="sig-paren">(</span><em class="sig-param">t_sec</em>, <em class="sig-param">dt</em>, <em class="sig-param">gamma0_deg_guess_low</em>, <em class="sig-param">gamma0_deg_guess_high</em>, <em class="sig-param">gamma_deg_tol</em>, <em class="sig-param">targetApopasisAltitude_km</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle.findOverShootLimitD2" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function computes the limiting overshoot
+EFPA for drag modulation aerocapture. Includes planet rotation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -3891,7 +3979,37 @@ undershoot limit</p></li>
 <dt id="AMAT.vehicle.Vehicle.findUnderShootLimitD">
 <code class="sig-name descname">findUnderShootLimitD</code><span class="sig-paren">(</span><em class="sig-param">t_sec</em>, <em class="sig-param">dt</em>, <em class="sig-param">gamma0_deg_guess_low</em>, <em class="sig-param">gamma0_deg_guess_high</em>, <em class="sig-param">gamma_deg_tol</em>, <em class="sig-param">targetApopasisAltitude_km</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle.findUnderShootLimitD" title="Permalink to this definition">¶</a></dt>
 <dd><p>This function computes the limiting undershoot
-EFPA for drag modulation aerocapture.</p>
+EFPA for drag modulation aerocapture. Does not include planet rotation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t_sec</strong> (<em>float</em>) – propogation time, seconds</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – max. time step, seconds</p></li>
+<li><p><strong>gamma0_deg_guess_low</strong> (<em>float</em>) – lower bound for the guess of limit FPA, deg</p></li>
+<li><p><strong>gamma0_deg_guess_high</strong> (<em>float</em>) – upper bound for the guess of limit FPA, deg</p></li>
+<li><p><strong>gamma_deg_tol</strong> (<em>float</em>) – desired accuracy for computation of the limit, deg</p></li>
+<li><p><strong>targetApopasisAltitude_km</strong> (<em>float</em>) – target apoapsis altitude , km</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>underShootLimitD</strong> (<em>float</em>) – undershoot limit EFPA, deg</p></li>
+<li><p><strong>exitflagD_us</strong> (<em>float</em>) – flag to indicate if a solution could not be found for the
+undershoot limit EFPA</p></li>
+<li><p><em>exitflagD_us = 1.0 indicates undershoot limit was found.</em></p></li>
+<li><p><em>exitflagD_us = 0.0 indicates undershoot limit was not found</em></p></li>
+<li><p><em>within user specified bounds.</em></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.vehicle.Vehicle.findUnderShootLimitD2">
+<code class="sig-name descname">findUnderShootLimitD2</code><span class="sig-paren">(</span><em class="sig-param">t_sec</em>, <em class="sig-param">dt</em>, <em class="sig-param">gamma0_deg_guess_low</em>, <em class="sig-param">gamma0_deg_guess_high</em>, <em class="sig-param">gamma_deg_tol</em>, <em class="sig-param">targetApopasisAltitude_km</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle.findUnderShootLimitD2" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function computes the limiting undershoot
+EFPA for drag modulation aerocapture. Includes planet rotation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -4177,6 +4295,38 @@ jettisoned at the current time, km</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="AMAT.vehicle.Vehicle.predictApoapsisAltitudeKm_afterJettision2">
+<code class="sig-name descname">predictApoapsisAltitudeKm_afterJettision2</code><span class="sig-paren">(</span><em class="sig-param">h0_km</em>, <em class="sig-param">theta0_deg</em>, <em class="sig-param">phi0_deg</em>, <em class="sig-param">v0_kms</em>, <em class="sig-param">gamma0_deg</em>, <em class="sig-param">psi0_deg</em>, <em class="sig-param">drange0_km</em>, <em class="sig-param">heatLoad0</em>, <em class="sig-param">t_sec</em>, <em class="sig-param">dt</em>, <em class="sig-param">delta_deg</em>, <em class="sig-param">density_mes_int</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle.predictApoapsisAltitudeKm_afterJettision2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the apoapsis altitude at exit if the drag skirt is
+jettisoned at the current vehicle state. Uses new solver.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>h0_km</strong> (<em>float</em>) – current vehicle altitude, km</p></li>
+<li><p><strong>theta0_deg</strong> (<em>float</em>) – current vehicle longitude, deg</p></li>
+<li><p><strong>phi0_deg</strong> (<em>float</em>) – current vehicle latitude, deg</p></li>
+<li><p><strong>v0_kms</strong> (<em>float</em>) – current vehicle speed, km/s</p></li>
+<li><p><strong>gamma0_deg</strong> (<em>float</em>) – current FPA, deg</p></li>
+<li><p><strong>psi0_deg</strong> (<em>float</em>) – current heading angle, deg</p></li>
+<li><p><strong>drange0_km</strong> (<em>float</em>) – current downrange, km</p></li>
+<li><p><strong>heatLoad0</strong> (<em>float</em>) – current heatload, J/cm2</p></li>
+<li><p><strong>t_sec</strong> (<em>float</em>) – propogation time, seconds</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – max. solver timestep</p></li>
+<li><p><strong>delta_deg</strong> (<em>float</em>) – commanded bank angle, deg</p></li>
+<li><p><strong>density_mes_int</strong> (<em>scipy.interpolate.interpolate.interp1d</em>) – measured density interpolation function</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>terminal_apoapsis_km</strong> – apoapsis altitude achieved if drag skirt is
+jettisoned at the current time, km</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="AMAT.vehicle.Vehicle.predictApoapsisAltitudeKm_withLiftUp">
 <code class="sig-name descname">predictApoapsisAltitudeKm_withLiftUp</code><span class="sig-paren">(</span><em class="sig-param">h0_km</em>, <em class="sig-param">theta0_deg</em>, <em class="sig-param">phi0_deg</em>, <em class="sig-param">v0_kms</em>, <em class="sig-param">gamma0_deg</em>, <em class="sig-param">psi0_deg</em>, <em class="sig-param">drange0_km</em>, <em class="sig-param">heatLoad0</em>, <em class="sig-param">t_sec</em>, <em class="sig-param">dt</em>, <em class="sig-param">delta_deg</em>, <em class="sig-param">density_mes_int</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle.predictApoapsisAltitudeKm_withLiftUp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute apoapsis altitude using full lift up bank
@@ -4261,55 +4411,26 @@ atmospheric profile data.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="AMAT.vehicle.Vehicle.propogateEntry2D">
-<code class="sig-name descname">propogateEntry2D</code><span class="sig-paren">(</span><em class="sig-param">h0_km</em>, <em class="sig-param">theta0_deg</em>, <em class="sig-param">phi0_deg</em>, <em class="sig-param">v0_kms</em>, <em class="sig-param">gamma0_deg</em>, <em class="sig-param">psi0_deg</em>, <em class="sig-param">drange0_km</em>, <em class="sig-param">heatLoad0</em>, <em class="sig-param">t_sec</em>, <em class="sig-param">dt</em>, <em class="sig-param">delta_deg</em>, <em class="sig-param">density_mes_int</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle.propogateEntry2D" title="Permalink to this definition">¶</a></dt>
-<dd><p>Utility propogator routine for prediction of atmospheric exit
-conditions which is then supplied to the apoapis prediction
-module.</p>
-<p>Propogates the vehicle state for using the measured
-atmospheric profile during the descending leg.</p>
+<dt id="AMAT.vehicle.Vehicle.propogateEntryPhaseD">
+<code class="sig-name descname">propogateEntryPhaseD</code><span class="sig-paren">(</span><em class="sig-param">timeStep</em>, <em class="sig-param">dt</em>, <em class="sig-param">maxTimeSecs</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle.propogateEntryPhaseD" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implements the entry phase of the guided drag modulation
+aerocapture (Single-event discrete drag modulation).</p>
+<p>The entry phase is defined from the atmospheric entry interface
+till drag skirt jettison.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>h0_km</strong> (<em>float</em>) – current altitude, km</p></li>
-<li><p><strong>theta0_deg</strong> (<em>float</em>) – current longitude, deg</p></li>
-<li><p><strong>phi0_deg</strong> (<em>float</em>) – current latitude, deg</p></li>
-<li><p><strong>v0_kms</strong> (<em>float</em>) – current speed, km/s</p></li>
-<li><p><strong>gamma0_deg</strong> (<em>float</em>) – current FPA, deg</p></li>
-<li><p><strong>psi0_deg</strong> (<em>float</em>) – current heading angle, deg</p></li>
-<li><p><strong>drange0_km</strong> (<em>float</em>) – current downrange, km</p></li>
-<li><p><strong>heatLoad0</strong> (<em>float</em>) – current heatload, J/cm2</p></li>
-<li><p><strong>t_sec</strong> (<em>float</em>) – propogation time, seconds</p></li>
-<li><p><strong>dt</strong> (<em>float</em>) – max. time step, seconds</p></li>
-<li><p><strong>delta_deg</strong> (<em>float</em>) – bank angle command, deg</p></li>
+<li><p><strong>timeStep</strong> (<em>float</em>) – Guidance cycle time, seconds</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Solver max. time step, seconds</p></li>
+<li><p><strong>maxTimeSecs</strong> (<em>float</em>) – max. time for propogation, seconds</p></li>
 </ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><strong>t_minc</strong> (<em>numpy.ndarray</em>) – time solution array, min</p></li>
-<li><p><strong>h_kmc</strong> (<em>numpy.ndarray</em>) – altitude solution array, km</p></li>
-<li><p><strong>v_kmsc</strong> (<em>numpy.ndarray</em>) – speed solution array, km/s</p></li>
-<li><p><strong>phi_degc</strong> (<em>numpy.ndarray</em>) – latitude solution array, deg</p></li>
-<li><p><strong>psi_degc</strong> (<em>numpy.ndarray</em>) – heading angle solution array, deg</p></li>
-<li><p><strong>theta_degc</strong> (<em>numpy.ndarray</em>) – longitude solution array, deg</p></li>
-<li><p><strong>gamma_degc</strong> (<em>numpy.ndarray</em>) – FPA solution array, deg</p></li>
-<li><p><strong>drange_kmc</strong> (<em>numpy.ndarray</em>) – downrange solution array, km</p></li>
-<li><p><strong>exitflag</strong> (<em>int</em>) – exitflag</p></li>
-<li><p><strong>acc_net_g</strong> (<em>numpy.ndarray</em>) – acceleration solution array, Earth g</p></li>
-<li><p><strong>dyn_pres_atm</strong> (<em>numpy.ndarray</em>) – dynamic pressure solution array, atm</p></li>
-<li><p><strong>stag_pres_atm</strong> (<em>numpy.ndarray</em>) – stagnation pressure array, atm</p></li>
-<li><p><strong>q_stag_total</strong> (<em>numpy.ndarray</em>) – stagnation point heat rate array</p></li>
-<li><p><strong>heatload</strong> (<em>numpy.ndarray</em>) – stagnation point heat load</p></li>
-<li><p><strong>acc_drag_g</strong> (<em>numpy.ndarray</em>) – acceleration due to drag, Earth g</p></li>
-</ul>
-</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
-<dt id="AMAT.vehicle.Vehicle.propogateEntryPhaseD">
-<code class="sig-name descname">propogateEntryPhaseD</code><span class="sig-paren">(</span><em class="sig-param">timeStep</em>, <em class="sig-param">dt</em>, <em class="sig-param">maxTimeSecs</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle.propogateEntryPhaseD" title="Permalink to this definition">¶</a></dt>
+<dt id="AMAT.vehicle.Vehicle.propogateEntryPhaseD2">
+<code class="sig-name descname">propogateEntryPhaseD2</code><span class="sig-paren">(</span><em class="sig-param">timeStep</em>, <em class="sig-param">dt</em>, <em class="sig-param">maxTimeSecs</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle.propogateEntryPhaseD2" title="Permalink to this definition">¶</a></dt>
 <dd><p>Implements the entry phase of the guided drag modulation
 aerocapture (Single-event discrete drag modulation).</p>
 <p>The entry phase is defined from the atmospheric entry interface
@@ -4420,6 +4541,100 @@ atmospheric profile during the descending leg.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="AMAT.vehicle.Vehicle.propogateEntry_utilD">
+<code class="sig-name descname">propogateEntry_utilD</code><span class="sig-paren">(</span><em class="sig-param">h0_km</em>, <em class="sig-param">theta0_deg</em>, <em class="sig-param">phi0_deg</em>, <em class="sig-param">v0_kms</em>, <em class="sig-param">gamma0_deg</em>, <em class="sig-param">psi0_deg</em>, <em class="sig-param">drange0_km</em>, <em class="sig-param">heatLoad0</em>, <em class="sig-param">t_sec</em>, <em class="sig-param">dt</em>, <em class="sig-param">delta_deg</em>, <em class="sig-param">density_mes_int</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle.propogateEntry_utilD" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility propogator routine for prediction of atmospheric exit
+conditions which is then supplied to the apoapis prediction
+module. Does not include planetary rotation.</p>
+<p>Propogates the vehicle state for using the measured
+atmospheric profile during the descending leg.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>h0_km</strong> (<em>float</em>) – current altitude, km</p></li>
+<li><p><strong>theta0_deg</strong> (<em>float</em>) – current longitude, deg</p></li>
+<li><p><strong>phi0_deg</strong> (<em>float</em>) – current latitude, deg</p></li>
+<li><p><strong>v0_kms</strong> (<em>float</em>) – current speed, km/s</p></li>
+<li><p><strong>gamma0_deg</strong> (<em>float</em>) – current FPA, deg</p></li>
+<li><p><strong>psi0_deg</strong> (<em>float</em>) – current heading angle, deg</p></li>
+<li><p><strong>drange0_km</strong> (<em>float</em>) – current downrange, km</p></li>
+<li><p><strong>heatLoad0</strong> (<em>float</em>) – current heatload, J/cm2</p></li>
+<li><p><strong>t_sec</strong> (<em>float</em>) – propogation time, seconds</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – max. time step, seconds</p></li>
+<li><p><strong>delta_deg</strong> (<em>float</em>) – bank angle command, deg</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>t_minc</strong> (<em>numpy.ndarray</em>) – time solution array, min</p></li>
+<li><p><strong>h_kmc</strong> (<em>numpy.ndarray</em>) – altitude solution array, km</p></li>
+<li><p><strong>v_kmsc</strong> (<em>numpy.ndarray</em>) – speed solution array, km/s</p></li>
+<li><p><strong>phi_degc</strong> (<em>numpy.ndarray</em>) – latitude solution array, deg</p></li>
+<li><p><strong>psi_degc</strong> (<em>numpy.ndarray</em>) – heading angle solution array, deg</p></li>
+<li><p><strong>theta_degc</strong> (<em>numpy.ndarray</em>) – longitude solution array, deg</p></li>
+<li><p><strong>gamma_degc</strong> (<em>numpy.ndarray</em>) – FPA solution array, deg</p></li>
+<li><p><strong>drange_kmc</strong> (<em>numpy.ndarray</em>) – downrange solution array, km</p></li>
+<li><p><strong>exitflag</strong> (<em>int</em>) – exitflag</p></li>
+<li><p><strong>acc_net_g</strong> (<em>numpy.ndarray</em>) – acceleration solution array, Earth g</p></li>
+<li><p><strong>dyn_pres_atm</strong> (<em>numpy.ndarray</em>) – dynamic pressure solution array, atm</p></li>
+<li><p><strong>stag_pres_atm</strong> (<em>numpy.ndarray</em>) – stagnation pressure array, atm</p></li>
+<li><p><strong>q_stag_total</strong> (<em>numpy.ndarray</em>) – stagnation point heat rate array</p></li>
+<li><p><strong>heatload</strong> (<em>numpy.ndarray</em>) – stagnation point heat load</p></li>
+<li><p><strong>acc_drag_g</strong> (<em>numpy.ndarray</em>) – acceleration due to drag, Earth g</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.vehicle.Vehicle.propogateEntry_utilD2">
+<code class="sig-name descname">propogateEntry_utilD2</code><span class="sig-paren">(</span><em class="sig-param">h0_km</em>, <em class="sig-param">theta0_deg</em>, <em class="sig-param">phi0_deg</em>, <em class="sig-param">v0_kms</em>, <em class="sig-param">gamma0_deg</em>, <em class="sig-param">psi0_deg</em>, <em class="sig-param">drange0_km</em>, <em class="sig-param">heatLoad0</em>, <em class="sig-param">t_sec</em>, <em class="sig-param">dt</em>, <em class="sig-param">delta_deg</em>, <em class="sig-param">density_mes_int</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle.propogateEntry_utilD2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility propogator routine for prediction of atmospheric exit
+conditions which is then supplied to the apoapis prediction
+module. Includes planetary rotation.</p>
+<p>Propogates the vehicle state for using the measured
+atmospheric profile during the descending leg.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>h0_km</strong> (<em>float</em>) – current altitude, km</p></li>
+<li><p><strong>theta0_deg</strong> (<em>float</em>) – current longitude, deg</p></li>
+<li><p><strong>phi0_deg</strong> (<em>float</em>) – current latitude, deg</p></li>
+<li><p><strong>v0_kms</strong> (<em>float</em>) – current speed, km/s</p></li>
+<li><p><strong>gamma0_deg</strong> (<em>float</em>) – current FPA, deg</p></li>
+<li><p><strong>psi0_deg</strong> (<em>float</em>) – current heading angle, deg</p></li>
+<li><p><strong>drange0_km</strong> (<em>float</em>) – current downrange, km</p></li>
+<li><p><strong>heatLoad0</strong> (<em>float</em>) – current heatload, J/cm2</p></li>
+<li><p><strong>t_sec</strong> (<em>float</em>) – propogation time, seconds</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – max. time step, seconds</p></li>
+<li><p><strong>delta_deg</strong> (<em>float</em>) – bank angle command, deg</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>t_minc</strong> (<em>numpy.ndarray</em>) – time solution array, min</p></li>
+<li><p><strong>h_kmc</strong> (<em>numpy.ndarray</em>) – altitude solution array, km</p></li>
+<li><p><strong>v_kmsc</strong> (<em>numpy.ndarray</em>) – speed solution array, km/s</p></li>
+<li><p><strong>phi_degc</strong> (<em>numpy.ndarray</em>) – latitude solution array, deg</p></li>
+<li><p><strong>psi_degc</strong> (<em>numpy.ndarray</em>) – heading angle solution array, deg</p></li>
+<li><p><strong>theta_degc</strong> (<em>numpy.ndarray</em>) – longitude solution array, deg</p></li>
+<li><p><strong>gamma_degc</strong> (<em>numpy.ndarray</em>) – FPA solution array, deg</p></li>
+<li><p><strong>drange_kmc</strong> (<em>numpy.ndarray</em>) – downrange solution array, km</p></li>
+<li><p><strong>exitflag</strong> (<em>int</em>) – exitflag</p></li>
+<li><p><strong>acc_net_g</strong> (<em>numpy.ndarray</em>) – acceleration solution array, Earth g</p></li>
+<li><p><strong>dyn_pres_atm</strong> (<em>numpy.ndarray</em>) – dynamic pressure solution array, atm</p></li>
+<li><p><strong>stag_pres_atm</strong> (<em>numpy.ndarray</em>) – stagnation pressure array, atm</p></li>
+<li><p><strong>q_stag_total</strong> (<em>numpy.ndarray</em>) – stagnation point heat rate array</p></li>
+<li><p><strong>heatload</strong> (<em>numpy.ndarray</em>) – stagnation point heat load</p></li>
+<li><p><strong>acc_drag_g</strong> (<em>numpy.ndarray</em>) – acceleration due to drag, Earth g</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="AMAT.vehicle.Vehicle.propogateEquilibriumGlide">
 <code class="sig-name descname">propogateEquilibriumGlide</code><span class="sig-paren">(</span><em class="sig-param">timeStep</em>, <em class="sig-param">dt</em>, <em class="sig-param">maxTimeSecs</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle.propogateEquilibriumGlide" title="Permalink to this definition">¶</a></dt>
 <dd><p>Implements the equilibrium glide phase of the guidance scheme.</p>
@@ -4482,7 +4697,22 @@ atmospheric profile during the descending leg.</p>
 <dl class="method">
 <dt id="AMAT.vehicle.Vehicle.propogateExitPhaseD">
 <code class="sig-name descname">propogateExitPhaseD</code><span class="sig-paren">(</span><em class="sig-param">timeStep</em>, <em class="sig-param">dt</em>, <em class="sig-param">maxTimeSecs</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle.propogateExitPhaseD" title="Permalink to this definition">¶</a></dt>
-<dd><p>Implements the exit phase of the guidance scheme (full lift-up).</p>
+<dd><p>Implements the exit phase of the guidance scheme for drag modulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>timeStep</strong> (<em>float</em>) – Guidance cycle time, seconds</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Solver max. time step, seconds</p></li>
+<li><p><strong>maxTimeSecs</strong> (<em>float</em>) – max. time for propogation, seconds</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.vehicle.Vehicle.propogateExitPhaseD2">
+<code class="sig-name descname">propogateExitPhaseD2</code><span class="sig-paren">(</span><em class="sig-param">timeStep</em>, <em class="sig-param">dt</em>, <em class="sig-param">maxTimeSecs</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle.propogateExitPhaseD2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implements the exit phase of the guidance scheme for drag modulation, with new solver.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -4529,6 +4759,23 @@ atmospheric profile during the descending leg.</p>
 <code class="sig-name descname">propogateGuidedEntryD</code><span class="sig-paren">(</span><em class="sig-param">timeStepEntry</em>, <em class="sig-param">timeStepExit</em>, <em class="sig-param">dt</em>, <em class="sig-param">maxTimeSecs</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle.propogateGuidedEntryD" title="Permalink to this definition">¶</a></dt>
 <dd><p>Implements the full guidance scheme for drag modulation aerocapture
 (entry phase + exit phase)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>timeStepEntry</strong> (<em>float</em>) – Guidance cycle time (entry phase), seconds</p></li>
+<li><p><strong>timeStepExit</strong> (<em>float</em>) – Guidance cycle time (exit phase), seconds</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Solver max. time step, seconds</p></li>
+<li><p><strong>maxTimeSecs</strong> (<em>float</em>) – max. time for propogation, seconds</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.vehicle.Vehicle.propogateGuidedEntryD2">
+<code class="sig-name descname">propogateGuidedEntryD2</code><span class="sig-paren">(</span><em class="sig-param">timeStepEntry</em>, <em class="sig-param">timeStepExit</em>, <em class="sig-param">dt</em>, <em class="sig-param">maxTimeSecs</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle.propogateGuidedEntryD2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implements the full guidance scheme for drag modulation aerocapture
+(entry phase + exit phase). Includes inertial correction.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -4689,6 +4936,21 @@ aerocapture.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="AMAT.vehicle.Vehicle.runMonteCarloD2">
+<code class="sig-name descname">runMonteCarloD2</code><span class="sig-paren">(</span><em class="sig-param">N</em>, <em class="sig-param">mainFolder</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle.runMonteCarloD2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run a Monte Carlo simulation for drag modulation
+aerocapture with new solver.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>N</strong> (<em>int</em>) – Number of trajectories</p></li>
+<li><p><strong>mainFolder</strong> (<em>str</em>) – path where data is to be stored</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="AMAT.vehicle.Vehicle.runMonteCarloD_Earth">
 <code class="sig-name descname">runMonteCarloD_Earth</code><span class="sig-paren">(</span><em class="sig-param">N</em>, <em class="sig-param">mainFolder</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle.runMonteCarloD_Earth" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run a Monte Carlo simulation for drag modulation
@@ -4783,8 +5045,7 @@ start point, meters</p></li>
 start point, degrees</p></li>
 <li><p><strong>phi0_deg</strong> (<em>float</em>) – initial vehicle latitude at atmospheric interface / other
 start point, degrees</p></li>
-<li><p><strong>v0_kms</strong> (<em>float</em>) – initial vehicle speed (planet-relative) at atmospheric
-interface / other  start point, km/s</p></li>
+<li><p><strong>v0_kms</strong> (<em>float</em>) – initial vehicle speed (planet-relative) at atmospheric interface / other start point, km/s</p></li>
 <li><p><strong>psi0_deg</strong> (<em>float</em>) – initial vehicle heading at atmospheric interface / other
 start point, degrees</p></li>
 <li><p><strong>gamma0_deg</strong> (<em>float</em>) – initial vehicle flight-path angle at atmospheric interface
@@ -4839,7 +5100,7 @@ used by guidance algorithm</p></li>
 
 <dl class="method">
 <dt id="AMAT.vehicle.Vehicle.setupMonteCarloSimulation">
-<code class="sig-name descname">setupMonteCarloSimulation</code><span class="sig-paren">(</span><em class="sig-param">NPOS</em>, <em class="sig-param">NMONTE</em>, <em class="sig-param">atmfiles</em>, <em class="sig-param">heightCol</em>, <em class="sig-param">densLowCol</em>, <em class="sig-param">densAvgCol</em>, <em class="sig-param">densHighCol</em>, <em class="sig-param">densTotalCol</em>, <em class="sig-param">heightInKmFlag</em>, <em class="sig-param">nominalEFPA</em>, <em class="sig-param">EFPA_1sigma_value</em>, <em class="sig-param">nominalLD</em>, <em class="sig-param">LD_1sigma_value</em>, <em class="sig-param">timeStep</em>, <em class="sig-param">dt</em>, <em class="sig-param">maxTimeSecs</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle.setupMonteCarloSimulation" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">setupMonteCarloSimulation</code><span class="sig-paren">(</span><em class="sig-param">NPOS</em>, <em class="sig-param">NMONTE</em>, <em class="sig-param">atmfiles</em>, <em class="sig-param">heightCol</em>, <em class="sig-param">densLowCol</em>, <em class="sig-param">densAvgCol</em>, <em class="sig-param">densHighCol</em>, <em class="sig-param">densTotalCol</em>, <em class="sig-param">heightInKmFlag</em>, <em class="sig-param">nominalEFPA</em>, <em class="sig-param">EFPA_1sigma_value</em>, <em class="sig-param">nominalLD</em>, <em class="sig-param">LD_1sigma_value</em>, <em class="sig-param">timeStep</em>, <em class="sig-param">dt</em>, <em class="sig-param">maxTimeSecs</em>, <em class="sig-param">atmSigmaFactor=1</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.vehicle.Vehicle.setupMonteCarloSimulation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the Monte Carlo simulation parameters.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -5224,7 +5485,7 @@ v_inf_vec, periapsis radius, psi.</p>
 <dl class="attribute">
 <dt id="AMAT.approach.Approach.planetObj">
 <code class="sig-name descname">planetObj</code><a class="headerlink" href="#AMAT.approach.Approach.planetObj" title="Permalink to this definition">¶</a></dt>
-<dd><p>arrival planet object for approach trajectory</p>
+<dd><p>arrival planet object for approach traje</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"><p>AMAT.planet.Planet object</p>
@@ -8082,13 +8343,82 @@ atmospheric entry interface, m/s</p>
 
 </dd></dl>
 
+<dl class="class">
+<dt id="AMAT.orbiter.PropulsiveOrbiter">
+<em class="property">class </em><code class="sig-prename descclassname">AMAT.orbiter.</code><code class="sig-name descname">PropulsiveOrbiter</code><span class="sig-paren">(</span><em class="sig-param">approach</em>, <em class="sig-param">apoapsis_alt_km</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.orbiter.PropulsiveOrbiter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the orbit of a propulsive insertion orbiter after OI burn.</p>
+<dl class="method">
+<dt id="AMAT.orbiter.PropulsiveOrbiter.compute_orbit_trajectory">
+<code class="sig-name descname">compute_orbit_trajectory</code><span class="sig-paren">(</span><em class="sig-param">num_points=601</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.orbiter.PropulsiveOrbiter.compute_orbit_trajectory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the coordinates of initial capture orbit of the propulsive orbiter</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>num_points</strong> (<em>int</em>) – grid points for full final orbit trajectory</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.orbiter.PropulsiveOrbiter.pos_vec_bi">
+<code class="sig-name descname">pos_vec_bi</code><span class="sig-paren">(</span><em class="sig-param">theta_star</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.orbiter.PropulsiveOrbiter.pos_vec_bi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the position vector in body-inertial frame
+for a specified true-anomaly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>theta_star</strong> (<em>float</em>) – true anomaly, rad</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>pos_vec_bi</strong> – position vector in body-inertial frame, meters</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.orbiter.PropulsiveOrbiter.r_mag_bi">
+<code class="sig-name descname">r_mag_bi</code><span class="sig-paren">(</span><em class="sig-param">theta_star</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.orbiter.PropulsiveOrbiter.r_mag_bi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the position vector magnitude in body-inertial frame at a given true anomaly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>theta_star</strong> (<em>float</em>) – true anomaly, rad</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>r_mag_bi</strong> – position vector magnitude, meters</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="AMAT.orbiter.PropulsiveOrbiter.vel_vec_bi">
+<code class="sig-name descname">vel_vec_bi</code><span class="sig-paren">(</span><em class="sig-param">theta_star</em><span class="sig-paren">)</span><a class="headerlink" href="#AMAT.orbiter.PropulsiveOrbiter.vel_vec_bi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the velocity vector in body-inertial frame at a given true anomaly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>theta_star</strong> (<em>float</em>) – true anomaly, rad</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>vel_vec_bi</strong> – velocity vector in body-inertial frame, m/s</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="acta-astronautica.html" class="btn btn-neutral float-left" title="Acta Astronautica" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="acta-aa-notebooks/uranus-orbiter-probe/10-flight-system.html" class="btn btn-neutral float-left" title="Section 10 - Flight System Summary" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="contributions.html" class="btn btn-neutral float-right" title="Contributions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

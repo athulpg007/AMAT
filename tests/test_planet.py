@@ -8,6 +8,7 @@ atmospheric profiles.
 
 import unittest
 
+
 class TestImportPlanet(unittest.TestCase):
 	def test_import_planet(self):
 		try:
@@ -15,12 +16,13 @@ class TestImportPlanet(unittest.TestCase):
 			return True
 		except ModuleNotFoundError:
 			raise ModuleNotFoundError("Cannot import Planet from AMAT.planet")
-			assert False
+
 
 try:
 	from AMAT.planet import Planet
 except ModuleNotFoundError:
 	raise ModuleNotFoundError("Cannot import Planet from AMAT.planet")
+
 
 class TestCreatePlanet(unittest.TestCase):
 
@@ -52,13 +54,11 @@ class TestCreatePlanet(unittest.TestCase):
 		self.assertIsInstance(planet4, Planet, message)
 		self.assertEqual(planet4.ID, "JUPITER")
 
-
 	def test_create_planet_saturn(self):
 		planet5 = Planet("SATURN")
 		message = "Could not create Planet instance for Saturn"
 		self.assertIsInstance(planet5, Planet, message)
 		self.assertEqual(planet5.ID, "SATURN")
-
 
 	def test_create_planet_titan(self):
 		planet6 = Planet("TITAN")
@@ -66,13 +66,11 @@ class TestCreatePlanet(unittest.TestCase):
 		self.assertIsInstance(planet6, Planet, message)
 		self.assertEqual(planet6.ID, "TITAN")
 
-
 	def test_create_planet_uranus(self):
 		planet7 = Planet("URANUS")
 		message = "Could not create Planet instance for Uranus"
 		self.assertIsInstance(planet7, Planet, message)
 		self.assertEqual(planet7.ID, "URANUS")
-
 
 	def test_create_planet_neptune(self):
 		planet8 = Planet("NEPTUNE")
@@ -112,10 +110,32 @@ class TestPlanetConstants(unittest.TestCase):
 		self.assertAlmostEqual(planet7.GM, 5.793939E15,  places=4, msg="Check Uranus GM")
 		self.assertAlmostEqual(planet8.GM, 6.8365299E15, places=4, msg="Check Neptune GM")
 
+	def test_planet_RP(self):
+		"""
+		check GM values for all planet objects
+		"""
+		planet1 = Planet("VENUS")
+		planet2 = Planet("EARTH")
+		planet3 = Planet("MARS")
+		planet4 = Planet("JUPITER")
+		planet5 = Planet("SATURN")
+		planet6 = Planet("TITAN")
+		planet7 = Planet("URANUS")
+		planet8 = Planet("NEPTUNE")
+
+		self.assertAlmostEqual(planet1.RP, 6051.8000E3, delta=10e3, msg="Check Venus RP")
+		self.assertAlmostEqual(planet2.RP, 6371.0000E3, delta=10e3, msg="Check Earth RP")
+		self.assertAlmostEqual(planet3.RP, 3389.5000E3, delta=10e3, msg="Check Mars RP")
+		self.assertAlmostEqual(planet4.RP, 69911.0E3, delta=100e3, msg="Check Jupiter RP")
+		self.assertAlmostEqual(planet5.RP, 58232.0E3, delta=100e3, msg="Check Saturn RP")
+		self.assertAlmostEqual(planet6.RP, 2575.0000E3, delta=10e3, msg="Check Titan RP")
+		self.assertAlmostEqual(planet7.RP, 25559.0E3, delta=100e3, msg="Check Uranus RP")
+		self.assertAlmostEqual(planet8.RP, 24622.000E3, delta=100e3, msg="Check Neptune RP")
+
 	def test_planet_h_thres_h_trap(self):
 
 		"""
-		check GM values for all planet objects
+		check h_thres and h_trap for all planets
 		"""
 		planet1 = Planet("VENUS")
 		planet2 = Planet("EARTH")
@@ -150,7 +170,6 @@ class TestPlanetConstants(unittest.TestCase):
 		self.assertAlmostEqual(planet7.h_thres, planet7.h_skip, delta=1e3, msg="h_thres, h_skip disagree for Uranus")
 		self.assertAlmostEqual(planet8.h_thres, planet8.h_skip, delta=1e3, msg="h_thres, h_skip disagree for Neptune")
 
-
 		"""
 		check h_trap (traj. cut-off low-altitude) is set to a sufficiently low value
 		"""
@@ -162,6 +181,7 @@ class TestPlanetConstants(unittest.TestCase):
 		self.assertLessEqual(planet6.h_trap, 100.0E3, msg="Titan trap alt. likely too high.")
 		self.assertLessEqual(planet7.h_trap, 100.0E3, msg="Uranus trap alt. likely too high.")
 		self.assertLessEqual(planet8.h_trap, 100.0E3, msg="Neptune trap alt. likely too high.")
+
 
 class TestLoadAtmosphereModels(unittest.TestCase):
 	"""
@@ -179,14 +199,14 @@ class TestLoadAtmosphereModels(unittest.TestCase):
 	def test_load_atm_model_earth(self):
 		planet2 = Planet("EARTH")
 		try:
-			planet2.loadAtmosphereModel('../atmdata/Earth/earth-gram-avg.dat', 0 , 1 ,2, 3)
+			planet2.loadAtmosphereModel('../atmdata/Earth/earth-gram-avg.dat', 0, 1, 2, 3)
 		except OSError:
 			raise OSError("File not found. Check file path/name, and make sure file is present.")
 
 	def test_load_atm_model_mars(self):
 		planet3 = Planet("MARS")
 		try:
-			planet3.loadAtmosphereModel('../atmdata/Mars/mars-gram-avg.dat', 0 , 1 ,2, 3)
+			planet3.loadAtmosphereModel('../atmdata/Mars/mars-gram-avg.dat', 0, 1, 2, 3)
 		except OSError:
 			raise OSError("File not found. Check file path/name, and make sure file is present.")
 
@@ -200,30 +220,31 @@ class TestLoadAtmosphereModels(unittest.TestCase):
 	def test_load_atm_model_saturn(self):
 		planet5 = Planet("SATURN")
 		try:
-			planet5.loadAtmosphereModel('../atmdata/Saturn/saturn-nominal.dat', 0 , 1 , 2, 3, heightInKmFlag=True)
+			planet5.loadAtmosphereModel('../atmdata/Saturn/saturn-nominal.dat', 0, 1, 2, 3, heightInKmFlag=True)
 		except OSError:
 			raise OSError("File not found. Check file path/name, and make sure file is present.")
 
 	def test_load_atm_model_titan(self):
 		planet6 = Planet("TITAN")
 		try:
-			planet6.loadAtmosphereModel('../atmdata/Titan/titan-gram-avg.dat', 0 , 1 , 2, 3)
+			planet6.loadAtmosphereModel('../atmdata/Titan/titan-gram-avg.dat', 0, 1, 2, 3)
 		except OSError:
 			raise OSError("File not found. Check file path/name, and make sure file is present.")
 
 	def test_load_atm_model_uranus(self):
 		planet7 = Planet("URANUS")
 		try:
-			planet7.loadAtmosphereModel('../atmdata/Uranus/uranus-ames.dat', 0 , 1 , 2, 3)
+			planet7.loadAtmosphereModel('../atmdata/Uranus/uranus-ames.dat', 0, 1, 2, 3)
 		except OSError:
 			raise OSError("File not found. Check file path/name, and make sure file is present.")
 
 	def test_load_atm_model_neptune(self):
 		planet8 = Planet("NEPTUNE")
 		try:
-			planet8.loadAtmosphereModel('../atmdata/Neptune/neptune-gram-avg.dat', 0 , 7 ,6, 5 , heightInKmFlag=True)
+			planet8.loadAtmosphereModel('../atmdata/Neptune/neptune-gram-avg.dat', 0, 7, 6, 5, heightInKmFlag=True)
 		except OSError:
 			raise OSError("File not found. Check file path/name, and make sure file is present.")
+
 
 class TestAtmosphereModelFiles(unittest.TestCase):
 	def test_num_cols_atm_files(self):
@@ -248,50 +269,50 @@ class TestAtmosphereModelFiles(unittest.TestCase):
 		planet7.loadAtmosphereModel('../atmdata/Uranus/uranus-ames.dat', 0, 1, 2, 3)
 		planet8.loadAtmosphereModel('../atmdata/Neptune/neptune-gram-avg.dat', 0, 7, 6, 5, heightInKmFlag=True)
 
+		self.assertEqual(len(planet1.ATM_height), len(planet1.ATM_temp), msg="Number of rows disagree in atm. data file")
+		self.assertEqual(len(planet1.ATM_height), len(planet1.ATM_pressure), msg="Number of rows disagree in atm. data file")
+		self.assertEqual(len(planet1.ATM_height), len(planet1.ATM_density), msg="Number of rows disagree in atm. data file")
 
-		self.assertEqual(len(planet1.ATM_height),len(planet1.ATM_temp), msg="Number of rows disagree in atm. data file" )
-		self.assertEqual(len(planet1.ATM_height),len(planet1.ATM_pressure), msg="Number of rows disagree in atm. data file" )
-		self.assertEqual(len(planet1.ATM_height),len(planet1.ATM_density), msg="Number of rows disagree in atm. data file" )
+		self.assertEqual(len(planet2.ATM_height), len(planet2.ATM_temp), msg="Number of rows disagree in atm. data file")
+		self.assertEqual(len(planet2.ATM_height), len(planet2.ATM_pressure), msg="Number of rows disagree in atm. data file")
+		self.assertEqual(len(planet2.ATM_height), len(planet2.ATM_density), msg="Number of rows disagree in atm. data file")
 
-		self.assertEqual(len(planet2.ATM_height),len(planet2.ATM_temp), msg="Number of rows disagree in atm. data file" )
-		self.assertEqual(len(planet2.ATM_height),len(planet2.ATM_pressure), msg="Number of rows disagree in atm. data file" )
-		self.assertEqual(len(planet2.ATM_height),len(planet2.ATM_density), msg="Number of rows disagree in atm. data file" )
+		self.assertEqual(len(planet3.ATM_height), len(planet3.ATM_temp), msg="Number of rows disagree in atm. data file")
+		self.assertEqual(len(planet3.ATM_height), len(planet3.ATM_pressure), msg="Number of rows disagree in atm. data file")
+		self.assertEqual(len(planet3.ATM_height), len(planet3.ATM_density), msg="Number of rows disagree in atm. data file")
 
-		self.assertEqual(len(planet3.ATM_height),len(planet3.ATM_temp), msg="Number of rows disagree in atm. data file" )
-		self.assertEqual(len(planet3.ATM_height),len(planet3.ATM_pressure), msg="Number of rows disagree in atm. data file" )
-		self.assertEqual(len(planet3.ATM_height),len(planet3.ATM_density), msg="Number of rows disagree in atm. data file" )
+		self.assertEqual(len(planet4.ATM_height), len(planet4.ATM_temp), msg="Number of rows disagree in atm. data file")
+		self.assertEqual(len(planet4.ATM_height), len(planet4.ATM_pressure), msg="Number of rows disagree in atm. data file")
+		self.assertEqual(len(planet4.ATM_height), len(planet4.ATM_density), msg="Number of rows disagree in atm. data file")
 
-		self.assertEqual(len(planet4.ATM_height),len(planet4.ATM_temp), msg="Number of rows disagree in atm. data file" )
-		self.assertEqual(len(planet4.ATM_height),len(planet4.ATM_pressure), msg="Number of rows disagree in atm. data file" )
-		self.assertEqual(len(planet4.ATM_height),len(planet4.ATM_density), msg="Number of rows disagree in atm. data file" )
+		self.assertEqual(len(planet5.ATM_height), len(planet5.ATM_temp), msg="Number of rows disagree in atm. data file")
+		self.assertEqual(len(planet5.ATM_height), len(planet5.ATM_pressure), msg="Number of rows disagree in atm. data file")
+		self.assertEqual(len(planet5.ATM_height), len(planet5.ATM_density), msg="Number of rows disagree in atm. data file")
 
-		self.assertEqual(len(planet5.ATM_height),len(planet5.ATM_temp), msg="Number of rows disagree in atm. data file" )
-		self.assertEqual(len(planet5.ATM_height),len(planet5.ATM_pressure), msg="Number of rows disagree in atm. data file" )
-		self.assertEqual(len(planet5.ATM_height),len(planet5.ATM_density), msg="Number of rows disagree in atm. data file" )
+		self.assertEqual(len(planet6.ATM_height), len(planet6.ATM_temp), msg="Number of rows disagree in atm. data file")
+		self.assertEqual(len(planet6.ATM_height), len(planet6.ATM_pressure), msg="Number of rows disagree in atm. data file")
+		self.assertEqual(len(planet6.ATM_height), len(planet6.ATM_density), msg="Number of rows disagree in atm. data file")
 
-		self.assertEqual(len(planet6.ATM_height),len(planet6.ATM_temp), msg="Number of rows disagree in atm. data file" )
-		self.assertEqual(len(planet6.ATM_height),len(planet6.ATM_pressure), msg="Number of rows disagree in atm. data file" )
-		self.assertEqual(len(planet6.ATM_height),len(planet6.ATM_density), msg="Number of rows disagree in atm. data file" )
+		self.assertEqual(len(planet7.ATM_height), len(planet7.ATM_temp), msg="Number of rows disagree in atm. data file")
+		self.assertEqual(len(planet7.ATM_height), len(planet7.ATM_pressure), msg="Number of rows disagree in atm. data file")
+		self.assertEqual(len(planet7.ATM_height), len(planet7.ATM_density), msg="Number of rows disagree in atm. data file")
 
-		self.assertEqual(len(planet7.ATM_height),len(planet7.ATM_temp), msg="Number of rows disagree in atm. data file" )
-		self.assertEqual(len(planet7.ATM_height),len(planet7.ATM_pressure), msg="Number of rows disagree in atm. data file" )
-		self.assertEqual(len(planet7.ATM_height),len(planet7.ATM_density), msg="Number of rows disagree in atm. data file" )
-
-		self.assertEqual(len(planet8.ATM_height),len(planet8.ATM_temp), msg="Number of rows disagree in atm. data file" )
-		self.assertEqual(len(planet8.ATM_height),len(planet8.ATM_pressure), msg="Number of rows disagree in atm. data file" )
-		self.assertEqual(len(planet8.ATM_height),len(planet8.ATM_density), msg="Number of rows disagree in atm. data file" )
+		self.assertEqual(len(planet8.ATM_height), len(planet8.ATM_temp), msg="Number of rows disagree in atm. data file")
+		self.assertEqual(len(planet8.ATM_height), len(planet8.ATM_pressure), msg="Number of rows disagree in atm. data file")
+		self.assertEqual(len(planet8.ATM_height), len(planet8.ATM_density), msg="Number of rows disagree in atm. data file")
 
 		# check h_thres is set to a lower value (<=) than the maximum height for 
 		# which data is available
 
-		self.assertLessEqual(planet1.h_thres, max(planet1.ATM_height), msg="h_thres > max. height from atmospheric table for Venus.")
-		self.assertLessEqual(planet2.h_thres, max(planet2.ATM_height), msg="h_thres > max. height from atmospheric table for Earth.")
-		self.assertLessEqual(planet3.h_thres, max(planet3.ATM_height), msg="h_thres > max. height from atmospheric table for Mars.")
-		self.assertLessEqual(planet4.h_thres, max(planet4.ATM_height), msg="h_thres > max. height from atmospheric table for Jupiter.")
-		self.assertLessEqual(planet5.h_thres, max(planet5.ATM_height), msg="h_thres > max. height from atmospheric table for Saturn.")
-		self.assertLessEqual(planet6.h_thres, max(planet6.ATM_height), msg="h_thres > max. height from atmospheric table for Titan.")
-		self.assertLessEqual(planet7.h_thres, max(planet7.ATM_height), msg="h_thres > max. height from atmospheric table for Uranus.")
-		self.assertLessEqual(planet8.h_thres, max(planet8.ATM_height), msg="h_thres > max. height from atmospheric table for Neptune.")
+		self.assertLessEqual(planet1.h_thres, max(planet1.ATM_height), msg="h_thres > max. height from table for Venus.")
+		self.assertLessEqual(planet2.h_thres, max(planet2.ATM_height), msg="h_thres > max. height from table for Earth.")
+		self.assertLessEqual(planet3.h_thres, max(planet3.ATM_height), msg="h_thres > max. height from table for Mars.")
+		self.assertLessEqual(planet4.h_thres, max(planet4.ATM_height), msg="h_thres > max. height from table for Jupiter.")
+		self.assertLessEqual(planet5.h_thres, max(planet5.ATM_height), msg="h_thres > max. height from table for Saturn.")
+		self.assertLessEqual(planet6.h_thres, max(planet6.ATM_height), msg="h_thres > max. height from table for Titan.")
+		self.assertLessEqual(planet7.h_thres, max(planet7.ATM_height), msg="h_thres > max. height from table for Uranus.")
+		self.assertLessEqual(planet8.h_thres, max(planet8.ATM_height), msg="h_thres > max. height from table for Neptune.")
+
 
 class TestAtmosphereValues(unittest.TestCase):
 
@@ -325,6 +346,7 @@ class TestAtmosphereValues(unittest.TestCase):
 		self.assertAlmostEqual(planet6.density(h=0.0), 5.43503, places=2)
 		self.assertAlmostEqual(planet7.density(h=0.0), 0.37879, places=2)
 		self.assertAlmostEqual(planet8.density(h=0.0), 0.44021, places=2)
+
 
 if __name__ == '__main__':
 	unittest.main()

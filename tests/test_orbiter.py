@@ -97,5 +97,3 @@ class TestCoast:
 
 
 
-
-

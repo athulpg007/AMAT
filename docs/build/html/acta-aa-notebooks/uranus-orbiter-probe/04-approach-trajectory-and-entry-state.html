@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Section 04 - Approach Trajectory and Entry State &mdash; AMAT v2.2.15 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <title>Section 04 - Approach Trajectory and Entry State &mdash; AMAT v2.2.16 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
@@ -19,7 +19,9 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Section 05 - Aerocapture Entry Corridor and Limiting Trajectories" href="05-aerocapture-entry-corridor-and-limiting trajectories.html" />
+    <link rel="prev" title="Section 03 - Tradespace Exploration" href="03-tradespace-exploration.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -38,13 +40,37 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../about.html">About AMAT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../capabilities.html">Capabilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../jupyter_link.html">Example Jupyter Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../jsr-notebooks.html">JSR Article Notebooks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../acta-astronautica.html">Acta Astronautica</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../acta-astronautica.html">Acta Astronautica Notebooks</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../acta-astronautica.html#uranus-orbiter-and-probe">Uranus Orbiter and Probe</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01-literature-survey.html">Section 01 - Literature Survey</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02-mission-requirements.html">Section 02 - Mission Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03-tradespace-exploration.html">Section 03 - Tradespace Exploration</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Section 04 - Approach Trajectory and Entry State</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Run-the-following-code-to-generate-the-approach-trajectory-plot">Run the following code to generate the approach trajectory plot</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="05-aerocapture-entry-corridor-and-limiting trajectories.html">Section 05 - Aerocapture Entry Corridor and Limiting Trajectories</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06-effect-of-mean-density-variations.html">Section 06 - Effect of Atmospheric Uncertainties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07-guidance-scheme.html">Section 07 - Guidance Scheme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07-guidance-scheme.html#Example-Guided-Trajectory">Example Guided Trajectory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08-performance-analysis.html">Section 08 - Performance Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08-performance-analysis-A-3x-higher-EFPA-uncertainty.html">Section 08 - Performance Analysis - A - 3X Higher EFPA uncertainty</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08-performance-analysis-B-3x-lower-EFPA-uncertainty.html">Section 08 - Performance Analysis - B - 3X Lower EFPA uncertainty</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08-performance-analysis-C-5x-higher-atm-uncertainty.html">Section 08 - Performance Analysis - C - 5X Higher atm uncertainty</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08-performance-analysis-E-lower-lift-to-drag-ratio.html">Section 08 - Performance Analysis - E - lower lift-to-drag ratio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08-performance-analysis-G-stress-case.html">Section 08 - Performance Analysis - G - stress case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="09-probe-delivery.html">Section 09 - Probe Delivery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="10-flight-system.html">Section 10 - Flight System Summary</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../api_reference.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../contributions.html">Contributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../credits.html">Credits</a></li>
@@ -66,6 +92,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../acta-astronautica.html">Acta Astronautica Notebooks</a> &raquo;</li>
       <li>Section 04 - Approach Trajectory and Entry State</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/acta-aa-notebooks/uranus-orbiter-probe/04-approach-trajectory-and-entry-state.ipynb.txt" rel="nofollow"> View page source</a>
@@ -383,7 +410,7 @@ array([-9.62521831, 16.51192666,  7.46493598])
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -409,11 +436,11 @@ array([-9.62521831, 16.51192666,  7.46493598])
 <div class="highlight"><pre>
 Entry altitude, km: 1000.0
 Entry longitude BI, deg: -15.22
-Entry latitude BI, deg: 77.2
-Atm. relative entry speed, km/s: 29.2861
-Atm. relative heading angle, deg: 88.8349
-Atm. relative EFPA, deg: -11.7035
-Inclination, deg: 90.0
+Entry latitude BI, deg: 36.51
+Atm. relative entry speed, km/s: 29.3597
+Atm. relative heading angle, deg: 85.7789
+Atm. relative EFPA, deg: -11.6738
+Inclination, deg: 90.00000000000001
 </pre></div></div>
 </div>
 <div class="section" id="Run-the-following-code-to-generate-the-approach-trajectory-plot">
@@ -470,7 +497,7 @@ Inclination, deg: 90.0
 </pre></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -480,11 +507,20 @@ Inclination, deg: 90.0
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <a class="reference internal image-reference" href="../../_images/acta-aa-notebooks_uranus-orbiter-probe_04-approach-trajectory-and-entry-state_7_0.png"><img alt="../../_images/acta-aa-notebooks_uranus-orbiter-probe_04-approach-trajectory-and-entry-state_7_0.png" src="../../_images/acta-aa-notebooks_uranus-orbiter-probe_04-approach-trajectory-and-entry-state_7_0.png" style="width: 1200px;" /></a>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
 </div>
 </div>
 </div>
@@ -493,7 +529,10 @@ Inclination, deg: 90.0
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="03-tradespace-exploration.html" class="btn btn-neutral float-left" title="Section 03 - Tradespace Exploration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="05-aerocapture-entry-corridor-and-limiting trajectories.html" class="btn btn-neutral float-right" title="Section 05 - Aerocapture Entry Corridor and Limiting Trajectories" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Section 09 - Probe Delivery &mdash; AMAT v2.2.15 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <title>Section 09 - Probe Delivery &mdash; AMAT v2.2.16 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
@@ -19,7 +19,9 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Section 10 - Flight System Summary" href="10-flight-system.html" />
+    <link rel="prev" title="Section 08 - Performance Analysis - G - stress case" href="08-performance-analysis-G-stress-case.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -38,13 +40,44 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../about.html">About AMAT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../capabilities.html">Capabilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../jupyter_link.html">Example Jupyter Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../jsr-notebooks.html">JSR Article Notebooks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../acta-astronautica.html">Acta Astronautica</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../acta-astronautica.html">Acta Astronautica Notebooks</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../acta-astronautica.html#uranus-orbiter-and-probe">Uranus Orbiter and Probe</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01-literature-survey.html">Section 01 - Literature Survey</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02-mission-requirements.html">Section 02 - Mission Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03-tradespace-exploration.html">Section 03 - Tradespace Exploration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04-approach-trajectory-and-entry-state.html">Section 04 - Approach Trajectory and Entry State</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05-aerocapture-entry-corridor-and-limiting trajectories.html">Section 05 - Aerocapture Entry Corridor and Limiting Trajectories</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06-effect-of-mean-density-variations.html">Section 06 - Effect of Atmospheric Uncertainties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07-guidance-scheme.html">Section 07 - Guidance Scheme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07-guidance-scheme.html#Example-Guided-Trajectory">Example Guided Trajectory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08-performance-analysis.html">Section 08 - Performance Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08-performance-analysis-A-3x-higher-EFPA-uncertainty.html">Section 08 - Performance Analysis - A - 3X Higher EFPA uncertainty</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08-performance-analysis-B-3x-lower-EFPA-uncertainty.html">Section 08 - Performance Analysis - B - 3X Lower EFPA uncertainty</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08-performance-analysis-C-5x-higher-atm-uncertainty.html">Section 08 - Performance Analysis - C - 5X Higher atm uncertainty</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08-performance-analysis-E-lower-lift-to-drag-ratio.html">Section 08 - Performance Analysis - E - lower lift-to-drag ratio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08-performance-analysis-G-stress-case.html">Section 08 - Performance Analysis - G - stress case</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Section 09 - Probe Delivery</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Initial-Capture-Orbit">Initial Capture Orbit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Compute-the-approach-trajectory">Compute the approach trajectory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Compute-the-aerocapture-corridor">Compute the aerocapture corridor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Get-a-propagated-vehicle-object-with-an-exit-state">Get a propagated vehicle object with an exit state</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Compute-the-coast-phase-trajectory,-PRM-dv,-and-full-orbit-trajectory">Compute the coast phase trajectory, PRM dv, and full orbit trajectory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Perform-a-probe-targeting-maneuver">Perform a probe-targeting maneuver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Perform-an-orbiter-deflection-manuever">Perform an orbiter deflection manuever</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Compute-probe-entry-trajectory">Compute probe entry trajectory</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="10-flight-system.html">Section 10 - Flight System Summary</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../api_reference.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../contributions.html">Contributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../credits.html">Credits</a></li>
@@ -66,6 +99,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../acta-astronautica.html">Acta Astronautica Notebooks</a> &raquo;</li>
       <li>Section 09 - Probe Delivery</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/acta-aa-notebooks/uranus-orbiter-probe/09-probe-delivery.ipynb.txt" rel="nofollow"> View page source</a>
@@ -782,7 +816,10 @@ Orbiter deflection orbit periapsis alt. km : 4000.758188017596
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="08-performance-analysis-G-stress-case.html" class="btn btn-neutral float-left" title="Section 08 - Performance Analysis - G - stress case" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="10-flight-system.html" class="btn btn-neutral float-right" title="Section 10 - Flight System Summary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

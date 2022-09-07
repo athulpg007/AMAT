@@ -20,6 +20,8 @@ class TestImportApproach():
 
 try:
 	from AMAT.approach import Approach
+	from AMAT.orbiter import Orbiter, PropulsiveOrbiter
+
 except ModuleNotFoundError:
 	raise ModuleNotFoundError("Cannot import Approach from AMAT.approach")
 
@@ -179,12 +181,28 @@ class Test_Approach_Orbiter:
 						v_inf_vec_icrf_kms=np.array([17.78952518, 8.62038536, 3.15801163]),
 						rp=(24622+4000)*1e3, psi=3*np.pi/2)
 
+
+
 	def test_theta_star_periapsis(self):
 		ans1 = self.approach.theta_star_periapsis
 		ans2 = self.approach.pos_vec_bi(self.approach.theta_star_periapsis)
 
 
+class Test_Approach_Orbiter_Mars:
 
+	approach = Approach("MARS", v_inf_vec_icrf_kms=np.array([2.23930484, 1.20086474,-0.73683366]),
+						rp=(3389.5+200)*1e3, psi=np.pi)
+
+	orbiter = PropulsiveOrbiter(approach=approach, apoapsis_alt_km=2000)
+
+	def test_theta_star_periapsis(self):
+		ans1 = self.approach.r_vec_rp_bi
+		ans2 = self.approach.v_vec_rp_bi
+		pass
+
+	def test_OI_DV(self):
+		ans3 = self.orbiter.DV_OI_mag
+		pass
 
 
 class Test_Approach_Entry_Uranus:
@@ -196,3 +214,31 @@ class Test_Approach_Entry_Uranus:
 
 	def test_gamma_entry_atm(self):
 		pass
+
+
+class Test_Approach_Entry_Mars:
+
+	approach = Approach("MARS",
+						v_inf_vec_icrf_kms=np.array([2.23930484, 1.20086474, -0.73683366]),
+						rp=(3389 + 20) * 1e3, psi=3*np.pi/2,
+						is_entrySystem=True, h_EI=120e3)
+
+	def test_aebeta(self):
+		a = self.approach.a
+		e = self.approach.e
+		beta = self.approach.beta
+
+
+	def test_v_inf_bi(self):
+		v_inf_vec_bi_kms = self.approach.v_inf_vec_bi_kms
+		v_inf_vec_bi = self.approach.v_inf_vec_bi
+		v_inf_vec_bi_mag_kms = self.approach.v_inf_vec_bi_mag_kms
+		v_inf_vec_bi_unit = self.approach.v_inf_vec_bi_unit
+		pass
+
+	def test_phi_1_phi_2(self):
+		phi_1 = self.approach.phi_1
+		phi_2 = self.approach.phi_2
+		phi_2_analytic = self.approach.phi_2_analytic
+		pass
+

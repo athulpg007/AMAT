@@ -17,5 +17,12 @@ Jupyter Notebooks associated with Girija et al. (2022), A Flagship-class Uranus 
     /acta-aa-notebooks/uranus-orbiter-probe/06-effect-of-mean-density-variations.ipynb
     /acta-aa-notebooks/uranus-orbiter-probe/07-guidance-scheme.ipynb
     /acta-aa-notebooks/uranus-orbiter-probe/08-performance-analysis.ipynb
+    /acta-aa-notebooks/uranus-orbiter-probe/08-performance-analysis-A-3x-higher-EFPA-uncertainty.ipynb
+    /acta-aa-notebooks/uranus-orbiter-probe/08-performance-analysis-B-3x-lower-EFPA-uncertainty.ipynb
+    /acta-aa-notebooks/uranus-orbiter-probe/08-performance-analysis-C-5x-higher-atm-uncertainty.ipynb
+    /acta-aa-notebooks/uranus-orbiter-probe/08-performance-analysis-D-5x-lower-atm-uncertainty.ipynb
+    /acta-aa-notebooks/uranus-orbiter-probe/08-performance-analysis-E-lower-lift-to-drag-ratio.ipynb
+    /acta-aa-notebooks/uranus-orbiter-probe/08-performance-analysis-F-higher-lift-to-drag-ratio.ipynb
+    /acta-aa-notebooks/uranus-orbiter-probe/08-performance-analysis-G-stress-case.ipynb
     /acta-aa-notebooks/uranus-orbiter-probe/09-probe-delivery.ipynb
     /acta-aa-notebooks/uranus-orbiter-probe/10-flight-system.ipynb

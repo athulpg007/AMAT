@@ -77,7 +77,6 @@ class Planet:
 		Function which interpolates sonic speed as function of height
 	"""
 
-
 	def __init__(self, planetID):
 		"""
 		Initializes the planet object with the planetary constants.
@@ -93,152 +92,159 @@ class Planet:
 
 		if planetID == 'VENUS':
 
-			self.ID     = 'VENUS'      
-			self.RP     = 6051.8000E3  
-			self.OMEGA  = -2.99237E-7  
-			self.GM     = 3.248599E14  
-			self.rho0   = 64.790       
-			self.CPCV   = 1.289        
-			self.J2     = 4.458E-6     
-			self.J3     = 0.000000
+			self.ID = 'VENUS'
+			self.RP = 6051.8000E3
+			self.OMEGA = -2.99237E-7
+			self.GM = 3.248599E14
+			self.rho0 = 64.790
+			self.CPCV = 1.289
+			self.J2 = 4.458E-6
+			self.J3 = 0.000000
 			self.a0 = 272.76 * np.pi / 180.0
 			self.d0 = 67.16 * np.pi / 180.0
-			self.h_thres= 180000.0     
+			self.h_thres = 180000.0
 			self.h_skip = 180000.0     
 			self.h_trap = 10000.0
-			self.h_low  = 60.0E3      
+			self.h_low = 60.0E3
 
 		elif planetID == 'EARTH':
 
-			self.ID     = 'EARTH'      
-			self.RP     = 6371.0000E3  
-			self.OMEGA  = 7.272205E-5  
-			self.GM     = 3.986004E14   
-			self.rho0   = 1.2250       
-			self.CPCV   = 1.4          
-			self.J2     = 1082.6E-6    
-			self.J3     = -2.532E-6
+			self.ID = 'EARTH'
+			self.RP = 6371.0000E3
+			self.OMEGA = 7.272205E-5
+			self.GM = 3.986004E14
+			self.rho0 = 1.2250
+			self.CPCV = 1.4
+			self.J2 = 1082.6E-6
+			self.J3 = -2.532E-6
 			self.a0 = 0.0 * np.pi / 180.0
 			self.d0 = 90.0 * np.pi / 180.0
-			self.h_thres= 120.0E3      
+			self.h_thres = 120.0E3
 			self.h_skip = 120.0E3      
 			self.h_trap = 10.0E3
-			self.h_low  = 50.0E3       
+			self.h_low = 50.0E3
 
 		elif planetID == 'MARS':
 
-			self.ID     = 'MARS'       
-			self.RP     = 3389.5000E3  
-			self.OMEGA  = 7.088253E-5  
-			self.GM     = 4.282837E13   
-			self.rho0   = 0.0200       
-			self.CPCV   = 1.289        
-			self.J2     = 1960.45E-6   
-			self.J3     = 31.5E-6
+			self.ID = 'MARS'
+			self.RP = 3389.5000E3
+			self.OMEGA = 7.088253E-5
+			self.GM = 4.282837E13
+			self.rho0 = 0.0200
+			self.CPCV = 1.289
+			self.J2 = 1960.45E-6
+			self.J3 = 31.5E-6
 			self.a0 = 317.68143 * np.pi / 180.0
 			self.d0 = 52.88650 * np.pi / 180.0
-			self.h_thres= 120.0E3      
+			self.h_thres = 120.0E3
 			self.h_skip = 120.0E3      
 			self.h_trap = 10.0E3 
-			self.h_low  = 50.0E3
+			self.h_low = 50.0E3
 
 		elif planetID == 'JUPITER':
 
-			self.ID     = 'JUPITER'      
-			self.RP     = 69911.0E3      
-			self.OMEGA  = 1.758518E-04   
-			self.GM     = 1.26686534E17   
-			self.rho0   = 0.16288        
-			self.CPCV   = 1.4348         
-			self.J2     = 14736E-6      
-			self.J3     = 0.0
+			self.ID = 'JUPITER'
+			self.RP = 69911.0E3
+			self.OMEGA = 1.758518E-04
+			self.GM = 1.26686534E17
+			self.rho0 = 0.16288
+			self.CPCV = 1.4348
+			self.J2 = 14736E-6
+			self.J3 = 0.0
 			self.a0 = 268.056595 * np.pi / 180.0
 			self.d0 = 64.495303 * np.pi / 180.0
-			self.h_thres= 1000.0E3
+			self.h_thres = 1000.0E3
 			self.h_skip = 1000.0E3     
 			self.h_trap = 50.0E3 
 
 		elif planetID == 'SATURN':
-			self.ID     = 'SATURN'      
-			self.RP     = 58232.0E3     
-			self.OMEGA  = 1.6379E-04   
-			self.GM     = 3.7931187E16  
-			self.rho0   = 0.19847      
-			self.CPCV   = 1.4348       
-			self.J2     = 16298E-6     
-			self.J3     = 0.0
+			self.ID = 'SATURN'
+			self.RP = 58232.0E3
+			self.OMEGA = 1.6379E-04
+			self.GM = 3.7931187E16
+			self.rho0 = 0.19847
+			self.CPCV = 1.4348
+			self.J2 = 16298E-6
+			self.J3 = 0.0
 			self.a0 = 40.589 * np.pi / 180.0
 			self.d0 = 83.537 * np.pi / 180.0
-			self.h_thres= 1000.0E3     
+			self.h_thres = 1000.0E3
 			self.h_skip = 1000.0E3     
 			self.h_trap = 50.0E3      
 
 		elif planetID == 'TITAN':
 
-			self.ID     = 'TITAN'       
-			self.RP     = 2575.0000E3   
-			self.OMEGA  = 4.5451280E-6  
-			self.GM     = 8.9780000E12  
-			self.rho0   = 5.43500       
-			self.CPCV   = 1.400         
-			self.J2     = 31.808E-6     
-			self.J3     = -1.880E-6
+			self.ID = 'TITAN'
+			self.RP = 2575.0000E3
+			self.OMEGA = 4.5451280E-6
+			self.GM = 8.9780000E12
+			self.rho0 = 5.43500
+			self.CPCV = 1.400
+			self.J2 = 31.808E-6
+			self.J3 = -1.880E-6
 			self.a0 = 39.4827 * np.pi / 180.0
 			self.d0 = 83.4279 * np.pi / 180.0
-			self.h_thres= 1000.0E3      
+			self.h_thres = 1000.0E3
 			self.h_skip = 1000.0E3      
 			self.h_trap = 30.0E3
-			self.h_low  = 300.0E3
-
+			self.h_low = 300.0E3
 
 		elif planetID == 'URANUS':
-
-			self.ID     = 'URANUS'      
-			self.RP     = 25559.0E3     
-			self.OMEGA  = -1.01237E-4   
-			self.GM     = 5.793939E15   
-			self.rho0   = 0.3788        
-			self.CPCV   = 1.450         
-			self.J2     = 3343.3E-6     
-			self.J3     = 0.000000
+			self.ID = 'URANUS'
+			self.RP = 25559.0E3
+			self.OMEGA = -1.01237E-4
+			self.GM = 5.793939E15
+			self.rho0 = 0.3788
+			self.CPCV = 1.450
+			self.J2 = 3343.3E-6
+			self.J3 = 0.000000
 			self.a0 = 257.311 * np.pi / 180.0
 			self.d0 = -15.175 * np.pi / 180.0
-			self.h_thres= 1500.0E3      
+			self.h_thres = 1500.0E3
 			self.h_skip = 1500.0E3      
 			self.h_trap = 10.0E3
-			self.h_low  = 10.0E3
+			self.h_low = 10.0E3
 
 		elif planetID == 'NEPTUNE':
-
-			self.ID     = 'NEPTUNE'     
-			self.RP     = 24622.000E3   
-			self.OMEGA  = 1.083385E-4   
-			self.GM     = 6.8365299E15   
-			self.rho0   = 0.44021       
-			self.CPCV   = 1.450         
-			self.J2     = 3411.0E-6     
-			self.J3     = 0.000000
+			self.ID = 'NEPTUNE'
+			self.RP = 24622.000E3
+			self.OMEGA = 1.083385E-4
+			self.GM = 6.8365299E15
+			self.rho0 = 0.44021
+			self.CPCV = 1.450
+			self.J2 = 3411.0E-6
+			self.J3 = 0.000000
 			self.a0 = 299.36 * np.pi / 180.0
 			self.d0 = 43.36 * np.pi / 180.0
-			self.h_thres= 1000.0E3      
+			self.h_thres = 1000.0E3
 			self.h_skip = 1000.0E3      
 			self.h_trap = 10.0E3
-			self.h_low  = 100.0E3        
+			self.h_low = 100.0E3
 
 		else:
-			raise ValueError(" >>> ERR : Invalid planet identifier provided.")
-			print("Valid entries are: VENUS, EARTH, MARS, \
-			JUPITER, SATURN, TITAN, URANUS, NEPTUNE")
+			raise ValueError(" >>> ERR : Invalid planet identifier provided.\
+							Valid entries are: VENUS, EARTH, MARS, \
+							JUPITER, SATURN, TITAN, URANUS, NEPTUNE")
 
 		# compute reference values for planet
 		if self.ID:
-			self.Vref      = np.sqrt(self.GM/self.RP)
-			self.tau       = self.RP / self.Vref
-			self.OMEGAbar  = self.OMEGA*self.tau
-			self.EARTHG    = 9.80665
+			self.Vref = np.sqrt(self.GM/self.RP)
+			self.tau = self.RP / self.Vref
+			self.OMEGAbar = self.OMEGA*self.tau
+			self.EARTHG = 9.80665
 
-	def loadAtmosphereModel(self, datfile, heightCol, tempCol, presCol, \
-		densCol, intType='cubic', heightInKmFlag=False):
+		self.ATM = None
+		self.ATM_height = None
+		self.ATM_temp = None
+		self.ATM_pressure = None
+		self.ATM_density = None
+		self.ATM_sonic = None
+		self.temp_int = None
+		self.pressure_int = None
+		self.density_int = None
+		self.sonic_int = None
+
+	def loadAtmosphereModel(self, datfile, heightCol, tempCol, presCol, densCol, intType='cubic', heightInKmFlag=False):
 		"""
 		Load atmospheric model from a look up table with 
 		height, temperature, pressure, and density
@@ -249,6 +255,9 @@ class Planet:
 			file containing atmospheric lookup table
 		heightCol : int
 			column number of height values, assumes unit = meters 
+			(first column = 0, second column = 1, etc.)
+		tempCol : int
+			column number of temperature values, assumes unit = K
 			(first column = 0, second column = 1, etc.)
 		presCol : int
 			column number of pressure values, assumes unit = Pascals 
@@ -264,25 +273,23 @@ class Planet:
 			False by default
 		"""
 	
-		self.ATM          = np.loadtxt(datfile) 
+		self.ATM = np.loadtxt(datfile)
 
-		if heightInKmFlag == True:
+		if heightInKmFlag is True:
 			# convert heightCol from km to meters
-			self.ATM_height   = self.ATM[:,heightCol]*1E3    
+			self.ATM_height = self.ATM[:, heightCol]*1E3
 		else:
-			self.ATM_height   = self.ATM[:,heightCol]  
+			self.ATM_height = self.ATM[:, heightCol]
 
-		self.ATM_temp     = self.ATM[:,tempCol]          
-		self.ATM_pressure = self.ATM[:,presCol]          
-		self.ATM_density  = self.ATM[:,densCol]          
+		self.ATM_temp = self.ATM[:, tempCol]
+		self.ATM_pressure = self.ATM[:, presCol]
+		self.ATM_density = self.ATM[:, densCol]
 
 		# derive speed of sound profile from pressure, density 
 		# and specific heat ratio
-		self.ATM_sonic    = np.sqrt(self.CPCV*self.ATM_pressure/self.ATM_density)
+		self.ATM_sonic = np.sqrt(self.CPCV*self.ATM_pressure/self.ATM_density)
 		
 		# create interpolating functions using scipy.interpolate.interp1d
-
-		
 		# fill_value is the value returned by the interpolating function if 
 		# input arguments fall outside available data range.
 		# fill_value = 0.0 for temp_int, pressure_int, density_int
@@ -295,15 +302,10 @@ class Planet:
 		# might go above the altitude for which atmospheric data is available, or 
 		# go below the surface where at atmpospheric data is available.
 
-		self.temp_int      = interp1d(self.ATM_height, self.ATM_temp    ,\
-		                     kind=intType, fill_value=0.0, bounds_error=False)
-		self.pressure_int  = interp1d(self.ATM_height, self.ATM_pressure, \
-			                 kind=intType, fill_value=0.0, bounds_error=False)
-		self.density_int   = interp1d(self.ATM_height, self.ATM_density , \
-			                 kind=intType, fill_value=0.0, bounds_error=False)
-		self.sonic_int     = interp1d(self.ATM_height, self.ATM_sonic   ,\
-		                     kind=intType, fill_value=1E20, bounds_error=False)
-
+		self.temp_int = interp1d(self.ATM_height, self.ATM_temp, kind=intType, fill_value=0.0, bounds_error=False)
+		self.pressure_int = interp1d(self.ATM_height, self.ATM_pressure, kind=intType, fill_value=0.0, bounds_error=False)
+		self.density_int = interp1d(self.ATM_height, self.ATM_density, kind=intType, fill_value=0.0, bounds_error=False)
+		self.sonic_int = interp1d(self.ATM_height, self.ATM_sonic, kind=intType, fill_value=1E20, bounds_error=False)
 
 	def density(self, h):
 		"""
@@ -322,26 +324,24 @@ class Planet:
 			atmospheric density at height h
 		"""
 
-
-		if h>=0 and h<=self.h_thres:
-		# if altitude is within available data range, return 
-		# density data from interpolating function density_int()
+		if 0 <= h <= self.h_thres:
+			# if altitude is within available data range, return
+			# density data from interpolating function density_int()
 			return float(self.density_int(h))
 
-		elif h>self.h_thres:
+		elif h > self.h_thres:
 			# if altitude is above atmospheric 
 			# cut off altitude, return density=0
 			return 0
 
-		elif h<0:
+		elif h < 0:
 			# if altitude is below 0, return the reference 
 			# density at the surface the trajectory will be cut off at
 			# the surface / trap in altitude during post-processing 
 			# rho0 is provided so that the solver has some numerical 
 			# density value to work with even if the
-			# trajectory goes below the surface during propogation
+			# trajectory goes below the surface during propagation
 			return self.rho0
-
 
 	def tempvectorized(self, h):
 		"""
@@ -359,7 +359,7 @@ class Planet:
 		ans : numpy.ndarray
 			returns the atmospheric temperature at altitudes h[:], K
 		"""		
-		ans    = np.zeros(len(h))
+		ans = np.zeros(len(h))
 		ans[:] = self.temp_int(h[:])
 		
 		return ans
@@ -379,7 +379,7 @@ class Planet:
 		ans : numpy.ndarray
 			returns the atmospheric pressure at altitudes h[:], K
 		"""		
-		ans    = np.zeros(len(h))
+		ans = np.zeros(len(h))
 		ans[:] = self.pressure_int(h[:])
 		
 		return ans
@@ -400,7 +400,7 @@ class Planet:
 			returns the atmospheric density at altitudes h[:], K
 		"""		
 
-		ans    = np.zeros(len(h))
+		ans = np.zeros(len(h))
 		ans[:] = self.density_int(h[:])
 		
 		return ans
@@ -421,7 +421,7 @@ class Planet:
 			returns the sonic speed at altitudes h[:], K
 		"""		
 
-		ans    = np.zeros(len(h))
+		ans = np.zeros(len(h))
 		ans[:] = self.sonic_int(h[:])
 		
 		return ans
@@ -447,8 +447,8 @@ class Planet:
 		ans : numpy.ndarray
 			returns the atmospheric density at (r,theta,phi)
 		"""		
-		h = r - self.RP       # compute altitude from radial distance
-		ans = self.density(h) # compute density
+		h = r - self.RP        # compute altitude from radial distance
+		ans = self.density(h)  # compute density
 		
 		return ans
 
@@ -467,14 +467,13 @@ class Planet:
 		ans : numpy.ndarray
 			returns the atmospheric density at radial distance r[:]
 		"""		
-		h      = np.zeros(len(r))
-		ans    = np.zeros(len(r))
+		h = np.zeros(len(r))
+		ans = np.zeros(len(r))
 		RP_vec = np.ones(len(r))*self.RP
-		h[:]   = r[:] - RP_vec[:]
+		h[:] = r[:] - RP_vec[:]
 		ans[:] = self.density_int(h[:])
 
 		return ans
-
 
 	def pressurevectorized(self, r):
 		"""
@@ -491,14 +490,12 @@ class Planet:
 		ans : numpy.ndarray
 			returns the atmospheric pressure at radial distance r[:]
 		"""		
-		h      = np.zeros(len(r))
-		ans    = np.zeros(len(r))
+		h = np.zeros(len(r))
+		ans = np.zeros(len(r))
 		RP_vec = np.ones(len(r))*self.RP
-		h[:]   = r[:] - RP_vec[:]
+		h[:] = r[:] - RP_vec[:]
 		ans[:] = self.pressure_int(h[:])
 		return ans
-
-
 
 	def temperaturevectorized(self, r):
 		"""
@@ -515,13 +512,12 @@ class Planet:
 		ans : numpy.ndarray
 			returns the atmospheric temperature at radial distance r[:]
 		"""		
-		h      = np.zeros(len(r))
-		ans    = np.zeros(len(r))
+		h = np.zeros(len(r))
+		ans = np.zeros(len(r))
 		RP_vec = np.ones(len(r))*self.RP
-		h[:]   = r[:] - RP_vec[:]
+		h[:] = r[:] - RP_vec[:]
 		ans[:] = self.temp_int(h[:])
 		return ans
-
 
 	def sonicvectorized(self, r):
 		"""
@@ -538,10 +534,10 @@ class Planet:
 		ans : numpy.ndarray
 			returns the atmospheric speed at radial distance r[:]
 		"""
-		h      = np.zeros(len(r))
-		ans    = np.zeros(len(r))
+		h = np.zeros(len(r))
+		ans = np.zeros(len(r))
 		RP_vec = np.ones(len(r))*self.RP
-		h[:]   = r[:] - RP_vec[:]
+		h[:] = r[:] - RP_vec[:]
 		ans[:] = self.sonic_int(h[:])
 		return ans
 
@@ -584,9 +580,8 @@ class Planet:
 			returns the atmospheric density at (rbar,theta,phi)
 		"""		
 		r = rbar*self.RP
-		ans = self.rho(r,theta,phi)
+		ans = self.rho(r, theta, phi)
 		return ans
-
 
 	def rhobar(self, rbar, theta, phi):
 		"""
@@ -609,10 +604,10 @@ class Planet:
 		ans : float
 			non-dimensional density at (rbar,theta,phi)
 		"""		
-		ans = self.rho2(rbar,theta,phi)/self.rho0
+		ans = self.rho2(rbar, theta, phi)/self.rho0
 		return ans
 
-	def checkAtmProfiles(self, h0 = 0.0, dh = 1000.0):
+	def checkAtmProfiles(self, h0=0.0, dh=1000.0):
 		"""
 		Function to check the loaded atmospheric profile data.
 		Plots temperature, pressure, density and sonic speed
@@ -630,7 +625,7 @@ class Planet:
 		A plot showing the atmospheric profiles loaded
 		from the lookup tables
 		"""
-		h_array = np.linspace(h0,self.h_thres,int(self.h_thres/dh))
+		h_array = np.linspace(h0, self.h_thres, int(self.h_thres/dh))
 
 		# compute profiles of T, P, rho, a using interpolated functions
 		# vectorized functions are more efficient for this kind of computation.
@@ -640,47 +635,44 @@ class Planet:
 		r_array = self.densityvectorized(h_array)
 		a_array = self.avectorized(h_array)
 
-		
 		fig = plt.figure()
 		fig.set_size_inches([6.5, 6.5])
 		rcParams['font.family'] = 'sans-serif'
 		rcParams['font.sans-serif'] = ['DejaVu Sans']
-	
-	
 
-		plt.subplot(2,2,1)
-		plt.plot(T_array,h_array*1E-3,'r-',linewidth=2.0)
-		plt.xlabel("Temperature, K",fontsize=12)
-		plt.ylabel("Altitude, km",fontsize=12)
+		plt.subplot(2, 2, 1)
+		plt.plot(T_array, h_array*1E-3, 'r-', linewidth=2.0)
+		plt.xlabel("Temperature, K", fontsize=12)
+		plt.ylabel("Altitude, km", fontsize=12)
 		plt.xticks(fontsize=12)
 		plt.yticks(fontsize=12)
-		plt.grid('on',linestyle='-', linewidth=0.2)
+		plt.grid('on', linestyle='-', linewidth=0.2)
 		
-		plt.subplot(2,2,2)
-		plt.plot(P_array*1E-3,h_array*1E-3,'r-',linewidth=2.0)
-		plt.xlabel("Pressure, kPa",fontsize=12)
-		plt.ylabel("Altitude, km",fontsize=12)
+		plt.subplot(2, 2, 2)
+		plt.plot(P_array*1E-3, h_array*1E-3, 'r-', linewidth=2.0)
+		plt.xlabel("Pressure, kPa", fontsize=12)
+		plt.ylabel("Altitude, km", fontsize=12)
 		plt.xscale('log')
 		plt.xticks(fontsize=12)
 		plt.yticks(fontsize=12)
-		plt.grid('on',linestyle='-', linewidth=0.2)
+		plt.grid('on', linestyle='-', linewidth=0.2)
 
-		plt.subplot(2,2,3)
-		plt.plot(r_array,h_array*1E-3,'r-',linewidth=2.0)
-		plt.xlabel("Density, kg/m3",fontsize=12)
-		plt.ylabel("Altitude, km",fontsize=12)
+		plt.subplot(2, 2, 3)
+		plt.plot(r_array, h_array*1E-3, 'r-', linewidth=2.0)
+		plt.xlabel("Density, kg/m3", fontsize=12)
+		plt.ylabel("Altitude, km", fontsize=12)
 		plt.xscale('log')
 		plt.xticks(fontsize=12)
 		plt.yticks(fontsize=12)
-		plt.grid('on',linestyle='-', linewidth=0.2)
+		plt.grid('on', linestyle='-', linewidth=0.2)
 
-		plt.subplot(2,2,4)
-		plt.plot(a_array,h_array*1E-3,'r-',linewidth=2.0)
-		plt.xlabel("Speed of Sound, m/s",fontsize=12)
-		plt.ylabel("Altitude, km",fontsize=12)
+		plt.subplot(2, 2, 4)
+		plt.plot(a_array, h_array*1E-3, 'r-', linewidth=2.0)
+		plt.xlabel("Speed of Sound, m/s", fontsize=12)
+		plt.ylabel("Altitude, km", fontsize=12)
 		plt.xticks(fontsize=12)
 		plt.yticks(fontsize=12)
-		plt.grid('on',linestyle='-', linewidth=0.2)
+		plt.grid('on', linestyle='-', linewidth=0.2)
 
 		ax = plt.gca()
 		ax.tick_params(direction='in')
@@ -688,10 +680,8 @@ class Planet:
 		ax.xaxis.set_ticks_position('both')
 
 		plt.tight_layout()
-
 		plt.show()
 
-		
 	def computeR(self, h):
 		"""
 		Returns radial distance r, as 
@@ -710,7 +700,7 @@ class Planet:
 		r = self.RP + h
 		return r
 
-	def computeH(self,r):
+	def computeH(self, r):
 		"""
 		Returns altitude h, as 
 		a function of radial distance r, METERS
@@ -728,7 +718,7 @@ class Planet:
 		h = r - self.RP
 		return h
 
-	def nonDimState(self,r,theta,phi,v,psi,gamma,drange):
+	def nonDimState(self, r, theta, phi, v, psi, gamma, drange):
 		"""
 		Computes non-dimensional trajectory state variables from 
 		dimensional trajectory state variables
@@ -768,13 +758,13 @@ class Planet:
 			non-dimensional downrange distance measured from 
 			entry-interface
 		"""
-		rbar       = r / self.RP           # Non-dimensional entry radius
-		vbar       = v / self.Vref         # Non-dimensional entry velocity
-		drangebar  = drange / self.RP      # Non-dimensional entry downrange
+		rbar = r / self.RP           # Non-dimensional entry radius
+		vbar = v / self.Vref         # Non-dimensional entry velocity
+		drangebar = drange / self.RP      # Non-dimensional entry downrange
 
-		return rbar,theta,phi,vbar,psi,gamma,drangebar
+		return rbar, theta, phi, vbar, psi, gamma, drangebar
 
-	def dimensionalize(self,tbar,rbar,theta,phi,vbar,psi,gamma,drangebar):
+	def dimensionalize(self, tbar, rbar, theta, phi, vbar, psi, gamma, drangebar):
 		"""
 		Computes dimensional trajectory state variables from 
 		non-dimensional trajectory state variables
@@ -815,13 +805,13 @@ class Planet:
 			downrange distance measured from entry-interface
 
 		"""
-		
-		t      = self.tau*tbar
-		r      = rbar*self.RP
-		v      = vbar*self.Vref 
+
+		t = self.tau*tbar
+		r = rbar*self.RP
+		v = vbar*self.Vref
 		drange = drangebar*self.RP
 
-		return t,r,theta,phi,v,psi,gamma,drange
+		return t, r, theta, phi, v, psi, gamma, drange
 
 	def scaleHeight(self, h, density_int):
 		"""
@@ -843,23 +833,19 @@ class Planet:
 
 		# create and store an array of heights from 0 to h_skip at 
 		# every 1 km
-		h_array  = np.linspace(0,self.h_skip,int(self.h_skip/1000.0))
+		h_array = np.linspace(0, self.h_skip, int(self.h_skip/1000.0))
 		# compute the density at these altitudes using the
 		# vectorized density function
-		d_array  = self.densityvectorized(h_array)
+		d_array = self.densityvectorized(h_array)
 
 		# Compute the density scale height using the formula in Hamel 2006
 		# AIAA. DOI = 10.2514/1.20126
-		integ = cumtrapz(d_array[int(h/1000.0):] ,\
-				h_array[int(h/1000.0):], initial=0)[-1]
-		
-		ans   = integ / (self.density(h) - self.density(self.h_skip))
-
+		integ = cumtrapz(d_array[int(h/1000.0):], h_array[int(h/1000.0):], initial=0)[-1]
+		ans = integ / (self.density(h) - self.density(self.h_skip))
 		return ans
 
-	def loadMonteCarloDensityFile2(self, atmfile, heightCol, densLowCol, \
-								   densAvgCol, densHighCol, densTotalCol, \
-								   heightInKmFlag=False):
+	def loadMonteCarloDensityFile2(self, atmfile, heightCol, densLowCol, densAvgCol, densHighCol, densTotalCol,
+									heightInKmFlag=False):
 		"""
 		Loads a Monte Carlo density look up table from GRAM-Model output
 
@@ -874,11 +860,11 @@ class Planet:
 			column number of the low mean density 
 		densAvgCol : int
 			column number of the average mean density
-		densHigCol : int
+		densHighCol : int
 			column number of the high mean desnity
 		densTotalCol : int
 			column number of the total (=mean + perturb.) density
-		heightinKmFlag : bool, optional
+		heightInKmFlag : bool, optional
 			optional, set this to True if heightCol has units of km, 
 			False by default
 
@@ -898,30 +884,25 @@ class Planet:
 		""" 
 		
 		# load data from textfile using np.loadtxt()
-		ATM          = np.loadtxt(atmfile) 
+		ATM = np.loadtxt(atmfile)
 		
-		if heightInKmFlag == True:
+		if heightInKmFlag is True:
 			# convert heightCol from km to meters
-			ATM_height   = ATM[:,heightCol]*1E3    
+			ATM_height = ATM[:, heightCol]*1E3
 		else:
-			ATM_height   = ATM[:,heightCol]
+			ATM_height = ATM[:, heightCol]
 
 		# extract data for low, avg, and mean density from file
-		ATM_density_low  = ATM[:,densLowCol]  
-		ATM_density_avg  = ATM[:,densAvgCol]  
-		ATM_density_high = ATM[:,densHighCol] 
+		ATM_density_low = ATM[:, densLowCol]
+		ATM_density_avg = ATM[:, densAvgCol]
+		ATM_density_high = ATM[:, densHighCol]
 
-		ATM_density_pert = ATM[:,densTotalCol] - \
-						   ATM[:,densAvgCol]
+		ATM_density_pert = ATM[:, densTotalCol] - ATM[:, densAvgCol]
 		# perturb = (avg + perturb) - avg
 
-		return ATM_height, ATM_density_low, ATM_density_avg,\
-			   ATM_density_high, ATM_density_pert
+		return ATM_height, ATM_density_low, ATM_density_avg, ATM_density_high, ATM_density_pert
 
-
-	def loadMonteCarloDensityFile3(self, atmfile, heightCol,\
-								   densAvgCol, densSD_percCol, densTotalCol, \
-								   heightInKmFlag=False):
+	def loadMonteCarloDensityFile3(self, atmfile, heightCol, densAvgCol, densSD_percCol, densTotalCol, heightInKmFlag=False):
 		"""
 		Loads a Monte Carlo density look up table from GRAM-Model output,
 		Utility function for EARTH-GRAM atmospheric data
@@ -939,7 +920,7 @@ class Planet:
 			column number of mean density one sigma SD
 		densTotalCol : int
 			column number of the total (=mean + perturb.) density
-		heightinKmFlag : bool, optional
+		heightInKmFlag : bool, optional
 			optional, set this to True if heightCol has units of km, 
 			False by default
 
@@ -959,29 +940,24 @@ class Planet:
 		""" 
 		
 		# load data from textfile using np.loadtxt()
-		ATM          = np.loadtxt(atmfile) 
+		ATM = np.loadtxt(atmfile)
 		
-		if heightInKmFlag == True:
+		if heightInKmFlag is True:
 			# convert heightCol from km to meters
-			ATM_height   = ATM[:,heightCol]*1E3    
+			ATM_height = ATM[:, heightCol]*1E3
 		else:
-			ATM_height   = ATM[:,heightCol]
+			ATM_height = ATM[:, heightCol]
 
 		# extract data for low, avg, and mean density from file
-		ATM_density_low  = ATM[:,densAvgCol] - \
-						   ATM[:,densAvgCol] * ATM[:,densSD_percCol]*0.01
-		ATM_density_avg  = ATM[:,densAvgCol]  
-		ATM_density_high = ATM[:,densAvgCol] + \
-						   ATM[:,densAvgCol] * ATM[:,densSD_percCol]*0.01
-		ATM_density_pert = ATM[:,densTotalCol] - \
-						   ATM[:,densAvgCol]
+		ATM_density_low = ATM[:, densAvgCol] - ATM[:, densAvgCol] * ATM[:, densSD_percCol]*0.01
+		ATM_density_avg = ATM[:, densAvgCol]
+		ATM_density_high = ATM[:, densAvgCol] + ATM[:, densAvgCol] * ATM[:, densSD_percCol]*0.01
+		ATM_density_pert = ATM[:, densTotalCol] - ATM[:, densAvgCol]
 		# perturb = (avg + perturb) - avg
 
-		return ATM_height, ATM_density_low, ATM_density_avg,\
-			   ATM_density_high, ATM_density_pert
+		return ATM_height, ATM_density_low, ATM_density_avg, ATM_density_high, ATM_density_pert
 
-
-	def pSigmaFunc(self,x):
+	def pSigmaFunc(self, x):
 		"""
 		Utility function. Returns 1 if x>=0, 0.0 otherwise
 		
@@ -996,13 +972,13 @@ class Planet:
 			1 if x>=0, 0.0 otherwise 
 
 		"""
-		if x>=0:
+		if x >= 0:
 			return 1.0
 
 		else:
 			return 0.0
 
-	def nSigmaFunc(self,x):
+	def nSigmaFunc(self, x):
 		"""
 		Utility function. Returns 1 if x<0, 0.0 otherwise
 		
@@ -1017,16 +993,13 @@ class Planet:
 			1 if x<0, 0.0 otherwise 
 
 		"""
-		if x<0:
+		if x < 0:
 			return 1.0
 
 		else:
 			return 0.0
 
-
-	def loadAtmosphereModel5(self, ATM_height, ATM_density_low, \
-							 ATM_density_avg, ATM_density_high,  \
-							 ATM_density_pert, sigmaValue, NPOS, i):
+	def loadAtmosphereModel5(self, ATM_height, ATM_density_low, ATM_density_avg, ATM_density_high, ATM_density_pert, sigmaValue, NPOS, i):
 		"""
 		Read and create density_int for a single entry from a list 
 		of perturbed monte carlo density profiles.
@@ -1051,6 +1024,8 @@ class Planet:
 			NPOS value from GRAM model
 			equals the number of positions (altitude) for which
 			density value is available in look up table.
+		i : int
+			index of atmospheric profile to load
 
 		Returns
 		----------
@@ -1058,27 +1033,19 @@ class Planet:
 			density interpolation function
 
 		"""
-		nSigma = ATM_density_avg[int((i-1)*NPOS):int(i*NPOS)]  - \
-				 ATM_density_low[int((i-1)*NPOS):int(i*NPOS)]
-		pSigma = ATM_density_high[int((i-1)*NPOS):int(i*NPOS)] - \
-				 ATM_density_avg[int((i-1)*NPOS):int(i*NPOS)]
+		nSigma = ATM_density_avg[int((i-1)*NPOS):int(i*NPOS)] - ATM_density_low[int((i-1)*NPOS):int(i*NPOS)]
+		pSigma = ATM_density_high[int((i-1)*NPOS):int(i*NPOS)] - ATM_density_avg[int((i-1)*NPOS):int(i*NPOS)]
 
 		h_array = ATM_height[int((i-1)*NPOS):int(i*NPOS)]
 
-		d_array = ATM_density_avg[int((i-1)*NPOS):int(i*NPOS)] + \
-				  pSigma*self.pSigmaFunc(sigmaValue)*sigmaValue + \
-				  nSigma*self.nSigmaFunc(sigmaValue)*sigmaValue + \
-				  ATM_density_pert[int((i-1)*NPOS):int(i*NPOS)]
+		d_array = ATM_density_avg[int((i-1)*NPOS):int(i*NPOS)] + pSigma*self.pSigmaFunc(sigmaValue)*sigmaValue + \
+					nSigma*self.nSigmaFunc(sigmaValue)*sigmaValue + \
+					ATM_density_pert[int((i-1)*NPOS):int(i*NPOS)]
 
-		density_int   = interp1d(h_array, d_array  , kind='linear',\
-						fill_value=0.0, bounds_error=False)
-
+		density_int = interp1d(h_array, d_array, kind='linear', fill_value=0.0, bounds_error=False)
 		return density_int
 
-
-	def loadAtmosphereModel6(self, ATM_height, ATM_density_low, \
-							 ATM_density_avg, ATM_density_high,  \
-							 sigmaValue, NPOS, i):
+	def loadAtmosphereModel6(self, ATM_height, ATM_density_low, ATM_density_avg, ATM_density_high, sigmaValue, NPOS, i):
 		"""
 		Read and create mean density profile for a single entry from a list 
 		of perturbed monte carlo density profiles.
@@ -1101,6 +1068,8 @@ class Planet:
 			NPOS value from GRAM model
 			equals the number of positions (altitude) for which
 			density value is available in look up table.
+		i : int
+			index of atmospheric profile to load
 
 		Returns
 		----------
@@ -1108,18 +1077,13 @@ class Planet:
 			density interpolation function
 
 		"""
-		nSigma = ATM_density_avg[int((i-1)*NPOS):int(i*NPOS)]  - \
-				 ATM_density_low[int((i-1)*NPOS):int(i*NPOS)]
-		pSigma = ATM_density_high[int((i-1)*NPOS):int(i*NPOS)] - \
-				 ATM_density_avg[int((i-1)*NPOS):int(i*NPOS)]
+		nSigma = ATM_density_avg[int((i-1)*NPOS):int(i*NPOS)] - ATM_density_low[int((i-1)*NPOS):int(i*NPOS)]
+		pSigma = ATM_density_high[int((i-1)*NPOS):int(i*NPOS)] - ATM_density_avg[int((i-1)*NPOS):int(i*NPOS)]
 
 		h_array = ATM_height[int((i-1)*NPOS):int(i*NPOS)]
 
-		d_array = ATM_density_avg[int((i-1)*NPOS):int(i*NPOS)] + \
-				  pSigma*self.pSigmaFunc(sigmaValue)*sigmaValue + \
-				  nSigma*self.nSigmaFunc(sigmaValue)*sigmaValue
+		d_array = ATM_density_avg[int((i-1)*NPOS):int(i*NPOS)] + pSigma*self.pSigmaFunc(sigmaValue)*sigmaValue +\
+					nSigma*self.nSigmaFunc(sigmaValue)*sigmaValue
 
-		density_int   = interp1d(h_array, d_array  , kind='linear',\
-						fill_value=0.0, bounds_error=False)
-
+		density_int = interp1d(h_array, d_array, kind='linear', fill_value=0.0, bounds_error=False)
 		return density_int
