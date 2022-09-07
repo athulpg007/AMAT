@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Index &mdash; AMAT v2.2.15 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <title>Index &mdash; AMAT v2.2.16 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
@@ -271,7 +271,11 @@
       <li><a href="api_reference.html#AMAT.interplanetary.Interplanetary.compute_launch_capability">compute_launch_capability() (AMAT.interplanetary.Interplanetary method)</a>
 </li>
       <li><a href="api_reference.html#AMAT.orbiter.Orbiter.compute_orbit_trajectory">compute_orbit_trajectory() (AMAT.orbiter.Orbiter method)</a>
+
+      <ul>
+        <li><a href="api_reference.html#AMAT.orbiter.PropulsiveOrbiter.compute_orbit_trajectory">(AMAT.orbiter.PropulsiveOrbiter method)</a>
 </li>
+      </ul></li>
       <li><a href="api_reference.html#AMAT.orbiter.Orbiter.compute_orbiter_deflection_trajectory">compute_orbiter_deflection_trajectory() (AMAT.orbiter.Orbiter method)</a>
 </li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.compute_periapsis_raise_DV">compute_periapsis_raise_DV() (AMAT.vehicle.Vehicle method)</a>
@@ -325,6 +329,8 @@
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.computeTCW2">computeTCW2() (AMAT.vehicle.Vehicle method)</a>
 </li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.computeTCWD">computeTCWD() (AMAT.vehicle.Vehicle method)</a>
+</li>
+      <li><a href="api_reference.html#AMAT.vehicle.Vehicle.computeTCWD2">computeTCWD2() (AMAT.vehicle.Vehicle method)</a>
 </li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.convertToKPa">convertToKPa() (AMAT.vehicle.Vehicle method)</a>
 </li>
@@ -474,6 +480,8 @@
 </li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.findEFPALimitD">findEFPALimitD() (AMAT.vehicle.Vehicle method)</a>
 </li>
+      <li><a href="api_reference.html#AMAT.vehicle.Vehicle.findEFPALimitD2">findEFPALimitD2() (AMAT.vehicle.Vehicle method)</a>
+</li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.findOverShootLimit">findOverShootLimit() (AMAT.vehicle.Vehicle method)</a>
 </li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.findOverShootLimit2">findOverShootLimit2() (AMAT.vehicle.Vehicle method)</a>
@@ -482,11 +490,15 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.findOverShootLimitD">findOverShootLimitD() (AMAT.vehicle.Vehicle method)</a>
 </li>
+      <li><a href="api_reference.html#AMAT.vehicle.Vehicle.findOverShootLimitD2">findOverShootLimitD2() (AMAT.vehicle.Vehicle method)</a>
+</li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.findUnderShootLimit">findUnderShootLimit() (AMAT.vehicle.Vehicle method)</a>
 </li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.findUnderShootLimit2">findUnderShootLimit2() (AMAT.vehicle.Vehicle method)</a>
 </li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.findUnderShootLimitD">findUnderShootLimitD() (AMAT.vehicle.Vehicle method)</a>
+</li>
+      <li><a href="api_reference.html#AMAT.vehicle.Vehicle.findUnderShootLimitD2">findUnderShootLimitD2() (AMAT.vehicle.Vehicle method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -853,6 +865,8 @@
       <ul>
         <li><a href="api_reference.html#AMAT.orbiter.Orbiter.pos_vec_bi">(AMAT.orbiter.Orbiter method)</a>
 </li>
+        <li><a href="api_reference.html#AMAT.orbiter.PropulsiveOrbiter.pos_vec_bi">(AMAT.orbiter.PropulsiveOrbiter method)</a>
+</li>
       </ul></li>
       <li><a href="api_reference.html#AMAT.approach.Approach.pos_vec_bi_dprime">pos_vec_bi_dprime() (AMAT.approach.Approach method)</a>
 </li>
@@ -862,16 +876,18 @@
 </li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.predictApoapsisAltitudeKm_afterJettision">predictApoapsisAltitudeKm_afterJettision() (AMAT.vehicle.Vehicle method)</a>
 </li>
+      <li><a href="api_reference.html#AMAT.vehicle.Vehicle.predictApoapsisAltitudeKm_afterJettision2">predictApoapsisAltitudeKm_afterJettision2() (AMAT.vehicle.Vehicle method)</a>
+</li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.predictApoapsisAltitudeKm_withLiftUp">predictApoapsisAltitudeKm_withLiftUp() (AMAT.vehicle.Vehicle method)</a>
 </li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.predictApoapsisAltitudeKm_withLiftUp2">predictApoapsisAltitudeKm_withLiftUp2() (AMAT.vehicle.Vehicle method)</a>
 </li>
       <li><a href="api_reference.html#AMAT.planet.Planet.pressure_int">pressure_int (AMAT.planet.Planet attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api_reference.html#AMAT.planet.Planet.pressurevectorized">pressurevectorized() (AMAT.planet.Planet method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api_reference.html#AMAT.planet.Planet.presvectorized">presvectorized() (AMAT.planet.Planet method)</a>
 </li>
       <li><a href="api_reference.html#AMAT.orbiter.Orbiter.PRM_dv_mag">PRM_dv_mag (AMAT.orbiter.Orbiter attribute)</a>
@@ -892,13 +908,17 @@
 </li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.propogateEntry2">propogateEntry2() (AMAT.vehicle.Vehicle method)</a>
 </li>
-      <li><a href="api_reference.html#AMAT.vehicle.Vehicle.propogateEntry2D">propogateEntry2D() (AMAT.vehicle.Vehicle method)</a>
-</li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.propogateEntry_util">propogateEntry_util() (AMAT.vehicle.Vehicle method)</a>
 </li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.propogateEntry_util2">propogateEntry_util2() (AMAT.vehicle.Vehicle method)</a>
 </li>
+      <li><a href="api_reference.html#AMAT.vehicle.Vehicle.propogateEntry_utilD">propogateEntry_utilD() (AMAT.vehicle.Vehicle method)</a>
+</li>
+      <li><a href="api_reference.html#AMAT.vehicle.Vehicle.propogateEntry_utilD2">propogateEntry_utilD2() (AMAT.vehicle.Vehicle method)</a>
+</li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.propogateEntryPhaseD">propogateEntryPhaseD() (AMAT.vehicle.Vehicle method)</a>
+</li>
+      <li><a href="api_reference.html#AMAT.vehicle.Vehicle.propogateEntryPhaseD2">propogateEntryPhaseD2() (AMAT.vehicle.Vehicle method)</a>
 </li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.propogateEquilibriumGlide">propogateEquilibriumGlide() (AMAT.vehicle.Vehicle method)</a>
 </li>
@@ -910,11 +930,17 @@
 </li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.propogateExitPhaseD">propogateExitPhaseD() (AMAT.vehicle.Vehicle method)</a>
 </li>
+      <li><a href="api_reference.html#AMAT.vehicle.Vehicle.propogateExitPhaseD2">propogateExitPhaseD2() (AMAT.vehicle.Vehicle method)</a>
+</li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.propogateGuidedEntry">propogateGuidedEntry() (AMAT.vehicle.Vehicle method)</a>
 </li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.propogateGuidedEntry2">propogateGuidedEntry2() (AMAT.vehicle.Vehicle method)</a>
 </li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.propogateGuidedEntryD">propogateGuidedEntryD() (AMAT.vehicle.Vehicle method)</a>
+</li>
+      <li><a href="api_reference.html#AMAT.vehicle.Vehicle.propogateGuidedEntryD2">propogateGuidedEntryD2() (AMAT.vehicle.Vehicle method)</a>
+</li>
+      <li><a href="api_reference.html#AMAT.orbiter.PropulsiveOrbiter">PropulsiveOrbiter (class in AMAT.orbiter)</a>
 </li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.psi0_deg">psi0_deg (AMAT.vehicle.Vehicle attribute)</a>
 </li>
@@ -1009,6 +1035,8 @@
       <ul>
         <li><a href="api_reference.html#AMAT.orbiter.Orbiter.r_mag_bi">(AMAT.orbiter.Orbiter method)</a>
 </li>
+        <li><a href="api_reference.html#AMAT.orbiter.PropulsiveOrbiter.r_mag_bi">(AMAT.orbiter.PropulsiveOrbiter method)</a>
+</li>
       </ul></li>
       <li><a href="api_reference.html#AMAT.orbiter.Orbiter.r_periapsis_mag">r_periapsis_mag (AMAT.orbiter.Orbiter attribute)</a>
 </li>
@@ -1073,6 +1101,8 @@
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.runMonteCarlo2">runMonteCarlo2() (AMAT.vehicle.Vehicle method)</a>
 </li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.runMonteCarloD">runMonteCarloD() (AMAT.vehicle.Vehicle method)</a>
+</li>
+      <li><a href="api_reference.html#AMAT.vehicle.Vehicle.runMonteCarloD2">runMonteCarloD2() (AMAT.vehicle.Vehicle method)</a>
 </li>
       <li><a href="api_reference.html#AMAT.vehicle.Vehicle.runMonteCarloD_Earth">runMonteCarloD_Earth() (AMAT.vehicle.Vehicle method)</a>
 </li>
@@ -1392,6 +1422,8 @@
 
       <ul>
         <li><a href="api_reference.html#AMAT.orbiter.Orbiter.vel_vec_bi">(AMAT.orbiter.Orbiter method)</a>
+</li>
+        <li><a href="api_reference.html#AMAT.orbiter.PropulsiveOrbiter.vel_vec_bi">(AMAT.orbiter.PropulsiveOrbiter method)</a>
 </li>
       </ul></li>
       <li><a href="api_reference.html#AMAT.orbiter.Orbiter.vel_vec_bi_probe">vel_vec_bi_probe() (AMAT.orbiter.Orbiter method)</a>

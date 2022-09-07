@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Section 08 - Performance Analysis - A - 3X Higher EFPA uncertainty &mdash; AMAT v2.2.16 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Section 08 - Performance Analysis - B - 3X Lower EFPA uncertainty" href="08-performance-analysis-B-3x-lower-EFPA-uncertainty.html" />
+    <link rel="prev" title="Section 08 - Performance Analysis" href="08-performance-analysis.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> AMAT
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../about.html">About AMAT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../capabilities.html">Capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../jupyter_link.html">Example Jupyter Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../jsr-notebooks.html">JSR Article Notebooks</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../acta-astronautica.html">Acta Astronautica Notebooks</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../acta-astronautica.html#uranus-orbiter-and-probe">Uranus Orbiter and Probe</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="01-literature-survey.html">Section 01 - Literature Survey</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02-mission-requirements.html">Section 02 - Mission Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03-tradespace-exploration.html">Section 03 - Tradespace Exploration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04-approach-trajectory-and-entry-state.html">Section 04 - Approach Trajectory and Entry State</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05-aerocapture-entry-corridor-and-limiting trajectories.html">Section 05 - Aerocapture Entry Corridor and Limiting Trajectories</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06-effect-of-mean-density-variations.html">Section 06 - Effect of Atmospheric Uncertainties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07-guidance-scheme.html">Section 07 - Guidance Scheme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07-guidance-scheme.html#Example-Guided-Trajectory">Example Guided Trajectory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08-performance-analysis.html">Section 08 - Performance Analysis</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Section 08 - Performance Analysis - A - 3X Higher EFPA uncertainty</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Small-run-N-=-200">Small run N = 200</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Remove-cases-which-did-not-capture">Remove cases which did not capture</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="08-performance-analysis-B-3x-lower-EFPA-uncertainty.html">Section 08 - Performance Analysis - B - 3X Lower EFPA uncertainty</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08-performance-analysis-C-5x-higher-atm-uncertainty.html">Section 08 - Performance Analysis - C - 5X Higher atm uncertainty</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08-performance-analysis-E-lower-lift-to-drag-ratio.html">Section 08 - Performance Analysis - E - lower lift-to-drag ratio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08-performance-analysis-G-stress-case.html">Section 08 - Performance Analysis - G - stress case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="09-probe-delivery.html">Section 09 - Probe Delivery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="10-flight-system.html">Section 10 - Flight System Summary</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributions.html">Contributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../credits.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../module_index.html">Module Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">AMAT</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../acta-astronautica.html">Acta Astronautica Notebooks</a> &raquo;</li>
+      <li>Section 08 - Performance Analysis - A - 3X Higher EFPA uncertainty</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/acta-aa-notebooks/uranus-orbiter-probe/08-performance-analysis-A-3x-higher-EFPA-uncertainty.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    min-width: 5ex;
+    padding-top: 0.3rem;
+    padding-right: 0.3rem;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 0.3rem;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Section-08---Performance-Analysis---A---3X-Higher-EFPA-uncertainty">
+<h1>Section 08 - Performance Analysis - A - 3X Higher EFPA uncertainty<a class="headerlink" href="#Section-08---Performance-Analysis---A---3X-Higher-EFPA-uncertainty" title="Permalink to this headline">¶</a></h1>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">AMAT.planet</span> <span class="kn">import</span> <span class="n">Planet</span>
+<span class="kn">from</span> <span class="nn">AMAT.vehicle</span> <span class="kn">import</span> <span class="n">Vehicle</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">planet</span> <span class="o">=</span> <span class="n">Planet</span><span class="p">(</span><span class="s1">&#39;URANUS&#39;</span><span class="p">)</span>
+<span class="n">planet</span><span class="o">.</span><span class="n">loadAtmosphereModel</span><span class="p">(</span><span class="s1">&#39;../../../atmdata/Uranus/uranus-gram-avg.dat&#39;</span><span class="p">,</span> <span class="mi">0</span> <span class="p">,</span> <span class="mi">1</span> <span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">heightInKmFlag</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">planet</span><span class="o">.</span><span class="n">h_skip</span> <span class="o">=</span> <span class="mf">1000.0E3</span>
+<span class="n">planet</span><span class="o">.</span><span class="n">h_low</span>  <span class="o">=</span> <span class="mf">120e3</span>
+<span class="n">planet</span><span class="o">.</span><span class="n">h_trap</span> <span class="o">=</span> <span class="mf">100e3</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">vehicle</span><span class="o">=</span><span class="n">Vehicle</span><span class="p">(</span><span class="s1">&#39;Titania&#39;</span><span class="p">,</span> <span class="mf">3200.0</span><span class="p">,</span> <span class="mi">146</span> <span class="p">,</span> <span class="mf">0.24</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="mf">4.5</span><span class="o">**</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.125</span><span class="p">,</span> <span class="n">planet</span><span class="p">)</span>
+<span class="n">vehicle</span><span class="o">.</span><span class="n">setInitialState</span><span class="p">(</span><span class="mf">1000.0</span><span class="p">,</span><span class="o">-</span><span class="mf">15.22</span><span class="p">,</span><span class="mf">75.55</span><span class="p">,</span><span class="mf">29.2877</span><span class="p">,</span><span class="mf">88.687</span><span class="p">,</span><span class="o">-</span><span class="mf">11.7</span> <span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="n">vehicle</span><span class="o">.</span><span class="n">setSolverParams</span><span class="p">(</span><span class="mf">1E-6</span><span class="p">)</span>
+<span class="c1"># Set the guidance parameters described in the paper.</span>
+<span class="c1"># See the function description for parameter details.</span>
+
+<span class="c1"># Set max roll rate constraint to 30 deg/s</span>
+<span class="n">vehicle</span><span class="o">.</span><span class="n">setMaxRollRate</span><span class="p">(</span><span class="mf">30.0</span><span class="p">)</span>
+
+<span class="c1"># Set Ghdot = 83</span>
+<span class="c1"># Set Gq = 9.0</span>
+<span class="c1"># Set v_switch_kms = 16.0 :: this parameter is not really used, and should just be set to low value</span>
+<span class="c1"># Set low_Alt_km = 120</span>
+<span class="c1"># Set numPoints_lowAlt = 101</span>
+<span class="c1"># Set hdot_threshold = -500 m/s</span>
+<span class="n">vehicle</span><span class="o">.</span><span class="n">setEquilibriumGlideParams</span><span class="p">(</span><span class="mf">83.0</span><span class="p">,</span> <span class="mf">9.0</span><span class="p">,</span> <span class="mf">16.0</span><span class="p">,</span> <span class="mf">120.0</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="o">-</span><span class="mf">500.0</span><span class="p">)</span>
+
+<span class="c1"># Set target orbit parameters</span>
+<span class="c1"># periapsis = 4000.0 km</span>
+<span class="c1"># apoapsis = 550,000 km :: set slightly above target (500e3) to account for bias in targeting algorithm</span>
+<span class="c1"># apoapsis tolerance = 10 km</span>
+<span class="n">vehicle</span><span class="o">.</span><span class="n">setTargetOrbitParams</span><span class="p">(</span><span class="mf">4000.0</span><span class="p">,</span> <span class="mf">550.0E3</span><span class="p">,</span> <span class="mf">10.0E3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Set path to atmfiles with randomly perturbed atmosphere files.</span>
+<span class="n">atmfiles</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;../../../atmdata/Uranus/perturbed/G-01.txt&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;../../../atmdata/Uranus/perturbed/G-02.txt&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;../../../atmdata/Uranus/perturbed/G-03.txt&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;../../../atmdata/Uranus/perturbed/G-04.txt&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;../../../atmdata/Uranus/perturbed/G-05.txt&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">vehicle</span><span class="o">.</span><span class="n">setupMonteCarloSimulation</span><span class="p">(</span><span class="mi">1201</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="n">atmfiles</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> \
+                                 <span class="o">-</span><span class="mf">11.70</span><span class="p">,</span> <span class="mf">0.30</span><span class="p">,</span> <span class="mf">0.24</span><span class="p">,</span> <span class="mf">0.013</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">2400.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="Small-run-N-=-200">
+<h2>Small run N = 200<a class="headerlink" href="#Small-run-N-=-200" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">vehicle</span><span class="o">.</span><span class="n">runMonteCarlo2</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="s1">&#39;../../../data/acta-astronautica/uranus-orbiter-probe/MCBXA&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+RUN #: 1, SAMPLE #: 34, EFPA: -11.45, SIGMA: -0.29, LD: 0.23, APO : 506673.46
+RUN #: 2, SAMPLE #: 71, EFPA: -11.59, SIGMA: 0.21, LD: 0.25, APO : 556624.79
+RUN #: 3, SAMPLE #: 176, EFPA: -12.08, SIGMA: 0.82, LD: 0.23, APO : 187112.93
+RUN #: 4, SAMPLE #: 175, EFPA: -11.89, SIGMA: 0.60, LD: 0.25, APO : 569524.02
+RUN #: 5, SAMPLE #: 77, EFPA: -11.50, SIGMA: 0.66, LD: 0.25, APO : 553550.53
+RUN #: 6, SAMPLE #: 105, EFPA: -11.78, SIGMA: 0.18, LD: 0.25, APO : 547685.80
+RUN #: 7, SAMPLE #: 104, EFPA: -11.58, SIGMA: -1.88, LD: 0.25, APO : 517967.97
+RUN #: 8, SAMPLE #: 123, EFPA: -11.89, SIGMA: -0.90, LD: 0.22, APO : 595645.42
+RUN #: 9, SAMPLE #: 7, EFPA: -11.93, SIGMA: -1.39, LD: 0.24, APO : 521503.83
+RUN #: 10, SAMPLE #: 12, EFPA: -12.17, SIGMA: -1.06, LD: 0.24, APO : 96651.14
+RUN #: 11, SAMPLE #: 88, EFPA: -12.12, SIGMA: -0.82, LD: 0.25, APO : 323986.00
+RUN #: 12, SAMPLE #: 162, EFPA: -11.48, SIGMA: -1.17, LD: 0.26, APO : 460122.79
+RUN #: 13, SAMPLE #: 127, EFPA: -11.54, SIGMA: -1.80, LD: 0.22, APO : 505367.37
+RUN #: 14, SAMPLE #: 181, EFPA: -11.51, SIGMA: 0.84, LD: 0.22, APO : 493673.51
+RUN #: 15, SAMPLE #: 5, EFPA: -11.36, SIGMA: -0.95, LD: 0.23, APO : 566881.26
+RUN #: 16, SAMPLE #: 48, EFPA: -11.76, SIGMA: -0.14, LD: 0.26, APO : 570096.60
+RUN #: 17, SAMPLE #: 25, EFPA: -11.74, SIGMA: -0.22, LD: 0.25, APO : 523592.41
+RUN #: 18, SAMPLE #: 96, EFPA: -11.38, SIGMA: -0.06, LD: 0.23, APO : 475309.84
+RUN #: 19, SAMPLE #: 172, EFPA: -11.70, SIGMA: 0.48, LD: 0.25, APO : 580760.70
+RUN #: 20, SAMPLE #: 1, EFPA: -11.72, SIGMA: -0.95, LD: 0.24, APO : 526449.26
+RUN #: 21, SAMPLE #: 162, EFPA: -12.40, SIGMA: -0.94, LD: 0.26, APO : 68892.80
+RUN #: 22, SAMPLE #: 30, EFPA: -11.97, SIGMA: -0.13, LD: 0.23, APO : 524454.64
+RUN #: 23, SAMPLE #: 117, EFPA: -11.54, SIGMA: 0.71, LD: 0.24, APO : 555666.99
+RUN #: 24, SAMPLE #: 3, EFPA: -11.87, SIGMA: 0.55, LD: 0.22, APO : 528042.58
+RUN #: 25, SAMPLE #: 105, EFPA: -11.41, SIGMA: -0.32, LD: 0.23, APO : 539394.10
+RUN #: 26, SAMPLE #: 162, EFPA: -11.43, SIGMA: -0.16, LD: 0.24, APO : 540115.78
+RUN #: 27, SAMPLE #: 62, EFPA: -11.72, SIGMA: 0.73, LD: 0.23, APO : 518484.73
+RUN #: 28, SAMPLE #: 165, EFPA: -11.39, SIGMA: 1.47, LD: 0.22, APO : 554028.22
+RUN #: 29, SAMPLE #: 54, EFPA: -11.64, SIGMA: 0.25, LD: 0.24, APO : 509392.68
+RUN #: 30, SAMPLE #: 24, EFPA: -11.83, SIGMA: -0.95, LD: 0.25, APO : 513312.77
+RUN #: 31, SAMPLE #: 187, EFPA: -12.30, SIGMA: 0.09, LD: 0.26, APO : 60522.60
+RUN #: 32, SAMPLE #: 19, EFPA: -11.94, SIGMA: 0.51, LD: 0.24, APO : 543214.54
+RUN #: 33, SAMPLE #: 126, EFPA: -11.88, SIGMA: 1.19, LD: 0.25, APO : 485612.84
+RUN #: 34, SAMPLE #: 145, EFPA: -11.69, SIGMA: -1.08, LD: 0.24, APO : 560316.43
+RUN #: 35, SAMPLE #: 189, EFPA: -11.61, SIGMA: -0.89, LD: 0.26, APO : 483568.68
+RUN #: 36, SAMPLE #: 61, EFPA: -11.54, SIGMA: 0.03, LD: 0.23, APO : 487032.59
+RUN #: 37, SAMPLE #: 198, EFPA: -11.53, SIGMA: -0.34, LD: 0.25, APO : 531104.99
+RUN #: 38, SAMPLE #: 22, EFPA: -11.84, SIGMA: -0.46, LD: 0.23, APO : 509258.99
+RUN #: 39, SAMPLE #: 188, EFPA: -10.93, SIGMA: 0.65, LD: 0.25, APO : -205176.79
+RUN #: 40, SAMPLE #: 156, EFPA: -11.22, SIGMA: -1.50, LD: 0.24, APO : 523678.71
+RUN #: 41, SAMPLE #: 178, EFPA: -11.49, SIGMA: -0.63, LD: 0.25, APO : 495353.57
+RUN #: 42, SAMPLE #: 96, EFPA: -12.05, SIGMA: -0.43, LD: 0.24, APO : 426406.27
+RUN #: 43, SAMPLE #: 43, EFPA: -11.53, SIGMA: -1.98, LD: 0.24, APO : 526804.77
+RUN #: 44, SAMPLE #: 99, EFPA: -11.69, SIGMA: -1.13, LD: 0.24, APO : 490100.12
+RUN #: 45, SAMPLE #: 117, EFPA: -11.91, SIGMA: 0.04, LD: 0.26, APO : 577475.03
+RUN #: 46, SAMPLE #: 159, EFPA: -11.34, SIGMA: -0.51, LD: 0.26, APO : 498341.98
+RUN #: 47, SAMPLE #: 174, EFPA: -12.11, SIGMA: -0.48, LD: 0.23, APO : 626376.51
+RUN #: 48, SAMPLE #: 97, EFPA: -11.71, SIGMA: -0.27, LD: 0.25, APO : 488054.59
+RUN #: 49, SAMPLE #: 82, EFPA: -12.30, SIGMA: 0.47, LD: 0.24, APO : 66963.08
+RUN #: 50, SAMPLE #: 151, EFPA: -11.44, SIGMA: 0.83, LD: 0.27, APO : 525777.52
+RUN #: 51, SAMPLE #: 7, EFPA: -11.87, SIGMA: -0.92, LD: 0.27, APO : 495743.58
+RUN #: 52, SAMPLE #: 56, EFPA: -11.92, SIGMA: 0.03, LD: 0.25, APO : 561528.54
+RUN #: 53, SAMPLE #: 80, EFPA: -11.34, SIGMA: 0.77, LD: 0.24, APO : 570107.95
+RUN #: 54, SAMPLE #: 143, EFPA: -12.24, SIGMA: -0.65, LD: 0.24, APO : 139057.25
+RUN #: 55, SAMPLE #: 35, EFPA: -11.48, SIGMA: -0.01, LD: 0.24, APO : 505004.92
+RUN #: 56, SAMPLE #: 159, EFPA: -11.98, SIGMA: -0.03, LD: 0.25, APO : 529227.96
+RUN #: 57, SAMPLE #: 99, EFPA: -11.27, SIGMA: 2.17, LD: 0.26, APO : 527247.87
+RUN #: 58, SAMPLE #: 189, EFPA: -12.05, SIGMA: 0.70, LD: 0.24, APO : 407725.38
+RUN #: 59, SAMPLE #: 68, EFPA: -12.05, SIGMA: 0.37, LD: 0.23, APO : 376170.65
+RUN #: 60, SAMPLE #: 84, EFPA: -12.39, SIGMA: -1.43, LD: 0.26, APO : 57998.27
+RUN #: 61, SAMPLE #: 185, EFPA: -11.64, SIGMA: 0.98, LD: 0.24, APO : 531870.29
+RUN #: 62, SAMPLE #: 49, EFPA: -11.83, SIGMA: 1.98, LD: 0.23, APO : 538968.12
+RUN #: 63, SAMPLE #: 137, EFPA: -11.92, SIGMA: 0.71, LD: 0.24, APO : 551332.65
+RUN #: 64, SAMPLE #: 60, EFPA: -11.52, SIGMA: 0.71, LD: 0.24, APO : 550290.89
+RUN #: 65, SAMPLE #: 12, EFPA: -11.96, SIGMA: 0.62, LD: 0.24, APO : 562556.88
+RUN #: 66, SAMPLE #: 159, EFPA: -11.84, SIGMA: 0.64, LD: 0.25, APO : 568030.72
+RUN #: 67, SAMPLE #: 163, EFPA: -11.22, SIGMA: 0.84, LD: 0.26, APO : 566145.91
+RUN #: 68, SAMPLE #: 132, EFPA: -11.46, SIGMA: 0.86, LD: 0.23, APO : 532194.47
+RUN #: 69, SAMPLE #: 4, EFPA: -12.34, SIGMA: 0.14, LD: 0.26, APO : 64686.18
+RUN #: 70, SAMPLE #: 167, EFPA: -11.99, SIGMA: 0.14, LD: 0.23, APO : 612798.55
+RUN #: 71, SAMPLE #: 136, EFPA: -11.77, SIGMA: -0.73, LD: 0.24, APO : 521548.01
+RUN #: 72, SAMPLE #: 64, EFPA: -11.99, SIGMA: 1.46, LD: 0.23, APO : 459115.22
+RUN #: 73, SAMPLE #: 72, EFPA: -11.08, SIGMA: 0.30, LD: 0.25, APO : -287422.20
+RUN #: 74, SAMPLE #: 114, EFPA: -12.25, SIGMA: 0.36, LD: 0.25, APO : 94272.19
+RUN #: 75, SAMPLE #: 141, EFPA: -12.03, SIGMA: -0.73, LD: 0.24, APO : 569616.70
+RUN #: 76, SAMPLE #: 27, EFPA: -11.55, SIGMA: 0.26, LD: 0.23, APO : 533095.62
+RUN #: 77, SAMPLE #: 130, EFPA: -11.69, SIGMA: 1.82, LD: 0.24, APO : 520846.97
+RUN #: 78, SAMPLE #: 36, EFPA: -11.75, SIGMA: -0.90, LD: 0.24, APO : 512972.74
+RUN #: 79, SAMPLE #: 127, EFPA: -11.63, SIGMA: -0.05, LD: 0.21, APO : 518688.77
+RUN #: 80, SAMPLE #: 22, EFPA: -11.58, SIGMA: -0.42, LD: 0.23, APO : 547364.21
+RUN #: 81, SAMPLE #: 15, EFPA: -11.60, SIGMA: 0.59, LD: 0.25, APO : 595504.14
+RUN #: 82, SAMPLE #: 52, EFPA: -12.00, SIGMA: -0.33, LD: 0.23, APO : 597994.50
+RUN #: 83, SAMPLE #: 117, EFPA: -11.15, SIGMA: 0.67, LD: 0.25, APO : 510244.25
+RUN #: 84, SAMPLE #: 131, EFPA: -11.67, SIGMA: -0.96, LD: 0.24, APO : 540417.75
+RUN #: 85, SAMPLE #: 188, EFPA: -12.22, SIGMA: 0.71, LD: 0.27, APO : 100155.29
+RUN #: 86, SAMPLE #: 103, EFPA: -11.48, SIGMA: 0.24, LD: 0.23, APO : 514826.19
+RUN #: 87, SAMPLE #: 106, EFPA: -11.77, SIGMA: 0.14, LD: 0.25, APO : 481187.97
+RUN #: 88, SAMPLE #: 32, EFPA: -11.54, SIGMA: -0.99, LD: 0.25, APO : 564528.65
+RUN #: 89, SAMPLE #: 47, EFPA: -11.84, SIGMA: 1.42, LD: 0.26, APO : 509859.79
+RUN #: 90, SAMPLE #: 102, EFPA: -11.60, SIGMA: 2.24, LD: 0.24, APO : 511849.64
+RUN #: 91, SAMPLE #: 132, EFPA: -11.98, SIGMA: -0.01, LD: 0.25, APO : 611874.01
+RUN #: 92, SAMPLE #: 136, EFPA: -11.38, SIGMA: 0.98, LD: 0.24, APO : 553651.84
+RUN #: 93, SAMPLE #: 70, EFPA: -12.14, SIGMA: -0.09, LD: 0.25, APO : 196730.11
+RUN #: 94, SAMPLE #: 133, EFPA: -11.73, SIGMA: 0.90, LD: 0.24, APO : 535511.49
+RUN #: 95, SAMPLE #: 150, EFPA: -12.25, SIGMA: 0.62, LD: 0.25, APO : 94625.31
+RUN #: 96, SAMPLE #: 140, EFPA: -11.56, SIGMA: 0.03, LD: 0.23, APO : 534041.02
+RUN #: 97, SAMPLE #: 196, EFPA: -12.13, SIGMA: -0.54, LD: 0.25, APO : 162698.74
+RUN #: 98, SAMPLE #: 102, EFPA: -11.53, SIGMA: 0.90, LD: 0.27, APO : 496461.04
+RUN #: 99, SAMPLE #: 183, EFPA: -11.64, SIGMA: 1.19, LD: 0.26, APO : 573322.78
+RUN #: 100, SAMPLE #: 152, EFPA: -11.82, SIGMA: -1.07, LD: 0.23, APO : 561307.00
+RUN #: 101, SAMPLE #: 191, EFPA: -12.31, SIGMA: 0.68, LD: 0.25, APO : 83272.41
+RUN #: 102, SAMPLE #: 90, EFPA: -11.91, SIGMA: -1.04, LD: 0.23, APO : 504916.71
+RUN #: 103, SAMPLE #: 93, EFPA: -11.57, SIGMA: -2.50, LD: 0.21, APO : 466742.75
+RUN #: 104, SAMPLE #: 194, EFPA: -12.08, SIGMA: -0.03, LD: 0.24, APO : 313081.80
+RUN #: 105, SAMPLE #: 112, EFPA: -11.75, SIGMA: -0.66, LD: 0.26, APO : 510612.42
+RUN #: 106, SAMPLE #: 11, EFPA: -11.59, SIGMA: 0.22, LD: 0.24, APO : 523786.76
+RUN #: 107, SAMPLE #: 107, EFPA: -11.43, SIGMA: 0.82, LD: 0.24, APO : 512275.22
+RUN #: 108, SAMPLE #: 161, EFPA: -11.62, SIGMA: -0.83, LD: 0.23, APO : 523899.91
+RUN #: 109, SAMPLE #: 65, EFPA: -12.07, SIGMA: -0.26, LD: 0.25, APO : 255210.84
+RUN #: 110, SAMPLE #: 99, EFPA: -11.28, SIGMA: 0.07, LD: 0.26, APO : 531682.23
+RUN #: 111, SAMPLE #: 174, EFPA: -12.20, SIGMA: -1.17, LD: 0.23, APO : 132191.14
+RUN #: 112, SAMPLE #: 194, EFPA: -11.84, SIGMA: -1.73, LD: 0.21, APO : 601430.74
+RUN #: 113, SAMPLE #: 48, EFPA: -11.96, SIGMA: 3.12, LD: 0.24, APO : 244265.00
+RUN #: 114, SAMPLE #: 46, EFPA: -12.09, SIGMA: 0.02, LD: 0.25, APO : 195492.86
+RUN #: 115, SAMPLE #: 141, EFPA: -11.51, SIGMA: 0.11, LD: 0.25, APO : 535022.74
+RUN #: 116, SAMPLE #: 115, EFPA: -11.73, SIGMA: 1.89, LD: 0.25, APO : 495789.22
+RUN #: 117, SAMPLE #: 32, EFPA: -10.80, SIGMA: 1.14, LD: 0.23, APO : -98828.45
+RUN #: 118, SAMPLE #: 85, EFPA: -11.77, SIGMA: -1.30, LD: 0.25, APO : 511076.81
+RUN #: 119, SAMPLE #: 12, EFPA: -11.52, SIGMA: -0.10, LD: 0.23, APO : 525842.13
+RUN #: 120, SAMPLE #: 102, EFPA: -11.54, SIGMA: -0.53, LD: 0.24, APO : 496323.94
+RUN #: 121, SAMPLE #: 187, EFPA: -11.92, SIGMA: 0.80, LD: 0.24, APO : 518752.40
+RUN #: 122, SAMPLE #: 88, EFPA: -11.06, SIGMA: -1.33, LD: 0.24, APO : 483112.54
+RUN #: 123, SAMPLE #: 187, EFPA: -11.55, SIGMA: 0.42, LD: 0.25, APO : 521946.94
+RUN #: 124, SAMPLE #: 154, EFPA: -11.44, SIGMA: 0.25, LD: 0.22, APO : 545445.85
+RUN #: 125, SAMPLE #: 74, EFPA: -12.19, SIGMA: -0.74, LD: 0.25, APO : 132032.22
+RUN #: 126, SAMPLE #: 194, EFPA: -12.13, SIGMA: -0.11, LD: 0.24, APO : 219507.13
+RUN #: 127, SAMPLE #: 80, EFPA: -12.11, SIGMA: 0.59, LD: 0.26, APO : 232618.23
+RUN #: 128, SAMPLE #: 182, EFPA: -11.25, SIGMA: -0.45, LD: 0.22, APO : 535774.95
+RUN #: 129, SAMPLE #: 102, EFPA: -11.56, SIGMA: 0.63, LD: 0.24, APO : 481855.46
+RUN #: 130, SAMPLE #: 143, EFPA: -11.49, SIGMA: 1.99, LD: 0.23, APO : 490552.70
+RUN #: 131, SAMPLE #: 94, EFPA: -10.96, SIGMA: 0.69, LD: 0.25, APO : -121939.67
+RUN #: 132, SAMPLE #: 158, EFPA: -11.46, SIGMA: -0.88, LD: 0.24, APO : 482192.20
+RUN #: 133, SAMPLE #: 121, EFPA: -11.89, SIGMA: -0.58, LD: 0.22, APO : 488963.26
+RUN #: 134, SAMPLE #: 7, EFPA: -11.45, SIGMA: -2.02, LD: 0.25, APO : 532583.58
+RUN #: 135, SAMPLE #: 32, EFPA: -11.82, SIGMA: 0.47, LD: 0.24, APO : 490108.25
+RUN #: 136, SAMPLE #: 57, EFPA: -11.13, SIGMA: 0.80, LD: 0.24, APO : 508518.14
+RUN #: 137, SAMPLE #: 142, EFPA: -11.45, SIGMA: 1.30, LD: 0.22, APO : 497438.64
+RUN #: 138, SAMPLE #: 2, EFPA: -11.42, SIGMA: 0.40, LD: 0.24, APO : 514263.47
+RUN #: 139, SAMPLE #: 166, EFPA: -11.58, SIGMA: -0.12, LD: 0.26, APO : 501760.01
+RUN #: 140, SAMPLE #: 63, EFPA: -11.57, SIGMA: -0.74, LD: 0.24, APO : 552279.86
+RUN #: 141, SAMPLE #: 103, EFPA: -11.63, SIGMA: -0.59, LD: 0.24, APO : 462930.31
+RUN #: 142, SAMPLE #: 200, EFPA: -11.55, SIGMA: -0.80, LD: 0.23, APO : 520793.05
+RUN #: 143, SAMPLE #: 104, EFPA: -11.66, SIGMA: 1.57, LD: 0.25, APO : 504137.98
+RUN #: 144, SAMPLE #: 82, EFPA: -11.31, SIGMA: 0.09, LD: 0.25, APO : 484523.34
+RUN #: 145, SAMPLE #: 43, EFPA: -11.97, SIGMA: 0.74, LD: 0.23, APO : 562126.82
+RUN #: 146, SAMPLE #: 40, EFPA: -11.97, SIGMA: 0.05, LD: 0.25, APO : 598041.44
+RUN #: 147, SAMPLE #: 85, EFPA: -11.63, SIGMA: 1.03, LD: 0.23, APO : 502024.29
+RUN #: 148, SAMPLE #: 75, EFPA: -11.50, SIGMA: 0.34, LD: 0.26, APO : 475190.44
+RUN #: 149, SAMPLE #: 145, EFPA: -11.88, SIGMA: 0.50, LD: 0.24, APO : 563575.46
+RUN #: 150, SAMPLE #: 164, EFPA: -12.02, SIGMA: 0.77, LD: 0.25, APO : 571904.08
+RUN #: 151, SAMPLE #: 68, EFPA: -11.76, SIGMA: 0.42, LD: 0.24, APO : 513048.45
+RUN #: 152, SAMPLE #: 53, EFPA: -11.60, SIGMA: -1.04, LD: 0.26, APO : 530146.52
+RUN #: 153, SAMPLE #: 162, EFPA: -12.18, SIGMA: -1.08, LD: 0.26, APO : 237159.38
+RUN #: 154, SAMPLE #: 28, EFPA: -11.91, SIGMA: 0.83, LD: 0.24, APO : 558258.11
+RUN #: 155, SAMPLE #: 125, EFPA: -11.51, SIGMA: 0.81, LD: 0.22, APO : 485188.63
+RUN #: 156, SAMPLE #: 151, EFPA: -11.83, SIGMA: -0.22, LD: 0.24, APO : 520208.92
+RUN #: 157, SAMPLE #: 188, EFPA: -11.78, SIGMA: 0.87, LD: 0.26, APO : 519159.11
+RUN #: 158, SAMPLE #: 28, EFPA: -11.67, SIGMA: -1.41, LD: 0.24, APO : 499355.17
+RUN #: 159, SAMPLE #: 123, EFPA: -11.83, SIGMA: 0.15, LD: 0.25, APO : 506560.75
+RUN #: 160, SAMPLE #: 179, EFPA: -11.95, SIGMA: -0.99, LD: 0.26, APO : 497962.99
+RUN #: 161, SAMPLE #: 186, EFPA: -11.29, SIGMA: 0.27, LD: 0.21, APO : 547391.74
+RUN #: 162, SAMPLE #: 99, EFPA: -11.67, SIGMA: 0.61, LD: 0.23, APO : 533212.78
+RUN #: 163, SAMPLE #: 169, EFPA: -11.51, SIGMA: -1.60, LD: 0.25, APO : 514248.79
+RUN #: 164, SAMPLE #: 27, EFPA: -11.63, SIGMA: -1.63, LD: 0.23, APO : 522330.35
+RUN #: 165, SAMPLE #: 193, EFPA: -11.72, SIGMA: 1.01, LD: 0.23, APO : 573926.87
+RUN #: 166, SAMPLE #: 107, EFPA: -12.23, SIGMA: 1.61, LD: 0.25, APO : 91304.29
+RUN #: 167, SAMPLE #: 16, EFPA: -11.94, SIGMA: 1.24, LD: 0.23, APO : 538570.35
+RUN #: 168, SAMPLE #: 126, EFPA: -11.98, SIGMA: -0.30, LD: 0.26, APO : 585785.21
+RUN #: 169, SAMPLE #: 32, EFPA: -11.45, SIGMA: -0.06, LD: 0.26, APO : 517495.31
+RUN #: 170, SAMPLE #: 55, EFPA: -11.79, SIGMA: 0.17, LD: 0.23, APO : 528475.24
+RUN #: 171, SAMPLE #: 90, EFPA: -11.71, SIGMA: -1.64, LD: 0.22, APO : 566690.73
+RUN #: 172, SAMPLE #: 3, EFPA: -12.19, SIGMA: 0.86, LD: 0.25, APO : 134939.05
+RUN #: 173, SAMPLE #: 127, EFPA: -11.72, SIGMA: -1.54, LD: 0.25, APO : 548083.53
+RUN #: 174, SAMPLE #: 196, EFPA: -11.90, SIGMA: 0.30, LD: 0.22, APO : 533782.16
+RUN #: 175, SAMPLE #: 151, EFPA: -11.25, SIGMA: -1.23, LD: 0.26, APO : 549103.34
+RUN #: 176, SAMPLE #: 53, EFPA: -11.27, SIGMA: -0.80, LD: 0.26, APO : 510315.42
+RUN #: 177, SAMPLE #: 134, EFPA: -12.11, SIGMA: -0.53, LD: 0.25, APO : 218600.35
+RUN #: 178, SAMPLE #: 45, EFPA: -11.52, SIGMA: 0.86, LD: 0.25, APO : 507244.97
+RUN #: 179, SAMPLE #: 36, EFPA: -11.89, SIGMA: -1.06, LD: 0.25, APO : 516131.23
+RUN #: 180, SAMPLE #: 16, EFPA: -11.39, SIGMA: 0.43, LD: 0.21, APO : 538555.96
+RUN #: 181, SAMPLE #: 25, EFPA: -11.50, SIGMA: 1.77, LD: 0.25, APO : 502387.15
+RUN #: 182, SAMPLE #: 153, EFPA: -11.68, SIGMA: 0.44, LD: 0.25, APO : 535382.93
+RUN #: 183, SAMPLE #: 77, EFPA: -11.64, SIGMA: 0.70, LD: 0.24, APO : 517909.23
+RUN #: 184, SAMPLE #: 58, EFPA: -11.66, SIGMA: -0.06, LD: 0.23, APO : 517697.47
+RUN #: 185, SAMPLE #: 79, EFPA: -11.60, SIGMA: -0.31, LD: 0.22, APO : 514688.57
+RUN #: 186, SAMPLE #: 12, EFPA: -11.31, SIGMA: 0.34, LD: 0.23, APO : 574256.15
+RUN #: 187, SAMPLE #: 127, EFPA: -11.96, SIGMA: -0.28, LD: 0.24, APO : 529303.89
+RUN #: 188, SAMPLE #: 53, EFPA: -12.08, SIGMA: 1.61, LD: 0.22, APO : 206067.92
+RUN #: 189, SAMPLE #: 29, EFPA: -11.62, SIGMA: -0.17, LD: 0.24, APO : 541876.60
+RUN #: 190, SAMPLE #: 54, EFPA: -12.03, SIGMA: 0.01, LD: 0.23, APO : 305478.73
+RUN #: 191, SAMPLE #: 83, EFPA: -11.60, SIGMA: 0.92, LD: 0.24, APO : 547886.69
+RUN #: 192, SAMPLE #: 108, EFPA: -11.58, SIGMA: 1.05, LD: 0.22, APO : 582551.95
+RUN #: 193, SAMPLE #: 102, EFPA: -11.71, SIGMA: 0.31, LD: 0.25, APO : 486528.59
+RUN #: 194, SAMPLE #: 81, EFPA: -11.54, SIGMA: -1.28, LD: 0.23, APO : 511513.94
+RUN #: 195, SAMPLE #: 54, EFPA: -11.66, SIGMA: 1.51, LD: 0.24, APO : 516495.86
+RUN #: 196, SAMPLE #: 69, EFPA: -11.41, SIGMA: -0.20, LD: 0.24, APO : 483598.91
+RUN #: 197, SAMPLE #: 54, EFPA: -12.02, SIGMA: -0.22, LD: 0.24, APO : 381775.46
+RUN #: 198, SAMPLE #: 107, EFPA: -11.78, SIGMA: 0.18, LD: 0.26, APO : 518064.83
+RUN #: 199, SAMPLE #: 111, EFPA: -11.54, SIGMA: 0.91, LD: 0.24, APO : 536557.12
+RUN #: 200, SAMPLE #: 10, EFPA: -11.74, SIGMA: 2.13, LD: 0.23, APO : 512372.21
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">p1</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/uranus-orbiter-probe/MCBXA/terminal_periapsis_arr.txt&#39;</span><span class="p">)</span>
+<span class="n">x1</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/uranus-orbiter-probe/MCBXA/terminal_apoapsis_arr.txt&#39;</span><span class="p">)</span>
+<span class="n">y1</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/uranus-orbiter-probe/MCBXA/acc_net_g_max_arr.txt&#39;</span><span class="p">)</span>
+<span class="n">z1</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/uranus-orbiter-probe/MCBXA/q_stag_max_arr.txt&#39;</span><span class="p">)</span>
+<span class="n">h1</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/uranus-orbiter-probe/MCBXA/heatload_max_arr.txt&#39;</span><span class="p">)</span>
+<span class="n">u1</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/uranus-orbiter-probe/MCBXA/periapsis_raise_DV_arr.txt&#39;</span><span class="p">)</span>
+<span class="n">v1</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/uranus-orbiter-probe/MCBXA/apoapsis_raise_DV_arr.txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mf">6.5</span><span class="p">,</span> <span class="mf">3.25</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span><span class="n">family</span><span class="o">=</span><span class="s1">&#39;Times New Roman&#39;</span><span class="p">)</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;mathtext.default&#39;</span><span class="p">:</span> <span class="s1">&#39;regular&#39;</span> <span class="p">}</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span><span class="o">=</span><span class="mf">0.30</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x1</span><span class="o">/</span><span class="mf">1000.0</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;xkcd:periwinkle&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Apoapsis altitude x &#39;</span><span class="o">+</span><span class="sa">r</span><span class="s1">&#39;$10^3$&#39;</span><span class="o">+</span><span class="s1">&#39;, km&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number of cases&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">x1</span><span class="o">/</span><span class="mf">1000.0</span><span class="p">,</span> <span class="s1">&#39;bo&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">mfc</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Periapsis altitude, km&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Apoapsis altitude x &#39;</span><span class="o">+</span><span class="sa">r</span><span class="s1">&#39;$10^3$&#39;</span><span class="o">+</span><span class="s1">&#39;, km&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">axis</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="s1">&#39;right&#39;</span><span class="p">]:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span><span class="o">.</span><span class="n">set_linewidth</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/acta-aa-notebooks_uranus-orbiter-probe_08-performance-analysis-A-3x-higher-EFPA-uncertainty_10_0.png" src="../../_images/acta-aa-notebooks_uranus-orbiter-probe_08-performance-analysis-A-3x-higher-EFPA-uncertainty_10_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Remove-cases-which-did-not-capture">
+<h2>Remove cases which did not capture<a class="headerlink" href="#Remove-cases-which-did-not-capture" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">del_index1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">x1</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">del_index1</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(array([ 38,  72, 116, 130]),)
+</pre></div></div>
+</div>
+<p>These four cases failed to capture. Delete them from the results for plotting.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">p1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">del_index1</span> <span class="p">)</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">del_index1</span> <span class="p">)</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span> <span class="n">del_index1</span> <span class="p">)</span>
+<span class="n">z1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">z1</span><span class="p">,</span> <span class="n">del_index1</span> <span class="p">)</span>
+<span class="n">h1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">h1</span><span class="p">,</span> <span class="n">del_index1</span> <span class="p">)</span>
+<span class="n">u1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">u1</span><span class="p">,</span> <span class="n">del_index1</span> <span class="p">)</span>
+<span class="n">v1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">del_index1</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mf">6.5</span><span class="p">,</span> <span class="mf">3.25</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span><span class="n">family</span><span class="o">=</span><span class="s1">&#39;Times New Roman&#39;</span><span class="p">)</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;mathtext.default&#39;</span><span class="p">:</span> <span class="s1">&#39;regular&#39;</span> <span class="p">}</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span><span class="o">=</span><span class="mf">0.30</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x1</span><span class="o">/</span><span class="mf">1000.0</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;xkcd:periwinkle&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Apoapsis altitude x &#39;</span><span class="o">+</span><span class="sa">r</span><span class="s1">&#39;$10^3$&#39;</span><span class="o">+</span><span class="s1">&#39;, km&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number of cases&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">x1</span><span class="o">/</span><span class="mf">1000.0</span><span class="p">,</span> <span class="s1">&#39;bo&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">mfc</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Periapsis altitude, km&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Apoapsis altitude x &#39;</span><span class="o">+</span><span class="sa">r</span><span class="s1">&#39;$10^3$&#39;</span><span class="o">+</span><span class="s1">&#39;, km&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">axis</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="s1">&#39;right&#39;</span><span class="p">]:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span><span class="o">.</span><span class="n">set_linewidth</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/acta-aa-notebooks_uranus-orbiter-probe_08-performance-analysis-A-3x-higher-EFPA-uncertainty_15_0.png" src="../../_images/acta-aa-notebooks_uranus-orbiter-probe_08-performance-analysis-A-3x-higher-EFPA-uncertainty_15_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--------------------------------------------------------------------------------------------------------&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Parameter              |      Min.     0.13-percentile      Mean      99.87-percentile      Max&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--------------------------------------------------------------------------------------------------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Apoapsis altitude, km  |    &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x1</span><span class="p">)))</span> <span class="o">+</span> <span class="s2">&quot;          &quot;</span> <span class="o">+</span>  <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="mf">0.13</span><span class="p">)))</span> <span class="o">+</span>\
+                                                                <span class="s2">&quot;         &quot;</span> <span class="o">+</span>  <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">x1</span><span class="p">)))</span> <span class="o">+</span>
+                                                                <span class="s2">&quot;          &quot;</span> <span class="o">+</span>  <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="mf">99.87</span><span class="p">)))</span><span class="o">+</span>\
+                                                                <span class="s2">&quot;          &quot;</span> <span class="o">+</span>  <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x1</span><span class="p">))))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Periapsis altitude, km |       &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">p1</span><span class="p">)))</span> <span class="o">+</span> <span class="s2">&quot;             &quot;</span> <span class="o">+</span>  <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="mf">0.13</span><span class="p">)))</span> <span class="o">+</span>\
+                                                                <span class="s2">&quot;            &quot;</span> <span class="o">+</span>  <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">p1</span><span class="p">)))</span> <span class="o">+</span>
+                                                                <span class="s2">&quot;             &quot;</span> <span class="o">+</span>  <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="mf">99.87</span><span class="p">)))</span><span class="o">+</span>\
+                                                                <span class="s2">&quot;             &quot;</span> <span class="o">+</span>  <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">p1</span><span class="p">))))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Peak deceleration, g   |       &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">y1</span><span class="p">),</span> <span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;           &quot;</span> <span class="o">+</span>  <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span> <span class="mf">0.13</span><span class="p">),</span> <span class="mi">2</span><span class="p">))</span> <span class="o">+</span>\
+                                                                <span class="s2">&quot;           &quot;</span> <span class="o">+</span>  <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">y1</span><span class="p">),</span> <span class="mi">2</span><span class="p">))</span> <span class="o">+</span>
+                                                                <span class="s2">&quot;            &quot;</span> <span class="o">+</span>  <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span> <span class="mf">99.87</span><span class="p">),</span> <span class="mi">2</span><span class="p">))</span><span class="o">+</span>\
+                                                                <span class="s2">&quot;           &quot;</span> <span class="o">+</span>  <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">y1</span><span class="p">),</span> <span class="mi">2</span><span class="p">)))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Peak heat rate, W/cm2  |       &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">z1</span><span class="p">)))</span> <span class="o">+</span> <span class="s2">&quot;           &quot;</span> <span class="o">+</span>  <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">z1</span><span class="p">,</span> <span class="mf">0.13</span><span class="p">)))</span> <span class="o">+</span>\
+                                                                <span class="s2">&quot;           &quot;</span> <span class="o">+</span>  <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">z1</span><span class="p">)))</span> <span class="o">+</span>
+                                                                <span class="s2">&quot;            &quot;</span> <span class="o">+</span>  <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">z1</span><span class="p">,</span> <span class="mf">99.87</span><span class="p">)))</span><span class="o">+</span>\
+                                                                <span class="s2">&quot;            &quot;</span> <span class="o">+</span>  <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">z1</span><span class="p">))))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Peak heat load, kJ/cm2 |        &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">h1</span><span class="p">)))</span> <span class="o">+</span> <span class="s2">&quot;            &quot;</span> <span class="o">+</span>  <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">h1</span><span class="p">,</span> <span class="mf">0.13</span><span class="p">)))</span> <span class="o">+</span>\
+                                                                <span class="s2">&quot;            &quot;</span> <span class="o">+</span>  <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">h1</span><span class="p">)))</span> <span class="o">+</span>
+                                                                <span class="s2">&quot;             &quot;</span> <span class="o">+</span>  <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">h1</span><span class="p">,</span> <span class="mf">99.87</span><span class="p">)))</span><span class="o">+</span>\
+                                                                <span class="s2">&quot;             &quot;</span> <span class="o">+</span>  <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">h1</span><span class="p">))))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Periapsis raise dV, m/s|      &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">u1</span><span class="p">),</span> <span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;          &quot;</span> <span class="o">+</span>  <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">u1</span><span class="p">,</span> <span class="mf">0.13</span><span class="p">),</span> <span class="mi">2</span><span class="p">))</span> <span class="o">+</span>\
+                                                                <span class="s2">&quot;          &quot;</span> <span class="o">+</span>  <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">u1</span><span class="p">),</span> <span class="mi">2</span><span class="p">))</span> <span class="o">+</span>
+                                                                <span class="s2">&quot;           &quot;</span> <span class="o">+</span>  <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">u1</span><span class="p">,</span> <span class="mf">99.87</span><span class="p">),</span> <span class="mi">2</span><span class="p">))</span><span class="o">+</span>\
+                                                                <span class="s2">&quot;           &quot;</span> <span class="o">+</span>  <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">u1</span><span class="p">),</span> <span class="mi">2</span><span class="p">)))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Apoapsis corr. dV, m/s |     &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">v1</span><span class="p">),</span> <span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;         &quot;</span> <span class="o">+</span>  <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="mf">0.13</span><span class="p">),</span> <span class="mi">2</span><span class="p">))</span> <span class="o">+</span>\
+                                                                <span class="s2">&quot;           &quot;</span> <span class="o">+</span>  <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">v1</span><span class="p">),</span> <span class="mi">2</span><span class="p">))</span> <span class="o">+</span>
+                                                                <span class="s2">&quot;          &quot;</span> <span class="o">+</span>  <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="mf">99.87</span><span class="p">),</span> <span class="mi">2</span><span class="p">))</span><span class="o">+</span>\
+                                                                <span class="s2">&quot;          &quot;</span> <span class="o">+</span>  <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">v1</span><span class="p">),</span> <span class="mi">2</span><span class="p">)))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--------------------------------------------------------------------------------------------------------&quot;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+--------------------------------------------------------------------------------------------------------
+Parameter              |      Min.     0.13-percentile      Mean      99.87-percentile      Max
+--------------------------------------------------------------------------------------------------------
+Apoapsis altitude, km  |    57998          58638         471497          622934          626377
+Periapsis altitude, km |       36             38            179             235             241
+Peak deceleration, g   |       5.45           5.55           8.57            12.78           12.94
+Peak heat rate, W/cm2  |       1482           1485           1766            2017            2022
+Peak heat load, kJ/cm2 |        201            201            219             254             254
+Periapsis raise dV, m/s|      56.76          56.98          85.12           315.61           317.38
+Apoapsis corr. dV, m/s |     -55.49         -53.23           187.45          2276.22          2292.84
+--------------------------------------------------------------------------------------------------------
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mf">6.75</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span><span class="n">family</span><span class="o">=</span><span class="s1">&#39;Times New Roman&#39;</span><span class="p">)</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;mathtext.default&#39;</span><span class="p">:</span> <span class="s1">&#39;regular&#39;</span> <span class="p">}</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span><span class="o">=</span><span class="mf">0.30</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">550.0</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x1</span><span class="o">/</span><span class="mf">1000.0</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;xkcd:periwinkle&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Apoapsis altitude x &#39;</span><span class="o">+</span><span class="sa">r</span><span class="s1">&#39;$10^3$&#39;</span><span class="o">+</span><span class="s1">&#39;, km&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number of cases&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">x1</span><span class="o">/</span><span class="mf">1000.0</span><span class="p">,</span> <span class="s1">&#39;bo&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">mfc</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mf">550.0</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Periapsis altitude, km&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Apoapsis altitude x &#39;</span><span class="o">+</span><span class="sa">r</span><span class="s1">&#39;$10^3$&#39;</span><span class="o">+</span><span class="s1">&#39;, km&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">axis</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="s1">&#39;right&#39;</span><span class="p">]:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span><span class="o">.</span><span class="n">set_linewidth</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/uranus-orbiter-probe/periapsis-vs-apoapsis-XA.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span> <span class="mi">300</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/uranus-orbiter-probe/periapsis-vs-apoapsis-XA.pdf&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/uranus-orbiter-probe/periapsis-vs-apoapsis-XA.eps&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/acta-aa-notebooks_uranus-orbiter-probe_08-performance-analysis-A-3x-higher-EFPA-uncertainty_17_0.png" src="../../_images/acta-aa-notebooks_uranus-orbiter-probe_08-performance-analysis-A-3x-higher-EFPA-uncertainty_17_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mf">6.75</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span><span class="n">family</span><span class="o">=</span><span class="s1">&#39;Times New Roman&#39;</span><span class="p">)</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;mathtext.default&#39;</span><span class="p">:</span> <span class="s1">&#39;regular&#39;</span> <span class="p">}</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span><span class="o">=</span><span class="mf">0.30</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span> <span class="n">z1</span><span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">mfc</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">z1</span><span class="p">,</span> <span class="mf">99.87</span><span class="p">),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span> <span class="mf">99.87</span><span class="p">),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Peak deceleration, Earth g&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Peak stagnation-point heat rate, &#39;</span><span class="o">+</span><span class="sa">r</span><span class="s1">&#39;$W/cm^2$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">z1</span><span class="p">,</span> <span class="n">h1</span><span class="p">,</span> <span class="s1">&#39;go&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">mfc</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">h1</span><span class="p">,</span> <span class="mf">99.87</span><span class="p">),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">z1</span><span class="p">,</span> <span class="mf">99.87</span><span class="p">),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Peak stagnation-point heat rate, &#39;</span><span class="o">+</span><span class="sa">r</span><span class="s1">&#39;$W/cm^2$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Peak stagnation-point heat load, &#39;</span><span class="o">+</span><span class="sa">r</span><span class="s1">&#39;$kJ/cm^2$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+
+
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">axis</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="s1">&#39;right&#39;</span><span class="p">]:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span><span class="o">.</span><span class="n">set_linewidth</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/uranus-orbiter-probe/heat-rate-vs-g-load-XA.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span> <span class="mi">300</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/uranus-orbiter-probe/heat-rate-vs-g-load-XA.pdf&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/uranus-orbiter-probe/heat-rate-vs-g-load-XA.eps&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/acta-aa-notebooks_uranus-orbiter-probe_08-performance-analysis-A-3x-higher-EFPA-uncertainty_18_0.png" src="../../_images/acta-aa-notebooks_uranus-orbiter-probe_08-performance-analysis-A-3x-higher-EFPA-uncertainty_18_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[59]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mf">6.75</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span><span class="n">family</span><span class="o">=</span><span class="s1">&#39;Times New Roman&#39;</span><span class="p">)</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;mathtext.default&#39;</span><span class="p">:</span> <span class="s1">&#39;regular&#39;</span> <span class="p">}</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span><span class="o">=</span><span class="mf">0.30</span><span class="p">)</span>
+
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">u1</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;xkcd:periwinkle&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">u1</span><span class="p">,</span> <span class="mf">99.87</span><span class="p">),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Periapse raise &#39;</span><span class="o">+</span><span class="sa">r</span><span class="s1">&#39;$\Delta V$&#39;</span><span class="o">+</span><span class="s1">&#39;, m/s&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number of cases&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;xkcd:orange&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="mf">99.87</span><span class="p">),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Apoapsis correction &#39;</span><span class="o">+</span><span class="sa">r</span><span class="s1">&#39;$\Delta V$&#39;</span><span class="o">+</span><span class="s1">&#39;, m/s&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number of cases&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+
+
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">axis</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="s1">&#39;right&#39;</span><span class="p">]:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span><span class="o">.</span><span class="n">set_linewidth</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/uranus-orbiter-probe/prm-arm-maneuvers-XA.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span> <span class="mi">300</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/uranus-orbiter-probe/prm-arm-maneuvers-XA.pdf&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/uranus-orbiter-probe/prm-arm-maneuvers-XA.eps&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/acta-aa-notebooks_uranus-orbiter-probe_08-performance-analysis-A-3x-higher-EFPA-uncertainty_19_0.png" src="../../_images/acta-aa-notebooks_uranus-orbiter-probe_08-performance-analysis-A-3x-higher-EFPA-uncertainty_19_0.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">percent_between</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">lower</span><span class="p">,</span> <span class="n">upper</span><span class="p">,</span> <span class="n">closed_left</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">closed_right</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Finds the percentage of values between a range for a numpy array</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    a: np.ndarray</span>
+<span class="sd">      numpy array to calculate percentage</span>
+<span class="sd">    lower: int, float</span>
+<span class="sd">      lower bound</span>
+<span class="sd">    upper: int, float</span>
+<span class="sd">      upper bound</span>
+<span class="sd">    closed_left:</span>
+<span class="sd">      closed left bound ( &gt; vs &gt;= )</span>
+<span class="sd">    closed_right:</span>
+<span class="sd">      closed right bound ( &lt; vs &lt;= )</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">greater</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">closed_left</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">greater_equal</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">less</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">closed_right</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">less_equal</span>
+
+    <span class="n">c</span> <span class="o">=</span> <span class="n">l</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">lower</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">r</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">upper</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">p1</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/uranus-orbiter-probe/MCBXA/terminal_periapsis_arr.txt&#39;</span><span class="p">)</span>
+<span class="n">x1</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/uranus-orbiter-probe/MCBXA/terminal_apoapsis_arr.txt&#39;</span><span class="p">)</span>
+<span class="n">y1</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/uranus-orbiter-probe/MCBXA/acc_net_g_max_arr.txt&#39;</span><span class="p">)</span>
+<span class="n">z1</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/uranus-orbiter-probe/MCBXA/q_stag_max_arr.txt&#39;</span><span class="p">)</span>
+<span class="n">h1</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/uranus-orbiter-probe/MCBXA/heatload_max_arr.txt&#39;</span><span class="p">)</span>
+<span class="n">u1</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/uranus-orbiter-probe/MCBXA/periapsis_raise_DV_arr.txt&#39;</span><span class="p">)</span>
+<span class="n">v1</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/uranus-orbiter-probe/MCBXA/apoapsis_raise_DV_arr.txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">percent_between</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="o">-</span><span class="mf">1e9</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.02
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">percent_between</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="mf">500e3</span><span class="p">,</span> <span class="mf">600e3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.635
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">percent_between</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="mf">450e3</span><span class="p">,</span> <span class="mf">650e3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.815
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">percent_between</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="mf">350e3</span><span class="p">,</span> <span class="mf">750e3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.835
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">percent_between</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">7500e3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.98
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="mi">1</span> <span class="o">-</span> <span class="n">percent_between</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="mf">350e3</span><span class="p">,</span> <span class="mf">750e3</span><span class="p">)</span> <span class="o">-</span> <span class="n">percent_between</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="o">-</span><span class="mf">1e9</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.14500000000000005
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="mf">0.145</span> <span class="o">+</span> <span class="mf">0.835</span> <span class="o">+</span><span class="mf">0.02</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1.0
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="08-performance-analysis.html" class="btn btn-neutral float-left" title="Section 08 - Performance Analysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="08-performance-analysis-B-3x-lower-EFPA-uncertainty.html" class="btn btn-neutral float-right" title="Section 08 - Performance Analysis - B - 3X Lower EFPA uncertainty" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, A.P. Girija.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
