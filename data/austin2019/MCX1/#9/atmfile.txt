@@ -1,1 +1,0 @@
-../atmdata/Venus/LAT40N.txt

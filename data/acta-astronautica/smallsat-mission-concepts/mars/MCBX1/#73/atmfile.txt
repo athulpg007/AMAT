@@ -1,1 +1,0 @@
-../../../atmdata/Mars/LAT00N-N1000.txt
