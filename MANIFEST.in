@@ -1,11 +1,11 @@
 # Include the license file
 include LICENSE
 
-# Include the data files
-recursive-include examples *
-recursive-include plots *
+# Include the test files
 recursive-include tests *
 
-# Exclude atm-data files
+# Exclude these files
+recursive-exclude examples *
+recursive-exclude plots *
 recursive-exclude atmdata *
 recursive-exclude interplanetary-data *
