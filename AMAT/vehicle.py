@@ -7630,7 +7630,7 @@ class Vehicle:
 			q_stag_max_arr[i] = max(self.q_stag_total_full)
 			heatload_max_arr[i] = max(cumtrapz(self.q_stag_total_full, self.t_min_full*60, initial=0))/1e3
 
-			print("BATCH :" + str(mainFolder) + ", RUN #: " + str(i + 1) + ", PROF: " + str(
+			print("RUN #: " + str(i + 1) + ", PROF: " + str(
 				selected_atmfile) + ", SAMPLE #: " + str(selected_profile) + ", EFPA: " + str(
 				'{:.2f}'.format(selected_efpa, 2)) + ", SIGMA: " + str(
 				'{:.2f}'.format(selected_atmSigma, 2)) + ", APO : " + str('{:.2f}'.format(terminal_apoapsis, 2)))
