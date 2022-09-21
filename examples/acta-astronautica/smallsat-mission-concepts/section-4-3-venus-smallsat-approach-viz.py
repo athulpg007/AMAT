@@ -71,12 +71,12 @@ z_ring_2 = 0.0*np.cos(u)
 
 mlab.figure(bgcolor=(0,0,0))
 s1 = mlab.mesh(x, y, z, color=(0.34,0.33,0.33))
-s2 = mlab.mesh(x1, y1, z1, color=(0.34, 0.33,0.33), opacity=0.0)
+s2 = mlab.mesh(x1, y1, z1, color=(0.34, 0.33,0.33), opacity=0.3)
 r1 = mlab.plot3d(x_ring_1, y_ring_1, z_ring_1, color=(1,1,1), line_width=1, tube_radius=None)
 #r2 = mlab.plot3d(x_ring_2, y_ring_2, z_ring_2, color=(1,1,1), line_width=1, tube_radius=None)
 
 p1 = mlab.plot3d(x_arr_probe, y_arr_probe, z_arr_probe, color=(0,1,0), line_width=3, tube_radius=None)
-p2 = mlab.plot3d(x_arr_space, y_arr_space, z_arr_space, color=(0,0,1), line_width=3, tube_radius=None)
+#p2 = mlab.plot3d(x_arr_space, y_arr_space, z_arr_space, color=(0,0,1), line_width=3, tube_radius=None)
 
 
 mlab.plot3d([0, 1.2 * north_pole_bi_vec[0]],
