@@ -20,61 +20,43 @@ def Arrow_From_A_to_B(x1, y1, z1, x2, y2, z2):
 
 arrival = Arrival()
 arrival.set_vinf_vec_from_lambert_arc(lastFlybyPlanet='EARTH',
-                                      arrivalPlanet='MARS',
-                                      lastFlybyDate=Time("2020-07-30 00:00:00", scale='tdb'),
-                                      arrivalDate=Time("2021-02-18 00:00:00", scale='tdb'))
+                                      arrivalPlanet='VENUS',
+                                      lastFlybyDate=Time("2010-05-10 00:00:00", scale='tdb'),
+                                      arrivalDate=Time("2010-12-06 00:00:00", scale='tdb'))
 
 
 
-probe1 = Approach("MARS", v_inf_vec_icrf_kms=arrival.v_inf_vec,
-                            rp=(3389.5+52)*1e3, psi=np.pi,
-                            is_entrySystem=True, h_EI=120e3)
+probe1 = Approach("VENUS", v_inf_vec_icrf_kms=arrival.v_inf_vec,
+                            rp=(6051.8+103.85)*1e3, psi=0.94*np.pi,
+                            is_entrySystem=True, h_EI=150e3)
 
-probe2 = Approach("MARS", v_inf_vec_icrf_kms=arrival.v_inf_vec,
-                            rp=(3389.5+52)*1e3, psi=1.125*np.pi,
-                            is_entrySystem=True, h_EI=120e3)
+space5 = Approach("VENUS",
+                    v_inf_vec_icrf_kms=np.array([-3.26907094,  0.67649494, -1.0697747 ]),
+                    rp=(6051.8+103.85)*1e3, psi=0.94*np.pi)
 
-probe3 = Approach("MARS", v_inf_vec_icrf_kms=arrival.v_inf_vec,
-                            rp=(3389.5+52)*1e3, psi=1.25*np.pi,
-                            is_entrySystem=True, h_EI=120e3)
+space4 = Approach("VENUS",
+                    v_inf_vec_icrf_kms=np.array([-3.26907094,  0.67649494, -1.0697747 ]),
+                    rp=(6051.8+103.85)*1e3, psi=0.97*np.pi)
 
-probe4 = Approach("MARS", v_inf_vec_icrf_kms=arrival.v_inf_vec,
-                            rp=(3389.5+52)*1e3, psi=1.375*np.pi,
-                            is_entrySystem=True, h_EI=120e3)
+space3 = Approach("VENUS",
+                    v_inf_vec_icrf_kms=np.array([-3.26907094,  0.67649494, -1.0697747 ]),
+                    rp=(6051.8+103.85)*1e3, psi=1.00*np.pi)
 
-probe5 = Approach("MARS", v_inf_vec_icrf_kms=arrival.v_inf_vec,
-                            rp=(3389.5+52)*1e3, psi=1.5*np.pi,
-                            is_entrySystem=True, h_EI=120e3)
+space2 = Approach("VENUS",
+                    v_inf_vec_icrf_kms=np.array([-3.26907094,  0.67649494, -1.0697747 ]),
+                    rp=(6051.8+103.85)*1e3, psi=1.03*np.pi)
 
-space = Approach("MARS",
-                    v_inf_vec_icrf_kms=np.array([ 2.23930484,  1.20086474, -0.73683366]),
-                    rp=(3389.5+250)*1e3, psi=np.pi)
+space1 = Approach("VENUS",
+                    v_inf_vec_icrf_kms=np.array([-3.26907094,  0.67649494, -1.0697747 ]),
+                    rp=(6051.8+103.85)*1e3, psi=1.05988*np.pi)
 
-space5 = Approach("MARS",
-                    v_inf_vec_icrf_kms=np.array([ 2.23930484,  1.20086474, -0.73683366]),
-                    rp=(3389.5+200)*1e3, psi=3*np.pi/2)
 
-space4 = Approach("MARS",
-                    v_inf_vec_icrf_kms=np.array([ 2.23930484,  1.20086474, -0.73683366]),
-                    rp=(3389.5+200)*1e3, psi=1.375*np.pi)
-
-space3 = Approach("MARS",
-                    v_inf_vec_icrf_kms=np.array([ 2.23930484,  1.20086474, -0.73683366]),
-                    rp=(3389.5+200)*1e3, psi=1.25*np.pi)
-
-space2 = Approach("MARS",
-                    v_inf_vec_icrf_kms=np.array([ 2.23930484,  1.20086474, -0.73683366]),
-                    rp=(3389.5+200)*1e3, psi=1.125*np.pi)
-
-space1 = Approach("MARS",
-                    v_inf_vec_icrf_kms=np.array([ 2.23930484,  1.20086474, -0.73683366]),
-                    rp=(3389.5+200)*1e3, psi=1.0*np.pi)
-
+space = Approach("VENUS", v_inf_vec_icrf_kms=arrival.v_inf_vec, rp=(6051.8 + 400) * 1e3, psi=1.00*np.pi)
 
 
 
 theta_star_arr_space = np.linspace(-2.00, 0.0, 101)
-pos_vec_bi_arr_space = space.pos_vec_bi(theta_star_arr_space)/3389.5e3
+pos_vec_bi_arr_space = space.pos_vec_bi(theta_star_arr_space)/6051.8e3
 
 x_arr_space = pos_vec_bi_arr_space[0][:]
 y_arr_space = pos_vec_bi_arr_space[1][:]
@@ -82,45 +64,6 @@ z_arr_space = pos_vec_bi_arr_space[2][:]
 
 north_pole_bi_vec = probe1.ICRF_to_BI(arrival.north_pole)
 
-theta_star_arr_probe1 = np.linspace(-2, probe1.theta_star_entry, 101)
-pos_vec_bi_arr_probe1 = probe1.pos_vec_bi(theta_star_arr_probe1)/3389.5e3
-
-theta_star_arr_probe2 = np.linspace(-2, probe2.theta_star_entry, 101)
-pos_vec_bi_arr_probe2 = probe2.pos_vec_bi(theta_star_arr_probe2)/3389.5e3
-
-theta_star_arr_probe3 = np.linspace(-2, probe3.theta_star_entry, 101)
-pos_vec_bi_arr_probe3 = probe3.pos_vec_bi(theta_star_arr_probe3)/3389.5e3
-
-theta_star_arr_probe4 = np.linspace(-2, probe4.theta_star_entry, 101)
-pos_vec_bi_arr_probe4 = probe4.pos_vec_bi(theta_star_arr_probe4)/3389.5e3
-
-theta_star_arr_probe5 = np.linspace(-2, probe5.theta_star_entry, 101)
-pos_vec_bi_arr_probe5 = probe5.pos_vec_bi(theta_star_arr_probe5)/3389.5e3
-
-
-x_arr_probe1 = pos_vec_bi_arr_probe1[0][:]
-y_arr_probe1 = pos_vec_bi_arr_probe1[1][:]
-z_arr_probe1 = pos_vec_bi_arr_probe1[2][:]
-
-x_arr_probe2 = pos_vec_bi_arr_probe2[0][:]
-y_arr_probe2 = pos_vec_bi_arr_probe2[1][:]
-z_arr_probe2 = pos_vec_bi_arr_probe2[2][:]
-
-x_arr_probe3 = pos_vec_bi_arr_probe3[0][:]
-y_arr_probe3 = pos_vec_bi_arr_probe3[1][:]
-z_arr_probe3 = pos_vec_bi_arr_probe3[2][:]
-
-x_arr_probe4 = pos_vec_bi_arr_probe4[0][:]
-y_arr_probe4 = pos_vec_bi_arr_probe4[1][:]
-z_arr_probe4 = pos_vec_bi_arr_probe4[2][:]
-
-x_arr_probe5 = pos_vec_bi_arr_probe5[0][:]
-y_arr_probe5 = pos_vec_bi_arr_probe5[1][:]
-z_arr_probe5 = pos_vec_bi_arr_probe5[2][:]
-
-planet = Planet('MARS')
-planet.loadAtmosphereModel('../../../atmdata/Mars/mars-gram-avg.dat', 0 , 1 ,2, 3)
-planet.h_skip = 120.0E3
 
 
 orbiter5 = PropulsiveOrbiter(approach=space5, apoapsis_alt_km=2000)
@@ -128,7 +71,7 @@ orbiter4 = PropulsiveOrbiter(approach=space4, apoapsis_alt_km=2000)
 orbiter3 = PropulsiveOrbiter(approach=space3, apoapsis_alt_km=2000)
 orbiter2 = PropulsiveOrbiter(approach=space2, apoapsis_alt_km=2000)
 orbiter1 = PropulsiveOrbiter(approach=space1, apoapsis_alt_km=2000)
-orbiter = PropulsiveOrbiter(approach=space, apoapsis_alt_km=70000)
+orbiter = PropulsiveOrbiter(approach=space, apoapsis_alt_km=150000)
 
 u = np.linspace(0, 2 * np.pi, 100)
 v = np.linspace(0, np.pi, 100)
@@ -150,8 +93,8 @@ y_ring_2 = 1.2*np.sin(u)
 z_ring_2 = 0.0*np.cos(u)
 
 mlab.figure(bgcolor=(0,0,0))
-s1 = mlab.mesh(x, y, z, color=(0.7,0.3,0.0))
-s2 = mlab.mesh(x1, y1, z1, color=(0.7, 0.3,0.0), opacity=0.3)
+s1 = mlab.mesh(x, y, z, color=(0.34,0.33,0.33))
+s2 = mlab.mesh(x1, y1, z1, color=(0.34, 0.33,0.33), opacity=0.0)
 r1 = mlab.plot3d(x_ring_1, y_ring_1, z_ring_1, color=(1,1,1), line_width=1, tube_radius=None)
 #r2 = mlab.plot3d(x_ring_2, y_ring_2, z_ring_2, color=(1,1,1), line_width=1, tube_radius=None)
 
