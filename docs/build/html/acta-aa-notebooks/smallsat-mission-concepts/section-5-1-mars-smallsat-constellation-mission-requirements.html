@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Section 5.1 - Mars SmallSat Constellation - Mission Requirements &mdash; AMAT v2.2.16 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Section 5.2 - Mars SmallSat Constellation - Approach Trajectories" href="section-5-2-mars-smallsat-constellation-approach-trajectories.html" />
+    <link rel="prev" title="Section 4.8 - Venus SmallSat Aerocapture - Orbiter Deflection Maneuver" href="section-4-8-venus-smallsat-orbiter-deflection-manuever.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> AMAT
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../about.html">About AMAT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../capabilities.html">Capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../jupyter_link.html">Example Jupyter Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../jsr-notebooks.html">JSR Article Notebooks</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../acta-astronautica.html">Acta Astronautica Notebooks</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../acta-astronautica.html#uranus-orbiter-and-probe">Uranus Orbiter and Probe</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../acta-astronautica.html#adept-smallsat-aerocapture">ADEPT SmallSat Aerocapture</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="section-2-0-aerocapture-vehicle-design.html">Section 2.0 - Aerocapture Vehicle Design</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-3-1-mars-smallsat-mission-requirements.html">Section 3.1 - Mars SmallSat Aerocapture - Mission Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-3-2-mars-smallsat-mission-tradespace-exploration.html">Section 3.2 - Mars SmallSat Aerocapture - Tradespace Exploration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-3-3-mars-smallsat-mission-interplanetary-arrival-conditions.html">Section 3.3 - Mars SmallSat Aerocapture - Interplanetary Arrival, Approach</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-3-4-mars-smallsat-nominal-aerocapture-trajectory.html">Section 3.4 - Mars SmallSat Aerocapture - Nominal Trajectory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-3-5-mars-smallsat-effect-of-mean-density-variations.html">Section 3.5 - Mars SmallSat Aerocapture - Target EFPA Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-3-6-mars-smallsat-guidance-scheme.html">Section 3.6 - Mars SmallSat Aerocapture - Guidance Scheme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-3-7-mars-smallsat-performance-analysis.html">Section 3.7 - Mars SmallSat Aerocapture - Performance Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-3-8-mars-smallsat-orbiter-deflection-manuever.html">Section 3.8 - Mars SmallSat Aerocapture - Orbiter Deflection Manuever</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-4-1-venus-smallsat-mission-requirements.html">Section 4.1 - Venus SmallSat Aerocapture - Mission Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-4-2-venus-smallsat-mission-tradespace-exploration.html">Section 4.2 - Venus SmallSat Aerocapture - Tradespace Exploration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-4-3-venus-smallsat-mission-interplanetary-arrival-conditions.html">Section 4.3 - Venus SmallSat Aerocapture - Interplanetary Approach</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-4-4-venus-smallsat-nominal-trajectory.html">Section 4.4 - Venus SmallSat Aerocapture - Aerocapture Trajectory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-4-5-venus-smallsat-effect-of-mean-density-variations.html">Section 4.5 - Venus SmallSat Aerocapture - Target EFPA Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-4-6-venus-smallsat-guidance-scheme.html">Section 4-6 - Venus SmallSat Aerocapture - Guidance Scheme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-4-7-venus-smallsat-performance-analysis.html">Section 4-7 - Venus SmallSat Aerocapture - Performance Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-4-8-venus-smallsat-orbiter-deflection-manuever.html">Section 4.8 - Venus SmallSat Aerocapture - Orbiter Deflection Maneuver</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Section 5.1 - Mars SmallSat Constellation - Mission Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-5-2-mars-smallsat-constellation-approach-trajectories.html">Section 5.2 - Mars SmallSat Constellation - Approach Trajectories</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-5-3-mars-smallsat-consellation-targeting-and-deflection-manuevers.html">Section 5.3 - Mars SmallSat Constellation - Deflection Maneuvers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-5-4-mars-smallsat-constellation-all-orbits.html">Section 5.4 - Mars SmallSat Constellation - All Orbits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-6-1-venus-smallsat-constellation-mission-requirements.html">Section 6.1 - Mars SmallSat Constellation - Mission Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-6-2-venus-smallsat-constellation-approach-trajectories.html">Section 6.2 - Venus SmallSat Constellation - Approach Trajectories</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-6-3-venus-smallsat-constellation-targeting-and-deflection-manuevers.html">Section 6.3 - Venus SmallSat Constellation - Deflection Manuevers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-6-4-venus-smallsat-constellation-all-orbits.html">Section 6.4 - Venus SmallSat Constellation - All Orbits</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributions.html">Contributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../credits.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../module_index.html">Module Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">AMAT</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../acta-astronautica.html">Acta Astronautica Notebooks</a> &raquo;</li>
+      <li>Section 5.1 - Mars SmallSat Constellation - Mission Requirements</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/acta-aa-notebooks/smallsat-mission-concepts/section-5-1-mars-smallsat-constellation-mission-requirements.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Section-5.1---Mars-SmallSat-Constellation---Mission-Requirements">
+<h1>Section 5.1 - Mars SmallSat Constellation - Mission Requirements<a class="headerlink" href="#Section-5.1---Mars-SmallSat-Constellation---Mission-Requirements" title="Permalink to this headline">¶</a></h1>
+<p><strong>The high-level mission objective is to deliver a small satellite constellation to Mars orbit from a Mars orbiter spaceraft. Few days prior to arrival at Mars, the main orbiter releases each small satellite on its approach trajectory, then performs a targeting maneuver to target the approach trajectory for the next small satellite. Once the last small satellite is released, the main orbiter performs a deflection burn to target its approach trajectory for orbit insertion.</strong></p>
+<p>The study requirements are as follows:</p>
+<ol class="arabic simple">
+<li><p>The mission concept should deliver a set of five 25 kg small satellites 200 x 2000 km near-equatorial Mars orbit with inclinations of 1.65 deg, 22.5 deg, 45 deg, 67.5 deg, 90 deg.</p></li>
+<li><p>The main orbiter will release each satellite, and then perform a targeting manuever to target the B-plane aim point for the next satellite.</p></li>
+<li><p>The secondary spacecraft will use an ADEPT-derived drag modulation aerocapture system and must fit within the constraints the of ESPA volume.</p></li>
+<li><p>The mission concept must allow for at least 0.5 degree of Theoretical Corridor Width, to accomodate a +/- 0.2 deg EFPA error at entry interface.</p></li>
+<li><p>The maximum peak stagnation-point heat rate is not to exceed 240 W/cm2, which is the tested limit of the carbon cloth TPS.</p></li>
+<li><p>The periapsis raise manuever propulsive Delta-V to be performed by the small spacecraft after orbit insertion is not to exceed 40 m/s.</p></li>
+<li><p>The total delta-V available to the orbiter spacecraft for small satellite targeting and final orbiter deflection maneuver is 50 m/s.</p></li>
+</ol>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="section-4-8-venus-smallsat-orbiter-deflection-manuever.html" class="btn btn-neutral float-left" title="Section 4.8 - Venus SmallSat Aerocapture - Orbiter Deflection Maneuver" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="section-5-2-mars-smallsat-constellation-approach-trajectories.html" class="btn btn-neutral float-right" title="Section 5.2 - Mars SmallSat Constellation - Approach Trajectories" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, A.P. Girija.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

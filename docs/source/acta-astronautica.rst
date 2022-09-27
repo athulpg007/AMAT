@@ -1,5 +1,5 @@
 Acta Astronautica Notebooks
-==========================
+=============================
 
 Uranus Orbiter and Probe
 -------------------------
@@ -29,7 +29,7 @@ Jupyter Notebooks associated with Girija (2022), A Flagship-class Uranus Orbiter
 
 
 ADEPT SmallSat Aerocapture
----------------------------
+----------------------------
 
 Jupyter Notebooks associated with Girija (2022), ADEPT Drag Modulation Aerocapture Enabled Small Satellite Mission Concepts for Planetary Science, submitted to Acta Astronautica.
 
@@ -48,7 +48,7 @@ Jupyter Notebooks associated with Girija (2022), ADEPT Drag Modulation Aerocaptu
     /acta-aa-notebooks/smallsat-mission-concepts/section-4-1-venus-smallsat-mission-requirements.ipynb
     /acta-aa-notebooks/smallsat-mission-concepts/section-4-2-venus-smallsat-mission-tradespace-exploration.ipynb
     /acta-aa-notebooks/smallsat-mission-concepts/section-4-3-venus-smallsat-mission-interplanetary-arrival-conditions.ipynb
-    /acta-aa-notebooks/smallsat-mission-concepts/section-4-4-venus-smallsat-nominal-aerocapture-trajectory.ipynb
+    /acta-aa-notebooks/smallsat-mission-concepts/section-4-4-venus-smallsat-nominal-trajectory.ipynb
     /acta-aa-notebooks/smallsat-mission-concepts/section-4-5-venus-smallsat-effect-of-mean-density-variations.ipynb
     /acta-aa-notebooks/smallsat-mission-concepts/section-4-6-venus-smallsat-guidance-scheme.ipynb
     /acta-aa-notebooks/smallsat-mission-concepts/section-4-7-venus-smallsat-performance-analysis.ipynb
@@ -59,5 +59,5 @@ Jupyter Notebooks associated with Girija (2022), ADEPT Drag Modulation Aerocaptu
     /acta-aa-notebooks/smallsat-mission-concepts/section-5-4-mars-smallsat-constellation-all-orbits.ipynb
     /acta-aa-notebooks/smallsat-mission-concepts/section-6-1-venus-smallsat-constellation-mission-requirements.ipynb
     /acta-aa-notebooks/smallsat-mission-concepts/section-6-2-venus-smallsat-constellation-approach-trajectories.ipynb
-    /acta-aa-notebooks/smallsat-mission-concepts/section-6-3-venus-smallsat-consellation-targeting-and-deflection-manuevers.ipynb
+    /acta-aa-notebooks/smallsat-mission-concepts/section-6-3-venus-smallsat-constellation-targeting-and-deflection-manuevers.ipynb
     /acta-aa-notebooks/smallsat-mission-concepts/section-6-4-venus-smallsat-constellation-all-orbits.ipynb

@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Section 4.2 - Venus SmallSat Aerocapture - Tradespace Exploration &mdash; AMAT v2.2.16 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Section 4.3 - Venus SmallSat Aerocapture - Interplanetary Approach" href="section-4-3-venus-smallsat-mission-interplanetary-arrival-conditions.html" />
+    <link rel="prev" title="Section 4.1 - Venus SmallSat Aerocapture - Mission Requirements" href="section-4-1-venus-smallsat-mission-requirements.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> AMAT
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../about.html">About AMAT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../capabilities.html">Capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../jupyter_link.html">Example Jupyter Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../jsr-notebooks.html">JSR Article Notebooks</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../acta-astronautica.html">Acta Astronautica Notebooks</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../acta-astronautica.html#uranus-orbiter-and-probe">Uranus Orbiter and Probe</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../acta-astronautica.html#adept-smallsat-aerocapture">ADEPT SmallSat Aerocapture</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="section-2-0-aerocapture-vehicle-design.html">Section 2.0 - Aerocapture Vehicle Design</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-3-1-mars-smallsat-mission-requirements.html">Section 3.1 - Mars SmallSat Aerocapture - Mission Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-3-2-mars-smallsat-mission-tradespace-exploration.html">Section 3.2 - Mars SmallSat Aerocapture - Tradespace Exploration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-3-3-mars-smallsat-mission-interplanetary-arrival-conditions.html">Section 3.3 - Mars SmallSat Aerocapture - Interplanetary Arrival, Approach</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-3-4-mars-smallsat-nominal-aerocapture-trajectory.html">Section 3.4 - Mars SmallSat Aerocapture - Nominal Trajectory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-3-5-mars-smallsat-effect-of-mean-density-variations.html">Section 3.5 - Mars SmallSat Aerocapture - Target EFPA Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-3-6-mars-smallsat-guidance-scheme.html">Section 3.6 - Mars SmallSat Aerocapture - Guidance Scheme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-3-7-mars-smallsat-performance-analysis.html">Section 3.7 - Mars SmallSat Aerocapture - Performance Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-3-8-mars-smallsat-orbiter-deflection-manuever.html">Section 3.8 - Mars SmallSat Aerocapture - Orbiter Deflection Manuever</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-4-1-venus-smallsat-mission-requirements.html">Section 4.1 - Venus SmallSat Aerocapture - Mission Requirements</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Section 4.2 - Venus SmallSat Aerocapture - Tradespace Exploration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-4-3-venus-smallsat-mission-interplanetary-arrival-conditions.html">Section 4.3 - Venus SmallSat Aerocapture - Interplanetary Approach</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-4-5-venus-smallsat-effect-of-mean-density-variations.html">Section 4.5 - Venus SmallSat Aerocapture - Target EFPA Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-4-6-venus-smallsat-guidance-scheme.html">Section 4-6 - Venus SmallSat Aerocapture - Guidance Scheme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-4-7-venus-smallsat-performance-analysis.html">Section 4-7 - Venus SmallSat Aerocapture - Performance Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-5-2-mars-smallsat-constellation-approach-trajectories.html">Section 5.2 - Mars SmallSat Constellation - Approach Trajectories</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-5-3-mars-smallsat-consellation-targeting-and-deflection-manuevers.html">Section 5.3 - Mars SmallSat Constellation - Deflection Maneuvers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-5-4-mars-smallsat-constellation-all-orbits.html">Section 5.4 - Mars SmallSat Constellation - All Orbits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-6-1-venus-smallsat-constellation-mission-requirements.html">Section 6.1 - Mars SmallSat Constellation - Mission Requirements</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributions.html">Contributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../credits.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../module_index.html">Module Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">AMAT</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../acta-astronautica.html">Acta Astronautica Notebooks</a> &raquo;</li>
+      <li>Section 4.2 - Venus SmallSat Aerocapture - Tradespace Exploration</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/acta-aa-notebooks/smallsat-mission-concepts/section-4-2-venus-smallsat-mission-tradespace-exploration.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    min-width: 5ex;
+    padding-top: 0.3rem;
+    padding-right: 0.3rem;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 0.3rem;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Section-4.2---Venus-SmallSat-Aerocapture---Tradespace-Exploration">
+<h1>Section 4.2 - Venus SmallSat Aerocapture - Tradespace Exploration<a class="headerlink" href="#Section-4.2---Venus-SmallSat-Aerocapture---Tradespace-Exploration" title="Permalink to this headline">¶</a></h1>
+<p>We use aerocapture feasibility charts to explore the design trade space for aerocapture at Venus using drag modulation aerocapture.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">AMAT.planet</span> <span class="kn">import</span> <span class="n">Planet</span>
+<span class="kn">from</span> <span class="nn">AMAT.vehicle</span> <span class="kn">import</span> <span class="n">Vehicle</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">interpolate</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">rcParams</span>
+<span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="kn">import</span> <span class="n">Polygon</span>
+<span class="kn">import</span> <span class="nn">os</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Create a planet object</span>
+<span class="n">planet</span><span class="o">=</span><span class="n">Planet</span><span class="p">(</span><span class="s2">&quot;VENUS&quot;</span><span class="p">)</span>
+<span class="n">planet</span><span class="o">.</span><span class="n">h_skip</span> <span class="o">=</span> <span class="mf">150000.0</span>
+
+<span class="c1"># Load an nominal atmospheric profile with height, temp, pressure, density data</span>
+<span class="n">planet</span><span class="o">.</span><span class="n">loadAtmosphereModel</span><span class="p">(</span><span class="s1">&#39;../../../atmdata/Venus/venus-gram-avg.dat&#39;</span><span class="p">,</span> <span class="mi">0</span> <span class="p">,</span> <span class="mi">1</span> <span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="n">vinf_kms_array</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span> <span class="mf">0.0</span><span class="p">,</span>   <span class="mf">10.0</span><span class="p">,</span>   <span class="mi">11</span><span class="p">)</span>
+<span class="n">betaRatio_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span> <span class="mf">1.0</span><span class="p">,</span>   <span class="mf">21.0</span> <span class="p">,</span>  <span class="mi">11</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">beta1</span> <span class="o">=</span> <span class="mf">20.0</span>
+<span class="n">runID</span> <span class="o">=</span> <span class="s1">&#39;venus-smallsat-dm&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">v0_kms_array</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">vinf_kms_array</span><span class="p">))</span>
+<span class="n">v0_kms_array</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">1.0</span><span class="o">*</span><span class="p">(</span><span class="n">vinf_kms_array</span><span class="p">[:]</span><span class="o">*</span><span class="mf">1E3</span><span class="p">)</span><span class="o">**</span><span class="mf">2.0</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">vinf_kms_array</span><span class="p">))</span><span class="o">*</span><span class="n">planet</span><span class="o">.</span><span class="n">GM</span><span class="o">/</span><span class="p">(</span><span class="n">planet</span><span class="o">.</span><span class="n">RP</span><span class="o">+</span><span class="mf">150.0</span><span class="o">*</span><span class="mf">1.0E3</span><span class="p">))</span><span class="o">/</span><span class="mf">1.0E3</span>
+
+<span class="n">overShootLimit_array</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">v0_kms_array</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">betaRatio_array</span><span class="p">)))</span>
+<span class="n">underShootLimit_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">v0_kms_array</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">betaRatio_array</span><span class="p">)))</span>
+<span class="n">exitflag_os_array</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">v0_kms_array</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">betaRatio_array</span><span class="p">)))</span>
+<span class="n">exitflag_us_array</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">v0_kms_array</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">betaRatio_array</span><span class="p">)))</span>
+<span class="n">TCW_array</span>             <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">v0_kms_array</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">betaRatio_array</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">v0_kms_array</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">betaRatio_array</span><span class="p">)):</span>
+        <span class="n">vehicle</span><span class="o">=</span><span class="n">Vehicle</span><span class="p">(</span><span class="s1">&#39;DMVehicle&#39;</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">,</span> <span class="n">beta1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.767</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="n">planet</span><span class="p">)</span>
+        <span class="n">vehicle</span><span class="o">.</span><span class="n">setInitialState</span><span class="p">(</span><span class="mf">150.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="n">v0_kms_array</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="mf">0.0</span><span class="p">,</span><span class="o">-</span><span class="mf">4.5</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">)</span>
+        <span class="n">vehicle</span><span class="o">.</span><span class="n">setSolverParams</span><span class="p">(</span><span class="mf">1E-6</span><span class="p">)</span>
+        <span class="n">vehicle</span><span class="o">.</span><span class="n">setDragModulationVehicleParams</span><span class="p">(</span><span class="n">beta1</span><span class="p">,</span><span class="n">betaRatio_array</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+
+        <span class="n">underShootLimit_array</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">],</span> <span class="n">exitflag_us_array</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">findUnderShootLimitD</span><span class="p">(</span><span class="mf">2400.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">80.0</span><span class="p">,</span><span class="o">-</span><span class="mf">4.0</span><span class="p">,</span><span class="mf">1E-10</span><span class="p">,</span> <span class="mf">400.0</span><span class="p">)</span>
+        <span class="n">overShootLimit_array</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="p">,</span> <span class="n">exitflag_os_array</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">findOverShootLimitD</span> <span class="p">(</span><span class="mf">2400.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">80.0</span><span class="p">,</span><span class="o">-</span><span class="mf">4.0</span><span class="p">,</span><span class="mf">1E-10</span><span class="p">,</span> <span class="mf">400.0</span><span class="p">)</span>
+
+        <span class="n">TCW_array</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>    <span class="o">=</span> <span class="n">overShootLimit_array</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">underShootLimit_array</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;VINF: &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">vinf_kms_array</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">+</span><span class="s1">&#39; km/s, BETA RATIO: &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">betaRatio_array</span><span class="p">[</span><span class="n">j</span><span class="p">])</span><span class="o">+</span><span class="s1">&#39; TCW: &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">TCW_array</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">])</span><span class="o">+</span><span class="s1">&#39; deg.&#39;</span><span class="p">)</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/smallsat-mission-concepts/venus/&#39;</span><span class="o">+</span><span class="n">runID</span><span class="o">+</span><span class="s1">&#39;vinf_kms_array.txt&#39;</span><span class="p">,</span><span class="n">vinf_kms_array</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/smallsat-mission-concepts/venus/&#39;</span><span class="o">+</span><span class="n">runID</span><span class="o">+</span><span class="s1">&#39;v0_kms_array.txt&#39;</span><span class="p">,</span><span class="n">v0_kms_array</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/smallsat-mission-concepts/venus/&#39;</span><span class="o">+</span><span class="n">runID</span><span class="o">+</span><span class="s1">&#39;betaRatio_array.txt&#39;</span><span class="p">,</span><span class="n">betaRatio_array</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/smallsat-mission-concepts/venus/&#39;</span><span class="o">+</span><span class="n">runID</span><span class="o">+</span><span class="s1">&#39;overShootLimit_array.txt&#39;</span><span class="p">,</span><span class="n">overShootLimit_array</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/smallsat-mission-concepts/venus/&#39;</span><span class="o">+</span><span class="n">runID</span><span class="o">+</span><span class="s1">&#39;exitflag_os_array.txt&#39;</span><span class="p">,</span><span class="n">exitflag_os_array</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/smallsat-mission-concepts/venus/&#39;</span><span class="o">+</span><span class="n">runID</span><span class="o">+</span><span class="s1">&#39;underShootLimit_array.txt&#39;</span><span class="p">,</span><span class="n">underShootLimit_array</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/smallsat-mission-concepts/venus/&#39;</span><span class="o">+</span><span class="n">runID</span><span class="o">+</span><span class="s1">&#39;exitflag_us_array.txt&#39;</span><span class="p">,</span><span class="n">exitflag_us_array</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/smallsat-mission-concepts/venus/&#39;</span><span class="o">+</span><span class="n">runID</span><span class="o">+</span><span class="s1">&#39;TCW_array.txt&#39;</span><span class="p">,</span><span class="n">TCW_array</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+VINF: 0.0 km/s, BETA RATIO: 1.0 TCW: 0.0 deg.
+VINF: 0.0 km/s, BETA RATIO: 3.0 TCW: 0.22008299338631332 deg.
+VINF: 0.0 km/s, BETA RATIO: 5.0 TCW: 0.3220487156722811 deg.
+VINF: 0.0 km/s, BETA RATIO: 7.0 TCW: 0.38787807517292094 deg.
+VINF: 0.0 km/s, BETA RATIO: 9.0 TCW: 0.4360231767168443 deg.
+VINF: 0.0 km/s, BETA RATIO: 11.0 TCW: 0.4738638612579962 deg.
+VINF: 0.0 km/s, BETA RATIO: 13.0 TCW: 0.5050491497822804 deg.
+VINF: 0.0 km/s, BETA RATIO: 15.0 TCW: 0.5315089544747025 deg.
+VINF: 0.0 km/s, BETA RATIO: 17.0 TCW: 0.5544410763759515 deg.
+VINF: 0.0 km/s, BETA RATIO: 19.0 TCW: 0.5747357478830963 deg.
+VINF: 0.0 km/s, BETA RATIO: 21.0 TCW: 0.5929213868803345 deg.
+VINF: 1.0 km/s, BETA RATIO: 1.0 TCW: 0.0 deg.
+VINF: 1.0 km/s, BETA RATIO: 3.0 TCW: 0.22123349050889374 deg.
+VINF: 1.0 km/s, BETA RATIO: 5.0 TCW: 0.3235909743088996 deg.
+VINF: 1.0 km/s, BETA RATIO: 7.0 TCW: 0.3896626835994539 deg.
+VINF: 1.0 km/s, BETA RATIO: 9.0 TCW: 0.4379480112984311 deg.
+VINF: 1.0 km/s, BETA RATIO: 11.0 TCW: 0.47592598646951956 deg.
+VINF: 1.0 km/s, BETA RATIO: 13.0 TCW: 0.5072144496916735 deg.
+VINF: 1.0 km/s, BETA RATIO: 15.0 TCW: 0.533770236565033 deg.
+VINF: 1.0 km/s, BETA RATIO: 17.0 TCW: 0.5568076887211646 deg.
+VINF: 1.0 km/s, BETA RATIO: 19.0 TCW: 0.5771486694866326 deg.
+VINF: 1.0 km/s, BETA RATIO: 21.0 TCW: 0.5954161477638991 deg.
+VINF: 2.0 km/s, BETA RATIO: 1.0 TCW: 0.0 deg.
+VINF: 2.0 km/s, BETA RATIO: 3.0 TCW: 0.22448952694321633 deg.
+VINF: 2.0 km/s, BETA RATIO: 5.0 TCW: 0.3279588277655421 deg.
+VINF: 2.0 km/s, BETA RATIO: 7.0 TCW: 0.3947015734629531 deg.
+VINF: 2.0 km/s, BETA RATIO: 9.0 TCW: 0.44340843832469545 deg.
+VINF: 2.0 km/s, BETA RATIO: 11.0 TCW: 0.481769912490563 deg.
+VINF: 2.0 km/s, BETA RATIO: 13.0 TCW: 0.5133577891137975 deg.
+VINF: 2.0 km/s, BETA RATIO: 15.0 TCW: 0.5401650801031792 deg.
+VINF: 2.0 km/s, BETA RATIO: 17.0 TCW: 0.5634292532413383 deg.
+VINF: 2.0 km/s, BETA RATIO: 19.0 TCW: 0.5840196740136889 deg.
+VINF: 2.0 km/s, BETA RATIO: 21.0 TCW: 0.6025053701414436 deg.
+VINF: 3.0 km/s, BETA RATIO: 1.0 TCW: 0.0 deg.
+VINF: 3.0 km/s, BETA RATIO: 3.0 TCW: 0.22936612537887413 deg.
+VINF: 3.0 km/s, BETA RATIO: 5.0 TCW: 0.33448939238951425 deg.
+VINF: 3.0 km/s, BETA RATIO: 7.0 TCW: 0.40216131739362027 deg.
+VINF: 3.0 km/s, BETA RATIO: 9.0 TCW: 0.45154499992349884 deg.
+VINF: 3.0 km/s, BETA RATIO: 11.0 TCW: 0.4904835976776667 deg.
+VINF: 3.0 km/s, BETA RATIO: 13.0 TCW: 0.52252868594951 deg.
+VINF: 3.0 km/s, BETA RATIO: 15.0 TCW: 0.5497326720760611 deg.
+VINF: 3.0 km/s, BETA RATIO: 17.0 TCW: 0.5733744004428445 deg.
+VINF: 3.0 km/s, BETA RATIO: 19.0 TCW: 0.594342006228544 deg.
+VINF: 3.0 km/s, BETA RATIO: 21.0 TCW: 0.613180774023931 deg.
+VINF: 4.0 km/s, BETA RATIO: 1.0 TCW: 0.0 deg.
+VINF: 4.0 km/s, BETA RATIO: 3.0 TCW: 0.23510779525895487 deg.
+VINF: 4.0 km/s, BETA RATIO: 5.0 TCW: 0.34221262529172236 deg.
+VINF: 4.0 km/s, BETA RATIO: 7.0 TCW: 0.4109283669422439 deg.
+VINF: 4.0 km/s, BETA RATIO: 9.0 TCW: 0.46119430841645226 deg.
+VINF: 4.0 km/s, BETA RATIO: 11.0 TCW: 0.5008089444927464 deg.
+VINF: 4.0 km/s, BETA RATIO: 13.0 TCW: 0.533429117542255 deg.
+VINF: 4.0 km/s, BETA RATIO: 15.0 TCW: 0.5611319533381902 deg.
+VINF: 4.0 km/s, BETA RATIO: 17.0 TCW: 0.5852801491964783 deg.
+VINF: 4.0 km/s, BETA RATIO: 19.0 TCW: 0.6067331068625208 deg.
+VINF: 4.0 km/s, BETA RATIO: 21.0 TCW: 0.6259738363769429 deg.
+VINF: 5.0 km/s, BETA RATIO: 1.0 TCW: 0.0 deg.
+VINF: 5.0 km/s, BETA RATIO: 3.0 TCW: 0.24106473999927402 deg.
+VINF: 5.0 km/s, BETA RATIO: 5.0 TCW: 0.3502693158479815 deg.
+VINF: 5.0 km/s, BETA RATIO: 7.0 TCW: 0.4200981509893609 deg.
+VINF: 5.0 km/s, BETA RATIO: 9.0 TCW: 0.4713302899108385 deg.
+VINF: 5.0 km/s, BETA RATIO: 11.0 TCW: 0.5116798001981806 deg.
+VINF: 5.0 km/s, BETA RATIO: 13.0 TCW: 0.5449089188296057 deg.
+VINF: 5.0 km/s, BETA RATIO: 15.0 TCW: 0.5732341981347417 deg.
+VINF: 5.0 km/s, BETA RATIO: 17.0 TCW: 0.597998304405337 deg.
+VINF: 5.0 km/s, BETA RATIO: 19.0 TCW: 0.619935902828729 deg.
+VINF: 5.0 km/s, BETA RATIO: 21.0 TCW: 0.6395651521925174 deg.
+VINF: 6.0 km/s, BETA RATIO: 1.0 TCW: 0.0 deg.
+VINF: 6.0 km/s, BETA RATIO: 3.0 TCW: 0.24676724357777857 deg.
+VINF: 6.0 km/s, BETA RATIO: 5.0 TCW: 0.3580002305097878 deg.
+VINF: 6.0 km/s, BETA RATIO: 7.0 TCW: 0.4290605300848256 deg.
+VINF: 6.0 km/s, BETA RATIO: 9.0 TCW: 0.4812206557580794 deg.
+VINF: 6.0 km/s, BETA RATIO: 11.0 TCW: 0.5222973023010127 deg.
+VINF: 6.0 km/s, BETA RATIO: 13.0 TCW: 0.556252373757161 deg.
+VINF: 6.0 km/s, BETA RATIO: 15.0 TCW: 0.5852871360075369 deg.
+VINF: 6.0 km/s, BETA RATIO: 17.0 TCW: 0.6105959658088977 deg.
+VINF: 6.0 km/s, BETA RATIO: 19.0 TCW: 0.6329810365095909 deg.
+VINF: 6.0 km/s, BETA RATIO: 21.0 TCW: 0.6530580049839045 deg.
+VINF: 7.0 km/s, BETA RATIO: 1.0 TCW: 0.0 deg.
+VINF: 7.0 km/s, BETA RATIO: 3.0 TCW: 0.2521190142870182 deg.
+VINF: 7.0 km/s, BETA RATIO: 5.0 TCW: 0.3651661640360544 deg.
+VINF: 7.0 km/s, BETA RATIO: 7.0 TCW: 0.437451293477352 deg.
+VINF: 7.0 km/s, BETA RATIO: 9.0 TCW: 0.49050274864566745 deg.
+VINF: 7.0 km/s, BETA RATIO: 11.0 TCW: 0.5323522949183825 deg.
+VINF: 7.0 km/s, BETA RATIO: 13.0 TCW: 0.5670791782686138 deg.
+VINF: 7.0 km/s, BETA RATIO: 15.0 TCW: 0.5967333060434612 deg.
+VINF: 7.0 km/s, BETA RATIO: 17.0 TCW: 0.622537690695026 deg.
+VINF: 7.0 km/s, BETA RATIO: 19.0 TCW: 0.6454142326801957 deg.
+VINF: 7.0 km/s, BETA RATIO: 21.0 TCW: 0.6660513811730198 deg.
+VINF: 8.0 km/s, BETA RATIO: 1.0 TCW: 0.0 deg.
+VINF: 8.0 km/s, BETA RATIO: 3.0 TCW: 0.25699539153356454 deg.
+VINF: 8.0 km/s, BETA RATIO: 5.0 TCW: 0.37161893962911563 deg.
+VINF: 8.0 km/s, BETA RATIO: 7.0 TCW: 0.44504548665645416 deg.
+VINF: 8.0 km/s, BETA RATIO: 9.0 TCW: 0.4989177809766261 deg.
+VINF: 8.0 km/s, BETA RATIO: 11.0 TCW: 0.5415804510485032 deg.
+VINF: 8.0 km/s, BETA RATIO: 13.0 TCW: 0.5770209499860357 deg.
+VINF: 8.0 km/s, BETA RATIO: 15.0 TCW: 0.6071955141742365 deg.
+VINF: 8.0 km/s, BETA RATIO: 17.0 TCW: 0.6335191545731504 deg.
+VINF: 8.0 km/s, BETA RATIO: 19.0 TCW: 0.6569753832445713 deg.
+VINF: 8.0 km/s, BETA RATIO: 21.0 TCW: 0.678146709316934 deg.
+VINF: 9.0 km/s, BETA RATIO: 1.0 TCW: 0.0 deg.
+VINF: 9.0 km/s, BETA RATIO: 3.0 TCW: 0.2612995168128691 deg.
+VINF: 9.0 km/s, BETA RATIO: 5.0 TCW: 0.3772896297159605 deg.
+VINF: 9.0 km/s, BETA RATIO: 7.0 TCW: 0.4517058561796148 deg.
+VINF: 9.0 km/s, BETA RATIO: 9.0 TCW: 0.5063778333278606 deg.
+VINF: 9.0 km/s, BETA RATIO: 11.0 TCW: 0.5498656327908975 deg.
+VINF: 9.0 km/s, BETA RATIO: 13.0 TCW: 0.5858658559591277 deg.
+VINF: 9.0 km/s, BETA RATIO: 15.0 TCW: 0.6165621917825774 deg.
+VINF: 9.0 km/s, BETA RATIO: 17.0 TCW: 0.6434872302379517 deg.
+VINF: 9.0 km/s, BETA RATIO: 19.0 TCW: 0.6674812458804809 deg.
+VINF: 9.0 km/s, BETA RATIO: 21.0 TCW: 0.6890528016920143 deg.
+VINF: 10.0 km/s, BETA RATIO: 1.0 TCW: 0.0 deg.
+VINF: 10.0 km/s, BETA RATIO: 3.0 TCW: 0.2649485937181453 deg.
+VINF: 10.0 km/s, BETA RATIO: 5.0 TCW: 0.3821906918747118 deg.
+VINF: 10.0 km/s, BETA RATIO: 7.0 TCW: 0.45745376532067894 deg.
+VINF: 10.0 km/s, BETA RATIO: 9.0 TCW: 0.5129644375265343 deg.
+VINF: 10.0 km/s, BETA RATIO: 11.0 TCW: 0.5571190046539414 deg.
+VINF: 10.0 km/s, BETA RATIO: 13.0 TCW: 0.5936377712023386 deg.
+VINF: 10.0 km/s, BETA RATIO: 15.0 TCW: 0.624924942956568 deg.
+VINF: 10.0 km/s, BETA RATIO: 17.0 TCW: 0.6524087362122373 deg.
+VINF: 10.0 km/s, BETA RATIO: 19.0 TCW: 0.6768076225562254 deg.
+VINF: 10.0 km/s, BETA RATIO: 21.0 TCW: 0.6986981209010992 deg.
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">acc_net_g_max_array</span>       <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">v0_kms_array</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">betaRatio_array</span><span class="p">)))</span>
+<span class="n">stag_pres_atm_max_array</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">v0_kms_array</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">betaRatio_array</span><span class="p">)))</span>
+<span class="n">q_stag_total_max_array</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">v0_kms_array</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">betaRatio_array</span><span class="p">)))</span>
+<span class="n">heatload_max_array</span>        <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">v0_kms_array</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">betaRatio_array</span><span class="p">)))</span>
+
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">v0_kms_array</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">betaRatio_array</span><span class="p">)):</span>
+        <span class="n">vehicle</span><span class="o">=</span><span class="n">Vehicle</span><span class="p">(</span><span class="s1">&#39;DMVehicle&#39;</span><span class="p">,</span> <span class="mf">50.0</span><span class="p">,</span> <span class="n">beta1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.767</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="n">planet</span><span class="p">)</span>
+        <span class="n">vehicle</span><span class="o">.</span><span class="n">setInitialState</span><span class="p">(</span><span class="mf">150.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="n">v0_kms_array</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="mf">0.0</span><span class="p">,</span><span class="n">overShootLimit_array</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">],</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">)</span>
+        <span class="n">vehicle</span><span class="o">.</span><span class="n">setSolverParams</span><span class="p">(</span><span class="mf">1E-6</span><span class="p">)</span>
+
+        <span class="n">vehicle</span><span class="o">.</span><span class="n">propogateEntry</span> <span class="p">(</span><span class="mf">2400.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+        <span class="c1"># Extract and save variables to plot</span>
+        <span class="n">t_min_os</span>         <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">t_minc</span>
+        <span class="n">h_km_os</span>          <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">h_kmc</span>
+        <span class="n">acc_net_g_os</span>     <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">acc_net_g</span>
+        <span class="n">q_stag_con_os</span>    <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">q_stag_con</span>
+        <span class="n">q_stag_rad_os</span>    <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">q_stag_rad</span>
+        <span class="n">rc_os</span>            <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">rc</span>
+        <span class="n">vc_os</span>            <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">vc</span>
+        <span class="n">stag_pres_atm_os</span> <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">computeStagPres</span><span class="p">(</span><span class="n">rc_os</span><span class="p">,</span><span class="n">vc_os</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">1.01325E5</span><span class="p">)</span>
+        <span class="n">heatload_os</span>      <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">heatload</span>
+
+
+        <span class="n">vehicle</span><span class="o">=</span><span class="n">Vehicle</span><span class="p">(</span><span class="s1">&#39;DMVehicle&#39;</span><span class="p">,</span> <span class="mf">50.0</span><span class="p">,</span> <span class="n">beta1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.767</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="n">planet</span><span class="p">)</span>
+        <span class="n">vehicle</span><span class="o">.</span><span class="n">setInitialState</span><span class="p">(</span><span class="mf">150.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="n">v0_kms_array</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="mf">0.0</span><span class="p">,</span><span class="n">underShootLimit_array</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">],</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">)</span>
+        <span class="n">vehicle</span><span class="o">.</span><span class="n">setSolverParams</span><span class="p">(</span> <span class="mf">1E-6</span><span class="p">)</span>
+
+        <span class="n">vehicle</span><span class="o">.</span><span class="n">propogateEntry</span> <span class="p">(</span><span class="mf">2400.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+        <span class="c1"># Extract and save variable to plot</span>
+        <span class="n">t_min_us</span>         <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">t_minc</span>
+        <span class="n">h_km_us</span>          <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">h_kmc</span>
+        <span class="n">acc_net_g_us</span>     <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">acc_net_g</span>
+        <span class="n">q_stag_con_us</span>    <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">q_stag_con</span>
+        <span class="n">q_stag_rad_us</span>    <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">q_stag_rad</span>
+        <span class="n">rc_us</span>            <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">rc</span>
+        <span class="n">vc_us</span>            <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">vc</span>
+        <span class="n">stag_pres_atm_us</span> <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">computeStagPres</span><span class="p">(</span><span class="n">rc_us</span><span class="p">,</span><span class="n">vc_us</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">1.01325E5</span><span class="p">)</span>
+        <span class="n">heatload_us</span>      <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">heatload</span>
+
+        <span class="n">q_stag_total_os</span>  <span class="o">=</span> <span class="n">q_stag_con_os</span> <span class="o">+</span> <span class="n">q_stag_rad_os</span>
+        <span class="n">q_stag_total_us</span>  <span class="o">=</span> <span class="n">q_stag_con_us</span> <span class="o">+</span> <span class="n">q_stag_rad_us</span>
+
+        <span class="n">acc_net_g_max_array</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>      <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">acc_net_g_os</span><span class="p">),</span><span class="nb">max</span><span class="p">(</span><span class="n">acc_net_g_os</span><span class="p">))</span>
+        <span class="n">stag_pres_atm_max_array</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>  <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">stag_pres_atm_os</span><span class="p">),</span><span class="nb">max</span><span class="p">(</span><span class="n">stag_pres_atm_os</span><span class="p">))</span>
+        <span class="n">q_stag_total_max_array</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>   <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">q_stag_total_os</span><span class="p">),</span><span class="nb">max</span><span class="p">(</span><span class="n">q_stag_total_us</span><span class="p">))</span>
+        <span class="n">heatload_max_array</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>       <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">heatload_os</span><span class="p">),</span><span class="nb">max</span><span class="p">(</span><span class="n">heatload_os</span><span class="p">))</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;V_infty: &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">vinf_kms_array</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">+</span><span class="s2">&quot; km/s&quot;</span><span class="o">+</span><span class="s2">&quot;, BR: &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">betaRatio_array</span><span class="p">[</span><span class="n">j</span><span class="p">])</span><span class="o">+</span><span class="s2">&quot; G_MAX: &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">acc_net_g_max_array</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">])</span><span class="o">+</span><span class="s2">&quot; QDOT_MAX: &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">q_stag_total_max_array</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">])</span><span class="o">+</span><span class="s2">&quot; J_MAX: &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">heatload_max_array</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">])</span><span class="o">+</span><span class="s2">&quot; STAG. PRES: &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">stag_pres_atm_max_array</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]))</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/smallsat-mission-concepts/venus/&#39;</span><span class="o">+</span><span class="n">runID</span><span class="o">+</span><span class="s1">&#39;acc_net_g_max_array.txt&#39;</span><span class="p">,</span><span class="n">acc_net_g_max_array</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/smallsat-mission-concepts/venus/&#39;</span><span class="o">+</span><span class="n">runID</span><span class="o">+</span><span class="s1">&#39;stag_pres_atm_max_array.txt&#39;</span><span class="p">,</span><span class="n">stag_pres_atm_max_array</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/smallsat-mission-concepts/venus/&#39;</span><span class="o">+</span><span class="n">runID</span><span class="o">+</span><span class="s1">&#39;q_stag_total_max_array.txt&#39;</span><span class="p">,</span><span class="n">q_stag_total_max_array</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/smallsat-mission-concepts/venus/&#39;</span><span class="o">+</span><span class="n">runID</span><span class="o">+</span><span class="s1">&#39;heatload_max_array.txt&#39;</span><span class="p">,</span><span class="n">heatload_max_array</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+V_infty: 0.0 km/s, BR: 1.0 G_MAX: 4.079933711421796 QDOT_MAX: 113.05000994278133 J_MAX: 10817.79164972663 STAG. PRES: 0.007903249111091654
+V_infty: 0.0 km/s, BR: 3.0 G_MAX: 4.079933711421796 QDOT_MAX: 144.09189070737747 J_MAX: 10817.79164972663 STAG. PRES: 0.007903249111091654
+V_infty: 0.0 km/s, BR: 5.0 G_MAX: 4.079933711421796 QDOT_MAX: 155.67921157028482 J_MAX: 10817.79164972663 STAG. PRES: 0.007903249111091654
+V_infty: 0.0 km/s, BR: 7.0 G_MAX: 4.079933711421796 QDOT_MAX: 162.37217328901724 J_MAX: 10817.79164972663 STAG. PRES: 0.007903249111091654
+V_infty: 0.0 km/s, BR: 9.0 G_MAX: 4.079933711421796 QDOT_MAX: 167.02177853435035 J_MAX: 10817.79164972663 STAG. PRES: 0.007903249111091654
+V_infty: 0.0 km/s, BR: 11.0 G_MAX: 4.079933711421796 QDOT_MAX: 170.24635176423186 J_MAX: 10817.79164972663 STAG. PRES: 0.007903249111091654
+V_infty: 0.0 km/s, BR: 13.0 G_MAX: 4.079933711421796 QDOT_MAX: 173.2497530224659 J_MAX: 10817.79164972663 STAG. PRES: 0.007903249111091654
+V_infty: 0.0 km/s, BR: 15.0 G_MAX: 4.079933711421796 QDOT_MAX: 175.36565257217123 J_MAX: 10817.79164972663 STAG. PRES: 0.007903249111091654
+V_infty: 0.0 km/s, BR: 17.0 G_MAX: 4.079933711421796 QDOT_MAX: 177.31047678878255 J_MAX: 10817.79164972663 STAG. PRES: 0.007903249111091654
+V_infty: 0.0 km/s, BR: 19.0 G_MAX: 4.079933711421796 QDOT_MAX: 179.10538406312406 J_MAX: 10817.79164972663 STAG. PRES: 0.007903249111091654
+V_infty: 0.0 km/s, BR: 21.0 G_MAX: 4.079933711421796 QDOT_MAX: 180.51057722900234 J_MAX: 10817.79164972663 STAG. PRES: 0.007903249111091654
+V_infty: 1.0 km/s, BR: 1.0 G_MAX: 4.185371270625705 QDOT_MAX: 115.38471879871071 J_MAX: 10924.477953928468 STAG. PRES: 0.0081074007731149
+V_infty: 1.0 km/s, BR: 3.0 G_MAX: 4.185371270625705 QDOT_MAX: 146.9185750954554 J_MAX: 10924.477953928468 STAG. PRES: 0.0081074007731149
+V_infty: 1.0 km/s, BR: 5.0 G_MAX: 4.185371270625705 QDOT_MAX: 158.45496273385552 J_MAX: 10924.477953928468 STAG. PRES: 0.0081074007731149
+V_infty: 1.0 km/s, BR: 7.0 G_MAX: 4.185371270625705 QDOT_MAX: 165.25884198936 J_MAX: 10924.477953928468 STAG. PRES: 0.0081074007731149
+V_infty: 1.0 km/s, BR: 9.0 G_MAX: 4.185371270625705 QDOT_MAX: 169.93190376121265 J_MAX: 10924.477953928468 STAG. PRES: 0.0081074007731149
+V_infty: 1.0 km/s, BR: 11.0 G_MAX: 4.185371270625705 QDOT_MAX: 173.56456722064638 J_MAX: 10924.477953928468 STAG. PRES: 0.0081074007731149
+V_infty: 1.0 km/s, BR: 13.0 G_MAX: 4.185371270625705 QDOT_MAX: 176.1989410764226 J_MAX: 10924.477953928468 STAG. PRES: 0.0081074007731149
+V_infty: 1.0 km/s, BR: 15.0 G_MAX: 4.185371270625705 QDOT_MAX: 178.5919100925727 J_MAX: 10924.477953928468 STAG. PRES: 0.0081074007731149
+V_infty: 1.0 km/s, BR: 17.0 G_MAX: 4.185371270625705 QDOT_MAX: 180.614842235483 J_MAX: 10924.477953928468 STAG. PRES: 0.0081074007731149
+V_infty: 1.0 km/s, BR: 19.0 G_MAX: 4.185371270625705 QDOT_MAX: 182.13003816021427 J_MAX: 10924.477953928468 STAG. PRES: 0.0081074007731149
+V_infty: 1.0 km/s, BR: 21.0 G_MAX: 4.185371270625705 QDOT_MAX: 183.545793748858 J_MAX: 10924.477953928468 STAG. PRES: 0.0081074007731149
+V_infty: 2.0 km/s, BR: 1.0 G_MAX: 4.499625254497456 QDOT_MAX: 122.53197096799147 J_MAX: 11242.423821849141 STAG. PRES: 0.00871607098252073
+V_infty: 2.0 km/s, BR: 3.0 G_MAX: 4.499625254497456 QDOT_MAX: 155.18888167725282 J_MAX: 11242.423821849141 STAG. PRES: 0.00871607098252073
+V_infty: 2.0 km/s, BR: 5.0 G_MAX: 4.499625254497456 QDOT_MAX: 167.2880969153415 J_MAX: 11242.423821849141 STAG. PRES: 0.00871607098252073
+V_infty: 2.0 km/s, BR: 7.0 G_MAX: 4.499625254497456 QDOT_MAX: 174.3564938838953 J_MAX: 11242.423821849141 STAG. PRES: 0.00871607098252073
+V_infty: 2.0 km/s, BR: 9.0 G_MAX: 4.499625254497456 QDOT_MAX: 178.9909753353484 J_MAX: 11242.423821849141 STAG. PRES: 0.00871607098252073
+V_infty: 2.0 km/s, BR: 11.0 G_MAX: 4.499625254497456 QDOT_MAX: 182.90398753130393 J_MAX: 11242.423821849141 STAG. PRES: 0.00871607098252073
+V_infty: 2.0 km/s, BR: 13.0 G_MAX: 4.499625254497456 QDOT_MAX: 185.47783785944654 J_MAX: 11242.423821849141 STAG. PRES: 0.00871607098252073
+V_infty: 2.0 km/s, BR: 15.0 G_MAX: 4.499625254497456 QDOT_MAX: 188.18642810352839 J_MAX: 11242.423821849141 STAG. PRES: 0.00871607098252073
+V_infty: 2.0 km/s, BR: 17.0 G_MAX: 4.499625254497456 QDOT_MAX: 190.19575483893533 J_MAX: 11242.423821849141 STAG. PRES: 0.00871607098252073
+V_infty: 2.0 km/s, BR: 19.0 G_MAX: 4.499625254497456 QDOT_MAX: 191.69153517270712 J_MAX: 11242.423821849141 STAG. PRES: 0.00871607098252073
+V_infty: 2.0 km/s, BR: 21.0 G_MAX: 4.499625254497456 QDOT_MAX: 193.37816128273002 J_MAX: 11242.423821849141 STAG. PRES: 0.00871607098252073
+V_infty: 3.0 km/s, BR: 1.0 G_MAX: 5.025610446074039 QDOT_MAX: 134.76303143702 J_MAX: 11766.481654399877 STAG. PRES: 0.009734754932408227
+V_infty: 3.0 km/s, BR: 3.0 G_MAX: 5.025610446074039 QDOT_MAX: 169.31586417830457 J_MAX: 11766.481654399877 STAG. PRES: 0.009734754932408227
+V_infty: 3.0 km/s, BR: 5.0 G_MAX: 5.025610446074039 QDOT_MAX: 182.06708256512798 J_MAX: 11766.481654399877 STAG. PRES: 0.009734754932408227
+V_infty: 3.0 km/s, BR: 7.0 G_MAX: 5.025610446074039 QDOT_MAX: 189.52196554256182 J_MAX: 11766.481654399877 STAG. PRES: 0.009734754932408227
+V_infty: 3.0 km/s, BR: 9.0 G_MAX: 5.025610446074039 QDOT_MAX: 194.80378654097836 J_MAX: 11766.481654399877 STAG. PRES: 0.009734754932408227
+V_infty: 3.0 km/s, BR: 11.0 G_MAX: 5.025610446074039 QDOT_MAX: 198.71729942757838 J_MAX: 11766.481654399877 STAG. PRES: 0.009734754932408227
+V_infty: 3.0 km/s, BR: 13.0 G_MAX: 5.025610446074039 QDOT_MAX: 201.84202106304377 J_MAX: 11766.481654399877 STAG. PRES: 0.009734754932408227
+V_infty: 3.0 km/s, BR: 15.0 G_MAX: 5.025610446074039 QDOT_MAX: 204.05549715623746 J_MAX: 11766.481654399877 STAG. PRES: 0.009734754932408227
+V_infty: 3.0 km/s, BR: 17.0 G_MAX: 5.025610446074039 QDOT_MAX: 206.56034208741548 J_MAX: 11766.481654399877 STAG. PRES: 0.009734754932408227
+V_infty: 3.0 km/s, BR: 19.0 G_MAX: 5.025610446074039 QDOT_MAX: 208.501297757804 J_MAX: 11766.481654399877 STAG. PRES: 0.009734754932408227
+V_infty: 3.0 km/s, BR: 21.0 G_MAX: 5.025610446074039 QDOT_MAX: 210.00588608225814 J_MAX: 11766.481654399877 STAG. PRES: 0.009734754932408227
+V_infty: 4.0 km/s, BR: 1.0 G_MAX: 5.772153427461481 QDOT_MAX: 152.62426191016726 J_MAX: 12492.724552981714 STAG. PRES: 0.011180451157413517
+V_infty: 4.0 km/s, BR: 3.0 G_MAX: 5.772153427461481 QDOT_MAX: 189.53338611998737 J_MAX: 12492.724552981714 STAG. PRES: 0.011180451157413517
+V_infty: 4.0 km/s, BR: 5.0 G_MAX: 5.772153427461481 QDOT_MAX: 203.63674558443122 J_MAX: 12492.724552981714 STAG. PRES: 0.011180451157413517
+V_infty: 4.0 km/s, BR: 7.0 G_MAX: 5.772153427461481 QDOT_MAX: 211.72327134722445 J_MAX: 12492.724552981714 STAG. PRES: 0.011180451157413517
+V_infty: 4.0 km/s, BR: 9.0 G_MAX: 5.772153427461481 QDOT_MAX: 217.25958641699856 J_MAX: 12492.724552981714 STAG. PRES: 0.011180451157413517
+V_infty: 4.0 km/s, BR: 11.0 G_MAX: 5.772153427461481 QDOT_MAX: 221.66690761767333 J_MAX: 12492.724552981714 STAG. PRES: 0.011180451157413517
+V_infty: 4.0 km/s, BR: 13.0 G_MAX: 5.772153427461481 QDOT_MAX: 225.00067131942575 J_MAX: 12492.724552981714 STAG. PRES: 0.011180451157413517
+V_infty: 4.0 km/s, BR: 15.0 G_MAX: 5.772153427461481 QDOT_MAX: 227.39205306578089 J_MAX: 12492.724552981714 STAG. PRES: 0.011180451157413517
+V_infty: 4.0 km/s, BR: 17.0 G_MAX: 5.772153427461481 QDOT_MAX: 230.17475544018822 J_MAX: 12492.724552981714 STAG. PRES: 0.011180451157413517
+V_infty: 4.0 km/s, BR: 19.0 G_MAX: 5.772153427461481 QDOT_MAX: 232.32538652184485 J_MAX: 12492.724552981714 STAG. PRES: 0.011180451157413517
+V_infty: 4.0 km/s, BR: 21.0 G_MAX: 5.772153427461481 QDOT_MAX: 234.02023114911597 J_MAX: 12492.724552981714 STAG. PRES: 0.011180451157413517
+V_infty: 5.0 km/s, BR: 1.0 G_MAX: 6.744827193800617 QDOT_MAX: 177.11773499221331 J_MAX: 13420.023386313193 STAG. PRES: 0.013064013033291657
+V_infty: 5.0 km/s, BR: 3.0 G_MAX: 6.744827193800617 QDOT_MAX: 217.56780969525204 J_MAX: 13420.023386313193 STAG. PRES: 0.013064013033291657
+V_infty: 5.0 km/s, BR: 5.0 G_MAX: 6.744827193800617 QDOT_MAX: 232.35553246600068 J_MAX: 13420.023386313193 STAG. PRES: 0.013064013033291657
+V_infty: 5.0 km/s, BR: 7.0 G_MAX: 6.744827193800617 QDOT_MAX: 241.4591524684363 J_MAX: 13420.023386313193 STAG. PRES: 0.013064013033291657
+V_infty: 5.0 km/s, BR: 9.0 G_MAX: 6.744827193800617 QDOT_MAX: 247.73933480785607 J_MAX: 13420.023386313193 STAG. PRES: 0.013064013033291657
+V_infty: 5.0 km/s, BR: 11.0 G_MAX: 6.744827193800617 QDOT_MAX: 252.36648638461264 J_MAX: 13420.023386313193 STAG. PRES: 0.013064013033291657
+V_infty: 5.0 km/s, BR: 13.0 G_MAX: 6.744827193800617 QDOT_MAX: 255.7528597021401 J_MAX: 13420.023386313193 STAG. PRES: 0.013064013033291657
+V_infty: 5.0 km/s, BR: 15.0 G_MAX: 6.744827193800617 QDOT_MAX: 259.1477843365355 J_MAX: 13420.023386313193 STAG. PRES: 0.013064013033291657
+V_infty: 5.0 km/s, BR: 17.0 G_MAX: 6.744827193800617 QDOT_MAX: 261.85755271638715 J_MAX: 13420.023386313193 STAG. PRES: 0.013064013033291657
+V_infty: 5.0 km/s, BR: 19.0 G_MAX: 6.744827193800617 QDOT_MAX: 264.1390694442427 J_MAX: 13420.023386313193 STAG. PRES: 0.013064013033291657
+V_infty: 5.0 km/s, BR: 21.0 G_MAX: 6.744827193800617 QDOT_MAX: 265.9345806708452 J_MAX: 13420.023386313193 STAG. PRES: 0.013064013033291657
+V_infty: 6.0 km/s, BR: 1.0 G_MAX: 7.973734857778368 QDOT_MAX: 209.27400020134556 J_MAX: 14557.188027182849 STAG. PRES: 0.015443962875124029
+V_infty: 6.0 km/s, BR: 3.0 G_MAX: 7.973734857778368 QDOT_MAX: 254.9735537050905 J_MAX: 14557.188027182849 STAG. PRES: 0.015443962875124029
+V_infty: 6.0 km/s, BR: 5.0 G_MAX: 7.973734857778368 QDOT_MAX: 272.34775862140435 J_MAX: 14557.188027182849 STAG. PRES: 0.015443962875124029
+V_infty: 6.0 km/s, BR: 7.0 G_MAX: 7.973734857778368 QDOT_MAX: 282.14754009216193 J_MAX: 14557.188027182849 STAG. PRES: 0.015443962875124029
+V_infty: 6.0 km/s, BR: 9.0 G_MAX: 7.973734857778368 QDOT_MAX: 289.35977284682525 J_MAX: 14557.188027182849 STAG. PRES: 0.015443962875124029
+V_infty: 6.0 km/s, BR: 11.0 G_MAX: 7.973734857778368 QDOT_MAX: 294.175545038905 J_MAX: 14557.188027182849 STAG. PRES: 0.015443962875124029
+V_infty: 6.0 km/s, BR: 13.0 G_MAX: 7.973734857778368 QDOT_MAX: 299.0129480628764 J_MAX: 14557.188027182849 STAG. PRES: 0.015443962875124029
+V_infty: 6.0 km/s, BR: 15.0 G_MAX: 7.973734857778368 QDOT_MAX: 302.4372052854686 J_MAX: 14557.188027182849 STAG. PRES: 0.015443962875124029
+V_infty: 6.0 km/s, BR: 17.0 G_MAX: 7.973734857778368 QDOT_MAX: 304.90105256977273 J_MAX: 14557.188027182849 STAG. PRES: 0.015443962875124029
+V_infty: 6.0 km/s, BR: 19.0 G_MAX: 7.973734857778368 QDOT_MAX: 307.502526015813 J_MAX: 14557.188027182849 STAG. PRES: 0.015443962875124029
+V_infty: 6.0 km/s, BR: 21.0 G_MAX: 7.973734857778368 QDOT_MAX: 310.3008269274457 J_MAX: 14557.188027182849 STAG. PRES: 0.015443962875124029
+V_infty: 7.0 km/s, BR: 1.0 G_MAX: 9.490721690883763 QDOT_MAX: 251.2779030517506 J_MAX: 15930.422352801837 STAG. PRES: 0.018381361664702955
+V_infty: 7.0 km/s, BR: 3.0 G_MAX: 9.490721690883763 QDOT_MAX: 304.56291535573257 J_MAX: 15930.422352801837 STAG. PRES: 0.018381361664702955
+V_infty: 7.0 km/s, BR: 5.0 G_MAX: 9.490721690883763 QDOT_MAX: 324.4606371027999 J_MAX: 15930.422352801837 STAG. PRES: 0.018381361664702955
+V_infty: 7.0 km/s, BR: 7.0 G_MAX: 9.490721690883763 QDOT_MAX: 336.7032508558425 J_MAX: 15930.422352801837 STAG. PRES: 0.018381361664702955
+V_infty: 7.0 km/s, BR: 9.0 G_MAX: 9.490721690883763 QDOT_MAX: 343.8879152586743 J_MAX: 15930.422352801837 STAG. PRES: 0.018381361664702955
+V_infty: 7.0 km/s, BR: 11.0 G_MAX: 9.490721690883763 QDOT_MAX: 351.0691879899309 J_MAX: 15930.422352801837 STAG. PRES: 0.018381361664702955
+V_infty: 7.0 km/s, BR: 13.0 G_MAX: 9.490721690883763 QDOT_MAX: 356.1960852262272 J_MAX: 15930.422352801837 STAG. PRES: 0.018381361664702955
+V_infty: 7.0 km/s, BR: 15.0 G_MAX: 9.490721690883763 QDOT_MAX: 359.70479240385765 J_MAX: 15930.422352801837 STAG. PRES: 0.018381361664702955
+V_infty: 7.0 km/s, BR: 17.0 G_MAX: 9.490721690883763 QDOT_MAX: 362.876483125122 J_MAX: 15930.422352801837 STAG. PRES: 0.018381361664702955
+V_infty: 7.0 km/s, BR: 19.0 G_MAX: 9.490721690883763 QDOT_MAX: 366.7836302362091 J_MAX: 15930.422352801837 STAG. PRES: 0.018381361664702955
+V_infty: 7.0 km/s, BR: 21.0 G_MAX: 9.490721690883763 QDOT_MAX: 369.92457701043656 J_MAX: 15930.422352801837 STAG. PRES: 0.018381361664702955
+V_infty: 8.0 km/s, BR: 1.0 G_MAX: 11.27512063925072 QDOT_MAX: 307.48958350705897 J_MAX: 17599.78813386462 STAG. PRES: 0.02183629924529477
+V_infty: 8.0 km/s, BR: 3.0 G_MAX: 11.27512063925072 QDOT_MAX: 371.0070043672199 J_MAX: 17599.78813386462 STAG. PRES: 0.02183629924529477
+V_infty: 8.0 km/s, BR: 5.0 G_MAX: 11.27512063925072 QDOT_MAX: 395.0682293228483 J_MAX: 17599.78813386462 STAG. PRES: 0.02183629924529477
+V_infty: 8.0 km/s, BR: 7.0 G_MAX: 11.27512063925072 QDOT_MAX: 410.2557080149199 J_MAX: 17599.78813386462 STAG. PRES: 0.02183629924529477
+V_infty: 8.0 km/s, BR: 9.0 G_MAX: 11.27512063925072 QDOT_MAX: 419.52270431392014 J_MAX: 17599.78813386462 STAG. PRES: 0.02183629924529477
+V_infty: 8.0 km/s, BR: 11.0 G_MAX: 11.27512063925072 QDOT_MAX: 428.3225573548883 J_MAX: 17599.78813386462 STAG. PRES: 0.02183629924529477
+V_infty: 8.0 km/s, BR: 13.0 G_MAX: 11.27512063925072 QDOT_MAX: 434.1583735824523 J_MAX: 17599.78813386462 STAG. PRES: 0.02183629924529477
+V_infty: 8.0 km/s, BR: 15.0 G_MAX: 11.27512063925072 QDOT_MAX: 437.9917294972842 J_MAX: 17599.78813386462 STAG. PRES: 0.02183629924529477
+V_infty: 8.0 km/s, BR: 17.0 G_MAX: 11.27512063925072 QDOT_MAX: 442.84973545349084 J_MAX: 17599.78813386462 STAG. PRES: 0.02183629924529477
+V_infty: 8.0 km/s, BR: 19.0 G_MAX: 11.27512063925072 QDOT_MAX: 447.6915140264788 J_MAX: 17599.78813386462 STAG. PRES: 0.02183629924529477
+V_infty: 8.0 km/s, BR: 21.0 G_MAX: 11.27512063925072 QDOT_MAX: 451.570817174868 J_MAX: 17599.78813386462 STAG. PRES: 0.02183629924529477
+V_infty: 9.0 km/s, BR: 1.0 G_MAX: 13.386654133434867 QDOT_MAX: 385.60786928336074 J_MAX: 19684.254558276338 STAG. PRES: 0.025924909831565646
+V_infty: 9.0 km/s, BR: 3.0 G_MAX: 13.386654133434867 QDOT_MAX: 466.16144427706377 J_MAX: 19684.254558276338 STAG. PRES: 0.025924909831565646
+V_infty: 9.0 km/s, BR: 5.0 G_MAX: 13.386654133434867 QDOT_MAX: 496.48777992935163 J_MAX: 19684.254558276338 STAG. PRES: 0.025924909831565646
+V_infty: 9.0 km/s, BR: 7.0 G_MAX: 13.386654133434867 QDOT_MAX: 515.0763935669046 J_MAX: 19684.254558276338 STAG. PRES: 0.025924909831565646
+V_infty: 9.0 km/s, BR: 9.0 G_MAX: 13.386654133434867 QDOT_MAX: 527.2433823460432 J_MAX: 19684.254558276338 STAG. PRES: 0.025924909831565646
+V_infty: 9.0 km/s, BR: 11.0 G_MAX: 13.386654133434867 QDOT_MAX: 538.9139356167964 J_MAX: 19684.254558276338 STAG. PRES: 0.025924909831565646
+V_infty: 9.0 km/s, BR: 13.0 G_MAX: 13.386654133434867 QDOT_MAX: 546.5709725338615 J_MAX: 19684.254558276338 STAG. PRES: 0.025924909831565646
+V_infty: 9.0 km/s, BR: 15.0 G_MAX: 13.386654133434867 QDOT_MAX: 551.5785787626592 J_MAX: 19684.254558276338 STAG. PRES: 0.025924909831565646
+V_infty: 9.0 km/s, BR: 17.0 G_MAX: 13.386654133434867 QDOT_MAX: 556.3715694877183 J_MAX: 19684.254558276338 STAG. PRES: 0.025924909831565646
+V_infty: 9.0 km/s, BR: 19.0 G_MAX: 13.386654133434867 QDOT_MAX: 563.351986931205 J_MAX: 19684.254558276338 STAG. PRES: 0.025924909831565646
+V_infty: 9.0 km/s, BR: 21.0 G_MAX: 13.386654133434867 QDOT_MAX: 568.97751095439 J_MAX: 19684.254558276338 STAG. PRES: 0.025924909831565646
+V_infty: 10.0 km/s, BR: 1.0 G_MAX: 15.795629284230742 QDOT_MAX: 501.43806962512593 J_MAX: 22406.99315223976 STAG. PRES: 0.030589213513601086
+V_infty: 10.0 km/s, BR: 3.0 G_MAX: 15.795629284230742 QDOT_MAX: 608.3479616761747 J_MAX: 22406.99315223976 STAG. PRES: 0.030589213513601086
+V_infty: 10.0 km/s, BR: 5.0 G_MAX: 15.795629284230742 QDOT_MAX: 648.3542864021587 J_MAX: 22406.99315223976 STAG. PRES: 0.030589213513601086
+V_infty: 10.0 km/s, BR: 7.0 G_MAX: 15.795629284230742 QDOT_MAX: 675.522980832742 J_MAX: 22406.99315223976 STAG. PRES: 0.030589213513601086
+V_infty: 10.0 km/s, BR: 9.0 G_MAX: 15.795629284230742 QDOT_MAX: 688.633778624763 J_MAX: 22406.99315223976 STAG. PRES: 0.030589213513601086
+V_infty: 10.0 km/s, BR: 11.0 G_MAX: 15.795629284230742 QDOT_MAX: 706.4537756005727 J_MAX: 22406.99315223976 STAG. PRES: 0.030589213513601086
+V_infty: 10.0 km/s, BR: 13.0 G_MAX: 15.795629284230742 QDOT_MAX: 719.2849628779097 J_MAX: 22406.99315223976 STAG. PRES: 0.030589213513601086
+V_infty: 10.0 km/s, BR: 15.0 G_MAX: 15.795629284230742 QDOT_MAX: 728.2666236416914 J_MAX: 22406.99315223976 STAG. PRES: 0.030589213513601086
+V_infty: 10.0 km/s, BR: 17.0 G_MAX: 15.795629284230742 QDOT_MAX: 734.3618177914249 J_MAX: 22406.99315223976 STAG. PRES: 0.030589213513601086
+V_infty: 10.0 km/s, BR: 19.0 G_MAX: 15.795629284230742 QDOT_MAX: 738.4864017047046 J_MAX: 22406.99315223976 STAG. PRES: 0.030589213513601086
+V_infty: 10.0 km/s, BR: 21.0 G_MAX: 15.795629284230742 QDOT_MAX: 744.5620616687944 J_MAX: 22406.99315223976 STAG. PRES: 0.030589213513601086
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/smallsat-mission-concepts/venus/&#39;</span><span class="o">+</span><span class="n">runID</span><span class="o">+</span><span class="s1">&#39;vinf_kms_array.txt&#39;</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/smallsat-mission-concepts/venus/&#39;</span><span class="o">+</span><span class="n">runID</span><span class="o">+</span><span class="s1">&#39;betaRatio_array.txt&#39;</span><span class="p">)</span>
+
+<span class="n">Z1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/smallsat-mission-concepts/venus/&#39;</span><span class="o">+</span><span class="n">runID</span><span class="o">+</span><span class="s1">&#39;TCW_array.txt&#39;</span><span class="p">)</span>
+<span class="n">G1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/smallsat-mission-concepts/venus/&#39;</span><span class="o">+</span><span class="n">runID</span><span class="o">+</span><span class="s1">&#39;acc_net_g_max_array.txt&#39;</span><span class="p">)</span>
+<span class="n">Q1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/smallsat-mission-concepts/venus/&#39;</span><span class="o">+</span><span class="n">runID</span><span class="o">+</span><span class="s1">&#39;q_stag_total_max_array.txt&#39;</span><span class="p">)</span>
+<span class="n">H1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/smallsat-mission-concepts/venus/&#39;</span><span class="o">+</span><span class="n">runID</span><span class="o">+</span><span class="s1">&#39;heatload_max_array.txt&#39;</span><span class="p">)</span>
+<span class="n">S1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/smallsat-mission-concepts/venus/&#39;</span><span class="o">+</span><span class="n">runID</span><span class="o">+</span><span class="s1">&#39;stag_pres_atm_max_array.txt&#39;</span><span class="p">)</span>
+
+
+<span class="n">f1</span> <span class="o">=</span> <span class="n">interpolate</span><span class="o">.</span><span class="n">interp2d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">Z1</span><span class="p">),</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;cubic&#39;</span><span class="p">)</span>
+<span class="n">g1</span> <span class="o">=</span> <span class="n">interpolate</span><span class="o">.</span><span class="n">interp2d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">G1</span><span class="p">),</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;cubic&#39;</span><span class="p">)</span>
+<span class="n">q1</span> <span class="o">=</span> <span class="n">interpolate</span><span class="o">.</span><span class="n">interp2d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">Q1</span><span class="p">),</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;cubic&#39;</span><span class="p">)</span>
+<span class="n">h1</span> <span class="o">=</span> <span class="n">interpolate</span><span class="o">.</span><span class="n">interp2d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">H1</span><span class="p">),</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;cubic&#39;</span><span class="p">)</span>
+<span class="n">s1</span> <span class="o">=</span> <span class="n">interpolate</span><span class="o">.</span><span class="n">interp2d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">S1</span><span class="p">),</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;cubic&#39;</span><span class="p">)</span>
+
+
+<span class="n">x_new</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span> <span class="mf">0.0</span><span class="p">,</span>   <span class="mi">10</span><span class="p">,</span>  <span class="mi">110</span><span class="p">)</span>
+<span class="n">y_new</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span> <span class="mf">0.0</span><span class="p">,</span>   <span class="mi">21</span> <span class="p">,</span> <span class="mi">110</span><span class="p">)</span>
+
+<span class="n">z1_new</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">x_new</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">y_new</span><span class="p">)))</span>
+<span class="n">g1_new</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">x_new</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">y_new</span><span class="p">)))</span>
+<span class="n">q1_new</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">x_new</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">y_new</span><span class="p">)))</span>
+<span class="n">h1_new</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">x_new</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">y_new</span><span class="p">)))</span>
+<span class="n">s1_new</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">x_new</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">y_new</span><span class="p">)))</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">x_new</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">y_new</span><span class="p">)):</span>
+
+        <span class="n">z1_new</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">f1</span><span class="p">(</span><span class="n">x_new</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">y_new</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+        <span class="n">g1_new</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">g1</span><span class="p">(</span><span class="n">x_new</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">y_new</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+        <span class="n">q1_new</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">q1</span><span class="p">(</span><span class="n">x_new</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">y_new</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+        <span class="n">h1_new</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">h1</span><span class="p">(</span><span class="n">x_new</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">y_new</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+        <span class="n">s1_new</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">s1</span><span class="p">(</span><span class="n">x_new</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">y_new</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+
+
+<span class="n">Z1</span> <span class="o">=</span> <span class="n">z1_new</span>
+<span class="n">G1</span> <span class="o">=</span> <span class="n">g1_new</span>
+<span class="n">Q1</span> <span class="o">=</span> <span class="n">q1_new</span>
+<span class="n">S1</span> <span class="o">=</span> <span class="n">s1_new</span>
+<span class="n">H1</span> <span class="o">=</span> <span class="n">h1_new</span><span class="o">/</span><span class="mf">1000.0</span>
+
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x_new</span><span class="p">,</span> <span class="n">y_new</span><span class="p">)</span>
+
+<span class="n">Zlevels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.20</span><span class="p">,</span> <span class="mf">0.30</span><span class="p">,</span> <span class="mf">0.40</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">,</span> <span class="mf">0.58</span><span class="p">])</span>
+
+<span class="n">Glevels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+<span class="n">Qlevels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">180</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">300</span><span class="p">])</span>
+<span class="n">Hlevels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">14</span><span class="p">,</span> <span class="mi">20</span><span class="p">])</span>
+<span class="c1">#Slevels = np.array([0.8])</span>
+
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">([</span><span class="mf">6.25</span><span class="p">,</span><span class="mf">6.25</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span><span class="n">family</span><span class="o">=</span><span class="s1">&#39;Times New Roman&#39;</span><span class="p">)</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;mathtext.default&#39;</span><span class="p">:</span> <span class="s1">&#39;regular&#39;</span> <span class="p">}</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">10.0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">21.0</span><span class="p">])</span>
+
+
+<span class="n">ZCS1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">Z1</span><span class="p">),</span> <span class="n">levels</span><span class="o">=</span><span class="n">Zlevels</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+
+
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">ZCS1</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%.2f</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">inline_spacing</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ZCS1</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_linewidths</span><span class="p">(</span><span class="mf">1.75</span><span class="p">)</span>
+<span class="n">ZCS1</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_linewidths</span><span class="p">(</span><span class="mf">1.75</span><span class="p">)</span>
+<span class="n">ZCS1</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_linewidths</span><span class="p">(</span><span class="mf">1.75</span><span class="p">)</span>
+<span class="n">ZCS1</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_linewidths</span><span class="p">(</span><span class="mf">1.75</span><span class="p">)</span>
+<span class="n">ZCS1</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">set_linewidths</span><span class="p">(</span><span class="mf">1.75</span><span class="p">)</span>
+<span class="n">ZCS1</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">set_linewidths</span><span class="p">(</span><span class="mf">1.75</span><span class="p">)</span>
+
+<span class="n">ZCS1</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$TCW, deg$&#39;</span><span class="p">)</span>
+
+
+<span class="n">GCS1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">G1</span><span class="p">),</span> <span class="n">levels</span><span class="o">=</span><span class="n">Glevels</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="n">linestyles</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
+
+<span class="n">Glabels</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">GCS1</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">inline_spacing</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">GCS1</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_linewidths</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">GCS1</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_linewidths</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)</span>
+
+<span class="n">GCS1</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$g$&#39;</span><span class="o">+</span><span class="sa">r</span><span class="s1">&#39;-load&#39;</span><span class="p">)</span>
+
+
+
+
+
+<span class="n">QCS1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">Q1</span><span class="p">),</span> <span class="n">levels</span><span class="o">=</span><span class="n">Qlevels</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">linestyles</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">)</span>
+
+<span class="n">Qlabels</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">QCS1</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">inline_spacing</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">QCS1</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_linewidths</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">QCS1</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_linewidths</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">QCS1</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_linewidths</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">QCS1</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_linewidths</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">QCS1</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\dot</span><span class="si">{q}</span><span class="s1">$&#39;</span><span class="o">+</span><span class="s1">&#39;, &#39;</span><span class="o">+</span><span class="sa">r</span><span class="s1">&#39;$W/cm^2$&#39;</span><span class="p">)</span>
+
+
+<span class="n">HCS1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">H1</span><span class="p">),</span> <span class="n">levels</span><span class="o">=</span><span class="n">Hlevels</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;xkcd:brown&#39;</span><span class="p">,</span><span class="n">linestyles</span><span class="o">=</span><span class="s1">&#39;dashdot&#39;</span><span class="p">)</span>
+
+<span class="n">Hlabels</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">HCS1</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;xkcd:brown&#39;</span><span class="p">,</span><span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">inline_spacing</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">HCS1</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_linewidths</span><span class="p">(</span><span class="mf">1.75</span><span class="p">)</span>
+<span class="c1">#HCS1.collections[1].set_linewidths(1.75)</span>
+
+
+<span class="n">HCS1</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$Q$&#39;</span><span class="o">+</span><span class="s1">&#39;, &#39;</span><span class="o">+</span><span class="sa">r</span><span class="s1">&#39;$kJ/cm^2$&#39;</span><span class="p">)</span>
+
+
+<span class="c1">#GCS1.collections[0].set_label(r&#39;$Peak$&#39;+r&#39; &#39;+r&#39;$g-load$&#39;)</span>
+<span class="c1">#plt.grid(True,linestyle=&#39;dotted&#39;, linewidth=0.3)</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;mathtext.default&#39;</span><span class="p">:</span> <span class="s1">&#39;regular&#39;</span> <span class="p">}</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\beta_2$&#39;</span><span class="o">+</span><span class="s1">&#39; / &#39;</span><span class="o">+</span><span class="sa">r</span><span class="s1">&#39;$ \beta_1 $&#39;</span> <span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Arrival &quot;</span><span class="o">+</span><span class="sa">r</span><span class="s1">&#39;$V_\infty$&#39;</span><span class="o">+</span><span class="sa">r</span><span class="s1">&#39;, km/s&#39;</span> <span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">]),</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="c1">#plt.legend(loc=&#39;upper left&#39;, fontsize=16)</span>
+<span class="kn">from</span> <span class="nn">matplotlib.lines</span> <span class="kn">import</span> <span class="n">Line2D</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">]</span>
+<span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.75</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">),</span>
+         <span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span>  <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.75</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">),</span>
+         <span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span>  <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.75</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">),</span>
+         <span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;xkcd:brown&#39;</span><span class="p">,</span>  <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.00</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashdot&#39;</span><span class="p">)]</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="sa">r</span><span class="s1">&#39;$TCW, deg$&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$g$&#39;</span><span class="o">+</span><span class="sa">r</span><span class="s1">&#39;-load&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$\dot</span><span class="si">{q}</span><span class="s1">$&#39;</span><span class="o">+</span><span class="s1">&#39;, &#39;</span><span class="o">+</span><span class="sa">r</span><span class="s1">&#39;$W/cm^2$&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$Q$&#39;</span><span class="o">+</span><span class="s1">&#39;, &#39;</span><span class="o">+</span><span class="sa">r</span><span class="s1">&#39;$kJ/cm^2$&#39;</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">framealpha</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">Hlabels</span><span class="p">:</span>
+    <span class="n">l</span><span class="o">.</span><span class="n">set_rotation</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">Glabels</span><span class="p">:</span>
+    <span class="n">l</span><span class="o">.</span><span class="n">set_rotation</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">)</span>
+
+<span class="c1">#plt.axhline(y=7.5, color=&#39;k&#39;, linestyle=&#39;dotted&#39;)</span>
+<span class="c1">#plt.text(4, 8.0, r&#39;$\beta_2$&#39;+&#39; / &#39;+r&#39;$ \beta_1 $&#39;, fontsize=12)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="mf">3.51</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;xkcd:black&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/smallsat-mission-concepts/venus/venus-smallsat-ac-tradespace.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span> <span class="mi">300</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/smallsat-mission-concepts/venus/venus-smallsat-ac-tradespace.pdf&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/smallsat-mission-concepts/venus/venus-smallsat-ac-tradespace.eps&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/acta-aa-notebooks_smallsat-mission-concepts_section-4-2-venus-smallsat-mission-tradespace-exploration_8_0.png" src="../../_images/acta-aa-notebooks_smallsat-mission-concepts_section-4-2-venus-smallsat-mission-tradespace-exploration_8_0.png" />
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="section-4-1-venus-smallsat-mission-requirements.html" class="btn btn-neutral float-left" title="Section 4.1 - Venus SmallSat Aerocapture - Mission Requirements" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="section-4-3-venus-smallsat-mission-interplanetary-arrival-conditions.html" class="btn btn-neutral float-right" title="Section 4.3 - Venus SmallSat Aerocapture - Interplanetary Approach" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, A.P. Girija.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
