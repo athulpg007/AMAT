@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Section 4.5 - Venus SmallSat Aerocapture - Target EFPA Selection &mdash; AMAT v2.2.18 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Section 4-6 - Venus SmallSat Aerocapture - Guidance Scheme" href="section-4-6-venus-smallsat-guidance-scheme.html" />
+    <link rel="prev" title="Section 4.4 - Venus SmallSat Aerocapture - Aerocapture Trajectory" href="section-4-4-venus-smallsat-nominal-trajectory.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> AMAT
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../about.html">About AMAT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../capabilities.html">Capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../jupyter_link.html">Example Jupyter Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../jsr-notebooks.html">JSR Article Notebooks</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../acta-astronautica.html">Acta Astronautica Notebooks</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../acta-astronautica.html#uranus-orbiter-and-probe">Uranus Orbiter and Probe</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../acta-astronautica.html#adept-smallsat-aerocapture">ADEPT SmallSat Aerocapture</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="section-2-0-aerocapture-vehicle-design.html">Section 2.0 - Aerocapture Vehicle Design</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-3-1-mars-smallsat-mission-requirements.html">Section 3.1 - Mars SmallSat Aerocapture - Mission Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-3-2-mars-smallsat-mission-tradespace-exploration.html">Section 3.2 - Mars SmallSat Aerocapture - Tradespace Exploration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-3-3-mars-smallsat-mission-interplanetary-arrival-conditions.html">Section 3.3 - Mars SmallSat Aerocapture - Interplanetary Arrival, Approach</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-3-4-mars-smallsat-nominal-aerocapture-trajectory.html">Section 3.4 - Mars SmallSat Aerocapture - Nominal Trajectory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-3-5-mars-smallsat-effect-of-mean-density-variations.html">Section 3.5 - Mars SmallSat Aerocapture - Target EFPA Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-3-6-mars-smallsat-guidance-scheme.html">Section 3.6 - Mars SmallSat Aerocapture - Guidance Scheme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-3-7-mars-smallsat-performance-analysis.html">Section 3.7 - Mars SmallSat Aerocapture - Performance Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-3-8-mars-smallsat-orbiter-deflection-manuever.html">Section 3.8 - Mars SmallSat Aerocapture - Orbiter Deflection Manuever</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-4-1-venus-smallsat-mission-requirements.html">Section 4.1 - Venus SmallSat Aerocapture - Mission Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-4-2-venus-smallsat-mission-tradespace-exploration.html">Section 4.2 - Venus SmallSat Aerocapture - Tradespace Exploration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-4-3-venus-smallsat-mission-interplanetary-arrival-conditions.html">Section 4.3 - Venus SmallSat Aerocapture - Interplanetary Approach</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-4-4-venus-smallsat-nominal-trajectory.html">Section 4.4 - Venus SmallSat Aerocapture - Aerocapture Trajectory</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Section 4.5 - Venus SmallSat Aerocapture - Target EFPA Selection</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Compute-corridor-bounds-for-low,-avg,-and-high-density-atm">Compute corridor bounds for low, avg, and high density atm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Target-EFPA-selection">Target EFPA selection</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="section-4-6-venus-smallsat-guidance-scheme.html">Section 4-6 - Venus SmallSat Aerocapture - Guidance Scheme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-4-7-venus-smallsat-performance-analysis.html">Section 4-7 - Venus SmallSat Aerocapture - Performance Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-4-8-venus-smallsat-orbiter-deflection-manuever.html">Section 4.8 - Venus SmallSat Aerocapture - Orbiter Deflection Maneuver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-5-1-mars-smallsat-constellation-mission-requirements.html">Section 5.1 - Mars SmallSat Constellation - Mission Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-5-2-mars-smallsat-constellation-approach-trajectories.html">Section 5.2 - Mars SmallSat Constellation - Approach Trajectories</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-5-3-mars-smallsat-consellation-targeting-and-deflection-manuevers.html">Section 5.3 - Mars SmallSat Constellation - Deflection Maneuvers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-5-4-mars-smallsat-constellation-all-orbits.html">Section 5.4 - Mars SmallSat Constellation - All Orbits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-6-1-venus-smallsat-constellation-mission-requirements.html">Section 6.1 - Mars SmallSat Constellation - Mission Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-6-2-venus-smallsat-constellation-approach-trajectories.html">Section 6.2 - Venus SmallSat Constellation - Approach Trajectories</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-6-3-venus-smallsat-constellation-targeting-and-deflection-manuevers.html">Section 6.3 - Venus SmallSat Constellation - Deflection Manuevers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-6-4-venus-smallsat-constellation-all-orbits.html">Section 6.4 - Venus SmallSat Constellation - All Orbits</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributions.html">Contributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../credits.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../module_index.html">Module Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">AMAT</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../acta-astronautica.html">Acta Astronautica Notebooks</a> &raquo;</li>
+      <li>Section 4.5 - Venus SmallSat Aerocapture - Target EFPA Selection</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/acta-aa-notebooks/smallsat-mission-concepts/section-4-5-venus-smallsat-effect-of-mean-density-variations.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    min-width: 5ex;
+    padding-top: 0.3rem;
+    padding-right: 0.3rem;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 0.3rem;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Section-4.5---Venus-SmallSat-Aerocapture---Target-EFPA-Selection">
+<h1>Section 4.5 - Venus SmallSat Aerocapture - Target EFPA Selection<a class="headerlink" href="#Section-4.5---Venus-SmallSat-Aerocapture---Target-EFPA-Selection" title="Permalink to this headline">¶</a></h1>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">AMAT.planet</span> <span class="kn">import</span> <span class="n">Planet</span>
+<span class="kn">from</span> <span class="nn">AMAT.vehicle</span> <span class="kn">import</span> <span class="n">Vehicle</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Create a planet object</span>
+<span class="n">planet</span><span class="o">=</span><span class="n">Planet</span><span class="p">(</span><span class="s2">&quot;VENUS&quot;</span><span class="p">)</span>
+<span class="n">planet</span><span class="o">.</span><span class="n">h_skip</span> <span class="o">=</span> <span class="mf">150000.0</span>
+
+<span class="c1"># Load an nominal atmospheric profile with height, temp, pressure, density data</span>
+<span class="n">planet</span><span class="o">.</span><span class="n">loadAtmosphereModel</span><span class="p">(</span><span class="s1">&#39;../../../atmdata/Venus/venus-gram-avg.dat&#39;</span><span class="p">,</span> <span class="mi">0</span> <span class="p">,</span> <span class="mi">1</span> <span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ATM_height</span><span class="p">,</span> <span class="n">ATM_density_low</span><span class="p">,</span> <span class="n">ATM_density_avg</span><span class="p">,</span> <span class="n">ATM_density_high</span><span class="p">,</span> <span class="n">ATM_density_pert</span> <span class="o">=</span> <span class="n">planet</span><span class="o">.</span><span class="n">loadMonteCarloDensityFile2</span><span class="p">(</span><span class="s1">&#39;../../../atmdata/Venus/LAT20N.txt&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">heightInKmFlag</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">density_int_low</span> <span class="o">=</span> <span class="n">planet</span><span class="o">.</span><span class="n">loadAtmosphereModel6</span><span class="p">(</span><span class="n">ATM_height</span><span class="p">,</span> <span class="n">ATM_density_low</span><span class="p">,</span> <span class="n">ATM_density_avg</span><span class="p">,</span> <span class="n">ATM_density_high</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.0</span><span class="p">,</span> <span class="mi">151</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">density_int_avg</span> <span class="o">=</span> <span class="n">planet</span><span class="o">.</span><span class="n">loadAtmosphereModel6</span><span class="p">(</span><span class="n">ATM_height</span><span class="p">,</span> <span class="n">ATM_density_low</span><span class="p">,</span> <span class="n">ATM_density_avg</span><span class="p">,</span> <span class="n">ATM_density_high</span><span class="p">,</span>  <span class="mf">0.0</span><span class="p">,</span> <span class="mi">151</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">density_int_hig</span> <span class="o">=</span> <span class="n">planet</span><span class="o">.</span><span class="n">loadAtmosphereModel6</span><span class="p">(</span><span class="n">ATM_height</span><span class="p">,</span> <span class="n">ATM_density_low</span><span class="p">,</span> <span class="n">ATM_density_avg</span><span class="p">,</span> <span class="n">ATM_density_high</span><span class="p">,</span> <span class="o">+</span><span class="mf">3.0</span><span class="p">,</span> <span class="mi">151</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">planet1</span> <span class="o">=</span> <span class="n">Planet</span><span class="p">(</span><span class="s1">&#39;VENUS&#39;</span><span class="p">)</span>
+<span class="n">planet2</span> <span class="o">=</span> <span class="n">Planet</span><span class="p">(</span><span class="s1">&#39;VENUS&#39;</span><span class="p">)</span>
+<span class="n">planet3</span> <span class="o">=</span> <span class="n">Planet</span><span class="p">(</span><span class="s1">&#39;VENUS&#39;</span><span class="p">)</span>
+
+<span class="n">planet1</span><span class="o">.</span><span class="n">density_int</span> <span class="o">=</span> <span class="n">density_int_low</span>
+<span class="n">planet2</span><span class="o">.</span><span class="n">density_int</span> <span class="o">=</span> <span class="n">density_int_avg</span>
+<span class="n">planet3</span><span class="o">.</span><span class="n">density_int</span> <span class="o">=</span> <span class="n">density_int_hig</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">h_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">150e3</span><span class="p">,</span> <span class="mi">1001</span><span class="p">)</span>
+
+<span class="n">d_min_arr</span> <span class="o">=</span> <span class="n">planet1</span><span class="o">.</span><span class="n">densityvectorized</span><span class="p">(</span><span class="n">h_array</span><span class="p">)</span>
+<span class="n">d_avg_arr</span> <span class="o">=</span> <span class="n">planet2</span><span class="o">.</span><span class="n">densityvectorized</span><span class="p">(</span><span class="n">h_array</span><span class="p">)</span>
+<span class="n">d_max_arr</span> <span class="o">=</span> <span class="n">planet3</span><span class="o">.</span><span class="n">densityvectorized</span><span class="p">(</span><span class="n">h_array</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">([</span><span class="mf">6.25</span><span class="p">,</span> <span class="mf">5.25</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span><span class="n">family</span><span class="o">=</span><span class="s1">&#39;Times New Roman&#39;</span><span class="p">)</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;mathtext.default&#39;</span><span class="p">:</span> <span class="s1">&#39;regular&#39;</span> <span class="p">}</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d_min_arr</span><span class="p">,</span> <span class="n">h_array</span><span class="o">*</span><span class="mf">1E-3</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Minimum &quot;</span><span class="o">+</span><span class="sa">r</span><span class="s2">&quot;$(-3\sigma)$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d_avg_arr</span><span class="p">,</span> <span class="n">h_array</span><span class="o">*</span><span class="mf">1E-3</span><span class="p">,</span> <span class="s1">&#39;g-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Average&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d_max_arr</span><span class="p">,</span> <span class="n">h_array</span><span class="o">*</span><span class="mf">1E-3</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Maximum &quot;</span><span class="o">+</span><span class="sa">r</span><span class="s2">&quot;$(+3\sigma)$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Density, kg/m3&quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Altitude, km&quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="s1">&#39;on&#39;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">axis</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="s1">&#39;right&#39;</span><span class="p">]:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span><span class="o">.</span><span class="n">set_linewidth</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">framealpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/smallsat-mission-concepts/venus/venus-mean-density-variations.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span> <span class="mi">300</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/smallsat-mission-concepts/venus/venus-mean-density-variations.pdf&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/smallsat-mission-concepts/venus/venus-mean-density-variations.eps&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+The PostScript backend does not support transparency; partially transparent artists will be rendered opaque.
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/acta-aa-notebooks_smallsat-mission-concepts_section-4-5-venus-smallsat-effect-of-mean-density-variations_7_1.png" src="../../_images/acta-aa-notebooks_smallsat-mission-concepts_section-4-5-venus-smallsat-effect-of-mean-density-variations_7_1.png" />
+</div>
+</div>
+<div class="section" id="Compute-corridor-bounds-for-low,-avg,-and-high-density-atm">
+<h2>Compute corridor bounds for low, avg, and high density atm<a class="headerlink" href="#Compute-corridor-bounds-for-low,-avg,-and-high-density-atm" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">planet</span><span class="o">.</span><span class="n">density_int</span> <span class="o">=</span> <span class="n">density_int_low</span>
+
+<span class="c1"># Set up a vehicle object</span>
+<span class="n">vehicle1</span><span class="o">=</span><span class="n">Vehicle</span><span class="p">(</span><span class="s1">&#39;SmallSat1&#39;</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.767</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="n">planet</span><span class="p">)</span>
+<span class="n">vehicle1</span><span class="o">.</span><span class="n">setInitialState</span><span class="p">(</span><span class="mf">150.0</span><span class="p">,</span><span class="o">-</span><span class="mf">6.22</span><span class="p">,</span><span class="mf">23.16</span><span class="p">,</span><span class="mf">10.8191</span><span class="p">,</span><span class="mf">89.9982</span><span class="p">,</span><span class="o">-</span><span class="mf">5.00</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="n">vehicle1</span><span class="o">.</span><span class="n">setSolverParams</span><span class="p">(</span><span class="mf">1E-6</span><span class="p">)</span>
+<span class="n">vehicle1</span><span class="o">.</span><span class="n">setDragModulationVehicleParams</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">)</span>
+
+<span class="n">underShootLimit</span><span class="p">,</span> <span class="n">exitflag_us</span> <span class="o">=</span> <span class="n">vehicle1</span><span class="o">.</span><span class="n">findUnderShootLimitD2</span><span class="p">(</span><span class="mf">2400.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">20.0</span><span class="p">,</span><span class="o">-</span><span class="mf">4.0</span><span class="p">,</span> <span class="mf">1E-10</span><span class="p">,</span> <span class="mf">2000.0</span><span class="p">)</span>
+<span class="n">overShootLimit</span> <span class="p">,</span> <span class="n">exitflag_os</span> <span class="o">=</span> <span class="n">vehicle1</span><span class="o">.</span><span class="n">findOverShootLimitD2</span><span class="p">(</span><span class="mf">2400.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">20.0</span><span class="p">,</span><span class="o">-</span><span class="mf">4.0</span><span class="p">,</span> <span class="mf">1E-10</span><span class="p">,</span>  <span class="mf">2000.0</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Overshoot  limit : &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:.4f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">overShootLimit</span><span class="p">))</span><span class="o">+</span> <span class="s2">&quot; deg&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Undershoot limit : &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:.4f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">underShootLimit</span><span class="p">))</span><span class="o">+</span> <span class="s2">&quot; deg&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;TCW: &quot;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:.4f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">overShootLimit</span><span class="o">-</span><span class="n">underShootLimit</span><span class="p">))</span><span class="o">+</span> <span class="s2">&quot; deg&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Overshoot  limit : -5.1706 deg
+Undershoot limit : -5.5815 deg
+TCW: 0.4109 deg
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">planet</span><span class="o">.</span><span class="n">density_int</span> <span class="o">=</span> <span class="n">density_int_avg</span>
+
+<span class="c1"># Set up a vehicle object</span>
+<span class="n">vehicle1</span><span class="o">=</span><span class="n">Vehicle</span><span class="p">(</span><span class="s1">&#39;SmallSat1&#39;</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.767</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="n">planet</span><span class="p">)</span>
+<span class="n">vehicle1</span><span class="o">.</span><span class="n">setInitialState</span><span class="p">(</span><span class="mf">150.0</span><span class="p">,</span><span class="o">-</span><span class="mf">6.22</span><span class="p">,</span><span class="mf">23.16</span><span class="p">,</span><span class="mf">10.8191</span><span class="p">,</span><span class="mf">89.9982</span><span class="p">,</span><span class="o">-</span><span class="mf">5.00</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="n">vehicle1</span><span class="o">.</span><span class="n">setSolverParams</span><span class="p">(</span><span class="mf">1E-6</span><span class="p">)</span>
+<span class="n">vehicle1</span><span class="o">.</span><span class="n">setDragModulationVehicleParams</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">)</span>
+
+<span class="n">underShootLimit</span><span class="p">,</span> <span class="n">exitflag_us</span> <span class="o">=</span> <span class="n">vehicle1</span><span class="o">.</span><span class="n">findUnderShootLimitD2</span><span class="p">(</span><span class="mf">2400.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">20.0</span><span class="p">,</span><span class="o">-</span><span class="mf">4.0</span><span class="p">,</span> <span class="mf">1E-10</span><span class="p">,</span> <span class="mf">2000.0</span><span class="p">)</span>
+<span class="n">overShootLimit</span> <span class="p">,</span> <span class="n">exitflag_os</span> <span class="o">=</span> <span class="n">vehicle1</span><span class="o">.</span><span class="n">findOverShootLimitD2</span><span class="p">(</span><span class="mf">2400.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">20.0</span><span class="p">,</span><span class="o">-</span><span class="mf">4.0</span><span class="p">,</span> <span class="mf">1E-10</span><span class="p">,</span>  <span class="mf">2000.0</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Overshoot  limit : &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:.4f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">overShootLimit</span><span class="p">))</span><span class="o">+</span> <span class="s2">&quot; deg&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Undershoot limit : &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:.4f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">underShootLimit</span><span class="p">))</span><span class="o">+</span> <span class="s2">&quot; deg&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;TCW: &quot;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:.4f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">overShootLimit</span><span class="o">-</span><span class="n">underShootLimit</span><span class="p">))</span><span class="o">+</span> <span class="s2">&quot; deg&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Overshoot  limit : -5.1087 deg
+Undershoot limit : -5.5295 deg
+TCW: 0.4208 deg
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">planet</span><span class="o">.</span><span class="n">density_int</span> <span class="o">=</span> <span class="n">density_int_hig</span>
+
+<span class="c1"># Set up a vehicle object</span>
+<span class="n">vehicle1</span><span class="o">=</span><span class="n">Vehicle</span><span class="p">(</span><span class="s1">&#39;SmallSat1&#39;</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.767</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="n">planet</span><span class="p">)</span>
+<span class="n">vehicle1</span><span class="o">.</span><span class="n">setInitialState</span><span class="p">(</span><span class="mf">150.0</span><span class="p">,</span><span class="o">-</span><span class="mf">6.22</span><span class="p">,</span><span class="mf">23.16</span><span class="p">,</span><span class="mf">10.8191</span><span class="p">,</span><span class="mf">89.9982</span><span class="p">,</span><span class="o">-</span><span class="mf">5.00</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="n">vehicle1</span><span class="o">.</span><span class="n">setSolverParams</span><span class="p">(</span><span class="mf">1E-6</span><span class="p">)</span>
+<span class="n">vehicle1</span><span class="o">.</span><span class="n">setDragModulationVehicleParams</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">)</span>
+
+<span class="n">underShootLimit</span><span class="p">,</span> <span class="n">exitflag_us</span> <span class="o">=</span> <span class="n">vehicle1</span><span class="o">.</span><span class="n">findUnderShootLimitD2</span><span class="p">(</span><span class="mf">2400.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">20.0</span><span class="p">,</span><span class="o">-</span><span class="mf">4.0</span><span class="p">,</span> <span class="mf">1E-10</span><span class="p">,</span> <span class="mf">2000.0</span><span class="p">)</span>
+<span class="n">overShootLimit</span> <span class="p">,</span> <span class="n">exitflag_os</span> <span class="o">=</span> <span class="n">vehicle1</span><span class="o">.</span><span class="n">findOverShootLimitD2</span><span class="p">(</span><span class="mf">2400.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">20.0</span><span class="p">,</span><span class="o">-</span><span class="mf">4.0</span><span class="p">,</span> <span class="mf">1E-10</span><span class="p">,</span>  <span class="mf">2000.0</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Overshoot  limit : &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:.4f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">overShootLimit</span><span class="p">))</span><span class="o">+</span> <span class="s2">&quot; deg&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Undershoot limit : &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:.4f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">underShootLimit</span><span class="p">))</span><span class="o">+</span> <span class="s2">&quot; deg&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;TCW: &quot;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:.4f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">overShootLimit</span><span class="o">-</span><span class="n">underShootLimit</span><span class="p">))</span><span class="o">+</span> <span class="s2">&quot; deg&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Overshoot  limit : -5.0570 deg
+Undershoot limit : -5.4834 deg
+TCW: 0.4265 deg
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Target-EFPA-selection">
+<h2>Target EFPA selection<a class="headerlink" href="#Target-EFPA-selection" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="kn">import</span> <span class="n">Polygon</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">([</span><span class="mf">6.25</span><span class="p">,</span><span class="mf">3.25</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span><span class="n">family</span><span class="o">=</span><span class="s1">&#39;Times New Roman&#39;</span><span class="p">)</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;mathtext.default&#39;</span><span class="p">:</span> <span class="s1">&#39;regular&#39;</span> <span class="p">}</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+
+
+<span class="n">x1</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">]</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">5.5815</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.1706</span> <span class="p">,</span> <span class="o">-</span><span class="mf">5.1706</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.5815</span><span class="p">]</span>
+
+<span class="n">x2</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">]</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">5.5295</span>  <span class="p">,</span> <span class="o">-</span><span class="mf">5.1087</span> <span class="p">,</span> <span class="o">-</span><span class="mf">5.1087</span> <span class="p">,</span>  <span class="o">-</span><span class="mf">5.5295</span> <span class="p">]</span>
+
+<span class="n">x3</span> <span class="o">=</span> <span class="p">[</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">]</span>
+<span class="n">y3</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">5.4834</span> <span class="p">,</span> <span class="o">-</span><span class="mf">5.0570</span> <span class="p">,</span> <span class="o">-</span><span class="mf">5.0570</span> <span class="p">,</span> <span class="o">-</span><span class="mf">5.4834</span> <span class="p">]</span>
+
+
+
+<span class="n">poly1</span> <span class="o">=</span> <span class="n">Polygon</span><span class="p">(</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">y1</span><span class="p">)),</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;xkcd:blue&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">poly1</span><span class="p">)</span>
+
+<span class="n">poly2</span> <span class="o">=</span> <span class="n">Polygon</span><span class="p">(</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span><span class="n">y2</span><span class="p">)),</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;xkcd:green&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">poly2</span><span class="p">)</span>
+
+<span class="n">poly3</span> <span class="o">=</span> <span class="n">Polygon</span><span class="p">(</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">x3</span><span class="p">,</span><span class="n">y3</span><span class="p">)),</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;xkcd:red&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">poly3</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Entry flight-path angle, deg&quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Atmospheric density&quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span>          <span class="c1"># changes apply to the x-axis</span>
+                <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span>      <span class="c1"># both major and minor ticks are affected</span>
+    <span class="n">bottom</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>      <span class="c1"># ticks along the bottom edge are off</span>
+    <span class="n">top</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>         <span class="c1"># ticks along the top edge are off</span>
+    <span class="n">labelbottom</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=-</span><span class="mf">5.1706</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span> <span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;xkcd:blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=-</span><span class="mf">5.4834</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span> <span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;xkcd:red&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=-</span><span class="mf">5.20</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashdot&#39;</span> <span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;xkcd:black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=-</span><span class="mf">5.10</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span> <span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;xkcd:black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=-</span><span class="mf">5.30</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span> <span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;xkcd:black&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">axis</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="s1">&#39;right&#39;</span><span class="p">]:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span><span class="o">.</span><span class="n">set_linewidth</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;Overshoot limit for min. density atmosphere&quot;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">0.20</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.1706</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mf">1.3</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.9</span><span class="p">),</span>
+               <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+               <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s1">&#39;-&gt;, head_width=0.2&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span>
+               <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">boxstyle</span><span class="o">=</span><span class="s1">&#39;round,pad=0.2&#39;</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;Undershoot limit for max. density atmosphere&quot;</span>  <span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">0.20</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.4834</span><span class="p">),</span>
+                                                                   <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mf">1.3</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.8</span><span class="p">),</span>
+                                                                   <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+                    <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s1">&#39;-&gt;, head_width=0.2&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span>
+                     <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">boxstyle</span><span class="o">=</span><span class="s1">&#39;round,pad=0.2&#39;</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;Target EFPA&quot;</span>  <span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">4.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.19</span><span class="p">),</span>
+                                                                   <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mf">4.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.8</span><span class="p">),</span>
+                                                                   <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+                    <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s1">&#39;-&gt;, head_width=0.4&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span>
+                     <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">boxstyle</span><span class="o">=</span><span class="s1">&#39;round,pad=0.2&#39;</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;Assumed delivery error</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span><span class="sa">r</span><span class="s2">&quot;$\pm 0.10$&quot;</span><span class="o">+</span> <span class="s2">&quot; deg. &quot;</span><span class="o">+</span> <span class="sa">r</span><span class="s2">&quot;$3\sigma$&quot;</span>  <span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">5.3</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.32</span><span class="p">),</span>
+                                                                   <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mf">5.3</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.97</span><span class="p">),</span>
+                                                                   <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+                    <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s1">&#39;&lt;-&gt;, head_width=0.4&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span>
+                     <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">boxstyle</span><span class="o">=</span><span class="s1">&#39;round,pad=0.2&#39;</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">6.5</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.7</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">1.3</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.70</span><span class="p">,</span> <span class="s1">&#39;Min&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;xkcd:blue&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">2.3</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.65</span><span class="p">,</span> <span class="s1">&#39;Avg&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;xkcd:green&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">3.3</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.60</span><span class="p">,</span> <span class="s1">&#39;Max&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;xkcd:red&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/smallsat-mission-concepts/venus/venus-ac-efpa-selection.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span> <span class="mi">300</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/smallsat-mission-concepts/venus/venus-ac-efpa-selection.pdf&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../../../data/acta-astronautica/smallsat-mission-concepts/venus/venus-ac-efpa-selection.eps&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/acta-aa-notebooks_smallsat-mission-concepts_section-4-5-venus-smallsat-effect-of-mean-density-variations_13_0.png" src="../../_images/acta-aa-notebooks_smallsat-mission-concepts_section-4-5-venus-smallsat-effect-of-mean-density-variations_13_0.png" />
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="section-4-4-venus-smallsat-nominal-trajectory.html" class="btn btn-neutral float-left" title="Section 4.4 - Venus SmallSat Aerocapture - Aerocapture Trajectory" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="section-4-6-venus-smallsat-guidance-scheme.html" class="btn btn-neutral float-right" title="Section 4-6 - Venus SmallSat Aerocapture - Guidance Scheme" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, A.P. Girija.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
