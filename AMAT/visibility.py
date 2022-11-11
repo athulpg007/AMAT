@@ -10,6 +10,9 @@ from astropy.coordinates import get_body_barycentric_posvel
 import numpy as np
 from astropy.time import Time
 from AMAT.planet import Planet
+import matplotlib.pyplot as plt
+from AMAT.approach import Approach
+from AMAT.orbiter import PropulsiveOrbiter
 
 solar_system_ephemeris.set('jpl')
 
@@ -197,3 +200,97 @@ class TargetElevation:
 		return np.array([[np.cos(theta), np.sin(theta), 0],
 						 [-np.sin(theta), np.cos(theta), 0],
 						 [0, 0, 1]])
+
+
+class OrbiterElevationRange:
+	"""
+	Computes the elevation of an orbiter from a landing site as a function of time.
+	"""
+
+	def __init__(self, planet, latitude, orbiter, t_seconds, num_points=1600):
+		"""
+
+		Parameters
+		----------
+		planet : str
+			Name of the planetary body on which the lander is located. Must be one of 'VENUS', 'EARTH', 'MARS',
+			'JUPITER', 'SATURN', 'TITAN', 'URANUS', 'NEPTUNE'
+		latitude : float
+			latitude of the landing site on the planet in degrees
+		orbiter : AMAT.orbiter.PropulsiveOrbiter
+			orbiter object initialized using an approach trajectory
+		t_seconds : float
+			time in seconds for which elevation and range are to be computed
+		num_points : int
+			number of grid points to use in the time interval
+		"""
+
+		self.planetObj = Planet(planet)
+		self.orbiterObj = orbiter
+
+		# First compute the BI coordinates of the lander as a function of time.
+		# longitude advance rate = 360 / (2pi/OMEGA) deg/s
+		self.t_array = np.linspace(0, t_seconds, num_points)
+		self.longitude_rate = 360 / ((2*np.pi)/self.planetObj.OMEGA)
+		self.max_longitude = self.longitude_rate * t_seconds
+		self.longitude_array = np.linspace(0, self.max_longitude, num_points)  # body inertial longitude array
+
+		self.lander_pos_x_bi_arr = np.array([])
+		self.lander_pos_y_bi_arr = np.array([])
+		self.lander_pos_z_bi_arr = np.array([])
+
+		self.range_array = np.array([])  # range array
+		self.beta_array = np.array([])  # beta angle array
+		self.elevation_array = np.array([])  # elevation angle array
+
+		for longitude in self.longitude_array:
+			self.lander_pos_x_bi = self.planetObj.RP*np.cos(latitude*np.pi/180)*np.cos(longitude*np.pi/180)
+			self.lander_pos_y_bi = self.planetObj.RP*np.cos(latitude*np.pi/180)*np.sin(longitude*np.pi/180)
+			self.lander_pos_z_bi = self.planetObj.RP*np.sin(latitude*np.pi/180)
+
+			self.lander_pos_x_bi_arr = np.append(self.lander_pos_x_bi_arr, self.lander_pos_x_bi)
+			self.lander_pos_y_bi_arr = np.append(self.lander_pos_y_bi_arr, self.lander_pos_y_bi)
+			self.lander_pos_z_bi_arr = np.append(self.lander_pos_z_bi_arr, self.lander_pos_z_bi)
+
+		# Second compute the BI coordinates of the orbiter as a function of time.
+		self.orbiterObj.compute_timed_orbit_trajectory(t_seconds, num_points=num_points)
+
+		self.orbiter_pos_x_bi_arr = self.planetObj.RP * self.orbiterObj.x_timed_orbit_arr
+		self.orbiter_pos_y_bi_arr = self.planetObj.RP * self.orbiterObj.y_timed_orbit_arr
+		self.orbiter_pos_z_bi_arr = self.planetObj.RP * self.orbiterObj.z_timed_orbit_arr
+
+		# First, compute the lander zenith direction unit vector in the BI frame
+		# Second, compute the orbiter direction unit vector in the BI frame
+		# Third, do a dot product of the vectors to compute beta angle
+		# Elevation angle = 90 - beta
+		for i in np.arange(0, num_points):
+			lander_vec = np.array([self.lander_pos_x_bi_arr[i], self.lander_pos_y_bi_arr[i], self.lander_pos_z_bi_arr[i]])
+			lander_unit = lander_vec / np.linalg.norm(lander_vec)
+
+			orb_vec = np.array([self.orbiter_pos_x_bi_arr[i], self.orbiter_pos_y_bi_arr[i], self.orbiter_pos_z_bi_arr[i]])
+			orb_unit = orb_vec / np.linalg.norm(orb_vec)
+
+			lander_orb_vec = orb_vec - lander_vec
+
+			range = np.linalg.norm(lander_orb_vec)
+			beta = np.arccos(np.dot(lander_unit, orb_unit))*180/np.pi
+			elev = max(0, 90 - beta)
+
+			self.range_array = np.append(self.range_array, range)
+			self.beta_array = np.append(self.beta_array, beta)
+			self.elevation_array = np.append(self.elevation_array, elev)
+
+
+class Test_OrbiterElevationRange_Titan:
+	approach = Approach("TITAN", v_inf_vec_icrf_kms=np.array([-0.910, 5.081, 4.710]), rp=(2575+1500)*1e3, psi=np.pi)
+	orbiter = PropulsiveOrbiter(approach=approach, apoapsis_alt_km=15000)
+	visibility = OrbiterElevationRange(planet="TITAN", latitude=3.00, orbiter=orbiter, t_seconds=3600*2416, num_points=2001)
+
+
+class Test_OrbiterElevationRange_EQUATORIAL_EARTH:
+	approach = Approach("EARTH", v_inf_vec_icrf_kms=np.array([1, 1, 0]), rp=(6371+250)*1e3, psi=np.pi)
+	orbiter = PropulsiveOrbiter(approach=approach, apoapsis_alt_km=250)
+	visibility = OrbiterElevationRange(planet="EARTH", latitude=0.00, orbiter=orbiter, t_seconds=86400, num_points=1001)
+
+
+
