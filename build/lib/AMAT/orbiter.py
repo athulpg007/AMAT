@@ -11,6 +11,8 @@
 
 
 import numpy as np
+from scipy import optimize
+import matplotlib.pyplot as plt
 from AMAT.planet import Planet
 from AMAT.vehicle import Vehicle
 
@@ -995,6 +997,58 @@ class PropulsiveOrbiter:
 		self.x_orbit_arr = pos_vec_bi_arr[0][:]
 		self.y_orbit_arr = pos_vec_bi_arr[1][:]
 		self.z_orbit_arr = pos_vec_bi_arr[2][:]
+
+	def compute_timed_orbit_trajectory(self, t_seconds, num_points=101):
+		"""
+		Computes the coordinates of initial capture orbit of the propulsive orbiter
+		as a function of time.
+
+		Parameters
+		----------
+		t_seconds : float
+			time to compute the orbit trajectory from periapsis, seconds
+		num_points : int
+			number of grid points in the time interval
+		"""
+
+		self.P = 2 * np.pi * np.sqrt(self.a ** 3 / self.approach.planetObj.GM)
+
+		self.t_array = np.linspace(0, t_seconds, num_points)
+		self.M_array = (2*np.pi*self.t_array)/self.P
+
+		self.E_array = np.array([])
+		self.theta_star_array = np.array([])
+
+		for M in self.M_array:
+			E = self.compute_E(M)
+			theta_star = self.compute_theta_star(E)
+
+			self.E_array = np.append(self.E_array, E)
+			self.theta_star_array = np.append(self.theta_star_array, theta_star)
+
+		pos_vec_bi_arr = self.pos_vec_bi(self.theta_star_array) / self.approach.planetObj.RP
+
+		self.x_timed_orbit_arr = pos_vec_bi_arr[0][:]
+		self.y_timed_orbit_arr = pos_vec_bi_arr[1][:]
+		self.z_timed_orbit_arr = pos_vec_bi_arr[2][:]
+
+
+	def compute_E(self, M, rtol=1e-6):
+		root = optimize.newton(lambda E: E - self.e*np.sin(E) - M, x0=M)
+		return root
+
+	def compute_theta_star(self, E):
+		return 2*np.arctan(np.sqrt((1 + self.e) / (1 - self.e)) * np.tan(E/2))
+
+
+class Test_compute_timed_orbit:
+	approach = Approach("TITAN", v_inf_vec_icrf_kms=np.array([-0.910, 5.081, 4.710]), rp=(2575 + 1500) * 1e3,
+						psi=3 * np.pi / 2)
+	orbiter = PropulsiveOrbiter(approach=approach, apoapsis_alt_km=15000)
+	orbiter.compute_timed_orbit_trajectory(t_seconds=75000, num_points=101)
+
+	def test_timed_orbit(self):
+		assert max(self.orbiter.t_array) == 75000
 
 
 
