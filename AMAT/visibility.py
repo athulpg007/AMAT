@@ -10,9 +10,6 @@ from astropy.coordinates import get_body_barycentric_posvel
 import numpy as np
 from astropy.time import Time
 from AMAT.planet import Planet
-import matplotlib.pyplot as plt
-from AMAT.approach import Approach
-from AMAT.orbiter import PropulsiveOrbiter
 
 solar_system_ephemeris.set('jpl')
 
