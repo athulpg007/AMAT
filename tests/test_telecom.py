@@ -62,3 +62,11 @@ class Test_Relay_Orbiter_Earth_Ka_Downlink:
 
 	def test_Eb_N0(self):
 		self.link.print_link_budget()
+
+class Test_WorldView_4_Earth_Downlink:
+	link = Link(freq=8.185, Pt=7.5, Gt_dBi=29.1, Gr_dBi=48.0, Ts=273.0,
+				range_km=2718.0, L_other_dB=2.00, rate_kbps=400E3, Eb_N0_req=11.9)
+
+	def test_Eb_N0(self):
+		self.link.print_link_budget()
+
