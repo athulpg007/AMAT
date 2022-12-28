@@ -8,7 +8,6 @@ import numpy as np
 from scipy.integrate import cumtrapz
 
 
-
 class Link:
 	"""
 	Computes the link budget for a telecom link.
