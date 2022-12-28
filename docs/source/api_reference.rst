@@ -20,3 +20,7 @@ API Reference
    :members:
 .. automodule:: AMAT.orbiter
    :members:
+.. automodule:: AMAT.visibility
+   :members:
+.. automodule:: AMAT.telecom
+   :members:

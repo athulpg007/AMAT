@@ -7,14 +7,14 @@ Tests for maneuver.py
 
 import numpy as np
 
+
 class TestImportDeflection():
     def test_import_arrival(self):
         try:
             from AMAT.maneuver import ProbeOrbiterDeflection, ProbeProbeDeflection, OrbiterOrbiterDeflection
-            return True
         except ModuleNotFoundError:
             raise ModuleNotFoundError("Cannot import classes from AMAT.maneuver")
-            assert False
+
 
 try:
     from AMAT.maneuver import ProbeOrbiterDeflection, ProbeProbeDeflection, OrbiterOrbiterDeflection

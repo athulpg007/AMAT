@@ -34,4 +34,4 @@ jobs:
     - name: Test with pytest
       run: |
         cd $GITHUB_WORKSPACE/tests/
-        pytest --ignore=test_arrival.py
+        pytest --ignore=test_arrival.py --ignore=test_visibility.py --ignore=test_telecom.py 
