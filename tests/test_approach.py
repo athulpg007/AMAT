@@ -13,10 +13,8 @@ class TestImportApproach():
 	def test_import_arrival(self):
 		try:
 			from AMAT.approach import Approach
-			return True
 		except ModuleNotFoundError:
 			raise ModuleNotFoundError("Cannot import Approach from AMAT.approach")
-			assert False
 
 try:
 	from AMAT.approach import Approach

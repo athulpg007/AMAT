@@ -9,19 +9,20 @@ import numpy as np
 from AMAT.planet import Planet
 from AMAT.vehicle import Vehicle
 
+
 class TestImportOrbiter():
 	def test_import_orbiter(self):
 		try:
 			from AMAT.orbiter import Orbiter
-			return True
 		except ModuleNotFoundError:
 			raise ModuleNotFoundError("Cannot import Orbiter from AMAT.orbiter")
-			assert False
+
 
 try:
 	from AMAT.orbiter import Orbiter
 except ModuleNotFoundError:
 	raise ModuleNotFoundError("Cannot import Orbiter from AMAT.orbiter")
+
 
 class TestCoast:
 
