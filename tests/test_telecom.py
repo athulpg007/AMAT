@@ -1,4 +1,9 @@
-from AMAT.telecom import Link
+from AMAT.telecom import Link, Schedule
+from AMAT.approach import Approach
+from AMAT.orbiter import PropulsiveOrbiter
+from AMAT.visibility import LanderToPlanet, LanderToOrbiter, OrbiterToPlanet
+
+import numpy as np
 
 
 class Test_Cassini_Earth_Downlink:
@@ -69,4 +74,56 @@ class Test_WorldView_4_Earth_Downlink:
 
 	def test_Eb_N0(self):
 		self.link.print_link_budget()
+
+
+class Test_Schedule:
+	schedule = Schedule(86400*16, 2001, [np.array([0, 86400]), np.array([86400*2, 86400*3])])
+
+	def test_dummy(self):
+		pass
+
+
+class Test_Data_Volume_DTE:
+	visibility1 = LanderToPlanet(observer_planet="TITAN", target_planet="EARTH", latitude=3.0, date="2034-03-28 00:00:00")
+	link = Link(freq=8.425, Pt=30, Gt_dBi=30, Gr_dBi=80.0, Ts=40.5,
+				range_km=1.5E9, L_other_dB=0.54, rate_kbps=2.00, Eb_N0_req=0.31)
+	schedule1 = Schedule(86400*16, 101, [np.array([4*86400, 5*86400]),
+										  np.array([6*86400, 7*86400]),
+										  np.array([8*86400, 9*86400]),
+										  np.array([10*86400, 11*86400])])
+	link.compute_data_volume(visibility1, schedule1)
+
+	def test_data_volume(self):
+		pass
+
+
+class Test_Data_Volume_To_Relay:
+	approach = Approach("TITAN", v_inf_vec_icrf_kms=np.array([-0.910, 5.081, 4.710]), rp=(2575+1500) * 1e3, psi=3*np.pi/2)
+	orbiter = PropulsiveOrbiter(approach=approach, apoapsis_alt_km=15000)
+	visibility1 = LanderToOrbiter(planet="TITAN", latitude=3.00, orbiter=orbiter, t_seconds=86400*16, num_points=2001)
+
+
+	link = Link(freq=8.425, Pt=30, Gt_dBi=30, Gr_dBi=32.0, Ts=230, range_km=15E3, La_dB=0.05, L_other_dB=3.3, rate_kbps=7500.00, Eb_N0_req=2.55)
+	schedule1 = Schedule(86400*16, 2001, [np.array([0.04*86400, 0.66*86400]),
+										  np.array([0.92*86400, 1.30*86400])])
+	link.compute_data_volume(visibility1, schedule1)
+
+	def test_data_volume(self):
+		pass
+
+
+class Test_Relay_to_Earth_Downlink:
+	approach = Approach("TITAN", v_inf_vec_icrf_kms=np.array([-0.910, 5.081, 4.710]), rp=(2575 + 1500) * 1e3, psi=3 * np.pi / 2)
+	orbiter = PropulsiveOrbiter(approach=approach, apoapsis_alt_km=15000)
+	visibility1 = OrbiterToPlanet(target_planet="EARTH", observer_planet="TITAN", orbiter=orbiter, date="2034-03-28 00:00:00", t_seconds=86400*2, num_points=2001)
+
+	link = Link(freq=32.00, Pt=40, Dt=4.0, eta_t=0.60, Gr_dBi=79.83, Ts=48.0, range_km=1.5E9, L_other_dB=0.50, rate_kbps=500, Eb_N0_req=0.31)
+	schedule1 = Schedule(86400*2, 2001, [np.array([1.30*86400, 86400*16]),
+										  ])
+	link.compute_data_volume(visibility1, schedule1)
+
+	def test_data_volume(self):
+		pass
+
+
 
