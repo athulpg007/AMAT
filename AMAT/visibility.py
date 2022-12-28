@@ -227,6 +227,7 @@ class LanderToOrbiter:
 	data link from a stationary lander (say on Mars or Titan).
 
 	Attributes
+	------------
 	t_array : numpy.ndarray
 		array containing timestamps at which lander and orbiter positions are computed, seconds
 	longitude_rate : float
@@ -344,6 +345,7 @@ class OrbiterToPlanet(Visibility):
 	which the spacecraft is orbiting. This can be used to analyze the relay orbiter data link to Earth.
 
 	Attributes
+	------------
 	range : float
 		range from observer to target, meters
 	obs_tar_pos_vec_bi_unit : numpy.ndarray
