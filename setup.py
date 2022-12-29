@@ -30,8 +30,7 @@ setup(name='AMAT',
         'Topic :: Scientific/Engineering :: Mathematics',
         'Topic :: Scientific/Engineering :: Physics',
 
-        'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: 3.7',
+
         'Programming Language :: Python :: 3.8',
     ],
 
