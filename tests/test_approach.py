@@ -8,14 +8,6 @@ Tests for Approach class
 import numpy as np
 from numpy import linalg as LA
 
-
-class TestImportApproach():
-	def test_import_arrival(self):
-		try:
-			from AMAT.approach import Approach
-		except ModuleNotFoundError:
-			raise ModuleNotFoundError("Cannot import Approach from AMAT.approach")
-
 try:
 	from AMAT.approach import Approach
 	from AMAT.orbiter import Orbiter, PropulsiveOrbiter
