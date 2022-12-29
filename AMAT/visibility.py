@@ -11,7 +11,7 @@ import numpy as np
 from astropy.time import Time
 from AMAT.planet import Planet
 
-solar_system_ephemeris.set('jpl')
+solar_system_ephemeris.set('spice-data/de432s.bsp')
 
 
 class Visibility:
