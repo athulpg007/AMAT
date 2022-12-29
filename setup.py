@@ -14,7 +14,7 @@ setup(name='AMAT',
       license='GPL-3.0-or-later',
       packages=['AMAT'],
       install_requires=['numpy==1.21.6', 'scipy==1.8.0', 'matplotlib==3.5.2', 'pandas==1.4.2',
-                        'astropy==4.3.1', 'jplephem==2.17'],
+                        'astropy==4.3.1', 'jplephem==2.17', 'poliastro==0.16.2'],
       classifiers=[
         # How mature is this project? Common values are
         #   3 - Alpha
