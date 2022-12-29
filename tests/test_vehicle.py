@@ -8,18 +8,6 @@ Tests for Vehicle class
 import unittest
 import numpy as np
 
-class TestImportVehicle(unittest.TestCase):
-	def test_import_vehicle(self):
-		try:
-			from AMAT.planet import Planet
-		except ModuleNotFoundError:
-			raise ModuleNotFoundError("Cannot import Planet from AMAT.planet")
-
-		try:
-			from AMAT.vehicle import Vehicle
-		except ModuleNotFoundError:
-			raise ModuleNotFoundError("Cannot import Vehicle from AMAT.vehicle")
-
 
 try:
 	from AMAT.planet import Planet
@@ -30,6 +18,7 @@ try:
 	from AMAT.vehicle import Vehicle
 except ModuleNotFoundError:
 	raise ModuleNotFoundError("Cannot import Vehicle from AMAT.vehicle")
+
 
 class TestBallisticEntries(unittest.TestCase):
 	"""

@@ -9,15 +9,6 @@ atmospheric profiles.
 import unittest
 
 
-class TestImportPlanet(unittest.TestCase):
-	def test_import_planet(self):
-		try:
-			from AMAT.planet import Planet
-			return True
-		except ModuleNotFoundError:
-			raise ModuleNotFoundError("Cannot import Planet from AMAT.planet")
-
-
 try:
 	from AMAT.planet import Planet
 except ModuleNotFoundError:

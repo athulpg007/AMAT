@@ -17,7 +17,7 @@ from numpy import linalg as LA
 
 from AMAT.planet import Planet
 
-solar_system_ephemeris.set('jpl')
+solar_system_ephemeris.set('../spice-data/de432s.bsp')
 
 class Arrival:
 	"""

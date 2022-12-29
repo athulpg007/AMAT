@@ -26,7 +26,7 @@ copyright = '2022, A.P. Girija'
 author = 'Athul P. Girija'
 
 # The full version, including alpha/beta/rc tags
-release = 'v2.2.19'
+release = 'v2.2.20'
 
 
 # -- General configuration ---------------------------------------------------

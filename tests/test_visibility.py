@@ -1,7 +1,12 @@
 import numpy as np
 from AMAT.approach import Approach
 from AMAT.orbiter import PropulsiveOrbiter
-from AMAT.visibility import LanderToPlanet, LanderToOrbiter, OrbiterToPlanet
+
+try:
+	from AMAT.visibility import LanderToPlanet, LanderToOrbiter, OrbiterToPlanet
+except ModuleNotFoundError:
+	raise ModuleNotFoundError("Cannot import LanderToPlanet, LanderToOrbiter, OrbiterToPlanet from AMAT.visibility")
+
 
 class Test_Titan_Earth_Equatorial:
 	visibility = LanderToPlanet(observer_planet="TITAN", target_planet="EARTH", latitude=3.0, date="2034-03-28 00:00:00")

@@ -1,6 +1,5 @@
 """
 test_launcher.py
-
 Basic tests for AMAT.launcher
 
 """

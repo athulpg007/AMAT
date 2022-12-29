@@ -8,16 +8,6 @@ Tests for Arrival class
 import numpy as np
 from astropy.time import Time
 
-
-class TestImportArrival():
-	def test_import_arrival(self):
-		try:
-			from AMAT.arrival import Arrival
-			return True
-		except ModuleNotFoundError:
-			raise ModuleNotFoundError("Cannot import Arrival from AMAT.arrival")
-			assert False
-
 try:
 	from AMAT.arrival import Arrival
 except ModuleNotFoundError:
