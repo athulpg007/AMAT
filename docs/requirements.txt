@@ -3,7 +3,7 @@
 numpy
 scipy
 matplotlib
-
+astropy==4.3.1
 # Documentation Dependencies
 
 sphinx==2.1.2

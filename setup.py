@@ -13,7 +13,7 @@ setup(name='AMAT',
       author_email='athulpg007@gmail.com',
       license='GPL-3.0-or-later',
       packages=['AMAT'],
-      install_requires=['numpy', 'scipy', 'matplotlib', 'pandas'],
+      install_requires=['numpy', 'scipy', 'matplotlib', 'pandas', 'astropy==4.3.1'],
       classifiers=[
         # How mature is this project? Common values are
         #   3 - Alpha
