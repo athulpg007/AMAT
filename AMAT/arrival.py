@@ -138,10 +138,10 @@ class Arrival:
 										   self.arrivalPlanet_eph[1].y.value / 86400,
 										   self.arrivalPlanet_eph[1].z.value / 86400])
 
-		(self.v_dep, self.v_arr), = iod.izzo.lambert(Sun.k, self.lastFlybyPlanet_pos * u.km,
-													 self.arrivalPlanet_pos * u.km,
-													 self.TOF,
-													 M=M, numiter=numiter, rtol=rtol)
+		(self.v_dep, self.v_arr) = iod.izzo.lambert(Sun.k, self.lastFlybyPlanet_pos * u.km,
+												    self.arrivalPlanet_pos * u.km,
+													self.TOF,
+													M=M, numiter=numiter, rtol=rtol)
 
 		self.v_inf_vec = self.v_arr.value - self.arrivalPlanet_vel
 		self.v_inf_mag = LA.norm(self.v_inf_vec)
