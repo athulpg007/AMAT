@@ -148,7 +148,8 @@ class LanderToPlanet(Visibility):
 			Datetime in the format "2036-03-28 00:00:00"
 		num_points : int
 			number of points to compute over one full rotation, defaults to 101
-
+		ephem_file : str
+			ephemeris filepath to spice-data/de432.bsp
 		"""
 
 		self.planetObj = Planet(observer_planet)
@@ -356,7 +357,8 @@ class OrbiterToPlanet(Visibility):
 		boolean array containing visibility of orbiter to target planet, True or False
 	"""
 
-	def __init__(self, target_planet, observer_planet, orbiter, date, t_seconds, num_points=1600):
+	def __init__(self, target_planet, observer_planet, orbiter, date, t_seconds,
+				 num_points=1600, ephem_file='../spice-data/de432s.bsp'):
 		"""
 
 		Parameters
@@ -377,6 +379,8 @@ class OrbiterToPlanet(Visibility):
 			time in seconds for which elevation and range are to be computed
 		num_points : int
 			number of grid points to use in the time interval
+		ephem_file : str
+			ephemeris filepath to spice-data/de432.bsp
 		"""
 
 		self.planetObj = Planet(observer_planet)
@@ -402,8 +406,9 @@ class OrbiterToPlanet(Visibility):
 		self.arrival_date = Time(date, scale="tdb")
 
 		# Compute the ephemeris for the observer and target planet
-		self.observer_planet_eph = get_body_barycentric_posvel(self.observer_planet, self.arrival_date)
-		self.target_planet_eph = get_body_barycentric_posvel(target_planet, self.arrival_date)
+		with solar_system_ephemeris.set(ephem_file):
+			self.observer_planet_eph = get_body_barycentric_posvel(self.observer_planet, self.arrival_date)
+			self.target_planet_eph = get_body_barycentric_posvel(target_planet, self.arrival_date)
 
 		# Compute observer and target Solar System barycentric position(s) in ICRF (km)
 		self.obs_planet_pos = np.array([self.observer_planet_eph[0].x.value,

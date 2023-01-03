@@ -115,6 +115,8 @@ class Arrival:
 		rtol: float, optional
 			relative tolerance for lambert solver
 			defaults to 1e-6
+		ephem_file : str
+			ephemeris filepath to spice-data/de432.bsp
 		"""
 
 		with solar_system_ephemeris.set(ephem_file):
