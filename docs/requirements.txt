@@ -15,3 +15,4 @@ nbsphinx==0.6.1
 jinja2==2.11.3
 docutils==0.14
 markupsafe==2.0.1
+sphinx_rtd_theme==1.1.1
