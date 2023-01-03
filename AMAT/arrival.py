@@ -17,7 +17,6 @@ from numpy import linalg as LA
 
 from AMAT.planet import Planet
 
-solar_system_ephemeris.set('../spice-data/de432s.bsp')
 
 class Arrival:
 	"""
@@ -49,6 +48,7 @@ class Arrival:
 		self.north_pole = None
 		self.angle = None
 		self.declination = None
+
 
 	def set_vinf_vec_manually(self, arrivalPlanet, v_inf_vec_ICRF_kms):
 		"""
@@ -83,7 +83,7 @@ class Arrival:
 		self.declination = 90 - self.angle
 
 	def set_vinf_vec_from_lambert_arc(self, lastFlybyPlanet, arrivalPlanet, lastFlybyDate, arrivalDate,
-									  M=0, numiter=100, rtol=1e-6):
+									  M=0, numiter=100, rtol=1e-6, ephem_file='../spice-data/de432s.bsp'):
 		"""
 		Compute the v_inf_vec from a lambert arc solution
 		if the last flyby date and the arrival date is known
@@ -117,8 +117,9 @@ class Arrival:
 			defaults to 1e-6
 		"""
 
-		self.lastFlybyPlanet_eph = get_body_barycentric_posvel(lastFlybyPlanet, lastFlybyDate)
-		self.arrivalPlanet_eph = get_body_barycentric_posvel(arrivalPlanet, arrivalDate)
+		with solar_system_ephemeris.set(ephem_file):
+			self.lastFlybyPlanet_eph = get_body_barycentric_posvel(lastFlybyPlanet, lastFlybyDate)
+			self.arrivalPlanet_eph = get_body_barycentric_posvel(arrivalPlanet, arrivalDate)
 
 		self.TOF = arrivalDate - lastFlybyDate
 

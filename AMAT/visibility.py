@@ -11,8 +11,6 @@ import numpy as np
 from astropy.time import Time
 from AMAT.planet import Planet
 
-solar_system_ephemeris.set('../spice-data/de432s.bsp')
-
 
 class Visibility:
 	"""
@@ -130,7 +128,8 @@ class LanderToPlanet(Visibility):
 		boolean array containing visibility of lander to orbiter, True or False
 	"""
 
-	def __init__(self, target_planet, observer_planet, latitude, date, num_points=101):
+	def __init__(self, target_planet, observer_planet, latitude, date,
+				 num_points=101, ephem_file='../spice-data/de432s.bsp'):
 		"""
 		Parameters
 		----------
@@ -169,8 +168,9 @@ class LanderToPlanet(Visibility):
 		self.arrival_date = Time(date, scale="tdb")
 
 		# Compute the ephemeris for the observer and target planet
-		self.observer_planet_eph = get_body_barycentric_posvel(self.observer_planet, self.arrival_date)
-		self.target_planet_eph = get_body_barycentric_posvel(target_planet, self.arrival_date)
+		with solar_system_ephemeris.set(ephem_file):
+			self.observer_planet_eph = get_body_barycentric_posvel(self.observer_planet, self.arrival_date)
+			self.target_planet_eph = get_body_barycentric_posvel(target_planet, self.arrival_date)
 
 		# Compute observer and target Solar System barycentric position(s) in ICRF (km)
 		self.obs_planet_pos = np.array([self.observer_planet_eph [0].x.value,
