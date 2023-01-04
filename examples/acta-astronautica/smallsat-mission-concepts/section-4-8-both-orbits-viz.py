@@ -12,7 +12,8 @@ arrival = Arrival()
 arrival.set_vinf_vec_from_lambert_arc(lastFlybyPlanet='EARTH',
                                       arrivalPlanet='VENUS',
                                       lastFlybyDate=Time("2010-05-10 00:00:00", scale='tdb'),
-                                      arrivalDate=Time("2010-12-06 00:00:00", scale='tdb'))
+                                      arrivalDate=Time("2010-12-06 00:00:00", scale='tdb'),
+									  ephem_file='../../../spice-data/de432s.bsp')
 
 
 probe = Approach("VENUS", v_inf_vec_icrf_kms=arrival.v_inf_vec,
