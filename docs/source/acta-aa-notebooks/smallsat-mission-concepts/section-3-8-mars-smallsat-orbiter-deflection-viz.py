@@ -19,7 +19,8 @@ arrival = Arrival()
 arrival.set_vinf_vec_from_lambert_arc(lastFlybyPlanet='EARTH',
                                       arrivalPlanet='MARS',
                                       lastFlybyDate=Time("2020-07-30 00:00:00", scale='tdb'),
-                                      arrivalDate=Time("2021-02-18 00:00:00", scale='tdb'))
+                                      arrivalDate=Time("2021-02-18 00:00:00", scale='tdb'),
+                                      ephem_file='../../../spice-data/de432s.bsp')
 
 
 
