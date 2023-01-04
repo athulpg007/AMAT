@@ -35,6 +35,7 @@ Jupyter Notebooks associated with Girija (2022), ADEPT Drag Modulation Aerocaptu
 
 .. toctree::
     :maxdepth: 1
+
     /acta-aa-notebooks/smallsat-mission-concepts/section-1-1-orbit-insertion-DV.ipynb
     /acta-aa-notebooks/smallsat-mission-concepts/section-1-2-propellant-mass-fraction-vs-DV-chart.ipynb
     /acta-aa-notebooks/smallsat-mission-concepts/section-2-0-aerocapture-vehicle-design.ipynb
