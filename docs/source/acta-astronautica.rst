@@ -4,7 +4,8 @@ Acta Astronautica Notebooks
 Uranus Orbiter and Probe
 -------------------------
 
-Jupyter Notebooks associated with Girija (2022), A Flagship-class Uranus Orbiter and Probe Mission Concept using Aerocapture, submitted to Acta Astronautica.
+Jupyter Notebooks associated with Girija (2022), A Flagship-class Uranus Orbiter and Probe Mission Concept using Aerocapture, Acta Astronautica, Vol. 202, pp. 104-118. `DOI: 10.1016/j.actaastro.2022.10.005 <https://doi.org/10.1016/j.actaastro.2022.10.005>`_
+
 
 .. toctree::
     :maxdepth: 1
@@ -31,7 +32,7 @@ Jupyter Notebooks associated with Girija (2022), A Flagship-class Uranus Orbiter
 ADEPT SmallSat Aerocapture
 ----------------------------
 
-Jupyter Notebooks associated with Girija (2022), ADEPT Drag Modulation Aerocapture Enabled Small Satellite Mission Concepts for Planetary Science, submitted to Acta Astronautica.
+Jupyter Notebooks associated with Girija (2022), Aerocapture: Enabling Small Spacecraft Direct Access to Low-Circular Orbits for Planetary Constellations, submitted to Acta Astronautica.
 
 .. toctree::
     :maxdepth: 1
@@ -64,3 +65,4 @@ Jupyter Notebooks associated with Girija (2022), ADEPT Drag Modulation Aerocaptu
     /acta-aa-notebooks/smallsat-mission-concepts/section-6-3-venus-smallsat-constellation-targeting-and-deflection-manuevers.ipynb
     /acta-aa-notebooks/smallsat-mission-concepts/section-6-4-venus-smallsat-constellation-all-orbits.ipynb
     /acta-aa-notebooks/smallsat-mission-concepts/section-7-0-cost-assessment.ipynb
+
