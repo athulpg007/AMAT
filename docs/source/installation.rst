@@ -1,7 +1,7 @@
 Installation
 =============
 
-Note: AMAT is currently tested on Python 3.8, 3.9, and 3.10. There are two ways to install AMAT.
+Note: AMAT is currently supported on Python ``3.8``, ``3.9``, and ``3.10``. There are two ways to install AMAT.
 
 Option 1: Install from pip (recommended for most users)
 --------------------------------------------------------------------

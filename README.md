@@ -61,7 +61,7 @@ AMAT comes with a number of example
 
 ## Installation 
 
-Note: AMAT is currently tested on Python 3.8 and 3.9.
+Note: AMAT is currently supported on Python ``3.8``, ``3.9``, and ``3.10``.
 
 There are two ways to install AMAT. 
 
