@@ -1,7 +1,7 @@
 Installation
 =============
 
-Note: AMAT is currently tested on Python 3.8 and 3.9. There are two ways to install AMAT.
+Note: AMAT is currently tested on Python 3.8, 3.9, and 3.10. There are two ways to install AMAT.
 
 Option 1: Install from pip (recommended for most users)
 --------------------------------------------------------------------
@@ -53,7 +53,7 @@ This is the recommended method if you need to make changes to the source code.
 Create a virtual environment and activate it
 following the steps at the beginning of Option 1.
 
-Clone the GitHub repository and install AMAT using setup.py. The -e editable
+Clone the GitHub repository and install AMAT using setup.py. The ``-e`` editable
 flag allows changes you make to take effect when using AMAT.
   * ``$ git clone https://github.com/athulpg007/AMAT.git``
   * ``$ cd AMAT``
