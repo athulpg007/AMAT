@@ -130,23 +130,15 @@ to install Jupyter and pandas if it is not already installed on your system.
 If you want to create a new distribution package:
   * ```$ python3 setup.py sdist bdist_wheel```
 
-To build docs if you made changes to the source code 
+To build docs locally if you made changes to the source code 
 (you must have the dependencies in ```docs/requirements.txt``` installed):
   * ```$ cd AMAT/docs```
   * ```$ make html```
-
-If you added a new AMAT module, appropriate changes must be made 
-to ```docs/source/AMAT.rst```.
-
-## Usage
-
-  * ```from AMAT.planet import Planet```
-  * ```from AMAT.vehicle import Vehicle```
-  * ```from AMAT.launcher import Launcher```
-
+  
 ## License
 
-AMAT is an open source project licensed under the GNU General Public License Version 3.
+AMAT is an open source project licensed under the GNU General 
+Public License Version 3.
 
 ## Credits
 
@@ -161,12 +153,16 @@ If you wish to make a contribution, you can do as follows:
  * fork the GitHub repository 
  * create a feature branch from *master* 
  * add your feature and document it
- * run the tests 
+ * add tests to verify your feature is implemented correctly
+ * run all the tests to verify your change does not break something else
  * open a pull request
 
 ## Extras
 
-The AMAT repository includes representative atmospheric profiles for Solar System bodies, an Excel sheet with a comprehensive literature review of aerocapture, sample feasibility charts for aerocapture at all destinations, reference journal articles (by the author), a PDF version of the documentation, and the author's Ph.D. dissertation which provides more details on the methods and algorithms implemented in AMAT.
+The AMAT repository includes representative atmospheric profiles for 
+Solar System bodies, an Excel sheet with a comprehensive literature review of 
+aerocapture, sample feasibility charts for aerocapture at all destinations, 
+reference journal articles (by the author).
 
 ## Reference Articles
 
