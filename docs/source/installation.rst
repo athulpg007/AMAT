@@ -1,139 +1,75 @@
 Installation
 =============
 
-Note: AMAT is designed to work with Python 3.0 or greater. You must have a Python 3 installation in your system. AMAT has been tested on Linux/MacOS and Windows machines.
+Note: AMAT is currently tested on Python 3.8 and 3.9. There are two ways to install AMAT.
 
-There are three ways to install AMAT. 
+Option 1: Install from pip (recommended for most users)
+--------------------------------------------------------------------
 
-Option 1 : Install from pip (recommended)
-----------------------------------------------
+This is the recommended method if you do not plan or need to make changes
+to the source code.
 
-Note: Python Package Index limits the amount of additional data that can be packaged in the distribution, hence all data cannot be included in the built version. You will need to clone the GitHub repository to get the required data files, examples, and start using AMAT.
+Note: Python Package Index limits the amount of additional data that can be
+packaged in the distribution, hence all data cannot be included in the built version.
+You will need to clone the GitHub repository to get the required
+data files, examples, and start using AMAT.
 
-**For Linux/MacOS machines:**
+Create a virtual environment and activate it. It is strongly recommended you install
+AMAT inside a virtual environment to prevent it from affecting your global python
+packages.
 
-  * ``$ pip install AMAT``
-  * ``$ git clone https://github.com/athulpg007/AMAT.git``
-
-If you are unable to clone the repository, you can download the repository as a .zip file from GitHub and extract it. Once AMAT is installed, run an example Jupyter notebook to check everything works correctly.
-
-  * ``$ cd AMAT/examples``
-  * ``$ jupyter-notebook``
-
-.. note::
-   Note that you will need jupyterlab and pandas (for some examples) to run the example notebooks. Use ``pip install jupyterlab pandas`` to install Jupyter and pandas if it is not already installed on your system. 
-
-This will display the full list of example Jupyter notebooks included with AMAT.  Open and run the ``example-01-hello-world`` notebook to get started with AMAT.
-
-**For Windows machines:**
-
-  * ``$ pip install AMAT``
-
-(You must have Anaconda installed. Use the pip command from the Anaconda Prompt terminal). Open a Windows Powershell terminal and clone the GitHub repository. You must have Git installed.
-
-  * ``$ git clone https://github.com/athulpg007/AMAT.git``
-
-Run an example Jupyter notebook. From the Anaconda Prompt terminal:
-
-  * ``$ cd AMAT/examples``
-  * ``$ jupyter-notebook``
-
-.. note::
-   Note that you will need jupyterlab and pandas (for some examples) to run the example notebooks. Use ``pip install jupyterlab pandas`` to install Jupyter and pandas if it is not already installed on your system. 
-
-
-This will display the full list of example Jupyter notebooks included with AMAT. Open and run the ``example-01-hello-world`` notebook to get started with AMAT.
-
-
-Option 2 : Install from source
------------------------------------------------
-
-This will clone the repository from GitHub and install AMAT from the source code.
-
-**For Linux/MacOS machines:**
-
-  * ``$ pip install numpy scipy matplotlib``
-
-Clone the GitHub repository and install AMAT.
-
-  * ``$ git clone https://github.com/athulpg007/AMAT.git``
-  * ``$ cd AMAT``
-  * ``$ python setup.py install``
-  * ``$ cd examples``
-  * ``$ jupyter-notebook``
-
-.. note::
-   Note that you will need jupyterlab and pandas (for some examples) to run the example notebooks. Use ``pip install jupyterlab pandas`` to install Jupyter and pandas if it is not already installed on your system. 
-
-
-**For Windows machines (from the Anaconda Prompt terminal):**
-
-  * ``$ pip install numpy scipy matplotlib``
-
-Open a Windows Powershell terminal, clone the GitHub repository and install AMAT.
-
-  * ``$ git clone https://github.com/athulpg007/AMAT.git``
-  * ``$ cd AMAT``
-  * ``$ python setup.py install``
-  * ``$ cd examples``
-  * ``$ jupyter-notebook``
-
-.. note::
-   Note that you will need jupyterlab and pandas (for some examples) to run the example notebooks. Use ``pip install jupyterlab pandas`` to install Jupyter and pandas if it is not already installed on your system. 
-
-
-**To uninstall AMAT:**
-
-1. If you installed AMAT using pip:
-  * ``$ pip uninstall AMAT``
-
-2. If you installed AMAT from source, from the main AMAT directory:
-  * ``$ python setup.py develop -u``
-
-This will remove the AMAT installation from Python. You may simply delete the root folder where AMAT was installed to completely remove the files.
-
-
-Option 3 : Install in a virutalenv 
----------------------------------------------------------
-
-If you plan to modifty the source code or add features, the recommended option is to install it in a virtual environment. 
-
-1. Change directory to where you want the virtual environment to be created.
+Change directory to where you want the virtual environment to be created.
   * ``$ cd home/path``
 
-2. Create a virutal environment and activate it.
-
-**On Linux/MacOS machines:**
-
+**For Linux/MacOS machines:**
   * ``$ python3 -m venv env1``
   * ``$ source env1/bin/activate``
 
-**On Windows machines (from Anaconda Prompt):**
-
+**For Windows machines (from Anaconda prompt):**
   * ``$ conda create --name env1``
   * ``$ conda activate env1``
   * ``$ conda install pip``
 
-4. Follow the steps outlined in Option #2 (build from source) to clone the repository and install AMAT. If you make changes to the source code, remove the existing installation, update the setup file with a new version number, and re-install:
+Clone the repository and install AMAT:
+  * ``$ git clone https://github.com/athulpg007/AMAT.git``
+  * ``$ pip install AMAT``
 
-  * ``$ python setup.py develop -u``
-  * ``$ python setup.py install``
+Once AMAT is installed, run an example Jupyter notebook to check everything works correctly.
+  * ``$ cd AMAT/examples``
+  * ``$ jupyter-notebook``
 
-If you want to create a new distrubution package:
+Note that you will need jupyterlab and pandas (for some examples) to run
+the example notebooks. Use ``pip install jupyterlab pandas`` to
+install Jupyter and pandas if it is not already installed on your system.
+This will display the full list of example Jupyter notebooks included with AMAT.
+Open and run the ``example-01-hello-world`` notebook to get started with AMAT.
 
+
+Option 2: Install from setup.py (recommended for developers)
+------------------------------------------------------------------------------
+
+This is the recommended method if you need to make changes to the source code.
+
+Create a virtual environment and activate it
+following the steps at the beginning of Option 1.
+
+Clone the GitHub repository and install AMAT using setup.py. The -e editable
+flag allows changes you make to take effect when using AMAT.
+  * ``$ git clone https://github.com/athulpg007/AMAT.git``
+  * ``$ cd AMAT``
+  * ``$ python setup.py install -e``
+  * ``$ cd examples``
+  * ``$ jupyter-notebook``
+
+
+Note that you will need jupyterlab and pandas (for some examples)
+to run the example notebooks. Use ``pip install jupyterlab pandas``
+to install Jupyter and pandas if it is not already installed on your system.
+
+If you want to create a new distribution package:
   * ``$ python3 setup.py sdist bdist_wheel``
 
-To re-make docs if you made changes to the source code (you must have Sphinx installed):
-
-  * ``$ cd ~root/docs``
-  * ``$ sphinx-apidoc -f -o source/ ../``
+To build docs locally if you made changes to the source code
+(you must have the dependencies in ``docs/requirements.txt`` installed):
+  * ``$ cd AMAT/docs``
   * ``$ make html``
-
-If you added a new AMAT module, appropriate changes must be made to docs/source/AMAT.rst.
-
-AMAT Usage
-------------
-
-  * ``from AMAT.planet import Planet``
-  * ``from AMAT.vehicle import Vehicle``
-  * ``from AMAT.launcher import Launcher``
