@@ -52,6 +52,7 @@ For sub-routine documentation, see :ref:`modindex`
    jupyter_link
    jsr-notebooks
    acta-astronautica
+   mdpi-aerospace
    api_reference
    contributions
    credits

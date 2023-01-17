@@ -86,7 +86,7 @@ Change directory to where you want the virtual environment to be created.
   * ```$ python3 -m venv env1```
   * ```$ source env1/bin/activate```
 
-####On Windows machines (from Anaconda Prompt):
+#### On Windows machines (from Anaconda Prompt):
   * ```$ conda create --name env1```
   * ```$ conda activate env1```
   * ```$ conda install pip```
