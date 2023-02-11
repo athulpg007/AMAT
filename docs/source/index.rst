@@ -53,6 +53,7 @@ For sub-routine documentation, see :ref:`modindex`
    jsr-notebooks
    acta-astronautica
    mdpi-aerospace
+   other-notebooks
    api_reference
    contributions
    credits
