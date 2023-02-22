@@ -19,22 +19,22 @@ planet.loadAtmosphereModel('../../../atmdata/Venus/venus-gram-avg.dat', 0 , 1 ,2
 
 # Set up a vehicle object
 vehicle=Vehicle('SmallSat1', 37, 20, 0.0, 1.767, 0.0, 0.35, planet)
-vehicle.setInitialState(150.0,-6.22,23.16,10.8191,89.9982,-5.30,0.0,0.0)
+vehicle.setInitialState(150.0,-6.22,23.16,10.8191,89.9982,-5.20,0.0,0.0)
 vehicle.setSolverParams(1E-6)
 vehicle.setDragModulationVehicleParams(20, 7.5)
 
 # Set up the drag modulation entry phase guidance parameters.
-vehicle.setDragEntryPhaseParams(2.0, 20.0, 101, -200.0)
+vehicle.setDragEntryPhaseParams(2.0, 20.0, 101, -150.0)
 
 # Set the target orbit parameters.
-vehicle.setTargetOrbitParams(200.0, 1800.0, 20.0)
+vehicle.setTargetOrbitParams(200.0, 2000.0, 20.0)
 
 # Define the path to atmospheric files to be used for the Monte Carlo simulations.
 atmfiles = ['../../../atmdata/Venus/LAT20N.txt']
 
 # Set up the Monte Carlo simulation for drag modulation.
 # NPOS = 151, NMONTE = 200
-# Target EFPA = -5.30 deg
+# Target EFPA = -5.20 deg
 # EFPA 1-sigma error = +/- 0.033 deg
 # Nominal beta_1 = 20 kg/m2
 # beta_1 1-sigma = 0.0
@@ -47,4 +47,4 @@ vehicle.setupMonteCarloSimulationD(151, 200, atmfiles, 0 , 1, 2, 3, 4, True,
                                    -5.20,  0.0333, 20.0, 0.0,
                                     1.0, 1.0, 0.1, 2400.0)
 # Run 1000 trajectories
-vehicle.runMonteCarloD2(1000, '../../../data/acta-astronautica/smallsat-mission-concepts/venus/MCB-Venus')
+vehicle.runMonteCarloD2(1000, '../../../data/mdpi-aerospace/smallsat-mission-concepts/venus/MCB-Venus-1')
