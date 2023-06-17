@@ -268,7 +268,7 @@ class Link:
 		self.visibility = visibility
 		self.schedule = schedule
 		self.t_array = self.visibility.t_array
-		self.data_volume_array = cumtrapz((self.R/1e3)*self.visibility.visible_array*self.schedule.transmit_array,
+		self.data_volume_array = cumtrapz((self.R)*self.visibility.visible_array*self.schedule.transmit_array,
 										  self.t_array, initial=0)
 
 
