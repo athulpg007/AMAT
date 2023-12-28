@@ -5,10 +5,8 @@ scipy==1.11.4
 matplotlib==3.8.2
 astropy==6.0.0
 jplephem==2.17
-poliastro==0.17
 
 # Documentation Dependencies
-
 sphinx==4.0.2
 nbsphinx==0.6.1
 docutils==0.14
