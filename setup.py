@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(name='AMAT',
-      version='2.2.22',
+      version='2.3.0',
       description='Aerocapture Mission Analysis Tool',
       url='https://github.com/athulpg007/AMAT',
       long_description=long_description,
@@ -13,8 +13,8 @@ setup(name='AMAT',
       author_email='athulpg007@gmail.com',
       license='GPL-3.0-or-later',
       packages=['AMAT'],
-      install_requires=['numpy==1.22.0', 'scipy==1.10.0', 'matplotlib==3.5.2', 'pandas==1.4.2',
-                        'astropy>=5.2', 'jplephem==2.17', 'poliastro==0.17'],
+      install_requires=['numpy==1.26.2', 'scipy==1.11.4', 'matplotlib==3.8.2', 'pandas==2.1.4',
+                        'astropy==6.0.0', 'jplephem==2.17', 'poliastro==0.17'],
       classifiers=[
         # How mature is this project? Common values are
         #   3 - Alpha

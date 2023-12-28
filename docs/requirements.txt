@@ -1,9 +1,9 @@
 # Package dependencies
 
-numpy==1.22.0
-scipy==1.10.0
-matplotlib==3.5.2
-astropy>=5.2
+numpy==1.26.2
+scipy==1.11.4
+matplotlib==3.8.2
+astropy==6.0.0
 jplephem==2.17
 poliastro==0.17
 
