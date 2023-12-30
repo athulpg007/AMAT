@@ -22,7 +22,7 @@ sys.path.insert(0, os.path.abspath('../'))
 # -- Project information -----------------------------------------------------
 
 project = 'AMAT'
-copyright = '2022, A.P. Girija'
+copyright = '2024, A.P. Girija'
 author = 'Athul P. Girija'
 
 # The full version, including alpha/beta/rc tags
