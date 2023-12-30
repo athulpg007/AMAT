@@ -22,11 +22,11 @@ sys.path.insert(0, os.path.abspath('../'))
 # -- Project information -----------------------------------------------------
 
 project = 'AMAT'
-copyright = '2022, A.P. Girija'
+copyright = '2024, A.P. Girija'
 author = 'Athul P. Girija'
 
 # The full version, including alpha/beta/rc tags
-release = 'v2.2.22'
+release = 'v2.3.0'
 
 
 # -- General configuration ---------------------------------------------------
@@ -63,6 +63,12 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # a list of builtin themes.
 #
 html_theme = 'sphinx_rtd_theme'
+
+html_theme_options = {
+    'collapse_navigation': True,
+    'navigation_depth': 2,
+}
+
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,

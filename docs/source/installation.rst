@@ -53,8 +53,7 @@ This is the recommended method if you need to make changes to the source code.
 Create a virtual environment and activate it
 following the steps at the beginning of Option 1.
 
-Clone the GitHub repository and install AMAT using setup.py. The ``-e`` editable
-flag allows changes you make to take effect when using AMAT.
+Clone the GitHub repository and install AMAT using setup.py. The ``-e`` editable flag allows changes you make to take effect when using AMAT.
   * ``$ git clone https://github.com/athulpg007/AMAT.git``
   * ``$ cd AMAT``
   * ``$ python setup.py install -e``
@@ -69,7 +68,6 @@ to install Jupyter and pandas if it is not already installed on your system.
 If you want to create a new distribution package:
   * ``$ python3 setup.py sdist bdist_wheel``
 
-To build docs locally if you made changes to the source code
-(you must have the dependencies in ``docs/requirements.txt`` installed):
+To build docs locally if you made changes to the source code (you must have the dependencies in ``docs/requirements.txt`` installed):
   * ``$ cd AMAT/docs``
   * ``$ make html``

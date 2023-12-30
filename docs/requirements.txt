@@ -1,18 +1,15 @@
 # Package dependencies
-
-numpy==1.22.0
-scipy==1.10.0
-matplotlib==3.5.2
-astropy>=5.2
-jplephem==2.17
-poliastro==0.17
+numpy==1.26.2
+scipy==1.11.4
+matplotlib==3.8.2
+astropy==6.0.0
+jplephem==2.21
 
 # Documentation Dependencies
-
-sphinx==4.0.2
+sphinx==7.2.6
 nbsphinx==0.6.1
-docutils==0.14
-ipykernel==5.1.1
+docutils==0.20.1
+ipykernel==6.28.0
 jinja2==3.1.2
-markupsafe==2.1.2
-sphinx_rtd_theme==1.1.1
+markupsafe==2.1.3
+sphinx_rtd_theme==2.0.0
