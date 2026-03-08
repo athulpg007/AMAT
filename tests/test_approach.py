@@ -135,7 +135,7 @@ class Test_Approach_Entry:
 		assert abs(self.approach.gamma_entry_inertial + 0.18330372) < 1e-6
 
 	def test_v_vec_entry_bi(self):
-		assert abs(LA.linalg.norm(self.approach.v_vec_entry_bi) - 30567.901209444415) < 1e-6
+		assert abs(LA.norm(self.approach.v_vec_entry_bi) - 30567.901209444415) < 1e-6
 
 	def test_latitude_entry(self):
 		ans1 = self.approach.latitude_entry_bi
