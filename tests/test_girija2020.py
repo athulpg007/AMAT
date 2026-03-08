@@ -31,7 +31,7 @@ class Girija2020(unittest.TestCase):
 		planet = Planet("NEPTUNE")
 
 		try:
-			planet.loadAtmosphereModel('../atmdata/Neptune/neptune-gram-avg.dat', 0 , 7 ,6, 5 , heightInKmFlag=True)
+			planet.loadAtmosphereModel('atmdata/Neptune/neptune-gram-avg.dat', 0 , 7 ,6, 5 , heightInKmFlag=True)
 		except OSError:
 			raise OSError("File not found. Check file path/name, and make sure file is present.")
 
@@ -42,7 +42,7 @@ class Girija2020(unittest.TestCase):
 
 		# compute launch vehicle capability
 		launcher = Launcher( launcherID='sls-block-1B-with-kick',
-							 datafile='../launcher-data/sls-block-1B-with-kick.csv')
+							 datafile='launcher-data/sls-block-1B-with-kick.csv')
 		launch_mass = launcher.launchMass(111.0)
 		assert abs(launch_mass - 6600) < 100
 
