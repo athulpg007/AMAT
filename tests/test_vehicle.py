@@ -33,7 +33,7 @@ class TestBallisticEntries(unittest.TestCase):
 		planet1 = Planet("VENUS")
 		# load atmosphere models
 		try:
-			planet1.loadAtmosphereModel('../atmdata/Venus/venus-gram-avg.dat', 0, 1, 2, 3)
+			planet1.loadAtmosphereModel('atmdata/Venus/venus-gram-avg.dat', 0, 1, 2, 3)
 		except OSError:
 			raise OSError("File not found. Check file path/name, and make sure file is present.")
 
@@ -55,7 +55,7 @@ class TestBallisticEntries(unittest.TestCase):
 		planet2.h_skip = 125.0E3
 
 		try:
-			planet2.loadAtmosphereModel('../atmdata/Earth/earth-gram-avg.dat', 0 , 1 ,2, 3)
+			planet2.loadAtmosphereModel('atmdata/Earth/earth-gram-avg.dat', 0 , 1 ,2, 3)
 		except OSError:
 			raise OSError("File not found. Check file path/name, and make sure file is present.")
 
@@ -74,7 +74,7 @@ class TestBallisticEntries(unittest.TestCase):
 		planet3.h_trap = 2.0E3
 
 		try:
-			planet3.loadAtmosphereModel('../atmdata/Mars/mars-gram-avg.dat', 0 , 1 ,2, 3)
+			planet3.loadAtmosphereModel('atmdata/Mars/mars-gram-avg.dat', 0 , 1 ,2, 3)
 		except OSError:
 			raise OSError("File not found. Check file path/name, and make sure file is present.")
 

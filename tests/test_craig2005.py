@@ -24,7 +24,7 @@ class CraigLyne2005(unittest.TestCase):
 		planet1 = Planet("VENUS")
 
 		try:
-			planet1.loadAtmosphereModel('../atmdata/Venus/venus-gram-avg.dat', 0 , 1 ,2, 3)
+			planet1.loadAtmosphereModel('atmdata/Venus/venus-gram-avg.dat', 0 , 1 ,2, 3)
 		except OSError:
 			raise OSError("File not found. Check file path/name, and make sure file is present.")
 

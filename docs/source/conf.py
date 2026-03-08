@@ -26,7 +26,7 @@ copyright = '2024, A.P. Girija'
 author = 'Athul P. Girija'
 
 # The full version, including alpha/beta/rc tags
-release = 'v2.3.0'
+release = 'v2.4.0'
 
 
 # -- General configuration ---------------------------------------------------
@@ -46,7 +46,7 @@ templates_path = ['_templates']
 # You can specify multiple suffix as a list of string:
 #
 # source_suffix = ['.rst', '.md']
-source_suffix = ['.rst', '.md', '.ipynb']
+source_suffix = ['.rst', '.md']
 # The master toctree document.
 master_doc = 'index'
 

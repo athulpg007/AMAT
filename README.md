@@ -61,7 +61,7 @@ AMAT comes with a number of example
 
 ## Installation 
 
-Note: AMAT is currently supported on Python ``3.8``, ``3.9``, and ``3.10``.
+Note: AMAT is currently supported on Python ``3.12``, ``3.13``, and ``3.14``.
 
 There are two ways to install AMAT. 
 
@@ -83,13 +83,9 @@ Change directory to where you want the virtual environment to be created.
   * ```$ cd home/path```
 
 #### On Linux/MacOS machines:
-  * ```$ python3 -m venv env1```
-  * ```$ source env1/bin/activate```
+  * ```$ python3 -m venv env```
+  * ```$ source env/bin/activate```
 
-#### On Windows machines (from Anaconda Prompt):
-  * ```$ conda create --name env1```
-  * ```$ conda activate env1```
-  * ```$ conda install pip```
 
 #### Clone the repository and install AMAT:
   * ```$ git clone https://github.com/athulpg007/AMAT.git```
@@ -106,7 +102,7 @@ install Jupyter and pandas if it is not already installed on your system.
 This will display the full list of example Jupyter notebooks included with AMAT.  
 Open and run the ```example-01-hello-world``` notebook to get started with AMAT.
 
-### Option 2: Install from setup.py (recommended for developers)
+### Option 2: Install from pyproject.toml (recommended for developers)
 
 This is the recommended method if you need to make changes to the source code.
 
@@ -117,7 +113,7 @@ Clone the GitHub repository and install AMAT using setup.py. The -e editable
 flag allows changes you make to take effect when using AMAT.
   * ```$ git clone https://github.com/athulpg007/AMAT.git```
   * ```$ cd AMAT```
-  * ```$ python setup.py install -e```
+  * ```$ uv sync --frozen --no-group docs```
   * ```$ cd examples```
   * ```$ jupyter-notebook```
   
@@ -128,10 +124,10 @@ to install Jupyter and pandas if it is not already installed on your system.
 
 
 If you want to create a new distribution package:
-  * ```$ python3 setup.py sdist bdist_wheel```
+  * ```$ python -m build```
 
 To build docs locally if you made changes to the source code 
-(you must have the dependencies in ```docs/requirements.txt``` installed):
+(you must have the dependencies in ```pyproject.toml [docs]``` installed with `uv sync`):
   * ```$ cd AMAT/docs```
   * ```$ make html```
   

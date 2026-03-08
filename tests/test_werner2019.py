@@ -23,7 +23,7 @@ class WernerBraun2019(unittest.TestCase):
 	def test_aerocapture_vehicle(self):
 
 		planet = Planet('EARTH')
-		planet.loadAtmosphereModel('../atmdata/Earth/earth-gram-avg.dat', 0 , 1 ,2, 3)
+		planet.loadAtmosphereModel('atmdata/Earth/earth-gram-avg.dat', 0 , 1 ,2, 3)
 		planet.h_skip = 125.0E3
 
 		vehicle=Vehicle('EarthSmallSat', 25.97, 66.4, 0.0, np.pi*0.25**2, 0.0, 0.0563, planet)

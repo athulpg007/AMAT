@@ -182,7 +182,7 @@ class TestLoadAtmosphereModels(unittest.TestCase):
 	def test_load_atm_model_venus(self):
 		planet1 = Planet("VENUS")
 		try:
-			planet1.loadAtmosphereModel('../atmdata/Venus/venus-gram-avg.dat', 0, 1, 2, 3)
+			planet1.loadAtmosphereModel('atmdata/Venus/venus-gram-avg.dat', 0, 1, 2, 3)
 			assert True
 		except OSError:
 			raise OSError("File not found. Check file path/name, and make sure file is present.")
@@ -190,49 +190,49 @@ class TestLoadAtmosphereModels(unittest.TestCase):
 	def test_load_atm_model_earth(self):
 		planet2 = Planet("EARTH")
 		try:
-			planet2.loadAtmosphereModel('../atmdata/Earth/earth-gram-avg.dat', 0, 1, 2, 3)
+			planet2.loadAtmosphereModel('atmdata/Earth/earth-gram-avg.dat', 0, 1, 2, 3)
 		except OSError:
 			raise OSError("File not found. Check file path/name, and make sure file is present.")
 
 	def test_load_atm_model_mars(self):
 		planet3 = Planet("MARS")
 		try:
-			planet3.loadAtmosphereModel('../atmdata/Mars/mars-gram-avg.dat', 0, 1, 2, 3)
+			planet3.loadAtmosphereModel('atmdata/Mars/mars-gram-avg.dat', 0, 1, 2, 3)
 		except OSError:
 			raise OSError("File not found. Check file path/name, and make sure file is present.")
 
 	def test_load_atm_model_jupiter(self):
 		planet4 = Planet("JUPITER")
 		try:
-			planet4.loadAtmosphereModel('../atmdata/Jupiter/jupiter-galileo-asi.dat', 0, 1, 2, 3, heightInKmFlag=True)
+			planet4.loadAtmosphereModel('atmdata/Jupiter/jupiter-galileo-asi.dat', 0, 1, 2, 3, heightInKmFlag=True)
 		except OSError:
 			raise OSError("File not found. Check file path/name, and make sure file is present.")
 
 	def test_load_atm_model_saturn(self):
 		planet5 = Planet("SATURN")
 		try:
-			planet5.loadAtmosphereModel('../atmdata/Saturn/saturn-nominal.dat', 0, 1, 2, 3, heightInKmFlag=True)
+			planet5.loadAtmosphereModel('atmdata/Saturn/saturn-nominal.dat', 0, 1, 2, 3, heightInKmFlag=True)
 		except OSError:
 			raise OSError("File not found. Check file path/name, and make sure file is present.")
 
 	def test_load_atm_model_titan(self):
 		planet6 = Planet("TITAN")
 		try:
-			planet6.loadAtmosphereModel('../atmdata/Titan/titan-gram-avg.dat', 0, 1, 2, 3)
+			planet6.loadAtmosphereModel('atmdata/Titan/titan-gram-avg.dat', 0, 1, 2, 3)
 		except OSError:
 			raise OSError("File not found. Check file path/name, and make sure file is present.")
 
 	def test_load_atm_model_uranus(self):
 		planet7 = Planet("URANUS")
 		try:
-			planet7.loadAtmosphereModel('../atmdata/Uranus/uranus-ames.dat', 0, 1, 2, 3)
+			planet7.loadAtmosphereModel('atmdata/Uranus/uranus-ames.dat', 0, 1, 2, 3)
 		except OSError:
 			raise OSError("File not found. Check file path/name, and make sure file is present.")
 
 	def test_load_atm_model_neptune(self):
 		planet8 = Planet("NEPTUNE")
 		try:
-			planet8.loadAtmosphereModel('../atmdata/Neptune/neptune-gram-avg.dat', 0, 7, 6, 5, heightInKmFlag=True)
+			planet8.loadAtmosphereModel('atmdata/Neptune/neptune-gram-avg.dat', 0, 7, 6, 5, heightInKmFlag=True)
 		except OSError:
 			raise OSError("File not found. Check file path/name, and make sure file is present.")
 
@@ -251,14 +251,14 @@ class TestAtmosphereModelFiles(unittest.TestCase):
 		planet7 = Planet("URANUS")
 		planet8 = Planet("NEPTUNE")
 
-		planet1.loadAtmosphereModel('../atmdata/Venus/venus-gram-avg.dat', 0, 1, 2, 3)
-		planet2.loadAtmosphereModel('../atmdata/Earth/earth-gram-avg.dat', 0, 1, 2, 3)
-		planet3.loadAtmosphereModel('../atmdata/Mars/mars-gram-avg.dat', 0, 1, 2, 3)
-		planet4.loadAtmosphereModel('../atmdata/Jupiter/jupiter-galileo-asi.dat', 0, 1, 2, 3, heightInKmFlag=True)
-		planet5.loadAtmosphereModel('../atmdata/Saturn/saturn-nominal.dat', 0, 1, 2, 3, heightInKmFlag=True)
-		planet6.loadAtmosphereModel('../atmdata/Titan/titan-gram-avg.dat', 0, 1, 2, 3)
-		planet7.loadAtmosphereModel('../atmdata/Uranus/uranus-ames.dat', 0, 1, 2, 3)
-		planet8.loadAtmosphereModel('../atmdata/Neptune/neptune-gram-avg.dat', 0, 7, 6, 5, heightInKmFlag=True)
+		planet1.loadAtmosphereModel('atmdata/Venus/venus-gram-avg.dat', 0, 1, 2, 3)
+		planet2.loadAtmosphereModel('atmdata/Earth/earth-gram-avg.dat', 0, 1, 2, 3)
+		planet3.loadAtmosphereModel('atmdata/Mars/mars-gram-avg.dat', 0, 1, 2, 3)
+		planet4.loadAtmosphereModel('atmdata/Jupiter/jupiter-galileo-asi.dat', 0, 1, 2, 3, heightInKmFlag=True)
+		planet5.loadAtmosphereModel('atmdata/Saturn/saturn-nominal.dat', 0, 1, 2, 3, heightInKmFlag=True)
+		planet6.loadAtmosphereModel('atmdata/Titan/titan-gram-avg.dat', 0, 1, 2, 3)
+		planet7.loadAtmosphereModel('atmdata/Uranus/uranus-ames.dat', 0, 1, 2, 3)
+		planet8.loadAtmosphereModel('atmdata/Neptune/neptune-gram-avg.dat', 0, 7, 6, 5, heightInKmFlag=True)
 
 		self.assertEqual(len(planet1.ATM_height), len(planet1.ATM_temp), msg="Number of rows disagree in atm. data file")
 		self.assertEqual(len(planet1.ATM_height), len(planet1.ATM_pressure), msg="Number of rows disagree in atm. data file")
@@ -320,14 +320,14 @@ class TestAtmosphereValues(unittest.TestCase):
 		planet7 = Planet("URANUS")
 		planet8 = Planet("NEPTUNE")
 
-		planet1.loadAtmosphereModel('../atmdata/Venus/venus-gram-avg.dat', 0, 1, 2, 3)
-		planet2.loadAtmosphereModel('../atmdata/Earth/earth-gram-avg.dat', 0, 1, 2, 3)
-		planet3.loadAtmosphereModel('../atmdata/Mars/mars-gram-avg.dat', 0, 1, 2, 3)
-		planet4.loadAtmosphereModel('../atmdata/Jupiter/jupiter-galileo-asi.dat', 0, 1, 2, 3, heightInKmFlag=True)
-		planet5.loadAtmosphereModel('../atmdata/Saturn/saturn-nominal.dat', 0, 1, 2, 3, heightInKmFlag=True)
-		planet6.loadAtmosphereModel('../atmdata/Titan/titan-gram-avg.dat', 0, 1, 2, 3)
-		planet7.loadAtmosphereModel('../atmdata/Uranus/uranus-ames.dat', 0, 1, 2, 3)
-		planet8.loadAtmosphereModel('../atmdata/Neptune/neptune-gram-avg.dat', 0, 7, 6, 5, heightInKmFlag=True)
+		planet1.loadAtmosphereModel('atmdata/Venus/venus-gram-avg.dat', 0, 1, 2, 3)
+		planet2.loadAtmosphereModel('atmdata/Earth/earth-gram-avg.dat', 0, 1, 2, 3)
+		planet3.loadAtmosphereModel('atmdata/Mars/mars-gram-avg.dat', 0, 1, 2, 3)
+		planet4.loadAtmosphereModel('atmdata/Jupiter/jupiter-galileo-asi.dat', 0, 1, 2, 3, heightInKmFlag=True)
+		planet5.loadAtmosphereModel('atmdata/Saturn/saturn-nominal.dat', 0, 1, 2, 3, heightInKmFlag=True)
+		planet6.loadAtmosphereModel('atmdata/Titan/titan-gram-avg.dat', 0, 1, 2, 3)
+		planet7.loadAtmosphereModel('atmdata/Uranus/uranus-ames.dat', 0, 1, 2, 3)
+		planet8.loadAtmosphereModel('atmdata/Neptune/neptune-gram-avg.dat', 0, 7, 6, 5, heightInKmFlag=True)
 
 		self.assertAlmostEqual(planet1.density(h=0.0), 64.79, places=1)
 		self.assertAlmostEqual(planet2.density(h=0.0), 1.221, places=1)

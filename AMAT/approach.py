@@ -204,7 +204,7 @@ class Approach:
 													np.cos(self.beta)])
 
 		self.e_vec_bi = self.e * self.rp_vec_bi_unit
-		self.e_vec_bi_unit = self.e_vec_bi / LA.linalg.norm(self.e_vec_bi)
+		self.e_vec_bi_unit = self.e_vec_bi / LA.norm(self.e_vec_bi)
 
 		self.h = np.sqrt(self.a * self.planetObj.GM * (1 - self.e**2))
 
@@ -252,15 +252,15 @@ class Approach:
 			self.theta_star_entry = -1 * np.arccos(((self.h ** 2 / (self.planetObj.GM * self.r_EI)) - 1) * (1.0 / self.e))
 
 			self.r_vec_entry_bi = self.pos_vec_bi(self.theta_star_entry)
-			self.r_vec_entry_bi_unit = self.r_vec_entry_bi / LA.linalg.norm(self.r_vec_entry_bi)
-			self.r_vec_entry_bi_mag = LA.linalg.norm(self.r_vec_entry_bi)
+			self.r_vec_entry_bi_unit = self.r_vec_entry_bi / LA.norm(self.r_vec_entry_bi)
+			self.r_vec_entry_bi_mag = LA.norm(self.r_vec_entry_bi)
 
 			self.v_entry_inertial_mag = np.sqrt(self.v_inf_mag**2 + 2 * self.planetObj.GM / self.r_EI)
 
 			self.gamma_entry_inertial = -1 * np.arccos(self.h / (self.r_EI * self.v_entry_inertial_mag))
 
 			self.v_vec_entry_bi = self.vel_vec_bi(self.theta_star_entry)
-			self.v_vec_entry_bi_unit = self.v_vec_entry_bi / LA.linalg.norm(self.v_vec_entry_bi)
+			self.v_vec_entry_bi_unit = self.v_vec_entry_bi / LA.norm(self.v_vec_entry_bi)
 
 			self.gamma_entry_inertial_check = np.pi / 2 - \
 											  np.arccos(np.dot(self.r_vec_entry_bi_unit, self.v_vec_entry_bi_unit))
@@ -273,7 +273,7 @@ class Approach:
 														(self.r_vec_entry_bi_unit[0]*np.cos(self.xi_1) + self.r_vec_entry_bi_unit[1]*np.sin(self.xi_1)))
 
 			self.v_vec_entry_atm = self.vel_vec_entry_atm()
-			self.v_entry_atm_mag = LA.linalg.norm(self.v_vec_entry_atm)
+			self.v_entry_atm_mag = LA.norm(self.v_vec_entry_atm)
 			self.v_vec_entry_atm_unit = self.v_vec_entry_atm / self.v_entry_atm_mag
 
 			self.gamma_entry_atm = np.pi / 2 - \

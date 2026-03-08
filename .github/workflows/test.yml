@@ -1,0 +1,30 @@
+name: test
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.14'
+      - name: Setup uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+      - run: |
+          uv sync --frozen --no-install-project --no-group docs
+      - name: pytest
+        run: |
+          source .venv/bin/activate
+          export PATH="/AMAT/.venv/bin:$PATH"
+          pytest -n auto

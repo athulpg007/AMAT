@@ -2,7 +2,7 @@ import numpy as np
 from scipy.interpolate import interp1d
 from matplotlib import rcParams
 import matplotlib.pyplot as plt
-from scipy.integrate import cumtrapz
+from scipy.integrate import cumulative_trapezoid
 
 
 class Planet:
@@ -840,7 +840,7 @@ class Planet:
 
 		# Compute the density scale height using the formula in Hamel 2006
 		# AIAA. DOI = 10.2514/1.20126
-		integ = cumtrapz(d_array[int(h/1000.0):], h_array[int(h/1000.0):], initial=0)[-1]
+		integ = cumulative_trapezoid(d_array[int(h/1000.0):], h_array[int(h/1000.0):], initial=0)[-1]
 		ans = integ / (self.density(h) - self.density(self.h_skip))
 		return ans
 

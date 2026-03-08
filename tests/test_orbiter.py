@@ -20,7 +20,7 @@ class TestCoast:
 
 	planet = Planet("URANUS")
 	planet.h_skip = 1000e3
-	planet.loadAtmosphereModel('../atmdata/Uranus/uranus-gram-avg.dat', 0, 1, 2, 3, heightInKmFlag=True)
+	planet.loadAtmosphereModel('atmdata/Uranus/uranus-gram-avg.dat', 0, 1, 2, 3, heightInKmFlag=True)
 	planet.h_low = 120e3
 	planet.h_trap = 100e3
 
