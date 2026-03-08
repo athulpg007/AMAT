@@ -22,6 +22,6 @@ jobs:
         with:
           enable-cache: true
       - run: |
-          uv sync --frozen --no-install-project --no-group docs
+          uv sync --frozen --no-install-project --group dev --no-group docs
       - name: pytest
         run: pytest -n auto
