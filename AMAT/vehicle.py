@@ -2512,7 +2512,7 @@ class Vehicle:
 		# compute total stagnation point heating rate
 		self.q_stag_total = self.q_stag_con + self.q_stag_rad
 		# compute stagnation point heating load
-		self.heatload = cumtrapz(self.q_stag_total, self.tc, initial=self.heatLoad0)
+		self.heatload = cumulative_trapezoid(self.q_stag_total, self.tc, initial=self.heatLoad0)
 
 	def propogateEntry2(self, t_sec, dt, delta_deg):
 		"""
@@ -2599,7 +2599,7 @@ class Vehicle:
 		# compute total stagnation point heating rate
 		self.q_stag_total = self.q_stag_con + self.q_stag_rad
 		# compute stagnation point heating load
-		self.heatload = cumtrapz(self.q_stag_total, self.tc, initial=self.heatLoad0)
+		self.heatload = cumulative_trapezoid(self.q_stag_total, self.tc, initial=self.heatLoad0)
 
 	def dummyVehicle(self, density_mes_int):
 		"""
@@ -2779,7 +2779,7 @@ class Vehicle:
 		# compute total stagnation point heating rate
 		q_stag_total = q_stag_con + q_stag_rad
 		# compute stagnation point heating load
-		heatload = cumtrapz(q_stag_total , tc, initial=heatLoad0)
+		heatload = cumulative_trapezoid(q_stag_total , tc, initial=heatLoad0)
 
 		return t_minc, h_kmc, v_kmsc, phi_degc, psi_degc, theta_degc, \
 				gamma_degc, drange_kmc, exitflag, acc_net_g, dyn_pres_atm, \
@@ -2936,7 +2936,7 @@ class Vehicle:
 		# compute total stagnation point heating rate
 		q_stag_total = q_stag_con + q_stag_rad
 		# compute stagnation point heating load
-		heatload = cumtrapz(q_stag_total, tc, initial=heatLoad0)
+		heatload = cumulative_trapezoid(q_stag_total, tc, initial=heatLoad0)
 
 		return t_minc, h_kmc, v_kmsc, phi_degc, psi_degc, theta_degc, \
 				gamma_degc, drange_kmc, exitflag, acc_net_g, dyn_pres_atm, \
@@ -5912,7 +5912,7 @@ class Vehicle:
 
 			acc_net_g_max_arr[i] = max(self.acc_net_g_full)
 			q_stag_max_arr[i] = max(self.q_stag_total_full)
-			heatload_max_arr[i] = max(cumtrapz(self.q_stag_total_full, self.t_min_full*60, initial=0))/1e3
+			heatload_max_arr[i] = max(cumulative_trapezoid(self.q_stag_total_full, self.t_min_full*60, initial=0))/1e3
 
 			print("RUN #: " + str(i + 1) + ", SAMPLE #: " + str(selected_profile) + ", EFPA: " + str(
 				'{:.2f}'.format(selected_efpa, 2)) + ", SIGMA: " + str(
@@ -6685,7 +6685,7 @@ class Vehicle:
 		# compute total stagnation point heating rate
 		q_stag_total    = q_stag_con + q_stag_rad
 		# compute stagnation point heating load
-		heatload        = cumtrapz(q_stag_total , tc, \
+		heatload        = cumulative_trapezoid(q_stag_total , tc, \
 			initial=heatLoad0)
 
 		return t_minc, h_kmc, v_kmsc, phi_degc, psi_degc, theta_degc, \
@@ -6857,7 +6857,7 @@ class Vehicle:
 		# compute total stagnation point heating rate
 		q_stag_total = q_stag_con + q_stag_rad
 		# compute stagnation point heating load
-		heatload = cumtrapz(q_stag_total, tc, \
+		heatload = cumulative_trapezoid(q_stag_total, tc, \
 							initial=heatLoad0)
 
 		return t_minc, h_kmc, v_kmsc, phi_degc, psi_degc, theta_degc, \
@@ -7628,7 +7628,7 @@ class Vehicle:
 
 			acc_net_g_max_arr[i] = max(self.acc_net_g_full)
 			q_stag_max_arr[i] = max(self.q_stag_total_full)
-			heatload_max_arr[i] = max(cumtrapz(self.q_stag_total_full, self.t_min_full*60, initial=0))/1e3
+			heatload_max_arr[i] = max(cumulative_trapezoid(self.q_stag_total_full, self.t_min_full*60, initial=0))/1e3
 
 			print("RUN #: " + str(i + 1) + ", PROF: " + str(
 				selected_atmfile) + ", SAMPLE #: " + str(selected_profile) + ", EFPA: " + str(

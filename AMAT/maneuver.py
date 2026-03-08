@@ -105,7 +105,7 @@ class ProbeOrbiterDeflection:
 												(1.0/self.probe.e))
 
 		self.r_vec_dv = self.probe.pos_vec_bi(self.theta_star_dv_probe)
-		self.r_vec_dv_unit = self.r_vec_dv / LA.linalg.norm(self.r_vec_dv)
+		self.r_vec_dv_unit = self.r_vec_dv / LA.norm(self.r_vec_dv)
 
 		self.delta_theta_star_probe = abs(self.theta_star_dv_probe)
 		self.delta_theta_star_space = np.arccos(np.dot(self.space.rp_vec_bi_unit, self.r_vec_dv_unit))
@@ -246,7 +246,7 @@ class ProbeProbeDeflection:
 												   (1.0 / self.probe2.e))
 
 		self.r_vec_dv = self.probe1.pos_vec_bi(self.theta_star_dv_probe1)
-		self.r_vec_dv_unit = self.r_vec_dv / LA.linalg.norm(self.r_vec_dv)
+		self.r_vec_dv_unit = self.r_vec_dv / LA.norm(self.r_vec_dv)
 
 		self.delta_theta_star_probe1 = abs(self.theta_star_dv_probe1)
 		self.delta_theta_star_probe2 = abs(self.theta_star_dv_probe2)
@@ -369,7 +369,7 @@ class OrbiterOrbiterDeflection:
 												(1.0/self.space1.e))
 
 		self.r_vec_dv = self.space1.pos_vec_bi(self.theta_star_dv_space1)
-		self.r_vec_dv_unit = self.r_vec_dv / LA.linalg.norm(self.r_vec_dv)
+		self.r_vec_dv_unit = self.r_vec_dv / LA.norm(self.r_vec_dv)
 
 		self.delta_theta_star_space1 = np.arccos(np.dot(self.space1.rp_vec_bi_unit, self.r_vec_dv_unit))
 		self.delta_theta_star_space2 = np.arccos(np.dot(self.space2.rp_vec_bi_unit, self.r_vec_dv_unit))
