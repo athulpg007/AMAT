@@ -4,7 +4,7 @@ from scipy.interpolate import interp1d
 import matplotlib.pyplot as plt
 from scipy.integrate import odeint
 from scipy.integrate import solve_ivp
-from scipy.integrate import cumtrapz
+from scipy.integrate import cumulative_trapezoid
 import copy
 import random as rd
 import os
@@ -2304,7 +2304,7 @@ class Vehicle:
 
 			q_stag = self.qStagTotal(rc,vc)
 			q_stag_max[count] = max(q_stag)
-			heatload[count] = cumtrapz(q_stag, tc, initial=0)[-1]
+			heatload[count] = cumulative_trapezoid(q_stag, tc, initial=0)[-1]
 			count = count+1
 
 		self.RN = temp_var   # set the nose radius to original value of nose radius

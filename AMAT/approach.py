@@ -204,7 +204,7 @@ class Approach:
 													np.cos(self.beta)])
 
 		self.e_vec_bi = self.e * self.rp_vec_bi_unit
-		self.e_vec_bi_unit = self.e_vec_bi / LA.linalg.norm(self.e_vec_bi)
+		self.e_vec_bi_unit = self.e_vec_bi / LA.norm(self.e_vec_bi)
 
 		self.h = np.sqrt(self.a * self.planetObj.GM * (1 - self.e**2))
 

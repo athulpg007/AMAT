@@ -129,7 +129,7 @@ class LanderToPlanet(Visibility):
 	"""
 
 	def __init__(self, target_planet, observer_planet, latitude, date,
-				 num_points=101, ephem_file='../spice-data/de432s.bsp'):
+				 num_points=101, ephem_file='spice-data/de432s.bsp'):
 		"""
 		Parameters
 		----------
@@ -358,7 +358,7 @@ class OrbiterToPlanet(Visibility):
 	"""
 
 	def __init__(self, target_planet, observer_planet, orbiter, date, t_seconds,
-				 num_points=1600, ephem_file='../spice-data/de432s.bsp'):
+				 num_points=1600, ephem_file='spice-data/de432s.bsp'):
 		"""
 
 		Parameters

@@ -5,7 +5,7 @@
 # REMARKS         : Compute the link margin and data rate for a telecom link.
 
 import numpy as np
-from scipy.integrate import cumtrapz
+from scipy.integrate import cumulative_trapezoid
 
 
 class Link:
@@ -268,7 +268,7 @@ class Link:
 		self.visibility = visibility
 		self.schedule = schedule
 		self.t_array = self.visibility.t_array
-		self.data_volume_array = cumtrapz((self.R)*self.visibility.visible_array*self.schedule.transmit_array,
+		self.data_volume_array = cumulative_trapezoid((self.R)*self.visibility.visible_array*self.schedule.transmit_array,
 										  self.t_array, initial=0)
 
 
