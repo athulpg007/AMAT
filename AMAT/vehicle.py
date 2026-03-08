@@ -2512,7 +2512,7 @@ class Vehicle:
 		# compute total stagnation point heating rate
 		self.q_stag_total = self.q_stag_con + self.q_stag_rad
 		# compute stagnation point heating load
-		self.heatload = cumulative_trapezoid(self.q_stag_total, self.tc, initial=self.heatLoad0)
+		self.heatload = cumulative_trapezoid(self.q_stag_total, self.tc, initial=0)
 
 	def propogateEntry2(self, t_sec, dt, delta_deg):
 		"""
@@ -6686,7 +6686,7 @@ class Vehicle:
 		q_stag_total    = q_stag_con + q_stag_rad
 		# compute stagnation point heating load
 		heatload        = cumulative_trapezoid(q_stag_total , tc, \
-			initial=heatLoad0)
+			initial=0)
 
 		return t_minc, h_kmc, v_kmsc, phi_degc, psi_degc, theta_degc, \
 			   gamma_degc, drange_kmc, exitflag, acc_net_g, dyn_pres_atm, \
