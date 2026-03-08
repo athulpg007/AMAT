@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "AMAT"
+version = "2.4.0"
+description = "Aerocapture Mission Analysis Tool"
+authors = [
+    { name = "Athul P. Girija", email = "athulpg007@gmail.com" }
+]
+license = "GPL-3.0-or-later"
+license-files = ["LICENSE"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable", # Replace with your chosen status
+
+    "Intended Audience :: Developer",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Education",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "Topic :: Scientific/Engineering :: Physics",
+
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+]
+
+
+requires-python = ">=3.12"
+dependencies = [
+    "numpy",
+    "scipy",
+    "pandas",
+    "matplotlib",
+    "jplephem",
+    "astropy",
+    "pytest",
+    "pytest-xdist",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+
+[dependency-groups]
+dev = []
+
+[project.urls]
+Homepage = "https://github.com/athulpg007/AMAT"
+Repository = "https://github.com/athulpg007/AMAT"
+Documentation = "https://amat.readthedocs.io/en/latest/"
