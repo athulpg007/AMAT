@@ -36,15 +36,26 @@ dependencies = [
     "matplotlib",
     "jplephem",
     "astropy",
-    "pytest",
-    "pytest-xdist",
 ]
 
 [tool.setuptools.packages.find]
 where = ["."]
 
 [dependency-groups]
-dev = []
+dev = [
+    "pytest",
+    "pytest-xdist",
+]
+
+docs = [
+    "sphinx",
+    "nbsphinx",
+    "docutils",
+    "ipykernel",
+    "jinja2",
+    "markupsafe",
+    "sphinx_rtd_theme",
+]
 
 [project.urls]
 Homepage = "https://github.com/athulpg007/AMAT"
