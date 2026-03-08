@@ -11,6 +11,7 @@ authors = [
 ]
 license = "GPL-3.0-or-later"
 license-files = ["LICENSE"]
+readme = "README.md"
 classifiers = [
     "Development Status :: 5 - Production/Stable", # Replace with your chosen status
 
