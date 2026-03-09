@@ -113,7 +113,7 @@ Clone the GitHub repository and install AMAT using setup.py. The -e editable
 flag allows changes you make to take effect when using AMAT.
   * ```$ git clone https://github.com/athulpg007/AMAT.git```
   * ```$ cd AMAT```
-  * ```$ uv sync --frozen --no-group docs```
+  * ```$ uv sync --frozen```
   * ```$ cd examples```
   * ```$ jupyter-notebook```
   
@@ -127,7 +127,7 @@ If you want to create a new distribution package:
   * ```$ python -m build```
 
 To build docs locally if you made changes to the source code 
-(you must have the dependencies in ```pyproject.toml [docs]``` installed with `uv sync`):
+(you must have the dependencies in ```pyproject.toml [docs]``` installed with `uv sync --frozen --group docs`):
   * ```$ cd AMAT/docs```
   * ```$ make html```
   
