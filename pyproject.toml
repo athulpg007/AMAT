@@ -15,7 +15,6 @@ readme = "README.md"
 classifiers = [
     "Development Status :: 5 - Production/Stable", # Replace with your chosen status
 
-    "Intended Audience :: Developer",
     "Intended Audience :: Science/Research",
     "Intended Audience :: Education",
     "Topic :: Scientific/Engineering",
