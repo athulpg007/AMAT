@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "AMAT"
-version = "2.4.0"
+version = "2.4.1"
 description = "Aerocapture Mission Analysis Tool"
 authors = [
     { name = "Athul P. Girija", email = "athulpg007@gmail.com" }
