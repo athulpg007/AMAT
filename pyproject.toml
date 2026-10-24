@@ -42,6 +42,8 @@ where = ["."]
 
 [dependency-groups]
 dev = [
+    "build",
+    "twine",
     "pytest",
     "pytest-xdist",
 ]
